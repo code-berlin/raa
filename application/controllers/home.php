@@ -12,14 +12,16 @@ class Home extends CI_Controller {
     */
     public function index($id=2)
     {
-        $this->load->model('page_m');
+        //$this->load->model('page_m');
 
-        $data['page'] = $this->page_m->get_by_id($id);
-
-        if (!empty($data['page'])) {
+        //$data['page'] = $this->page_m->get_by_id($id);
+        echo 'hola';
+        die;
+        /*if (!empty($data['page'])) {
+            echo 'hola';
             $this->load->view('home/page', $data);
         } else {
             $this->load->view('errors/404.html');
-        }
+        }*/
     }
 }
