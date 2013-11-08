@@ -2,3 +2,8 @@
 body {
   background: #ccc;
 }
+
+/* line 5, sass/main.scss */
+.admin-header {
+  background: #ddd;
+}
