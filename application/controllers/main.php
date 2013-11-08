@@ -19,6 +19,7 @@ class Main extends CI_Controller {
     }
 
     public function page()
+
     {
         $crud = $this->grocery_crud;
 
