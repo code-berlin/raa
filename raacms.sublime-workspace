@@ -1,0 +1,627 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"var",
+				"var_dump"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 58.0,
+		"selected_items":
+		[
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"scss",
+				"Set Syntax: CSS"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control\\",
+				"Package Control: Upgrade/Overwrite All Packages"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/xampp/htdocs/n24/trunk/site/application/css/n24/sass/includes/_footer.scss",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/footer.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/css/n24/sass/includes/_dropdown.scss",
+		"/C/Users/ehegi/AppData/Local/Temp/_dropdown.scss-rev354.svn000.tmp.scss",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/right_sidebar.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/js/main.js",
+		"/C/xampp/htdocs/n24/trunk/site/application/js/sidebar.js",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/video_detail.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/recommended_articles.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/js/video-js/video.dev.js",
+		"/C/Users/ehegi/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/xampp/htdocs/n24/trunk/site/application/css/n24/sass/includes/_minor_teaser.scss",
+		"/C/xampp/htdocs/n24/trunk/site/application/css/n24/sass/main_320.scss",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/weather_suggestion_dropdown.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/css/n24/sass/main_540.scss",
+		"/C/xampp/htdocs/n24/trunk/site/application/config/config.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/weather_detail.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/weather.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/css/n24/sass/includes/_news.scss",
+		"/C/xampp/htdocs/n24/trunk/site/application/css/main_320.css",
+		"/C/xampp/htdocs/n24/trunk/site/application/css/n24/sass/includes/_video_player.scss",
+		"/C/xampp/htdocs/n24/branches/NMW-139_2/site/application/views/weather_suggestion_dropdown.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/css/n24/sass/includes/_weather.scss",
+		"/C/xampp/htdocs/n24/branches/NMW-139_2/site/application/css/n24/sass/includes/_weather_detail.scss",
+		"/C/xampp/htdocs/n24/branches/NMW-139_2/site/application/css/n24/sass/includes/_weather.scss",
+		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/helpers/MY_captcha_helper.php",
+		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/controllers/contact.php",
+		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/views/weather_detail.php",
+		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/views/weather.php",
+		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/views/videos_teaser.php",
+		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/views/right_sidebar.php",
+		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/views/news_detail.php",
+		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/views/knowledge_detail.php",
+		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/views/footer.php",
+		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/views/contact.php",
+		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/js/main.js",
+		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/libraries/check_selenium.php",
+		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/controllers/test/video_tests.php",
+		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/controllers/test/gallery_tests.php",
+		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/helpers/MY_url_helper.php",
+		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/views/home.php",
+		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/views/main_news_template.php",
+		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/controllers/test/gallery_tests.php",
+		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/controllers/weather.php",
+		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/models/weather_m.php",
+		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/css/n24/sass/main_360.scss",
+		"/C/xampp/htdocs/n24/branches/NMW-1-2/site/application/.htaccess",
+		"/C/xampp/htdocs/n24/branches/NMW-139_1/site/application/config/config.php",
+		"/C/xampp/htdocs/n24/branches/NMW-139_1/site/application/views/template.php",
+		"/C/xampp/htdocs/n24/branches/NMW-139_1/site/application/models/weather_m.php",
+		"/C/xampp/htdocs/n24/branches/NMW-139_1/site/application/controllers/weather.php",
+		"/C/xampp/htdocs/n24/branches/NMW-139_1/site/application/js/typeahead.js",
+		"/C/xampp/htdocs/n24/branches/NMW-139_1/site/application/css/n24/sass/includes/_weather.scss",
+		"/C/xampp/htdocs/index.php",
+		"/C/xampp/htdocs/n24/branches/NMW-139_1/site/application/views/weather.php",
+		"/C/Users/ehegi/Desktop/typeahead.structure.json",
+		"/C/xampp/htdocs/n24/branches/NMW-139/site/application/css/n24/sass/main_360.scss",
+		"/C/xampp/htdocs/n24/branches/NMW-139/site/application/css/n24/sass/includes/_weather.scss",
+		"/C/Users/ehegi/AppData/Local/Temp/Temp1_typeahead.js.zip/typeahead.js/typeahead.js",
+		"/C/xampp/htdocs/n24/branches/NMW-139/site/application/views/template.php",
+		"/C/xampp/htdocs/n24/branches/NMW-139/site/application/views/weather.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/controllers/weather.php",
+		"/C/Users/ehegi/AppData/Local/Temp/weather.php-rev319.svn002.tmp.php",
+		"/C/xampp/htdocs/n24/branches/NMW-139/site/application/views/weather_detail.php",
+		"/C/xampp/htdocs/n24/branches/NMW-139/site/application/css/n24/sass/main_540.scss",
+		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/css/n24/sass/includes/_weather.scss",
+		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/css/main_320.css",
+		"/C/xampp/htdocs/n24/branches/NMW-139/site/application/controllers/weather.php",
+		"/C/xampp/htdocs/n24/branches/NMW-139/site/application/models/weather_m.php",
+		"/C/xampp/htdocs/n24/branches/NMW-139/site/application/views/footer.php",
+		"/C/xampp/htdocs/n24/branches/NMW-139/site/application/config/config.php",
+		"/C/xampp/htdocs/n24/branches/NMW-199 - Kopie/site/application/css/n24/sass/main_360.scss",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/ads.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/template.php",
+		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/views/ads.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/header.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/models/knowledge_m.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/about_us.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/breaking_news.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/agb.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/contact.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/home.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/index.html",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/knowledge.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/knowledge_detail.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/left_sidebar.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/contact_success.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/main_news_template.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/main_gallery_teaser.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/main_videos_teaser.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/minor_news_template.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/minor_gallery_teaser.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/more_category.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/news_categories.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/minor_videos_teaser.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/news_category.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/news_detail.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/pictures.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/pictures_detail.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/privacy.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/related_articles.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/videos.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/videos_teaser.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/views/welcome_message.php",
+		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/css/n24/sass/includes/_main.scss",
+		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/views/header.php",
+		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/css/main_360.css",
+		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/css/main_480.css",
+		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/css/main_540.css",
+		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/css/main_640.css",
+		"/C/xampp/htdocs/n24/branches/NMW-195/site/application/views/home.php",
+		"/C/xampp/htdocs/n24/branches/NMW-195/site/application/css/n24/sass/includes/_main.scss",
+		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/controllers/home.php",
+		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/models/news_m.php",
+		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/views/template.php",
+		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/views/home.php",
+		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/views/template.php.backup",
+		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/views/template.php.txt",
+		"/C/xampp/htdocs/n24/branches/NMW-176/site/index.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/css/n24/sass/main_480.scss",
+		"/C/xampp/htdocs/n24/trunk/site/application/css/main_640.css",
+		"/C/xampp/htdocs/n24/trunk/site/application/css/main_480.css",
+		"/C/xampp/htdocs/n24/trunk/site/application/css/main_540.css",
+		"/C/xampp/htdocs/n24/trunk/site/application/controllers/test/gallery_tests.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/controllers/test/Toast_all.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/css/n24/sass/includes/_main.scss",
+		"/C/xampp/htdocs/n24/trunk/site/application/css/n24/sass/main_640.scss",
+		"/C/xampp/htdocs/n24/trunk/site/application/css/n24/sass/main_640_landscape.scss"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"C:\\xampp\\htdocs\\n24\\trunk",
+			"C:\\xampp\\htdocs\\n24\\branches\\NMW-203",
+			"C:\\xampp\\htdocs\\n24\\branches\\NMW-176",
+			"C:\\xampp\\htdocs\\n24\\trunk",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"domain",
+			"link-to-desktop-version",
+			"creativeContainer",
+			"closer",
+			"cl;oser",
+			"iframe",
+			"ifr",
+			"if",
+			"iframe",
+			".category-box-picture-detail-page",
+			"footer-links-wrapper",
+			"api_base_sport_url",
+			"/video.js.map",
+			"<script src=\"../js/video-js/video.js\"></script>",
+			"recommended-article-wrapper",
+			"link-to-top",
+			"scrollToAnchor",
+			"scrollToAnchor('top');",
+			"top",
+			"link-to-top",
+			".minor-videos-teaser-wrapper",
+			".minor-gallery-teaser-wrapper .right",
+			".minor-videos-teaser-wrapper .right, .minor-gallery-teaser-wrapper .right",
+			"minor-teaser",
+			".breaking-news-container p",
+			"top 0.4s, height 0.4s, font-size 0.4s,         transform 0.4",
+			"border 0.4s,         box-shadow 0.4s,         transform 0.4",
+			"top 0.2s, height 0.2s, font-size 0.2s, ",
+			"transform",
+			"none !important",
+			"normale",
+			"font-face",
+			"font",
+			"font-face",
+			"city_or_zip",
+			"  ",
+			"image",
+			"index.php/",
+			"index.php",
+			"index.php/",
+			"index.php",
+			"/index.php",
+			"index.php",
+			"'index.php'.",
+			"teaser-text-box",
+			"index.php/",
+			"index.php",
+			"index.php/",
+			"base_url",
+			"getSuddestions",
+			"dataset",
+			"getSuggestions",
+			"done",
+			"transport",
+			"getSuggestions",
+			"renderSuggestions",
+			"suggestions",
+			".city_or_zip",
+			"retina",
+			"retina.js",
+			"ads_container",
+			"div",
+			"navi-bar",
+			"news-button",
+			"#main_wrapper",
+			"#wrapper",
+			"id=\"container\"",
+			"    ",
+			"page_body",
+			"top_news",
+			"template",
+			"template.php",
+			"width=device-width",
+			"viewport",
+			"#wrapper",
+			"menu scss",
+			"scss",
+			"#wrapper",
+			"wrapper",
+			"#wrapper",
+			"gpt_mobile",
+			"googletag",
+			"    ",
+			"menu_buttons_properties",
+			"#navi-bar .more-button",
+			"#wrapper",
+			"trim",
+			"whitespace"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"	",
+			"",
+			"/",
+			"#main-wrapper",
+			"	",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.482291666667,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"main.js",
+				"js/main.js"
+			],
+			[
+				"search_m.php",
+				"models/search_m.php"
+			],
+			[
+				"footer.php",
+				"views/footer.php"
+			],
+			[
+				"footerscss",
+				"css/n24/sass/includes/_footer.scss"
+			],
+			[
+				"search_m",
+				"models/search_m.php"
+			],
+			[
+				"videos_m",
+				"models/videos_m.php"
+			],
+			[
+				"video",
+				"controllers/videos.php"
+			],
+			[
+				"gallery_m",
+				"models/gallery_m.php"
+			],
+			[
+				"categories_m",
+				"models/categories_m.php"
+			],
+			[
+				"controllerpictures",
+				"controllers/pictures.php"
+			],
+			[
+				"routes.php",
+				"config/routes.php"
+			],
+			[
+				"news_m",
+				"models/news_m.php"
+			],
+			[
+				"config",
+				"config/config.php"
+			],
+			[
+				"sidebar.js",
+				"js/sidebar.js"
+			],
+			[
+				"viewvideo",
+				"views/video_detail.php"
+			],
+			[
+				"right",
+				"views/right_sidebar.php"
+			],
+			[
+				"video.js",
+				"js/video-js/video.dev.js"
+			],
+			[
+				"template.php",
+				"views/template.php"
+			],
+			[
+				"main_540.s",
+				"css/n24/sass/main_540.scss"
+			],
+			[
+				"config.php",
+				"config/config.php"
+			],
+			[
+				"weather_sugge",
+				"views/weather_suggestion_dropdown.php"
+			],
+			[
+				"weather",
+				"views/weather_detail.php"
+			],
+			[
+				"weather.php",
+				"views/weather.php"
+			],
+			[
+				"weather_su",
+				"views/weather_suggestion_dropdown.php"
+			],
+			[
+				"weat",
+				"views/weather.php"
+			],
+			[
+				"_wat",
+				"css/n24/sass/includes/_weather.scss"
+			],
+			[
+				"scss",
+				"css/n24/sass/main_320.scss"
+			],
+			[
+				"template.",
+				"site/application/views/template.php"
+			],
+			[
+				"videos.php",
+				"site/application/views/videos.php"
+			],
+			[
+				"contact",
+				"site/application/controllers/contact.php"
+			],
+			[
+				"captcha",
+				"site/application/helpers/MY_captcha_helper.php"
+			],
+			[
+				"header.php",
+				"site/application/views/header.php"
+			],
+			[
+				"template",
+				"site/application/views/template.php"
+			],
+			[
+				"weather_m",
+				"site/application/models/weather_m.php"
+			],
+			[
+				"controllerweather",
+				"site/application/controllers/weather.php"
+			],
+			[
+				"typea",
+				"site/application/js/typeahead.js"
+			],
+			[
+				"_weather.scss",
+				"site/application/css/n24/sass/includes/_weather.scss"
+			],
+			[
+				"weather.",
+				"views/weather.php"
+			],
+			[
+				"mainscss",
+				"css/n24/sass/main_540.scss"
+			],
+			[
+				"_weather",
+				"css/n24/sass/includes/_weather.scss"
+			],
+			[
+				"config.p",
+				"config/config.php"
+			],
+			[
+				"weath",
+				"views/weather.php"
+			],
+			[
+				"main.",
+				"site/application/js/main.js"
+			],
+			[
+				"_main.scss",
+				"site/application/css/n24/sass/includes/_main.scss"
+			],
+			[
+				"news",
+				"site/application/models/news_m.php"
+			],
+			[
+				"js",
+				"site/application/js/main.js"
+			],
+			[
+				"",
+				"site/index.php"
+			],
+			[
+				"includesmain.cs",
+				"site/application/css/n24/sass/includes/_main.scss"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"front",
+				"/C/Users/ehegi/www/frontend.sublime-project"
+			],
+			[
+				"fronte",
+				"/C/Users/ehegi/www/frontend.sublime-project"
+			],
+			[
+				"fron",
+				"/C/Users/ehegi/www/frontend.sublime-project"
+			],
+			[
+				"",
+				"/C/Users/ehegi/www/frontend.sublime-project"
+			],
+			[
+				"word",
+				"/C/xampp/htdocs/wordpress.mashup/wordpress.sublime-project"
+			],
+			[
+				"347",
+				"/C/xampp/htdocs/n24/branches/NMW-347/site/application/NMW-347.sublime-project"
+			],
+			[
+				"d",
+				"/C/xampp/htdocs/doc.jones/branches/DOC-5/site/system/DOC-5.sublime-project"
+			],
+			[
+				"55",
+				"/C/xampp/htdocs/n24/branches/NMW-55-fresh/site/application/NMW-55.sublime-project"
+			],
+			[
+				"trunk",
+				"/C/xampp/htdocs/n24/branches/NMW-268/site/application/trunk.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 335.0,
+	"status_bar_visible": true
+}
