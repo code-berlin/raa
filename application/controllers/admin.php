@@ -26,6 +26,6 @@ class Admin extends CI_Controller {
 
         $crud->set_field_upload('image','assets/uploads/files');
 
-        $this->load->view('page_crud.php', $crud->render());
+        $this->load->view('page', $crud->render());
     }
 }
