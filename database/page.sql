@@ -7,7 +7,6 @@ CREATE TABLE IF NOT EXISTS `page` (
   `slug` varchar(510) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
   `published` tinyint(1) DEFAULT NULL,
-  `delete` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_template` (`id_template`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
