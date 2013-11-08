@@ -14,8 +14,7 @@ class Admin extends CI_Controller {
  
     public function index()
     {
-
-        $this->load->view('admin');        
+        $this->load->view('admin/admin');        
         
     }
 
@@ -32,7 +31,7 @@ class Admin extends CI_Controller {
         $crud->display_as('id_template','Template');
 
         $crud->set_field_upload('image','assets/uploads/files');
-
-        $this->load->view('page', $crud->render());
+        
+        $this->load->view('admin/admin', $crud->render());
     }
 }

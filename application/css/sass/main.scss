@@ -1,8 +1,23 @@
-body {
-    background: #ccc;
-}
-
 .admin-header {
-    background: #ddd;
+    background: #fff;
 }
 
+.admin-left {
+    background: #ccc;
+    width: 20%;
+    float: left;
+}
+
+.admin-right {
+    background: #ddd;
+    width: 80%;
+    float: left;
+}
+
+.admin-footer {
+    border-top: 1px #ccc solid;
+    margin-top: 40px;
+    color: #ccc;
+    font-size: 13px;
+}
+ 
