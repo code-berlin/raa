@@ -41,6 +41,10 @@
 $route['default_controller'] = "index";
 $route['404_override'] = '';
 
+
+$route['admin'] = "home/index";
+$route['(.*)'] = "dispatcher";
+
 $route['page'] = "home/index";
 $route['page/(:any)'] = "home/index/$1";
 
