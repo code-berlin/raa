@@ -11,15 +11,11 @@ class Admin extends CI_Controller {
         $this->load->library('grocery_CRUD');
     }
 
- 
     public function index()
     {
-
-        $this->load->view('admin');        
-        
+        $this->load->view('admin/index');
     }
 
- 
     /**
     *   Handles the page CRUD.
     */
@@ -33,6 +29,6 @@ class Admin extends CI_Controller {
 
         $crud->set_field_upload('image','assets/uploads/files');
 
-        $this->load->view('page', $crud->render());
+        $this->load->view('admin/page', $crud->render());
     }
 }
