@@ -8,16 +8,14 @@ class Page_m extends CI_Model {
 	}
 
 	function get_all() {
-		getById(1);
+		return R::find('page');
 	}
 
 	function get_by_id($id) {
-		$pages = R::find('page', 'id = ?', array($id));
+		$table = 'page';
+		$condition = 'id = :id AND published = :published';
+		$rules = array(':id' => $id, ':published' => 1);
 
-		echo '<pre>';
-		var_dump($pages);
-		echo '</pre>';
-
-		echo $id;
+		return R::findOne($table, $condition, $rules);
 	}
 }

@@ -5,17 +5,23 @@ class Home extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-
-        $this->load->database();
-        $this->load->helper('url');
     }
 
     /**
     *   Handles the page CRUD.
     */
-    public function index($id)
+    public function index($id=2)
     {
-        $this->load->model('page_m');
-        $this->page_m->get_by_id($id);
+        //$this->load->model('page_m');
+
+        //$data['page'] = $this->page_m->get_by_id($id);
+        echo 'hola';
+        die;
+        /*if (!empty($data['page'])) {
+            echo 'hola';
+            $this->load->view('home/page', $data);
+        } else {
+            $this->load->view('errors/404.html');
+        }*/
     }
 }
