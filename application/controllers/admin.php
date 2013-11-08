@@ -7,7 +7,6 @@ class Admin extends CI_Controller {
         parent::__construct();
 
         $this->load->database();
-        $this->load->helper('url');
 
         $this->load->library('grocery_CRUD');
     }
@@ -16,7 +15,7 @@ class Admin extends CI_Controller {
     public function index()
     {
 
-        $this->load->view('page_crud.php');        
+        $this->load->view('admin');        
         
     }
 
