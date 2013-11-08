@@ -1,12 +1,13 @@
-CREATE  TABLE IF NOT EXISTS `page` (
-  `id` INT(20) NOT NULL AUTO_INCREMENT ,
-  `template` VARCHAR(255) NULL ,
-  `title` VARCHAR(255) NULL ,
-  `text` TEXT NULL ,
-  `image` VARCHAR(255) NULL ,
-  `slug` VARCHAR(510) NULL ,
-  `date` DATETIME NULL ,
-  `published` TINYINT(1) NULL ,
-  `delete` TINYINT NULL ,
-PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS `page` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `id_template` int(11) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `text` text,
+  `image` varchar(255) DEFAULT NULL,
+  `slug` varchar(510) DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
+  `published` tinyint(1) DEFAULT NULL,
+  `delete` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_template` (`id_template`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;

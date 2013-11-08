@@ -22,6 +22,9 @@ class Admin extends CI_Controller {
 
         $crud->set_table('page');
         $crud->set_relation('id_template','template','name');
+        $crud->display_as('id_template','Template');
+
+        $crud->set_field_upload('image','assets/uploads/files');
 
         $this->load->view('page_crud.php', $crud->render());
     }
