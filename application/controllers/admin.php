@@ -11,14 +11,11 @@ class Admin extends CI_Controller {
         $this->load->library('grocery_CRUD');
     }
 
- 
     public function index()
     {
         $this->load->view('admin/admin');        
-        
     }
 
- 
     /**
     *   Handles the page CRUD.
     */

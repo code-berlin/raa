@@ -15,6 +15,47 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "application/models/page_m.php",
+			"settings":
+			{
+				"buffer_size": 382,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/views/home/page.php",
+			"settings":
+			{
+				"buffer_size": 133,
+				"line_ending": "Windows",
+				"name": "<h1> Hallo Welt! </h1>"
+			}
+		},
+		{
+			"file": "application/controllers/home.php",
+			"settings":
+			{
+				"buffer_size": 537,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/controllers/admin.php",
+			"settings":
+			{
+				"buffer_size": 701,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/config/routes.php",
+			"settings":
+			{
+				"buffer_size": 1543,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -60,6 +101,41 @@
 	},
 	"file_history":
 	[
+		"/C/xampp/htdocs/raacms/application/views/errors/404.html",
+		"/C/xampp/htdocs/n24/trunk/site/application/controllers/categories.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/models/gallery_m.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/controllers/pictures.php",
+		"/C/xampp/htdocs/raacms/application/config/routes.php",
+		"/C/xampp/htdocs/raacms/application/controllers/admin.php",
+		"/C/xampp/htdocs/raacms/application/libraries/rb.php",
+		"/C/xampp/htdocs/raacms/application/third_party/rb.php",
+		"/C/xampp/htdocs/raacms/database/page.sql",
+		"/C/xampp/htdocs/raacms/application/models/page.php",
+		"/C/xampp/htdocs/raacms/application/models/page_model.php",
+		"/C/xampp/htdocs/raacms/application/controllers/page.php",
+		"/C/xampp/htdocs/raacms/application/models/page.pgp.html",
+		"/C/xampp/htdocs/raacms/application/models/grocery_crud_model.php",
+		"/C/xampp/htdocs/raacms/.htaccess",
+		"/C/xampp/htdocs/n24/trunk/site/application/config/routes.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/controllers/home.php",
+		"/C/xampp/htdocs/raacms/application/views/page_crud.php",
+		"/C/xampp/htdocs/raacms/application/libraries/Grocery_CRUD.php",
+		"/C/xampp/htdocs/raacms/assets/index.html",
+		"/C/Users/ehegi/Downloads/page (1).sql",
+		"/C/Users/ehegi/Downloads/page.sql",
+		"/C/xampp/htdocs/raacms/application/controllers/main.php",
+		"/C/xampp/htdocs/raacms/application/config/config.php",
+		"/C/xampp/htdocs/raacms/application/config/database.php",
+		"/C/xampp/htdocs/raacms/application/index.html",
+		"/C/Users/ehegi/Downloads/FUEL-CMS-master/fuel/application/controllers/contact.php",
+		"/C/Users/ehegi/Downloads/FUEL-CMS-master/fuel/application/third_party/fuel/Loader.php",
+		"/C/Users/ehegi/Downloads/FUEL-CMS-master/fuel/application/third_party/fuel/Router.php",
+		"/C/Users/ehegi/Downloads/FUEL-CMS-master/fuel/application/third_party/MX/Controller.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/config/config.php",
+		"/C/xampp/htdocs/n24/trunk/site/application/config/database.php",
+		"/C/Users/ehegi/Downloads/FUEL-CMS-master/fuel/install/fuel_schema.sql",
+		"/C/Users/ehegi/Downloads/FUEL-CMS-master/fuel/crons/ci_cron.php",
+		"/C/xampp/htdocs/raacms/application/controllers/welcome.php",
 		"/C/xampp/htdocs/n24/trunk/site/application/css/n24/sass/includes/_footer.scss",
 		"/C/xampp/htdocs/n24/trunk/site/application/views/footer.php",
 		"/C/xampp/htdocs/n24/trunk/site/application/css/n24/sass/includes/_dropdown.scss",
@@ -75,7 +151,6 @@
 		"/C/xampp/htdocs/n24/trunk/site/application/css/n24/sass/main_320.scss",
 		"/C/xampp/htdocs/n24/trunk/site/application/views/weather_suggestion_dropdown.php",
 		"/C/xampp/htdocs/n24/trunk/site/application/css/n24/sass/main_540.scss",
-		"/C/xampp/htdocs/n24/trunk/site/application/config/config.php",
 		"/C/xampp/htdocs/n24/trunk/site/application/views/weather_detail.php",
 		"/C/xampp/htdocs/n24/trunk/site/application/views/weather.php",
 		"/C/xampp/htdocs/n24/trunk/site/application/css/n24/sass/includes/_news.scss",
@@ -153,41 +228,7 @@
 		"/C/xampp/htdocs/n24/trunk/site/application/views/minor_news_template.php",
 		"/C/xampp/htdocs/n24/trunk/site/application/views/minor_gallery_teaser.php",
 		"/C/xampp/htdocs/n24/trunk/site/application/views/more_category.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/news_categories.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/minor_videos_teaser.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/news_category.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/news_detail.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/pictures.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/pictures_detail.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/privacy.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/related_articles.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/videos.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/videos_teaser.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/welcome_message.php",
-		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/css/n24/sass/includes/_main.scss",
-		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/views/header.php",
-		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/css/main_360.css",
-		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/css/main_480.css",
-		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/css/main_540.css",
-		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/css/main_640.css",
-		"/C/xampp/htdocs/n24/branches/NMW-195/site/application/views/home.php",
-		"/C/xampp/htdocs/n24/branches/NMW-195/site/application/css/n24/sass/includes/_main.scss",
-		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/controllers/home.php",
-		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/models/news_m.php",
-		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/views/template.php",
-		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/views/home.php",
-		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/views/template.php.backup",
-		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/views/template.php.txt",
-		"/C/xampp/htdocs/n24/branches/NMW-176/site/index.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/css/n24/sass/main_480.scss",
-		"/C/xampp/htdocs/n24/trunk/site/application/css/main_640.css",
-		"/C/xampp/htdocs/n24/trunk/site/application/css/main_480.css",
-		"/C/xampp/htdocs/n24/trunk/site/application/css/main_540.css",
-		"/C/xampp/htdocs/n24/trunk/site/application/controllers/test/gallery_tests.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/controllers/test/Toast_all.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/css/n24/sass/includes/_main.scss",
-		"/C/xampp/htdocs/n24/trunk/site/application/css/n24/sass/main_640.scss",
-		"/C/xampp/htdocs/n24/trunk/site/application/css/n24/sass/main_640_landscape.scss"
+		"/C/xampp/htdocs/n24/trunk/site/application/views/news_categories.php"
 	],
 	"find":
 	{
@@ -210,6 +251,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"config",
 			"domain",
 			"link-to-desktop-version",
 			"creativeContainer",
@@ -321,13 +363,151 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "application/models/page_m.php",
+					"settings":
+					{
+						"buffer_size": 382,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								290,
+								290
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "application/views/home/page.php",
+					"settings":
+					{
+						"buffer_size": 133,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								133,
+								133
+							]
+						],
+						"settings":
+						{
+							"auto_name": "<h1> Hallo Welt! </h1>",
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		},
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 2,
+					"file": "application/controllers/home.php",
+					"settings":
+					{
+						"buffer_size": 537,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								268,
+								268
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "application/controllers/admin.php",
+					"settings":
+					{
+						"buffer_size": 701,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								211,
+								211
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "application/config/routes.php",
+					"settings":
+					{
+						"buffer_size": 1543,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1425,
+								1425
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 395.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -359,7 +539,7 @@
 		"cols":
 		[
 			0.0,
-			0.482291666667,
+			0.473564954683,
 			1.0
 		],
 		"rows":
@@ -379,6 +559,62 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"route",
+				"application/config/routes.php"
+			],
+			[
+				"admin",
+				"application/controllers/admin.php"
+			],
+			[
+				"page_m",
+				"application/models/page_m.php"
+			],
+			[
+				"page_model",
+				"application/models/page_model.php"
+			],
+			[
+				"modelspage.php",
+				"application/models/page.php"
+			],
+			[
+				"htaccess",
+				".htaccess"
+			],
+			[
+				"home",
+				"application/controllers/home.php"
+			],
+			[
+				"routes",
+				"application/config/routes.php"
+			],
+			[
+				"grocery",
+				"application/libraries/Grocery_CRUD.php"
+			],
+			[
+				"grocery_cr",
+				"application/libraries/Grocery_CRUD.php"
+			],
+			[
+				"config.php",
+				"application/config/config.php"
+			],
+			[
+				"main.php",
+				"application/controllers/main.php"
+			],
+			[
+				"database.php",
+				"application/config/database.php"
+			],
+			[
+				"index",
+				"application/index.html"
+			],
 			[
 				"main.js",
 				"js/main.js"
@@ -454,10 +690,6 @@
 			[
 				"main_540.s",
 				"css/n24/sass/main_540.scss"
-			],
-			[
-				"config.php",
-				"config/config.php"
 			],
 			[
 				"weather_sugge",
