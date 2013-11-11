@@ -50,9 +50,9 @@ $route['page/(:any)'] = "page/index/$1";
 $route['migrate'] = "migrate/index";
 
 /* admin routes */
-$route['admin/menu/item/(:any)'] = 'admin/menu/item/$1';
 
 $route['admin'] = 'admin/index';
+$route['admin/menu/item/(:any)'] = 'admin/menu/item/$1';
 $route['admin/(:any)'] = 'admin/index/$1';
 
 // Slugs - don't move this item from this position! must be the last!
