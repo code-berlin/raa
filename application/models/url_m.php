@@ -15,7 +15,9 @@ class Url_m extends CI_Model {
 		$urls = R::findOne('url', 'slug = :slug',
 			array(':slug' => $slug));
 
-		R::preload($urls, array('type')); // Related types
+		if (!empty($urls)) {
+			R::preload($urls, array('type')); // Related types
+		}
 
 		return $urls;
 	}
