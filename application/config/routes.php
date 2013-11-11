@@ -38,13 +38,12 @@
 |
 */
 
+
+
+
 // Default routes
 $route['default_controller'] = "index";
 $route['404_override'] = '';
-
-// Admin
-$route['admin'] = "admin/index";
-$route['admin/page'] = "admin/page";
 
 // Pages
 $route['page'] = "page/index";
@@ -52,6 +51,14 @@ $route['page/(:any)'] = "page/index/$1";
 
 // Slugs
 $route['([a-z0-9-]*)'] = "dispatcher/index/$1";
+
+
+/* admin routes */
+
+$route['admin/menu/item/(:any)'] = 'admin/menu/item/$1';
+$route['admin/(:any)'] = 'admin/index/$1';
+
+ 
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
