@@ -50,6 +50,8 @@ $route['admin/page'] = "admin/page";
 $route['page'] = "page/index";
 $route['page/(:any)'] = "page/index/$1";
 
+$route['migrate'] = "migrate/index";
+
 // Slugs
 $route['([a-z0-9-]*)'] = "dispatcher/index/$1";
 
