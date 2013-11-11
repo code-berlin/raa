@@ -34,13 +34,11 @@ class Migration_Basic_Setup extends CI_Migration {
           KEY `id_type` (`type_id`)
         ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;');
 
-        /*
         $this->db->query('ALTER TABLE `page`
           ADD CONSTRAINT `page_ibfk_1` FOREIGN KEY (`id_template`) REFERENCES `template` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;');
 
         $this->db->query('ALTER TABLE `url`
           ADD CONSTRAINT `url_ibfk_1` FOREIGN KEY (`type_id`) REFERENCES `type` (`id`);');
-        //*/
 
     }
 
