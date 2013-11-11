@@ -1,6 +1,6 @@
 <div class="row-fluid">
     <div class="admin-header">
-        <h1><a href='<?php echo site_url('admin/')?>'>RAA HOME</a></h1>
+        <h1><a href='<?php echo site_url('/')?>'>RAA HOME</a></h1>
     </div> 
     <div class="row-fluid">
         <div class="navbar">

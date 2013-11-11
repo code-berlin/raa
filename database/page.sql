@@ -9,4 +9,4 @@ CREATE TABLE IF NOT EXISTS `page` (
   `published` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_template` (`id_template`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;

@@ -38,11 +38,22 @@
 |
 */
 
+/* frontend routes */
+
 $route['default_controller'] = "index";
 $route['404_override'] = '';
 
 $route['page'] = "home/index";
 $route['page/(:any)'] = "home/index/$1";
+
+
+/* admin routes */
+
+$route['admin/menu/item/(:any)'] = 'admin/menu/item/$1';
+
+$route['admin/(:any)'] = 'admin/index/$1';
+
+ 
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
