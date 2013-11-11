@@ -10,7 +10,7 @@ class Page extends CI_Controller {
     /**
     *   Retrieves pages
     */
-    public function index($id=2)
+    public function index($id=0)
     {
         $this->load->model('page_m');
 

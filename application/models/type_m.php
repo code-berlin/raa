@@ -4,11 +4,11 @@ class Type_m extends CI_Model {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->library('rb');
+
+		$this->load->model('dao/type_dao');
 	}
 
 	public function get_by_name($name) {
-		return R::findOne('type', 'name = :name',
-			array(':name' => $name));
+		return $this->type_dao->get_by_name($name);
 	}
 }
