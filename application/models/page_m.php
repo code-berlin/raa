@@ -12,10 +12,13 @@ class Page_m extends CI_Model {
 	}
 
 	function get_by_id($id) {
-		$table = 'page';
-		$condition = 'id = :id AND published = :published';
-		$rules = array(':id' => $id, ':published' => 1);
-
-		return R::findOne($table, $condition, $rules);
+		return R::load('page', $id);
 	}
+
+	function get_by_slug($slug) {
+		return R::findOne('page', 'slug = :slug',
+			array(':slug' => $slug)
+		);
+	}
+
 }

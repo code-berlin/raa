@@ -7,23 +7,36 @@ class Url_m extends CI_Model {
 		$this->load->library('rb');
 	}
 
-	function get_all() {
+	public function get_all() {
 		return R::find('page');
 	}
 
-	function get_by_slug($slug) {
-		$results = array();
-		$tables = array('url', 'type');
+	public function get_by_slug($slug) {
+		$urls = R::findOne('url', 'slug = :slug',
+			array(':slug' => $slug));
 
-		$condition = 'slug = :slug';
-		$rules = array(':slug' => $slug);
+		R::preload($urls, array('type')); // Related types
 
-		$url = R::findOne($tables[0], $condition, $rules);
-		$type = R::load($tables[1], $url->id_type);
-
-		$results['type_name'] = $type->name;
-		$results['slug'] = $slug;
-
-		return $results;
+		return $urls;
 	}
+
+    /**
+    * Save slug on the type / slug relation table.
+    */
+	public function save_slug($name, $slug) {
+		$this->load->model('type_m');
+
+		$url= R::dispense('url');
+		$url->type_id = $this->type_m->get_by_name($name)->id;
+		$url->slug = $slug;
+		$id = R::store($url);
+	}
+
+    /**
+    * Creates a slug from a url. We only accept dashes (-).
+    */
+	public function sluggify($url) {
+		return preg_replace('/[^a-z0-9\-]/', '-', strtolower($url));
+	}
+
 }

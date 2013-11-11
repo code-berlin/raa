@@ -9,22 +9,21 @@ class Dispatcher extends CI_Controller {
         $this->load->helper('url');
     }
 
-    /**
-    *
-    */
-    public function index()
+    public function index($slug)
     {
         $this->load->model('url_m');
 
-        //$_SERVER['REQUEST_URI'];
+        // Retrieve object type related to this slug
+        $result = $this->url_m->get_by_slug($slug);
+        $type = $result->type->name;
 
-        $result = $this->url_m->get_by_slug($_SERVER['REQUEST_URI']);
+        // Use this object type as reference for loading models and views
+        $model_type = $type.'_m';
+        $this->load->model($model_type);
 
-        echo '<pre>';
-        var_dump($result);
-        echo '</pre>';
+        // It's important for each class to have this get_by_slug method
+        $data[$type] = $this->$model_type->get_by_slug($slug);
 
-        //redirect('/home/index/'.$_SERVER['REQUEST_URI']);
-        die;
+        $this->load->view($type.'/index', $data);
     }
 }

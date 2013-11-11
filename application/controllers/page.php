@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Page extends CI_Controller {
 
     function __construct()
     {
@@ -16,8 +16,8 @@ class Home extends CI_Controller {
 
         $data['page'] = $this->page_m->get_by_id($id);
 
-        if (!empty($data['page'])) {
-            $this->load->view('home/page', $data);
+        if ($data['page']->id > 0) {
+            $this->load->view('page/index', $data);
         } else {
             $this->load->view('errors/404.html');
         }
