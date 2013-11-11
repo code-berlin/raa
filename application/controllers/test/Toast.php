@@ -1,13 +1,13 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * Toast
- * 
+ *
  * JUnit-style unit testing in CodeIgniter. Requires PHP 5 (AFAIK). Subclass
  * this class to create your own tests. See the README file or go to
  * http://jensroland.com/projects/toast/ for usage and examples.
- * 
+ *
  * RESERVED TEST FUNCTION NAMES: test_index, test_show_results, test__[*]
- * 
+ *
  * @package			CodeIgniter
  * @subpackage	Controllers
  * @category		Unit Testing
@@ -15,13 +15,13 @@
  * @based on		Assert functions by user 'redguy' from the CI forums
  * @license			Creative Commons Attribution 3.0 (cc) 2009 Jens Roland
  * @author			Jens Roland (mail@jensroland.com)
- * 
+ *
  */
 
 
 abstract class Toast extends CI_Controller
 {
-	
+
 	// The folder INSIDE /controllers/ where the test classes are located
 	// TODO: autoset
 	var $test_dir = '/test/';
@@ -31,32 +31,32 @@ abstract class Toast extends CI_Controller
 	var $message;
 	var $messages;
 	var $asserts;
-        
-        var $execution_times_xml = array(); 
+
+    var $execution_times_xml = array();
 
 	function Toast($name,$db=NULL)
 	{
- 
-                ini_set('display_errors',1); 
-                error_reporting(E_ALL);
-            
+
+        ini_set('display_errors',1);
+        error_reporting(E_ALL);
+
 		parent::__construct();
- 
+
 		$this->load->library('Unit_test');
 		$this->modelname = $name;
 		$this->modelname_short = basename($name, '.php');
 		$this->messages = array();
-		
+
 		//$this->_load_db($db);
 	}
 
 	function _load_db($db){
 		if(!isset($db)) $db = $this->config->config['stage'] . '_test';
-		
+
 		$this->db = $this->load->database($db,TRUE);
-		
+
 	}
-	
+
 	function index()
 	{
 		$this->_show_all();
@@ -70,46 +70,46 @@ abstract class Toast extends CI_Controller
 		$data['messages'] = $this->messages;
 		$this->load->view('test/results', $data);
 	}
-        
+
 	function show_results_xml()
 	{
-	 
-                $output = '';
-                
-                $this->_run_all_xml();
- 		$results = $this->unit->result();
-                
-                $test_results = '';
-                $failed = 0;
-                
-                $total_execution_time = 0;
-                
-                if($results && is_array($results)){
-                    
-                    foreach($results as $result){
-                        
-                        // passed
-                        if($result['Result']=='Passed'){
-                           $test_results .= '<testcase classname="'.$result['Test Name'].'" name="'.$result['Test Name'].'" time="'.$this->execution_times_xml[$result['Test Name']].'">';
-                        }
-                        else {
-                           $test_results .= '<testcase classname="'.$result['Test Name'].'" name="'.$result['Test Name'].'" time="'.$this->execution_times_xml[$result['Test Name']].'">'; 
-                           $test_results .= '<failure type="PHPUnit_Framework_ExpectationFailedException">Test failed</failure>';
-                           $failed++;
-                        }
-                        
-                        $test_results .= '</testcase>';
-                        
-                        $total_execution_time += floatval($this->execution_times_xml[$result['Test Name']]);
-                        
-                    }
-                }
-                
-                $output .= '<testsuite name="'.$_POST['test_name'].'" tests="'.count($results).'" failures="'.$failed.'" errors="0" skip="0" time="'.$total_execution_time.'">';
-                $output .= $test_results;    
-                $output .= '</testsuite>';
-                echo $output;
-	}        
+
+		$output = '';
+
+		$this->_run_all_xml();
+		$results = $this->unit->result();
+
+		$test_results = '';
+		$failed = 0;
+
+		$total_execution_time = 0;
+
+		if($results && is_array($results)){
+
+		    foreach($results as $result){
+
+		        // passed
+		        if($result['Result']=='Passed'){
+		           $test_results .= '<testcase classname="'.$result['Test Name'].'" name="'.$result['Test Name'].'" time="'.$this->execution_times_xml[$result['Test Name']].'">';
+		        }
+		        else {
+		           $test_results .= '<testcase classname="'.$result['Test Name'].'" name="'.$result['Test Name'].'" time="'.$this->execution_times_xml[$result['Test Name']].'">';
+		           $test_results .= '<failure type="PHPUnit_Framework_ExpectationFailedException">Test failed</failure>';
+		           $failed++;
+		        }
+
+		        $test_results .= '</testcase>';
+
+		        $total_execution_time += floatval($this->execution_times_xml[$result['Test Name']]);
+
+		    }
+		}
+
+		$output .= '<testsuite name="'.$_POST['test_name'].'" tests="'.count($results).'" failures="'.$failed.'" errors="0" skip="0" time="'.$total_execution_time.'">';
+		$output .= $test_results;
+		$output .= '</testsuite>';
+		echo $output;
+	}
 
 	function _show_all()
 	{
@@ -118,19 +118,19 @@ abstract class Toast extends CI_Controller
 		$data['results'] = $this->unit->result();
 		$data['messages'] = $this->messages;
 
-		
+
 		$this->load->view('test/header');
 		$this->load->view('test/results', $data);
 		$this->load->view('test/footer');
 	}
-        
+
 	function _show($method)
 	{
 		$this->_run($method);
 		$data['modelname'] = $this->modelname;
 		$data['results'] = $this->unit->result();
 		$data['messages'] = $this->messages;
-		
+
 		$this->load->view('test/header');
 		$this->load->view('test/results', $data);
 		$this->load->view('test/footer');
@@ -143,15 +143,15 @@ abstract class Toast extends CI_Controller
 			$this->_run($method);
 		}
 	}
-        
+
 	function _run_all_xml()
 	{
 		foreach ($this->_get_test_methods() as $method)
 		{
 			$this->_run_xml($method);
 		}
-	}        
-        
+	}
+
 
 	function _run($method)
 	{
@@ -166,7 +166,7 @@ abstract class Toast extends CI_Controller
 
 		// Run test case (result will be in $this->asserts)
 		$this->$method();
-                
+
 		// Run cleanup method _post
 		$this->_post();
 
@@ -181,7 +181,7 @@ abstract class Toast extends CI_Controller
 		// Pass the test case to CodeIgniter
 		$this->unit->run($this->asserts, TRUE, $desc);
 	}
-        
+
         function _run_xml($method)
 	{
 		// Reset message from test
@@ -196,8 +196,8 @@ abstract class Toast extends CI_Controller
                 $mtime = microtime();
                 $mtime = explode(" ",$mtime);
                 $mtime = $mtime[1] + $mtime[0];
-                $starttime = $mtime;                 
-                
+                $starttime = $mtime;
+
 		// Run test case (result will be in $this->asserts)
 		$this->$method();
 
@@ -205,8 +205,8 @@ abstract class Toast extends CI_Controller
                 $mtime = explode(" ",$mtime);
                 $mtime = $mtime[1] + $mtime[0];
                 $endtime = $mtime;
-                $totaltime = ($endtime - $starttime); 
-                
+                $totaltime = ($endtime - $starttime);
+
 		// Run cleanup method _post
 		$this->_post();
 
@@ -214,16 +214,16 @@ abstract class Toast extends CI_Controller
 		$this->load->helper('url');
 		$test_class_segments = $this->test_dir . strtolower($this->modelname_short);
 		$test_method_segments = $test_class_segments . '/' . substr($method, 5);
-                
+
 		$desc = $method;
                 $this->execution_times_xml[$method] = $totaltime;
-                
+
 		$this->messages[] = $this->message;
 
 		// Pass the test case to CodeIgniter
 		$this->unit->run($this->asserts, TRUE, $desc);
-	}        
-        
+	}
+
 
 	function _get_test_methods()
 	{
@@ -239,14 +239,14 @@ abstract class Toast extends CI_Controller
 
 	/**
 	 * Remap function (CI magic function)
-	 * 
+	 *
 	 * Reroutes any request that matches a test function in the subclass
 	 * to the _show() function.
-	 * 
+	 *
 	 * This makes it possible to request /my_test_class/my_test_function
 	 * to test just that single function, and /my_test_class to test all the
 	 * functions in the class.
-	 * 
+	 *
 	 */
 	function _remap($method)
 	{
@@ -282,7 +282,7 @@ abstract class Toast extends CI_Controller
 		}
 		return FALSE;
 	}
-	
+
 	function _assert_true($assertion) {
 		if($assertion) {
 			return TRUE;
@@ -291,7 +291,7 @@ abstract class Toast extends CI_Controller
 			return FALSE;
 		}
 	}
-	
+
 	function _assert_false($assertion) {
 		if($assertion) {
 			$this->asserts = FALSE;
@@ -300,7 +300,7 @@ abstract class Toast extends CI_Controller
 			return TRUE;
 		}
 	}
-	
+
 	function _assert_true_strict($assertion) {
 		if($assertion === TRUE) {
 			return TRUE;
@@ -309,7 +309,7 @@ abstract class Toast extends CI_Controller
 			return FALSE;
 		}
 	}
-	
+
 	function _assert_false_strict($assertion) {
 		if($assertion === FALSE) {
 			return TRUE;
@@ -318,7 +318,7 @@ abstract class Toast extends CI_Controller
 			return FALSE;
 		}
 	}
-	
+
 	function _assert_equals($base, $check) {
 		if($base == $check) {
 			return TRUE;
@@ -327,7 +327,7 @@ abstract class Toast extends CI_Controller
 			return FALSE;
 		}
 	}
-	
+
 	function _assert_not_equals($base, $check) {
 		if($base != $check) {
 			return TRUE;
@@ -363,7 +363,7 @@ abstract class Toast extends CI_Controller
 			return FALSE;
 		}
 	}
-	
+
 	function _assert_not_empty($assertion) {
 		if(!empty($assertion)) {
 			return TRUE;
@@ -372,13 +372,13 @@ abstract class Toast extends CI_Controller
 			return FALSE;
 		}
 	}
-	
-        
-        
+
+
+
         function result($results = array())
 	{
-            
-            
+
+
 		$CI =& get_instance();
 		$CI->load->language('unit_test');
 
@@ -421,12 +421,12 @@ abstract class Toast extends CI_Controller
 
 			$retval[] = $temp;
 		}
-                
+
 		return $retval;
-	}        
-        
+	}
+
 
 }
 
 // End of file Toast.php */
-// Location: ./system/application/controllers/test/Toast.php */ 
+// Location: ./system/application/controllers/test/Toast.php */

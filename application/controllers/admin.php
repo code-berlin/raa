@@ -75,6 +75,20 @@ class Admin extends CI_Controller {
 
         $crud->set_field_upload('image','assets/uploads/files');
 
+        // Fields sanitation
+        $crud->callback_before_insert(array($this, 'check_fields'));
+        $crud->callback_before_update(array($this, 'check_fields'));
+
         $this->load->view('admin/admin', $crud->render());
+    }
+
+    public function check_fields($post) {
+        $this->load->model('url_m');
+
+        $post['slug'] = $this->url_m->sluggify($post['slug']);
+
+        $this->url_m->save_slug('page', $post['slug']);
+
+        return $post;
     }
 }

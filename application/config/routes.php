@@ -38,11 +38,26 @@
 |
 */
 
+// Default routes
 $route['default_controller'] = "index";
 $route['404_override'] = '';
 
-$route['page'] = "home/index";
-$route['page/(:any)'] = "home/index/$1";
+// Pages
+$route['page'] = "page/index";
+$route['page/(:any)'] = "page/index/$1";
+
+// Migration
+$route['migrate'] = "migrate/index";
+
+/* admin routes */
+$route['admin/menu/item/(:any)'] = 'admin/menu/item/$1';
+
+$route['admin'] = 'admin/index';
+$route['admin/(:any)'] = 'admin/index/$1';
+
+// Slugs - don't move this item from this position! must be the last!
+$route['([a-z0-9-]*)'] = "dispatcher/index/$1";
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

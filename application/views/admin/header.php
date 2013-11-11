@@ -1,4 +1,10 @@
 <div class="row-fluid">
+<<<<<<< HEAD
+=======
+    <div class="admin-header">
+        <h1><a href='<?php echo site_url('/')?>'>RAA HOME</a></h1>
+    </div> 
+>>>>>>> 424751ca94bb70fe126d604e95bdd8a152f187fe
     <div class="row-fluid">
         <div class="navbar navbar-inverse">
             <div class="navbar-inner">

@@ -4,18 +4,20 @@ class Page_m extends CI_Model {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->library('rb');
+
+		$this->load->model('dao/page_dao');
 	}
 
 	function get_all() {
-		return R::find('page');
+		return $this->page_dao->get_all();
 	}
 
 	function get_by_id($id) {
-		$table = 'page';
-		$condition = 'id = :id AND published = :published';
-		$rules = array(':id' => $id, ':published' => 1);
-
-		return R::findOne($table, $condition, $rules);
+		return $this->page_dao->get_by_id($id);
 	}
+
+	function get_by_slug($slug) {
+		return $this->page_dao->get_by_slug($slug);
+	}
+
 }
