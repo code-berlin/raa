@@ -26,10 +26,19 @@ class Url_m extends CI_Model {
 	public function save_slug($type_name, $slug) {
 		$this->load->model('type_m');
 
-		$url= R::dispense('url');
-		$url->type_id = $this->type_m->get_by_name($type_name)->id;
-		$url->slug = $slug;
-		$id = R::store($url);
+		$id = 0;
+		$type = $this->type_m->get_by_name($type_name);
+
+		if (!empty($type)) {
+			$url= R::dispense('url');
+			$url->type_id = $type->id;
+			$url->slug = $slug;
+
+			// The store method returns the saved object ID.
+			$id = R::store($url);
+		}
+
+		return $id;
 	}
 
     /**

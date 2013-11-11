@@ -57,6 +57,12 @@ class Slug_tests extends Toast
 
 		$this->_assert_equals($slugged_url, $this->url_m->sluggify($url));
 	}
+
+	function test_slug_storage() {
+		$new_slug = $this->url_m->save_slug('post', 'test-storage-slug');
+
+		$this->_assert_not_empty($new_slug);
+	}
 }
 
 // End of file example_test.php */
