@@ -43,9 +43,8 @@ if(isset($js_files)){
         <?php $this->load->view('admin/footer');?>
  
     </div>    
-  
-
  
-    <script src="js/bootstrap.min.js"></script>    
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="<?php echo base_url('../assets/bootstrap/js/bootstrap.min.js')?>"></script>    
 </body>
 </html>

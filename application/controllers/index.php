@@ -12,8 +12,8 @@ class Index extends CI_Controller {
     public function index()
     {
 
-       die('frontend');     
-        
+       die('frontend');  
+ 
     }
 
   
