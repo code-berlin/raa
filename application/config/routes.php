@@ -49,6 +49,8 @@ $route['404_override'] = '';
 $route['page'] = "page/index";
 $route['page/(:any)'] = "page/index/$1";
 
+$route['migrate'] = "migrate/index";
+
 /* admin routes */
 $route['admin/menu/item/(:any)'] = 'admin/menu/item/$1';
 
