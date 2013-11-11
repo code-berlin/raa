@@ -11,4 +11,8 @@ class Type_m extends CI_Model {
 	public function get_by_name($name) {
 		return $this->type_dao->get_by_name($name);
 	}
+
+	public function save($name) {
+		return $this->type_dao->save($name);
+	}
 }

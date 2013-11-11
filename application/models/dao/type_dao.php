@@ -15,4 +15,12 @@ class Type_dao extends CI_Model{
 		return R::findOne('type', 'name = :name',
 			array(':name' => $name));
 	}
+
+	public function save($name) {
+		$type= R::dispense('type');
+		$type->name = $name;
+		$id = R::store($type);
+
+		return $id;
+	}
 }
