@@ -23,11 +23,11 @@ class Url_m extends CI_Model {
     /**
     * Save slug on the type / slug relation table.
     */
-	public function save_slug($name, $slug) {
+	public function save_slug($type_name, $slug) {
 		$this->load->model('type_m');
 
 		$url= R::dispense('url');
-		$url->type_id = $this->type_m->get_by_name($name)->id;
+		$url->type_id = $this->type_m->get_by_name($type_name)->id;
 		$url->slug = $slug;
 		$id = R::store($url);
 	}
