@@ -39,6 +39,7 @@ class Index extends CI_Controller {
     */
     public function menu()
     {
+
         $crud = $this->grocery_crud;
 
         $crud->set_table('menu');
