@@ -37,6 +37,6 @@
         <?php echo validation_errors(); ?>
     </div>
  
-    <script src="js/bootstrap.min.js"></script>
+    <script src="<?php echo site_url('assets/bootstrap/js/bootstrap.min.js')?>"></script>
 </body>
 </html>
