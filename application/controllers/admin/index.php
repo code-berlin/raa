@@ -114,9 +114,13 @@ class Index extends CI_Controller {
     */
     public function widget()
     {
+        $this->load->model('widget_m');
+
         $crud = $this->grocery_crud;
 
         $crud->set_table('widget');
+
+        $this->widget_m->scan_for_widgets();
 
         // Fields to show on the list
         //$crud->columns('title','text','image','slug');
@@ -165,8 +169,7 @@ class Index extends CI_Controller {
     /**
     *   Makes pages slugs into links
     */
-    public function link_page($slug)
-    {
+    public function link_page($slug) {
         return '<a href="'.site_url('/'.$slug).'" target="_blank">'.$slug.'</a>';
     }
 
