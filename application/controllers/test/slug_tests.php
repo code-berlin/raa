@@ -30,7 +30,11 @@ class Slug_tests extends Toast
 
         $type = $this->url_m->get_by_slug($example_slug);
 
-		$this->_assert_equals($type->id, $page_id);
+        if ($type) {
+			$this->_assert_equals($type->id, $page_id);
+		} else {
+			return false;
+		}
 	}
 
 	function test_object_type_loader()
@@ -40,14 +44,18 @@ class Slug_tests extends Toast
         // Retrieve object type related to this slug
         $result = $this->url_m->get_by_slug($example_slug);
 
-        // Use this object type as reference for loading models
-        $object_type = $result->type->name.'_m';
+        if ($result) {
+	        // Use this object type as reference for loading models
+	        $object_type = $result->type->name.'_m';
 
-        $this->load->model($object_type);
+	        $this->load->model($object_type);
 
-        $objects = $this->$object_type->get_all();
+	        $objects = $this->$object_type->get_all();
 
-        $this->_assert_not_empty($objects);
+	        $this->_assert_not_empty($objects);
+		} else {
+			return false;
+		}
 	}
 
 	function test_sluggifier()

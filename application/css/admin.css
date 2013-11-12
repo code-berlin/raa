@@ -1,0 +1,26 @@
+/* line 1, sass/admin.scss */
+.admin-header {
+  background: #fff;
+}
+
+/* line 5, sass/admin.scss */
+.admin-left {
+  width: 19%;
+  float: left;
+  margin-right: 1%;
+}
+
+/* line 11, sass/admin.scss */
+.admin-right {
+  background: #ddd;
+  width: 80%;
+  float: left;
+}
+
+/* line 17, sass/admin.scss */
+.admin-footer {
+  border-top: 1px #ccc solid;
+  margin-top: 40px;
+  color: #ccc;
+  font-size: 13px;
+}

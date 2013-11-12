@@ -20,12 +20,11 @@ class Dispatcher extends CI_Controller {
 
         if(!empty($result)) {
             $type = $result->type->name;
-
-            // Use this object type as reference for loading models and views
             $model_type = $type.'_m';
+
             $this->load->model($model_type);
 
-            // It's important for each class to have this get_by_slug method
+            // It's important for each class to have this method
             $data[$type] = $this->$model_type->get_by_slug($slug);
         }
 

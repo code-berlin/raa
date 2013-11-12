@@ -3,33 +3,37 @@ require_once(APPPATH . 'controllers/test/Toast.php');
 
 class Type_tests extends Toast
 {
-	function Type_tests()
-	{
+	function Type_tests() {
 		parent::Toast(__FILE__);
-		// Load any models, libraries etc. you need here
 	}
 
-	/**
-	 * OPTIONAL; Anything in this function will be run before each test
-	 * Good for doing cleanup: resetting sessions, renewing objects, etc.
-	 */
 	function _pre() {
-        $this->load->model('type_m');
+		$this->load->model('type_m');
 	}
 
-	/**
-	 * OPTIONAL; Anything in this function will be run after each test
-	 * I use it for setting $this->message = $this->My_model->getError();
-	 */
-	function _post() {}
+	function test_type_removal() {
+		$name = 'test_type_removal_xxx';
+		$type = $this->type_m;
 
-	function test_type_creation()
-	{
+		$id = $type->save($name);
+
+		$type->delete($id);
+
+		$new_type = $type->get_by_name($name);
+
+		$this->_assert_equals($new_type, NULL);
+	}
+
+	function test_type_creation() {
 		$name = 'test_type_xxx';
+		$type = $this->type_m;
 
-        $page = $this->type_m->save($name);
+		$id = $type->save($name);
 
-        $this->_assert_not_equals($page, 0);
+		// Delete useless object created just for testing purposes
+		$type->delete($id);
+
+		$this->_assert_not_equals($id, 0);
 	}
 
 }

@@ -41,7 +41,7 @@ class Index extends CI_Controller {
 
             if ($result !== false)
             {
-                $_SESSION['user_name'] = $result->username; 
+                $_SESSION['user_name'] = $result->username;
                 redirect('admin');
             }
         }
@@ -63,31 +63,39 @@ class Index extends CI_Controller {
 
         if (!isset($_SESSION['user_name']))
         {
-            redirect('admin/login');
+            //redirect('admin/login');
         }
 
         $crud = $this->grocery_crud;
 
         $crud->set_table('page');
-        $crud->set_relation('id_template','template','name');
-        $crud->display_as('id_template','Template');
 
+        // Fields to show on the list
+        $crud->columns('title','text','image','slug');
+
+        // Fields to show when editing
+        $crud->edit_fields('id_template', 'slug', 'title', 'text', 'date', 'image', 'published');
+        $crud->field_type('date', 'hidden');
+
+        // Set relations using foreign keys
+        $crud->set_relation('id_template','template','name');
         $crud->set_field_upload('image','assets/uploads/files');
 
+        $crud->display_as('id_template','Template');
+
         // Fields sanitation
-        $crud->callback_before_insert(array($this, 'check_fields'));
-        $crud->callback_before_update(array($this, 'check_fields'));
+        $crud->callback_column('slug', array($this, 'link_page'));
+        $crud->callback_before_insert(array($this, 'before_saving_page'));
+        $crud->callback_before_update(array($this, 'before_saving_page'));
 
         $this->load->view('admin/admin', $crud->render());
     }
 
-    
     /**
     *   Handles the menu CRUD.
     */
     public function menu()
     {
-
         if (!isset($_SESSION['user_name']))
         {
             redirect('admin/login');
@@ -97,19 +105,73 @@ class Index extends CI_Controller {
 
         $crud->set_table('menu');
         $crud->add_action('edit items', base_url('/assets/grocery_crud/themes/flexigrid/css/images/edit-items.gif'), 'admin/menu/item');
-        
-        $this->load->view('admin/admin', $crud->render());
-    }    
-    
 
-    public function check_fields($post) {
+        $this->load->view('admin/admin', $crud->render());
+    }
+
+    /**
+    *   Handles the widget CRUD.
+    */
+    public function widget()
+    {
+        $crud = $this->grocery_crud;
+
+        $crud->set_table('widget');
+
+        // Fields to show on the list
+        //$crud->columns('title','text','image','slug');
+
+        // Fields to show when editing
+        $crud->edit_fields('widgetname', 'activated', 'created');
+        $crud->field_type('created', 'hidden');
+
+        $crud->display_as('widgetname','Name');
+
+        $crud->callback_before_insert(array($this, 'before_saving_widget'));
+        $crud->callback_before_update(array($this, 'before_saving_widget'));
+
+        $this->load->view('admin/admin', $crud->render());
+    }
+
+    // Utility functions for Grocery CRUD
+
+    /**
+    *   Checks page information before it's stored in the database.
+    *
+    *   It should be made for both update and insert actions.
+    *   This is GroceryCRUD specific. Maybe there's a cleanest way
+    *   to do it.
+    */
+    public function before_saving_page($post) {
         $this->load->model('url_m');
 
         $post['slug'] = $this->url_m->sluggify($post['slug']);
+        $post['date'] = $this->set_datetime();
 
         $this->url_m->save_slug('page', $post['slug']);
 
         return $post;
+    }
+
+    /**
+    *   Checks widget information before it's stored in the database.
+    */
+    public function before_saving_widget($post) {
+        $post['created'] = $this->set_datetime();
+
+        return $post;
+    }
+
+    /**
+    *   Makes pages slugs into links
+    */
+    public function link_page($slug)
+    {
+        return '<a href="'.site_url('/'.$slug).'" target="_blank">'.$slug.'</a>';
+    }
+
+    public function set_datetime($post) {
+        return date('Y-m-d H:i:s');
     }
 
 }

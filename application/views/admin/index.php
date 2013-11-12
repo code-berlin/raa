@@ -2,14 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de" >
 <head>
 
-        <link charset='utf-8' href='<?php echo base_url('/application/css/main.css')?>' rel='stylesheet' type='text/css' />
-	<title>RAA CMS</title>
-</head>  
+    <title>RAA CMS</title>
+
+    <link charset='utf-8' href='<?php echo base_url('/application/css/admin.css')?>' rel='stylesheet' type='text/css' />
+</head>
 <body>
     <div class="admin-header">
-        <div>
-            RAA
-        </div>
+        <div> RAA </div>
         <div>
             <a href='<?php echo site_url('admin/')?>'>Home</a> |
         </div>

@@ -1,5 +1,5 @@
 <div class="row-fluid">
-    <div class="row-fluid">
+    <div class="admin-header row-fluid">
         <div class="navbar navbar-inverse">
             <div class="navbar-inner">
                 <ul class="nav">
@@ -8,7 +8,7 @@
                 </ul>
                 <div class="dropdown" style="float: right;">
                     <button class="btn dropdown-toggle sr-only" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                        <?php echo $_SESSION['user_name']; ?>
+                        <?php //echo $_SESSION['user_name']; ?>
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
@@ -20,4 +20,4 @@
             </div>
         </div>
    </div>
-</div>  
+</div>
