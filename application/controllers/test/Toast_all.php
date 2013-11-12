@@ -141,7 +141,7 @@ class Toast_all extends CI_Controller
                     curl_close($curl_handle);
                     $i++;
 		}
-
+ 
 		return $output;
 	}
 

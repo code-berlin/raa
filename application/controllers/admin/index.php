@@ -170,7 +170,7 @@ class Index extends CI_Controller {
         return '<a href="'.site_url('/'.$slug).'" target="_blank">'.$slug.'</a>';
     }
 
-    public function set_datetime($post) {
+    public function set_datetime() {
         return date('Y-m-d H:i:s');
     }
 

@@ -87,7 +87,7 @@ abstract class Toast extends CI_Controller
 		if($results && is_array($results)){
 
 		    foreach($results as $result){
-
+                        
 		        // passed
 		        if($result['Result']=='Passed'){
 		           $test_results .= '<testcase classname="'.$result['Test Name'].'" name="'.$result['Test Name'].'" time="'.$this->execution_times_xml[$result['Test Name']].'">';
