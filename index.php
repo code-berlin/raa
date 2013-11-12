@@ -1,5 +1,4 @@
 <?php
- ini_set('display_errors', 1);
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
@@ -34,10 +33,6 @@ if (defined('ENVIRONMENT'))
 	{
 		case 'development':
 			error_reporting(E_ALL);
-<<<<<<< HEAD
-=======
-
->>>>>>> 424751ca94bb70fe126d604e95bdd8a152f187fe
 			ini_set('display_errors', 1);
 		break;
 

@@ -11,11 +11,7 @@ class Index extends CI_Controller {
  
     public function index()
     {
-<<<<<<< HEAD
 
-       die('frontend');  
- 
-=======
        $this->load->view('home/index');
     }
     
@@ -26,11 +22,9 @@ class Index extends CI_Controller {
  
             $data['items'] = $this->_format_menu_items_array($menu_items);
             $this->load->view('menu_templates/'.$menu_template, $data);
-        
                     
         }
-        
->>>>>>> 424751ca94bb70fe126d604e95bdd8a152f187fe
+ 
     }
 
     private function _format_menu_items_array($readbean_result_set){
