@@ -12,6 +12,10 @@ class Widget_m extends CI_Model {
 		return $this->widget_dao->get_all();
 	}
 
+	function get_by_name($name) {
+		return $this->widget_dao->get_by_name($name);
+	}
+
 	function get_by_id($id) {
 		return $this->widget_dao->get_by_id($id);
 	}
