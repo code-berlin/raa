@@ -9,7 +9,6 @@ class Auth extends CI_Controller
   function __construct()
     {
         parent::__construct();
-        session_start();
     }
 
 
@@ -21,7 +20,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('user_password', 'Password', 'required');
 
         if ($this->form_validation->run())
-        { 
+        {
             $this->load->model('admin_m');
             
             $user_name = $this->input->post('user_name');
@@ -31,7 +30,8 @@ class Auth extends CI_Controller
 
             if ($result !== false)
             {
-                $_SESSION['user_name'] = $result->username; 
+                $user = array('user_name'=>$result->username);
+                $this->session->set_userdata($user);
                 redirect('admin/index');
             }
         }
@@ -41,7 +41,7 @@ class Auth extends CI_Controller
 
     public function logout()
     {
-        unset($_SESSION['user_name']);
+        $this->session->unset_userdata('user_name');
         redirect('auth');
     }
 
