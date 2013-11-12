@@ -10,7 +10,7 @@
     
     <h1>Login</h1>
 
-    <?php echo form_open('admin/login'); ?>
+    <?php echo form_open('/auth/login'); ?>
 
         <?php echo form_label('Username', 'user_name'); ?>
         <?php echo form_input('user_name', set_value('user_name'),'id="user_name"'); ?>
