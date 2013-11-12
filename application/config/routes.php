@@ -9,6 +9,8 @@ $route['migrate'] = "migrate/index";
 
 // ADMIN ROUTES
 
+$route['auth/(:any)'] = 'admin/auth/$1'; // admin auth
+$route['auth'] = 'admin/auth/login'; // admin auth
 $route['admin/menu/item/(:any)'] = 'admin/menu/item/$1'; // specific for the menu item section
 $route['admin/(:any)'] = 'admin/index/$1'; // admin generic sections
 $route['admin'] = 'admin/index'; // admin dashboard

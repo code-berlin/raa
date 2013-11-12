@@ -7,24 +7,25 @@ class Index extends CI_Controller {
         parent::__construct();
         session_start();
         $this->load->library('grocery_CRUD');
+        $this->check_auth();
+    }
+
+    public function check_auth()
+    {
+        if (!$this->auth_l->user_logged_in())
+        {
+            redirect('auth');
+        }
     }
 
     public function index()
     {
-        if (!isset($_SESSION['user_name']))
-        {
-            redirect('admin/login');
-        }
+        // if (!isset($_SESSION['user_name']))
+        // {
+        //     redirect('admin/login');
+        // }
 
-        $this->load->view('admin/admin');
-    }
-
-    public function login()
-    {
-        $this->load->library('form_validation');
-        $this->form_validation->set_rules('user_name', 'Username', 'required|valid_email');
-        $this->form_validation->set_rules('user_password', 'Password', 'required');
-
+<<<<<<< Updated upstream
         if ($this->form_validation->run() !== false)
         {
             $this->load->model('admin_m');
@@ -53,6 +54,9 @@ class Index extends CI_Controller {
     {
         unset($_SESSION['user_name']);
         redirect('admin/login');
+=======
+        $this->load->view('admin/admin');
+>>>>>>> Stashed changes
     }
 
     /**
@@ -61,10 +65,17 @@ class Index extends CI_Controller {
     public function page()
     {
 
+<<<<<<< Updated upstream
         if (!isset($_SESSION['user_name']))
         {
             //redirect('admin/login');
         }
+=======
+        // if (!isset($_SESSION['user_name']))
+        // {
+        //     redirect('admin/login');
+        // }
+>>>>>>> Stashed changes
 
         $crud = $this->grocery_crud;
 
@@ -96,10 +107,18 @@ class Index extends CI_Controller {
     */
     public function menu()
     {
+<<<<<<< Updated upstream
         if (!isset($_SESSION['user_name']))
         {
             redirect('admin/login');
         }
+=======
+
+        // if (!isset($_SESSION['user_name']))
+        // {
+        //     redirect('admin/login');
+        // }
+>>>>>>> Stashed changes
 
         $crud = $this->grocery_crud;
 
