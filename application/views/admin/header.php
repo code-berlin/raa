@@ -8,7 +8,7 @@
                 </ul>
                 <div class="dropdown" style="float: right;">
                     <button class="btn dropdown-toggle sr-only" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                        <?php //echo $_SESSION['user_name']; ?>
+                        <?php echo $this->session->userdata('user_name'); ?>
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
