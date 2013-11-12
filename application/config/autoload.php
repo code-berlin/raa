@@ -52,8 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('grocery_CRUD', 'rb');
-
+$autoload['libraries'] = array('database', 'rb', 'grocery_CRUD');
 
 /*
 | -------------------------------------------------------------------
@@ -64,7 +63,7 @@ $autoload['libraries'] = array('grocery_CRUD', 'rb');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url');
+$autoload['helper'] = array('url', 'form');
 
 
 /*

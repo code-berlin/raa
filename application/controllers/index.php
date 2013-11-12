@@ -8,7 +8,6 @@ class Index extends CI_Controller {
  
     }
 
- 
     public function index()
     {
        $this->load->view('home/index');
@@ -19,16 +18,10 @@ class Index extends CI_Controller {
         $menu_items = R::find('menu_item', 'id_menu = ?', array($id_menu));
         if($menu_items){
  
-            $data['items'] = $this->_format_menu_items_array($menu_items);
+            $data['items'] = $menu_items;
             $this->load->view('menu_templates/'.$menu_template, $data);
-        
                     
         }
-        
-    }
-
-    private function _format_menu_items_array($readbean_result_set){
-        return $readbean_result_set;
     }
   
 }
