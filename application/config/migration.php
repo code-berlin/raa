@@ -19,9 +19,9 @@ $config['migration_enabled'] = TRUE;
 | This is used to set migration version that the file system should be on.
 | If you run $this->migration->latest() this is the version that schema will
 | be upgraded / downgraded to.
-|
+|4
 */
-$config['migration_version'] = 4;
+$config['migration_version'] = 5;
 
 
 /*

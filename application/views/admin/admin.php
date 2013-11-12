@@ -5,17 +5,14 @@
     <title>RAA CMS</title>
 
     <?php
-        // css & js for grocery
-    if(isset($css_files)){
-        foreach($css_files as $file){ ?>
-            <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
-    <?php }
-    }
-    if(isset($js_files)){
-        foreach($js_files as $file){ ?>
-            <script src="<?php echo $file; ?>"></script>
-    <?php }
-    }?>
+        if(isset($css_files)) {
+            foreach($css_files as $file){
+    ?>
+                <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
+    <?php
+            }
+        }
+    ?>
 
     <link href="<?php echo base_url('../assets/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet" media="screen" />
     <link charset="utf-8" href="<?php echo base_url('/application/css/admin.css')?>" rel="stylesheet" type="text/css" />
@@ -43,5 +40,15 @@
 
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="<?php echo base_url('../assets/bootstrap/js/bootstrap.min.js')?>"></script>
+
+    <?php
+        if(isset($js_files)){
+            foreach($js_files as $file){
+    ?>
+                <script src="<?php echo $file; ?>"></script>
+    <?php
+            }
+        }
+    ?>
 </body>
 </html>

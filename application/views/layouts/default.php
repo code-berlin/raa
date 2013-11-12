@@ -16,6 +16,9 @@
             <?php $CI->load_menu(1, 'horizontal_1'); ?>
         </div>
     </div>
+    <div id="main-content">
+
+    </div>
     <div class="row">
         <div>
             Future home of RAA

@@ -74,14 +74,14 @@ class Index extends CI_Controller {
         $crud->columns('title','text','image','slug');
 
         // Fields to show when editing
-        $crud->edit_fields('id_template', 'slug', 'title', 'text', 'date', 'image', 'published');
+        $crud->edit_fields('template_id', 'slug', 'title', 'text', 'date', 'image', 'published');
         $crud->field_type('date', 'hidden');
 
         // Set relations using foreign keys
-        $crud->set_relation('id_template','template','name');
+        $crud->set_relation('template_id','template','name');
         $crud->set_field_upload('image','assets/uploads/files');
 
-        $crud->display_as('id_template','Template');
+        $crud->display_as('template_id','Template');
 
         // Fields sanitation
         $crud->callback_column('slug', array($this, 'link_page'));
@@ -170,7 +170,7 @@ class Index extends CI_Controller {
         return '<a href="'.site_url('/'.$slug).'" target="_blank">'.$slug.'</a>';
     }
 
-    public function set_datetime($post) {
+    public function set_datetime() {
         return date('Y-m-d H:i:s');
     }
 
