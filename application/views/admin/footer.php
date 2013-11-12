@@ -1,3 +1,1 @@
-<div class="row-fluid admin-footer">
-    code-b 2013
-</div>
+<div class="row-fluid admin-footer"> Code-B <?php echo date('Y') ?> </div>
