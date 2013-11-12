@@ -1,13 +1,13 @@
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de" >
 <head>
-    
+
     <link charset="utf-8" href="<?php echo base_url('/application/css/main.css')?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url('../assets/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet" media="screen" />
 	<title>RAA CMS</title>
-</head>  
+</head>
 <body>
-    
+
     <h1>Login</h1>
 
     <?php echo form_open('/auth/login'); ?>
@@ -36,7 +36,7 @@
     <div class="errors" style="color: red;">
         <?php echo validation_errors(); ?>
     </div>
- 
-    <script src="js/bootstrap.min.js"></script>
+
+    <script src="<?php echo site_url('assets/bootstrap/js/bootstrap.min.js') ?>"></script>
 </body>
 </html>
