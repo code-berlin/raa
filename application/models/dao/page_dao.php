@@ -30,8 +30,12 @@ class Page_dao extends CI_Model{
 	}
 
 	public function get_by_slug($slug) {
-		return R::findOne('page', 'slug = :slug',
+		$this->object = R::findOne('page', 'slug = :slug',
 			array(':slug' => $slug));
+
+		$this->preload_template();
+
+		return $this->object;
 	}
 
 	public function preload_template() {
