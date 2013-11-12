@@ -4,7 +4,8 @@ class Auth_l {
 
     public function user_logged_in_with_redirect()
     {
-    	if (!isset($_SESSION['user_name']))
+        $ci =&get_instance();
+    	if (!$ci->session->userdata('user_name'))
         {
             redirect('admin/auth/login');
         }
@@ -12,7 +13,8 @@ class Auth_l {
 
     public function user_logged_in()
     {
-    	if (!isset($_SESSION['user_name']))
+        $ci =&get_instance();
+    	if (!$ci->session->userdata('user_name'))
         {
             return false;
         }
