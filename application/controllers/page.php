@@ -7,6 +7,7 @@ class Page extends CI_Controller {
         parent::__construct();
 
         //$this->load->library('layout');
+        $this->load->helper('widget');
     }
 
     /**
@@ -17,6 +18,7 @@ class Page extends CI_Controller {
         $this->load->model('page_m');
 
         $data['page'] = $this->page_m->get_by_id($id);
+        $data['widgets'] = array('widget1', 'widget2');
 
         if (!empty($data['page']) && $data['page']->id > 0) {
             $view = (!empty($data['page']->template)) ? $data['page']->template->name : 'index';
