@@ -45,7 +45,7 @@ class Migration_Basic_Setup extends CI_Migration {
     public function down() {
         $this->dbforge->drop_table('page');
         $this->dbforge->drop_table('template');
-        $this->dbforge->drop_table('type');
         $this->dbforge->drop_table('url');
+        $this->dbforge->drop_table('type');
     }
 }
