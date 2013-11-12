@@ -38,28 +38,27 @@
 |
 */
 
-// Default routes
+// DEFAULT ROUTES
 $route['default_controller'] = "index";
 $route['404_override'] = '';
 
-// Pages
+// DB MIGRATION TOOL
+$route['migrate'] = "migrate/index";
+
+/* ADMIN ROUTES */
+
+$route['admin/menu/item/(:any)'] = 'admin/menu/item/$1'; // specific for the menu item section
+$route['admin/(:any)'] = 'admin/index/$1'; // admin generic sections
+$route['admin'] = 'admin/index'; // admin dashboard
+
+// FRONTEND PAGES
 $route['page'] = "page/index";
 $route['page/(:any)'] = "page/index/$1";
 
-// Migration
-$route['migrate'] = "migrate/index";
+/* FRONTEND SLUGS
+ * IMPORTANT: don't move this item from this position! must be the last!
+ */
 
-/* admin routes */
-$route['admin/menu/item/(:any)'] = 'admin/menu/item/$1';
-
-$route['admin'] = 'admin/index';
-$route['admin/login'] = 'admin/login';
-$route['admin/logout'] = 'admin/logout';
-
-
-$route['admin/(:any)'] = 'admin/index/$1';
-
-// Slugs - don't move this item from this position! must be the last!
 $route['([a-z0-9-]*)'] = "dispatcher/index/$1";
 
 
