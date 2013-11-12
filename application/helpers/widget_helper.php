@@ -1,7 +1,9 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 	function load_widget($name) {
-		include 'application/widgets/'.$name.'/index.php';
+		if (file_exists('application/widgets/'.$name.'/index.php')) {
+			include 'application/widgets/'.$name.'/index.php';
+		}
 	}
 
 ?>
