@@ -21,14 +21,17 @@ class Widget_m extends CI_Model {
 	}
 
 	function scan_for_widgets() {
+		// Scan widgets folder for available widgets
 		$widgets_dir = scandir("application/widgets");
 
 		foreach($widgets_dir as $widget) {
+			// If it's an actual folder save the widget
 			if ($widget != '.' && $widget != '..') {
 				$this->save($widget);
 			}
 		}
 
+		// Clean removed widgets
 		$this->widget_dao->clean();
 	}
 

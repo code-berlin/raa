@@ -29,6 +29,7 @@ class Widget_dao extends CI_Model{
 	}
 
 	public function save($name) {
+		// Widget name is unique
 		if ($this->get_by_name($name) == NULL) {
 			$widget= R::dispense('widget');
 
@@ -43,10 +44,13 @@ class Widget_dao extends CI_Model{
 	}
 
 	public function clean() {
+		// Retrieve all available widgets
 		$widgets = $this->get_all();
 
 		foreach($widgets as $widget) {
 			if(!in_array($widget->widgetname, $this->widgets)) {
+				// If current widget is not on the available widgets
+				// list, remove it from the database.
 				$this->remove($widget->widgetname);
 			}
 		}

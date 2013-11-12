@@ -123,11 +123,13 @@ class Index extends CI_Controller {
         $this->widget_m->scan_for_widgets();
 
         // Fields to show on the list
-        //$crud->columns('title','text','image','slug');
+        $crud->columns('widgetname','activated');
 
         // Fields to show when editing
         $crud->edit_fields('widgetname', 'activated', 'created');
         $crud->field_type('created', 'hidden');
+
+        $crud->unset_edit();
 
         $crud->display_as('widgetname','Name');
 
