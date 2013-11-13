@@ -22,8 +22,6 @@ class Menu extends CI_Controller {
         $crud->display_as('id_menu','Menu');
         $crud->display_as('url_id','Slug');
 
-        //$crud->set_field_upload('image','assets/uploads/files');
-
         $this->load->view('admin/admin', $crud->render());
     }
 
