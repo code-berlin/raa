@@ -20,4 +20,8 @@ class Page_m extends CI_Model {
 		return $this->page_dao->get_by_slug($slug);
 	}
 
+	function save($page) {
+		return $this->page_dao->save($page);
+	}
+
 }

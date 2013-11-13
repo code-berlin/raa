@@ -15,6 +15,7 @@ class Slug_tests extends Toast
 	 */
 	function _pre() {
         $this->load->model('url_m');
+        $this->load->model('type_m');
 	}
 
 	/**
@@ -67,7 +68,7 @@ class Slug_tests extends Toast
 	}
 
 	function test_slug_storage() {
-		$new_slug = $this->url_m->save_slug('post', 'test-storage-slug');
+		$new_slug = $this->type_m->save_slug('post', 'amazing-7-7-7-3-3-3', 3);
 
 		$this->_assert_not_empty($new_slug);
 	}

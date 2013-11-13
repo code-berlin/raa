@@ -43,4 +43,8 @@ class Page_dao extends CI_Model{
 			R::preload($this->object, array('template')); // Related types
 		}
 	}
+
+	public function save($page) {
+		return R::store($page);
+	}
 }
