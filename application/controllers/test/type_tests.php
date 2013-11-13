@@ -5,10 +5,16 @@ class Type_tests extends Toast
 {
 	function Type_tests() {
 		parent::Toast(__FILE__);
+
+		$this->id = 0;
 	}
 
 	function _pre() {
 		$this->load->model('type_m');
+	}
+
+	function _post() {
+
 	}
 
 	function test_type_removal() {
