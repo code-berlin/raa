@@ -106,24 +106,11 @@ class Index extends CI_Controller {
 
         $crud->set_table('settings');
 
-        /* this doesn't work - check it later */
-        // $crud->callback_after_delete(array($this,'_hide_add_button'));
-
-        $rows_number = R::count('settings');
-
-        if ($rows_number == 1)
-        {
-            $crud->unset_add();
-        }
+        $crud->unset_add();
+        $crud->unset_delete();
 
         $this->load->view('admin/admin', $crud->render());
     }
- 
-    /* this doesn't work - check it later */
-    // public function _hide_add_button($primary_key)
-    // {
-    //     echo "<script>alert('Talk to me!!!!!');</script>";
-    // }
 
     // Utility functions for Grocery CRUD
 
