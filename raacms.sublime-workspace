@@ -16,43 +16,26 @@
 	"buffers":
 	[
 		{
-			"file": "application/models/page_m.php",
+			"file": "application/controllers/test/settings_tests.php",
 			"settings":
 			{
-				"buffer_size": 382,
+				"buffer_size": 2395,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/views/home/page.php",
+			"file": "application/controllers/test/page_tests.php",
 			"settings":
 			{
-				"buffer_size": 133,
-				"line_ending": "Windows",
-				"name": "<h1> Hallo Welt! </h1>"
-			}
-		},
-		{
-			"file": "application/controllers/home.php",
-			"settings":
-			{
-				"buffer_size": 537,
+				"buffer_size": 993,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/controllers/admin.php",
+			"file": "application/controllers/test/slug_tests.php",
 			"settings":
 			{
-				"buffer_size": 701,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/config/routes.php",
-			"settings":
-			{
-				"buffer_size": 1543,
+				"buffer_size": 1908,
 				"line_ending": "Windows"
 			}
 		}
@@ -101,12 +84,16 @@
 	},
 	"file_history":
 	[
+		"/C/xampp/htdocs/raacms/application/models/page_m.php",
+		"/C/xampp/htdocs/raacms/application/models/dao/page_dao.php",
+		"/C/xampp/htdocs/raacms/application/config/routes.php",
+		"/C/xampp/htdocs/raacms/application/controllers/admin.php",
+		"/C/xampp/htdocs/raacms/application/views/home/page.php",
+		"/C/xampp/htdocs/raacms/application/controllers/home.php",
 		"/C/xampp/htdocs/raacms/application/views/errors/404.html",
 		"/C/xampp/htdocs/n24/trunk/site/application/controllers/categories.php",
 		"/C/xampp/htdocs/n24/trunk/site/application/models/gallery_m.php",
 		"/C/xampp/htdocs/n24/trunk/site/application/controllers/pictures.php",
-		"/C/xampp/htdocs/raacms/application/config/routes.php",
-		"/C/xampp/htdocs/raacms/application/controllers/admin.php",
 		"/C/xampp/htdocs/raacms/application/libraries/rb.php",
 		"/C/xampp/htdocs/raacms/application/third_party/rb.php",
 		"/C/xampp/htdocs/raacms/database/page.sql",
@@ -224,11 +211,7 @@
 		"/C/xampp/htdocs/n24/trunk/site/application/views/contact_success.php",
 		"/C/xampp/htdocs/n24/trunk/site/application/views/main_news_template.php",
 		"/C/xampp/htdocs/n24/trunk/site/application/views/main_gallery_teaser.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/main_videos_teaser.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/minor_news_template.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/minor_gallery_teaser.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/more_category.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/news_categories.php"
+		"/C/xampp/htdocs/n24/trunk/site/application/views/main_videos_teaser.php"
 	],
 	"find":
 	{
@@ -236,7 +219,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
 			"C:\\xampp\\htdocs\\n24\\trunk",
@@ -363,23 +346,51 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "application/models/page_m.php",
+					"file": "application/controllers/test/settings_tests.php",
 					"settings":
 					{
-						"buffer_size": 382,
+						"buffer_size": 2395,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								290,
-								290
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "application/controllers/test/page_tests.php",
+					"settings":
+					{
+						"buffer_size": 993,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								411,
+								411
 							]
 						],
 						"settings":
@@ -394,116 +405,28 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "application/views/home/page.php",
-					"settings":
-					{
-						"buffer_size": 133,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								133,
-								133
-							]
-						],
-						"settings":
-						{
-							"auto_name": "<h1> Hallo Welt! </h1>",
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
 					"buffer": 2,
-					"file": "application/controllers/home.php",
+					"file": "application/controllers/test/slug_tests.php",
 					"settings":
 					{
-						"buffer_size": 537,
+						"buffer_size": 1908,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								268,
-								268
+								1449,
+								1449
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "application/controllers/admin.php",
-					"settings":
-					{
-						"buffer_size": 701,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								211,
-								211
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "application/config/routes.php",
-					"settings":
-					{
-						"buffer_size": 1543,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1425,
-								1425
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 395.0,
+						"translation.y": 745.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -528,18 +451,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.473564954683,
 			1.0
 		],
 		"rows":
@@ -559,6 +475,26 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"slug",
+				"application/controllers/test/slug_tests.php"
+			],
+			[
+				"page_do",
+				"application/models/dao/page_dao.php"
+			],
+			[
+				"page",
+				"application/models/page_m.php"
+			],
+			[
+				"settings_tests",
+				"application/controllers/test/settings_tests.php"
+			],
+			[
+				"page_tests",
+				"application/controllers/test/page_tests.php"
+			],
 			[
 				"route",
 				"application/config/routes.php"
@@ -811,6 +747,10 @@
 		"height": 500.0,
 		"selected_items":
 		[
+			[
+				"c",
+				"/C/Users/ehegi/c.sublime-project"
+			],
 			[
 				"front",
 				"/C/Users/ehegi/www/frontend.sublime-project"

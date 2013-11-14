@@ -7,34 +7,41 @@ class Page_tests extends Toast
 	{
 		parent::Toast(__FILE__);
 		// Load any models, libraries etc. you need here
+
+		$this->slug = 'test-page-'.uniqid();
+		$this->new_page = new stdClass();
+		$this->new_page_id = 0;
 	}
 
-	/**
-	 * OPTIONAL; Anything in this function will be run before each test
-	 * Good for doing cleanup: resetting sessions, renewing objects, etc.
-	 */
 	function _pre() {
-        $this->load->model('page_m');
+		$this->load->model('page_m');
+
+		$page_m = $this->page_m;
+
+		$page = $page_m->get_by_slug($this->slug);
+
+		if (empty($page)) {
+			$this->new_page = $page_m->create();
+			$this->new_page->slug = $this->slug;
+
+			$this->new_page_id = $page_m->save($this->new_page);
+		}
 	}
 
-	/**
-	 * OPTIONAL; Anything in this function will be run after each test
-	 * I use it for setting $this->message = $this->My_model->getError();
-	 */
-	function _post() {}
+	function _post() {
+		$this->page_m->delete($this->new_page);
+	}
 
 	function test_page_retrieve_by_id()
 	{
-        $page = $this->page_m->get_by_id(1);
+		$page = $this->page_m->get_by_id($this->new_page_id);
 
-		$this->_assert_not_equals($page->id, 0);
+		$this->_assert_equals($page->id, $this->new_page_id);
 	}
 
 	function test_page_retrieve_by_slug()
 	{
-        $slug = 'amazing-7-7-7-3-3-3';
-
-        $page = $this->page_m->get_by_slug($slug);
+		$page = $this->page_m->get_by_slug($this->slug);
 
 		$this->_assert_not_empty($page);
 	}

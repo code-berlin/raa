@@ -8,6 +8,10 @@ class Url_m extends CI_Model {
 		$this->load->model('dao/url_dao');
 	}
 
+	public function get_by_id($id) {
+		return $this->url_dao->get_by_id($id);
+	}
+
 	public function get_all() {
 		return $this->url_dao->get_all();
 	}
@@ -20,9 +24,17 @@ class Url_m extends CI_Model {
 		return $this->url_dao->save($url);
 	}
 
-    /**
-    * Creates a slug from a url. We only accept dashes (-).
-    */
+	public function create() {
+		return $this->url_dao->create();
+	}
+
+	public function delete($url) {
+		return $this->url_dao->delete($url);
+	}
+
+	/**
+	* Creates a slug from a url. We only accept dashes (-).
+	*/
 	public function sluggify($url) {
 		return preg_replace('/[^a-z0-9\-]/', '-', strtolower($url));
 	}
