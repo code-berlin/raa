@@ -7,31 +7,24 @@ class Slug_tests extends Toast
 	{
 		parent::Toast(__FILE__);
 		// Load any models, libraries etc. you need here
+
+		$this->example_slug = 'test-page-'.uniqid();
 	}
 
-	/**
-	 * OPTIONAL; Anything in this function will be run before each test
-	 * Good for doing cleanup: resetting sessions, renewing objects, etc.
-	 */
 	function _pre() {
-        $this->load->model('url_m');
-        $this->load->model('type_m');
+		$this->load->model('url_m');
+		$this->load->model('type_m');
 	}
 
-	/**
-	 * OPTIONAL; Anything in this function will be run after each test
-	 * I use it for setting $this->message = $this->My_model->getError();
-	 */
 	function _post() {}
 
 	function test_slug_type_correlation()
 	{
-        $page_id = 3;
-        $example_slug = 'this-is-my-wonderful-and-incredible-url-slug';
+		$page_id = 3;
 
-        $type = $this->url_m->get_by_slug($example_slug);
+		$type = $this->url_m->get_by_slug($this->example_slug);
 
-        if ($type) {
+		if ($type) {
 			$this->_assert_equals($type->id, $page_id);
 		} else {
 			return false;
@@ -40,20 +33,18 @@ class Slug_tests extends Toast
 
 	function test_object_type_loader()
 	{
-		$example_slug = 'this-is-my-wonderful-and-incredible-url-slug';
+		// Retrieve object type related to this slug
+		$result = $this->url_m->get_by_slug($this->example_slug);
 
-        // Retrieve object type related to this slug
-        $result = $this->url_m->get_by_slug($example_slug);
+		if ($result) {
+			// Use this object type as reference for loading models
+			$object_type = $result->type->name.'_m';
 
-        if ($result) {
-	        // Use this object type as reference for loading models
-	        $object_type = $result->type->name.'_m';
+			$this->load->model($object_type);
 
-	        $this->load->model($object_type);
+			$objects = $this->$object_type->get_all();
 
-	        $objects = $this->$object_type->get_all();
-
-	        $this->_assert_not_empty($objects);
+			$this->_assert_not_empty($objects);
 		} else {
 			return false;
 		}
@@ -61,16 +52,19 @@ class Slug_tests extends Toast
 
 	function test_sluggifier()
 	{
-		$url = 'test test test/test&test\test';
-		$slugged_url = 'test-test-test-test-test-test';
+		$url = str_replace('-', ' ', $this->example_slug);
+		$slugged_url = $this->example_slug;
 
 		$this->_assert_equals($slugged_url, $this->url_m->sluggify($url));
 	}
 
 	function test_slug_storage() {
-		$new_slug = $this->type_m->save_slug('post', 'amazing-7-7-7-3-3-3', 3);
+		$id = $this->type_m->save_slug('post', $this->example_slug, 0);
 
-		$this->_assert_not_empty($new_slug);
+		$slug = $this->url_m->get_by_id($id);
+		$this->url_m->delete($slug);
+
+		$this->_assert_not_empty($id);
 	}
 }
 

@@ -10,11 +10,13 @@ class Page_dao extends CI_Model{
 
 		$this->load->library('rb');
 
+		$this->table = 'page';
+
 		$this->object = new stdClass();
 	}
 
 	public function get_all() {
-		$this->object = R::find('page');
+		$this->object = R::find($this->table);
 
 		$this->preload_template();
 
@@ -22,7 +24,7 @@ class Page_dao extends CI_Model{
 	}
 
 	public function get_by_id($id) {
-		$this->object = R::load('page', $id);
+		$this->object = R::load($this->table, $id);
 
 		$this->preload_template();
 
@@ -30,7 +32,7 @@ class Page_dao extends CI_Model{
 	}
 
 	public function get_by_slug($slug) {
-		$this->object = R::findOne('page', 'slug = :slug',
+		$this->object = R::findOne($this->table, 'slug = :slug',
 			array(':slug' => $slug));
 
 		$this->preload_template();
@@ -44,7 +46,15 @@ class Page_dao extends CI_Model{
 		}
 	}
 
+	public function create() {
+		return R::dispense($this->table);
+	}
+
 	public function save($page) {
 		return R::store($page);
+	}
+
+	public function delete($page) {
+		return R::trash($page);
 	}
 }
