@@ -98,6 +98,33 @@ class Index extends CI_Controller {
         $this->load->view('admin/admin', $crud->render());
     }
 
+
+    //Generates CRUD for General Settings menu
+    public function general_settings()
+    {
+        $crud = $this->grocery_crud;
+
+        $crud->set_table('settings');
+
+        /* this doesn't work - check it later */
+        // $crud->callback_after_delete(array($this,'_hide_add_button'));
+
+        $rows_number = R::count('settings');
+
+        if ($rows_number == 1)
+        {
+            $crud->unset_add();
+        }
+
+        $this->load->view('admin/admin', $crud->render());
+    }
+ 
+    /* this doesn't work - check it later */
+    // public function _hide_add_button($primary_key)
+    // {
+    //     echo "<script>alert('Talk to me!!!!!');</script>";
+    // }
+
     // Utility functions for Grocery CRUD
 
     /**
