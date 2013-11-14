@@ -9,20 +9,29 @@ class Widget_tests extends Toast
 		// Load any models, libraries etc. you need here
 	}
 
-	/**
-	 * OPTIONAL; Anything in this function will be run before each test
-	 * Good for doing cleanup: resetting sessions, renewing objects, etc.
-	 */
 	function _pre() {
-        $this->load->model('widget_m');
+    	$this->load->model('widget_m');
 	}
 
-	/**
-	 * OPTIONAL; Anything in this function will be run after each test
-	 * I use it for setting $this->message = $this->My_model->getError();
-	 */
 	function _post() {}
 
+	function test_load_widget()
+	{
+		$widgets = $this->widget_m->get_all();
+
+		$total_widgets = count($widgets);
+		$available_widgets = 0;
+
+		if (!empty($widgets)) {
+			foreach ($widgets as $widget) {
+				if (file_exists('application/widgets/'.$widget->widgetname)) {
+					$available_widgets++;
+				}
+			}
+		}
+
+		$this->_assert_equals($total_widgets, $available_widgets);
+	}
 }
 
 // End of file example_test.php */

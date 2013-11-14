@@ -45,6 +45,11 @@ class Page_tests extends Toast
 
 		$this->_assert_not_empty($page);
 	}
+
+	function test_page_creation()
+	{
+		$this->_assert_equals($this->new_page_id, $this->new_page->id);
+	}
 }
 
 // End of file example_test.php */

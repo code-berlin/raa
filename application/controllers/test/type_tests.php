@@ -7,39 +7,33 @@ class Type_tests extends Toast
 		parent::Toast(__FILE__);
 
 		$this->id = 0;
+		$this->type_name = 'test_type_xxx';
 	}
 
 	function _pre() {
 		$this->load->model('type_m');
+
+		$this->id = $this->type_m->save($this->type_name);
 	}
 
 	function _post() {
-
+		$this->delete_type();
 	}
 
 	function test_type_removal() {
-		$name = 'test_type_removal_xxx';
-		$type = $this->type_m;
+		$this->delete_type();
 
-		$id = $type->save($name);
+		$type = $this->type_m->get_by_name($this->type_name);
 
-		$type->delete($id);
-
-		$new_type = $type->get_by_name($name);
-
-		$this->_assert_equals($new_type, NULL);
+		$this->_assert_equals($type, NULL);
 	}
 
 	function test_type_creation() {
-		$name = 'test_type_xxx';
-		$type = $this->type_m;
+		$this->_assert_not_equals($this->id, 0);
+	}
 
-		$id = $type->save($name);
-
-		// Delete useless object created just for testing purposes
-		$type->delete($id);
-
-		$this->_assert_not_equals($id, 0);
+	function delete_type() {
+		$this->type_m->delete($this->id);
 	}
 
 }
