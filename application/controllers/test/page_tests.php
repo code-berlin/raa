@@ -25,16 +25,14 @@ class Page_tests extends Toast
 
 	function test_page_retrieve_by_id()
 	{
-        $title = 'Test page';
+        $page = $this->page_m->get_by_id(1);
 
-        $page = $this->page_m->get_by_id(2);
-
-		$this->_assert_equals($page->title, $title);
+		$this->_assert_not_equals($page->id, 0);
 	}
 
 	function test_page_retrieve_by_slug()
 	{
-        $slug = 'this-is-my-wonderful-and-incredible-url-slug';
+        $slug = 'amazing-7-7-7-3-3-3';
 
         $page = $this->page_m->get_by_slug($slug);
 

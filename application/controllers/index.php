@@ -5,23 +5,24 @@ class Index extends CI_Controller {
     function __construct()
     {
         parent::__construct();
- 
+
     }
 
     public function index()
     {
        $this->load->view('home/index');
     }
-    
+
     public function load_menu($id_menu, $menu_template){
-        
-        $menu_items = R::find('menu_item', 'id_menu = ?', array($id_menu));
+        $this->load->model('menu_item_m');
+
+        $menu_items = $this->menu_item_m->get_by_menu_id($id_menu);
+
         if($menu_items){
- 
             $data['items'] = $menu_items;
+
             $this->load->view('menu_templates/'.$menu_template, $data);
-                    
         }
     }
-  
+
 }

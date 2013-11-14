@@ -9,5 +9,8 @@
         <li>
             <a href='<?php echo site_url('admin/widget')?>'>Widgets</a>
         </li>
+        <li>
+            <a href='<?php echo site_url('admin/general_settings')?>'>General Settings</a>
+        </li>
     </ul>
 </div>

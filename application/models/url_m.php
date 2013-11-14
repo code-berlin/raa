@@ -16,11 +16,8 @@ class Url_m extends CI_Model {
 		return $this->url_dao->get_by_slug($slug);
 	}
 
-	/**
-	* Save slug on the type / slug relation table.
-	*/
-	public function save_slug($type_name, $slug) {
-		return $this->url_dao->save_slug($type_name, $slug);
+	public function save($url) {
+		return $this->url_dao->save($url);
 	}
 
     /**

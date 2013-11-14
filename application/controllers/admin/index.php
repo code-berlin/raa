@@ -27,12 +27,6 @@ class Index extends CI_Controller {
     */
     public function page()
     {
-
-        if (!isset($_SESSION['user_name']))
-        {
-            //redirect('admin/login');
-        }
-
         $crud = $this->grocery_crud;
 
         $crud->set_table('page');
@@ -41,7 +35,9 @@ class Index extends CI_Controller {
         $crud->columns('title','text','image','slug');
 
         // Fields to show when editing
-        $crud->edit_fields('template_id', 'slug', 'title', 'text', 'date', 'image', 'published');
+        $crud->edit_fields('template_id', 'title', 'text', 'date', 'image', 'slug', 'published', 'id');
+
+        $crud->field_type('id', 'hidden');
         $crud->field_type('date', 'hidden');
 
         // Set relations using foreign keys
@@ -52,6 +48,7 @@ class Index extends CI_Controller {
 
         // Fields sanitation
         $crud->callback_column('slug', array($this, 'link_page'));
+
         $crud->callback_before_insert(array($this, 'before_saving_page'));
         $crud->callback_before_update(array($this, 'before_saving_page'));
 
@@ -101,6 +98,33 @@ class Index extends CI_Controller {
         $this->load->view('admin/admin', $crud->render());
     }
 
+
+    //Generates CRUD for General Settings menu
+    public function general_settings()
+    {
+        $crud = $this->grocery_crud;
+
+        $crud->set_table('settings');
+
+        /* this doesn't work - check it later */
+        // $crud->callback_after_delete(array($this,'_hide_add_button'));
+
+        $rows_number = R::count('settings');
+
+        if ($rows_number == 1)
+        {
+            $crud->unset_add();
+        }
+
+        $this->load->view('admin/admin', $crud->render());
+    }
+ 
+    /* this doesn't work - check it later */
+    // public function _hide_add_button($primary_key)
+    // {
+    //     echo "<script>alert('Talk to me!!!!!');</script>";
+    // }
+
     // Utility functions for Grocery CRUD
 
     /**
@@ -111,12 +135,15 @@ class Index extends CI_Controller {
     *   to do it.
     */
     public function before_saving_page($post) {
+        $this->load->model('type_m');
         $this->load->model('url_m');
 
         $post['slug'] = $this->url_m->sluggify($post['slug']);
         $post['date'] = $this->set_datetime();
 
-        $this->url_m->save_slug('page', $post['slug']);
+        $page_id = (!empty($post['id'])) ? $post['id'] : 0;
+
+        $this->type_m->save_slug('page', $post['slug'], $page_id);
 
         return $post;
     }
