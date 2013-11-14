@@ -29,6 +29,41 @@ class Type_dao extends CI_Model{
 		return R::store($type);
 	}
 
+	public function save_slug($type_name, $slug, $page_id) {
+		$id = 0;
+		$type = $this->get_by_name($type_name);
+
+		if (!empty($type)) {
+			// Update current page slug reference
+			if ($page_id > 0) {
+				$this->load->model('page_m');
+				$this->load->model('url_m');
+
+				$page = $this->page_m->get_by_id($page_id);
+				$url = $this->url_m->get_by_slug($page->slug);
+
+				if ($url != NULL) {
+					$url->slug = $slug;
+					$this->url_m->save($url);
+				}
+			} else {
+				$url= R::dispense('url');
+				$url->type_id = $type->id;
+				$url->slug = $slug;
+
+				// The store method returns the saved object ID.
+				$id = R::store($url);
+			}
+		} else {
+			if ($this->save($type_name) > 0) {
+				$this->save_slug($type_name, $slug);
+				die;
+			}
+		}
+
+		return $id;
+	}
+
 	public function delete($id) {
 		$type = $this->get_by_id($id);
 

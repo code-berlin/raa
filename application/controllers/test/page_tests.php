@@ -32,7 +32,7 @@ class Page_tests extends Toast
 
 	function test_page_retrieve_by_slug()
 	{
-        $slug = 'this-is-an-amazing-test-page-slug-larala-lala';
+        $slug = 'amazing-7-7-7-3-3-3';
 
         $page = $this->page_m->get_by_slug($slug);
 

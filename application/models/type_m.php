@@ -20,6 +20,13 @@ class Type_m extends CI_Model {
 		return $this->type_dao->save($name);
 	}
 
+	/**
+	* Save slug on the type / slug relation table.
+	*/
+	public function save_slug($type_name, $slug, $page_id) {
+		return $this->type_dao->save_slug($type_name, $slug, $page_id);
+	}
+
 	public function delete($id) {
 		return $this->type_dao->delete($id);
 	}
