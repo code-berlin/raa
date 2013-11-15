@@ -112,6 +112,12 @@ class Index extends CI_Controller {
         $this->load->view('admin/admin', $crud->render());
     }
 
+    /* this doesn't work - check it later */
+    // public function _hide_add_button($primary_key)
+    // {
+    //     echo "<script>alert('Talk to me!!!!!');</script>";
+    // }
+
     // Utility functions for Grocery CRUD
 
     /**
