@@ -24,7 +24,13 @@ class Migration_Add_Product_Table extends CI_Migration {
 
     public function down() {
         $this->dbforge->drop_table('product');
+        
+        $this->db->query("ALTER TABLE `url` DROP FOREIGN KEY `url_ibfk_1`");
+        $this->db->query("ALTER TABLE `url` DROP INDEX `id_type`");
         $this->db->query("delete from `type` where `id` = 4;");
+        $this->db->query("ALTER TABLE `url` ADD INDEX `id_type` (`type_id`)");
+        $this->db->query('ALTER TABLE `url` ADD CONSTRAINT `url_ibfk_1` FOREIGN KEY (`type_id`) REFERENCES `type` (`id`);');
+        
         $this->db->query("delete from `template` where `id` = 3;");
     }
 }
