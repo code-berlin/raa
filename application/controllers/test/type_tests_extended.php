@@ -25,4 +25,17 @@ class Type_tests_extended extends Basic_tests
         }
     }
 
+    function test_type_model_correlations(){
+        $this->load->library('rb');
+        $types = R::findAll('type',
+            ' ORDER BY id ');
+
+        foreach ( $types as $type ) {
+            $modelname = $type->name.'_m';
+            $this->_assert_true(file_exists(APPPATH."models/".$modelname.".php"));
+        }
+    }
+
+
+
 }
