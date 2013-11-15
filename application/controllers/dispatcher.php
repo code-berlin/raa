@@ -8,6 +8,7 @@ class Dispatcher extends CI_Controller {
 
         $this->load->helper('url');
         $this->load->helper('widget');
+        $this->load->helper('widgets_container');
     }
 
     public function index($slug)

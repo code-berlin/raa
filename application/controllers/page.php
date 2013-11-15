@@ -8,6 +8,7 @@ class Page extends CI_Controller {
 
         //$this->load->library('layout');
         $this->load->helper('widget');
+        $this->load->helper('widgets_container');
     }
 
     /**

@@ -5,6 +5,7 @@ class Migration_Add_Content_To_Types extends CI_Migration {
     }
 
     public function down() {
-      $this->db->query("DELETE FROM `type`");
+		$this->db->query("DELETE FROM `type`");
+		$this->db->query("ALTER TABLE `type` AUTO_INCREMENT = 1;");
     }
 }

@@ -28,8 +28,8 @@ class Url_m extends CI_Model {
 		return $this->url_dao->create();
 	}
 
-	public function delete($url) {
-		return $this->url_dao->delete($url);
+	public function remove($url) {
+		return $this->url_dao->remove($url);
 	}
 
 	/**

@@ -1,24 +1,14 @@
 <?php
+require_once(APPPATH . 'models/dao/db_dao.php');
+
 /**
  * DAO for URLs
  *
  */
-class Url_dao extends CI_Model{
+class Url_dao extends DB_dao {
 
 	public function __construct(){
-		parent::__construct();
-
-		$this->table = 'url';
-
-		$this->load->library('rb');
-	}
-
-	public function get_all() {
-		return R::find($this->table);
-	}
-
-	public function get_by_id($id) {
-		return R::load($this->table, $id);
+		parent::__construct('url');
 	}
 
 	public function get_by_slug($slug) {
@@ -30,17 +20,5 @@ class Url_dao extends CI_Model{
 		}
 
 		return $url;
-	}
-
-	public function create() {
-		return R::dispense($this->table);
-	}
-
-	public function save($url) {
-		return R::store($url);
-	}
-
-	public function delete($url) {
-		return R::trash($url);
 	}
 }
