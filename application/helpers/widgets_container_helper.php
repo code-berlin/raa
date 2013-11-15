@@ -1,10 +1,13 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-	function widgets_container_load_container($name) {
+	/*
+	* Loads a widget container
+	*
+	* It depends on the widget helper to show widgets.
+	*/
+	function widgets_container_load($name) {
 		$CI =& get_instance();
-
 		$CI->load->model('widgets_containers_m');
-		$CI->load->model('widget_m');
 
 		$widgets_container = $CI->widgets_containers_m->get_all_by_widgets_container_name_ordered_by_position($name);
 
