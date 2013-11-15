@@ -6,6 +6,7 @@ $route['404_override'] = '';
 
 // DB MIGRATION TOOL
 $route['migrate'] = "migrate/index";
+$route['migrate/(:any)'] = "migrate/index/$1";
 
 // ADMIN ROUTES
 
