@@ -10,7 +10,6 @@
 */
 $config['migration_enabled'] = TRUE;
 
-
 /*
 |--------------------------------------------------------------------------
 | Migrations version
@@ -21,8 +20,7 @@ $config['migration_enabled'] = TRUE;
 | be upgraded / downgraded to.
 |4
 */
-$config['migration_version'] = 9;
-
+$config['migration_version'] = 11;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +33,6 @@ $config['migration_version'] = 9;
 |
 */
 $config['migration_path'] = APPPATH . 'migrations/';
-
 
 /* End of file migration.php */
 /* Location: ./application/config/migration.php */
