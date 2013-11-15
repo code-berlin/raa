@@ -1,13 +1,15 @@
 <?php
 require_once(APPPATH . 'controllers/test/Toast.php');
+require_once(APPPATH . 'controllers/test/basic_tests.php');
 
-class Type_tests extends Toast
+class Type_tests extends Basic_tests
 {
 	function Type_tests() {
 		parent::Toast(__FILE__);
 
 		$this->id = 0;
 		$this->type_name = 'test_type_xxx';
+        $this->minimal_db_version = 7;
 	}
 
 	function _pre() {
