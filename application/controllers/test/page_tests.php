@@ -1,7 +1,8 @@
 <?php
 require_once(APPPATH . 'controllers/test/Toast.php');
+require_once(APPPATH . 'controllers/test/basic_tests.php');
 
-class Page_tests extends Toast
+class Page_tests extends Basic_tests
 {
 	function Page_tests()
 	{
@@ -11,6 +12,7 @@ class Page_tests extends Toast
 		$this->slug = 'test-page-'.uniqid();
 		$this->new_page = new stdClass();
 		$this->new_page_id = 0;
+        $this->minimal_db_version = 2;
 	}
 
 	function _pre() {

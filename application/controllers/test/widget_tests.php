@@ -1,12 +1,14 @@
 <?php
 require_once(APPPATH . 'controllers/test/Toast.php');
+require_once(APPPATH . 'controllers/test/basic_tests.php');
 
-class Widget_tests extends Toast
+class Widget_tests extends Basic_tests
 {
 	function Widget_tests()
 	{
 		parent::Toast(__FILE__);
 		// Load any models, libraries etc. you need here
+        $this->minimal_db_version = 4;
 	}
 
 	function _pre() {

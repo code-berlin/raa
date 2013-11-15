@@ -1,7 +1,8 @@
 <?php
 require_once(APPPATH . 'controllers/test/Toast.php');
+require_once(APPPATH . 'controllers/test/basic_tests.php');
 
-class Slug_tests extends Toast
+class Slug_tests extends Basic_tests
 {
 	function Slug_tests()
 	{
@@ -10,6 +11,7 @@ class Slug_tests extends Toast
 
 		$this->example_slug = 'test-page-'.uniqid();
 		$this->slug_id = 0;
+        $this->minimal_db_version = 6;
 	}
 
 	function _pre() {

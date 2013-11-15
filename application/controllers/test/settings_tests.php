@@ -1,7 +1,8 @@
 <?php
 require_once(APPPATH . 'controllers/test/Toast.php');
+require_once(APPPATH . 'controllers/test/basic_tests.php');
 
-class Settings_tests extends Toast
+class Settings_tests extends Basic_tests
 {
 
     var $delete_settings = true;
@@ -12,6 +13,7 @@ class Settings_tests extends Toast
         // Load any models, libraries etc. you need here
         $this->load->model('settings_m');
         $this->load->library('rb');
+        $this->minimal_db_version =6;
     }
 
     /**
