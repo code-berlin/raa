@@ -68,6 +68,25 @@ class Index extends CI_Controller {
         $this->load->view('admin/admin', $crud->render());
     }
 
+
+    /**
+    *   Handles the product CRUD.
+    */
+    public function product()
+    {
+        $crud = $this->grocery_crud;
+
+        $crud->set_table('product');
+
+        $_POST['content_type_name'] = 'product';    
+
+        $crud->callback_before_insert(array($this, 'before_saving_content_type'));
+        $crud->callback_before_update(array($this, 'before_saving_content_type'));
+
+        $this->load->view('admin/admin', $crud->render());
+    }
+
+
     /**
     *   Handles the widget CRUD.
     */
@@ -140,6 +159,30 @@ class Index extends CI_Controller {
 
         return $post;
     }
+
+
+    /**
+    *   Checks page information before it's stored in the database.
+    *
+    *   It should be made for both update and insert actions.
+    *   This is GroceryCRUD specific. Maybe there's a cleanest way
+    *   to do it.
+    */
+    public function before_saving_content_type($post) {
+        $this->load->model('type_m');
+        $this->load->model('url_m');
+
+        $post['slug'] = $this->url_m->sluggify($post['slug']);
+        $post['date'] = $this->set_datetime();
+        $content_type_name = $post['content_type_name'];
+
+        $page_id = (!empty($post['id'])) ? $post['id'] : 0;
+
+        $this->type_m->save_slug($content_type_name, $post['slug'], $page_id);
+
+        return $post;
+    }
+
 
     /**
     *   Checks widget information before it's stored in the database.

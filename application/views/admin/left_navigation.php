@@ -4,6 +4,9 @@
             <a href='<?php echo site_url('admin/page')?>'>Pages</a>
         </li>
         <li>
+            <a href='<?php echo site_url('admin/product')?>'>Products</a>
+        </li>        
+        <li>
             <a href='<?php echo site_url('admin/menu')?>'>Menus</a>
         </li>
         <li>
