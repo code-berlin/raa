@@ -14,7 +14,7 @@ class Migration_Add_Product_Table extends CI_Migration {
                         PRIMARY KEY (`id`)
                       ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;');
 
-      $this->db->query('INSERT INTO `type` (`id` ,`name`) VALUES (4, 'product');');
+      $this->db->query('INSERT INTO `type` (`name`) VALUES ('product');');
 
 
 
