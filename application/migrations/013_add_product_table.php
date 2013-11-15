@@ -16,6 +16,8 @@ class Migration_Add_Product_Table extends CI_Migration {
 
       $this->db->query("INSERT INTO `type` (`id`, `name`) VALUES (4, 'product');");
 
+      $this->db->query("INSERT INTO `template` (`id`, `name`) VALUES (3, 'productlist');");      
+
 
 
     }
@@ -23,5 +25,6 @@ class Migration_Add_Product_Table extends CI_Migration {
     public function down() {
         $this->dbforge->drop_table('product');
         $this->db->query("delete from `type` where `id` = 4;");
+        $this->db->query("delete from `template` where `id` = 3;");
     }
 }
