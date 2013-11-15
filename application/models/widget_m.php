@@ -20,6 +20,10 @@ class Widget_m extends CI_Model {
 		return $this->widget_dao->get_by_id($id);
 	}
 
+	function create() {
+		return $this->widget_dao->create();
+	}
+
 	function save($widget) {
 		return $this->widget_dao->save($widget);
 	}

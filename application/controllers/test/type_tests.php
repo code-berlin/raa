@@ -9,7 +9,7 @@ class Type_tests extends Basic_tests
 
 		$this->id = 0;
 		$this->type_name = 'test_type_xxx';
-        $this->minimal_db_version = 7;
+		$this->minimal_db_version = 7;
 	}
 
 	function _pre() {

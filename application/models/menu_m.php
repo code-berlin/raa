@@ -1,5 +1,5 @@
 <?php
-class Menu_m extends CI_Model {
+class Menu_m extends DB_dao {
 
 	function __construct()
 	{

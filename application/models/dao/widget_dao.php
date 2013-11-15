@@ -43,6 +43,10 @@ class Widget_dao extends CI_Model{
 		array_push($this->widgets, $name);
 	}
 
+	public function create() {
+		return R::dispense('widget');
+	}
+
 	public function clean() {
 		// Retrieve all available widgets
 		$widgets = $this->get_all();

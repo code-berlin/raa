@@ -74,23 +74,25 @@ class Index extends CI_Controller {
     public function widget()
     {
         $this->load->model('widget_m');
-
         $crud = $this->grocery_crud;
 
         $crud->set_table('widget');
+
+        $crud->unset_add();
+        $crud->unset_delete();
+        $crud->unset_export();
+        $crud->unset_print();
+        $crud->unset_read();
 
         $this->widget_m->scan_for_widgets();
 
         // Fields to show on the list
         $crud->columns('widgetname','activated');
+        $crud->display_as('widgetname','Name');
 
         // Fields to show when editing
-        $crud->edit_fields('widgetname', 'activated', 'created');
+        $crud->edit_fields('activated', 'created');
         $crud->field_type('created', 'hidden');
-
-        //$crud->unset_edit();
-
-        $crud->display_as('widgetname','Name');
 
         $crud->callback_before_insert(array($this, 'before_saving_widget'));
         $crud->callback_before_update(array($this, 'before_saving_widget'));
@@ -98,6 +100,47 @@ class Index extends CI_Controller {
         $this->load->view('admin/admin', $crud->render());
     }
 
+    /**
+    *   Handles the widget CRUD.
+    */
+    public function widgets_container()
+    {
+        $crud = $this->grocery_crud;
+
+        $crud->set_table('widgetscontainer');
+
+        $crud->unset_export();
+        $crud->unset_print();
+        $crud->unset_read();
+
+        $add_items_image = 'assets/grocery_crud/themes/flexigrid/css/images/edit-items.gif';
+
+        $crud->add_action('edit items', base_url($add_items_image), 'admin/container_item');
+
+        $this->load->view('admin/admin', $crud->render());
+    }
+
+    public function container_item($id)
+    {
+        $crud = $this->grocery_crud;
+
+        $crud->set_table('widgetscontainersrelation');
+
+        $crud->columns('widget_id', 'widget_position');
+
+        $crud->where('widgets_container_id', $id);
+
+        $crud->set_relation('widget_id','widget','widgetname');
+        $crud->display_as('widget_id','Widget');
+        $crud->display_as('widget_position','Position');
+
+
+        $crud->field_type('widgets_container_id', 'hidden');
+
+        $_POST['widgets_container_id'] = $id;
+
+        $this->load->view('admin/admin', $crud->render());
+    }
 
     //Generates CRUD for General Settings menu
     public function general_settings()

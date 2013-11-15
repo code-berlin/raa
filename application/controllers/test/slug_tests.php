@@ -11,20 +11,38 @@ class Slug_tests extends Basic_tests
 
 		$this->example_slug = 'test-page-'.uniqid();
 		$this->slug_id = 0;
-        $this->minimal_db_version = 6;
+		$this->page_id = 0;
+
+		$this->minimal_db_version = 6;
 	}
 
 	function _pre() {
 		$this->load->model('url_m');
 		$this->load->model('type_m');
+		$this->load->model('page_m');
 
 		$this->slug_id = $this->type_m->save_slug('page', $this->example_slug, 0);
+
+		$page = $this->page_m->create();
+		$page->title = 'test';
+		$this->page_id = $this->page_m->save($page);
 	}
 
 	function _post() {
 		$slug = $this->url_m->get_by_id($this->slug_id);
-		$this->url_m->delete($slug);
+		$page = $this->page_m->get_by_id($this->page_id);
+
+		$this->url_m->remove($slug);
+		$this->page_m->delete($page);
 	}
+
+	function test_retrieve_by_slug()
+	{
+		$object = $this->url_m->get_by_slug($this->example_slug);
+
+		$this->_assert_not_empty($object);
+	}
+
 
 	function test_slug_type_correlation()
 	{
@@ -36,10 +54,8 @@ class Slug_tests extends Basic_tests
 
 	function test_object_type_loader()
 	{
-		// Retrieve object type related to this slug
 		$result = $this->url_m->get_by_slug($this->example_slug);
 
-		// Use this object type as reference for loading models
 		$object_type = $result->type->name.'_m';
 
 		$this->load->model($object_type);
