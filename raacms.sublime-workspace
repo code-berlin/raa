@@ -113,34 +113,26 @@
 			}
 		},
 		{
-			"file": "application/migrations/007_change_menu_items_structure.php",
+			"file": "application/views/page/productlist.php",
 			"settings":
 			{
-				"buffer_size": 1417,
+				"buffer_size": 79,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/migrations/013_add_product_table.php",
+			"file": "application/helpers/content_types_helper.php",
 			"settings":
 			{
-				"buffer_size": 1544,
+				"buffer_size": 631,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/widgets/widget2/index.php",
+			"file": "application/views/content_types/product_list_item.php",
 			"settings":
 			{
-				"buffer_size": 176,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/widgets/weather/index.php",
-			"settings":
-			{
-				"buffer_size": 325,
+				"buffer_size": 188,
 				"line_ending": "Windows"
 			}
 		}
@@ -189,6 +181,12 @@
 	},
 	"file_history":
 	[
+		"/C/xampp/htdocs/raacms/application/migrations/007_change_menu_items_structure.php",
+		"/C/xampp/htdocs/raacms/application/migrations/013_add_product_table.php",
+		"/C/xampp/htdocs/raacms/application/widgets/widget2/index.php",
+		"/C/xampp/htdocs/raacms/application/widgets/weather/index.php",
+		"/C/xampp/htdocs/raacms/application/views/admin/index.php",
+		"/C/xampp/htdocs/raacms/application/views/home/index.php",
 		"/C/xampp/htdocs/raacms/user_guide/installation/upgrade_120.html",
 		"/C/xampp/htdocs/raacms/application/migrations/005_change_template_reference.php",
 		"/C/xampp/htdocs/raacms/application/migrations/012_add_content_to_types_table.php",
@@ -198,7 +196,6 @@
 		"/C/xampp/htdocs/raacms/application/migrations/014_create_widgets_container_table.php",
 		"/C/xampp/htdocs/raacms/application/migrations/011_create_widgets_containers_relation_table.php",
 		"/C/xampp/htdocs/raacms/application/migrations/010_create_widgets_container_table.php",
-		"/C/xampp/htdocs/raacms/application/migrations/007_change_menu_items_structure.php",
 		"/C/xampp/htdocs/raacms/application/controllers/dispatcher.php",
 		"/C/xampp/htdocs/raacms/application/models/dao/db_dao.php",
 		"/C/xampp/htdocs/raacms/application/models/dao/widgets_containers_dao.php",
@@ -311,12 +308,7 @@
 		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/libraries/check_selenium.php",
 		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/controllers/test/video_tests.php",
 		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/controllers/test/gallery_tests.php",
-		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/helpers/MY_url_helper.php",
-		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/views/home.php",
-		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/views/main_news_template.php",
-		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/controllers/test/gallery_tests.php",
-		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/controllers/weather.php",
-		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/models/weather_m.php"
+		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/helpers/MY_url_helper.php"
 	],
 	"find":
 	{
@@ -340,6 +332,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Main Menu",
 			"save_slug",
 			"Widgets_container_tests",
 			"delete",
@@ -466,7 +459,7 @@
 	"groups":
 	[
 		{
-			"selected": 12,
+			"selected": 11,
 			"sheets":
 			[
 				{
@@ -544,7 +537,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 123.0,
+						"translation.y": 51.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -750,8 +743,8 @@
 						"selection":
 						[
 							[
-								5118,
-								5118
+								2352,
+								2352
 							]
 						],
 						"settings":
@@ -761,81 +754,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3424.0,
+						"translation.y": 1525.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 11,
-					"file": "application/migrations/007_change_menu_items_structure.php",
+					"file": "application/views/page/productlist.php",
 					"settings":
 					{
-						"buffer_size": 1417,
+						"buffer_size": 79,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								564,
-								564
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "application/migrations/013_add_product_table.php",
-					"settings":
-					{
-						"buffer_size": 1544,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								954,
-								954
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "application/widgets/widget2/index.php",
-					"settings":
-					{
-						"buffer_size": 176,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								23,
-								23
+								40,
+								40
 							]
 						],
 						"settings":
@@ -849,19 +786,46 @@
 					"type": "text"
 				},
 				{
-					"buffer": 14,
-					"file": "application/widgets/weather/index.php",
+					"buffer": 12,
+					"file": "application/helpers/content_types_helper.php",
 					"settings":
 					{
-						"buffer_size": 325,
+						"buffer_size": 631,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								23,
-								23
+								473,
+								473
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "application/views/content_types/product_list_item.php",
+					"settings":
+					{
+						"buffer_size": 188,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								84,
+								84
 							]
 						],
 						"settings":
@@ -918,6 +882,26 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"adminindex",
+				"application/controllers/admin/index.php"
+			],
+			[
+				"list_item",
+				"application/views/content_types/product_list_item.php"
+			],
+			[
+				"contenthelper",
+				"application/helpers/content_types_helper.php"
+			],
+			[
+				"productlist",
+				"application/views/page/productlist.php"
+			],
+			[
+				"viewindex",
+				"application/views/admin/index.php"
+			],
 			[
 				"weather",
 				"application/widgets/weather/index.php"
@@ -1167,10 +1151,6 @@
 				"application/controllers/test/page_tests.php"
 			],
 			[
-				"adminindex",
-				"application/controllers/admin/index.php"
-			],
-			[
 				"url_dao.php",
 				"application/models/dao/url_dao.php"
 			],
@@ -1413,10 +1393,6 @@
 			[
 				"",
 				"site/index.php"
-			],
-			[
-				"includesmain.cs",
-				"site/application/css/n24/sass/includes/_main.scss"
 			]
 		],
 		"width": 0.0
