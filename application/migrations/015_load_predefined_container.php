@@ -5,6 +5,6 @@ class Migration_Load_Predefined_Container extends CI_Migration {
     }
 
     public function down() {
-      $this->db->query("DELETE FROM  `widgetscontainer`");
+      $this->db->query("DELETE FROM  `widgetscontainer` WHERE  `name` =  'Container';");
     }
 }

@@ -16,10 +16,16 @@ class Page extends CI_Controller {
     */
     public function index($id=0)
     {
+
         $this->load->model('page_m');
 
-        $data['page'] = $this->page_m->get_by_id($id);
-        $data['widgets'] = array('widget1', 'widget2');
+        $item = $this->page_m->get_by_id($id);
+
+        if($item->id > 0 && $item->slug!='') { 
+            redirect(base_url($item->slug), 'location', 301);
+        } else {
+            $data['page'] = $item;
+        }
 
         if (!empty($data['page']) && $data['page']->id > 0) {
             $view = (!empty($data['page']->template)) ? $data['page']->template->name : 'index';

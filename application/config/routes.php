@@ -17,7 +17,9 @@ $route['admin'] = 'admin/index'; // admin dashboard
 
 // FRONTEND PAGES
 $route['page'] = "page/index";
-$route['page/(:any)'] = "page/index/$1";
+$route['page/(:num)'] = "page/index/$1";
+
+$route['product/(:num)'] = "content_type/index/$1/product";
 
 /*
  * FRONTEND SLUGS

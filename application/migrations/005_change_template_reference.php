@@ -5,7 +5,7 @@ class Migration_Change_Template_Reference extends CI_Migration {
 
       $this->db->query("ALTER TABLE `page` CHANGE  `id_template` `template_id` INT( 11 ) NULL DEFAULT NULL");
 
-      $this->db->query("ALTER TABLE `page` ADD FOREIGN KEY (`template_id` ) REFERENCES `template` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION ;");
+      $this->db->query("ALTER TABLE `page` ADD FOREIGN KEY (`template_id` ) REFERENCES `template` (`id`) ON DELETE CASCADE ON UPDATE CASCADE ;");
     }
 
     public function down() {
@@ -13,6 +13,6 @@ class Migration_Change_Template_Reference extends CI_Migration {
 
       $this->db->query("ALTER TABLE `page` CHANGE `template_id` `id_template` INT( 11 ) NULL DEFAULT NULL");
 
-      $this->db->query("ALTER TABLE `page` ADD FOREIGN KEY (`id_template` ) REFERENCES `template` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION ;");
+      $this->db->query("ALTER TABLE `page` ADD FOREIGN KEY (`id_template` ) REFERENCES `template` (`id`) ON DELETE CASCADE ON UPDATE CASCADE ;");
     }
 }

@@ -7,7 +7,7 @@ class Migration_Change_Menu_Items_Structure extends CI_Migration {
 
       $this->db->query("ALTER TABLE  `menu_item` ADD INDEX (  `url_id` )");
 
-      $this->db->query("ALTER TABLE  `menu_item` ADD FOREIGN KEY (  `url_id` ) REFERENCES `url` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;");
+      $this->db->query("ALTER TABLE  `menu_item` ADD FOREIGN KEY (  `url_id` ) REFERENCES `url` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;");
 
       $this->db->query("ALTER TABLE  `menu_item` DROP  `url`");
 
