@@ -43,7 +43,7 @@ class Layout {
          * If not set, it will fill up the array with empty strings
          * 
 	 */
-        function _load_seo_information($loadedData = array(), $type, $id = 0){
+        function _load_seo_information($loadedData = array(), $type = 'page', $id = 0){
             
             $this->obj->load->model('settings_m');
             
