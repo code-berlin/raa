@@ -16,9 +16,11 @@ class Layout {
 	}
 
 	function view($view, $data=null, $return=false){
-            	$loadedData['template_content'] = $this->obj->load->view($view,$data,true);
-                /* load seo information */ 
-                $loadedData = $this->_load_seo_information($loadedData, $data['type'], $data['id']);
+    	$loadedData['template_content'] = $this->obj->load->view($view,$data,true);
+        /* load seo information */ 
+        $loadedData = $this->_load_seo_information($loadedData, $data['type'], $data['id']);
+
+
 		if($return):
 			$output = $this->obj->load->view('layouts/'.$this->layout, $loadedData, true);
 			return $output;
@@ -27,8 +29,10 @@ class Layout {
 		endif;
 	}
 
-        /*
-         * private function _load_seo_information($loadedData)
+
+
+     /*
+     * function _load_seo_information($loadedData)
 	 * @param	$loadedData	the data already initialised by the view function
          * @param       $type   the page / content type type - if no set, the current page is the homepage
          * @param       $id     the id of the page - if set to 0, the current page is the homepage
@@ -43,22 +47,69 @@ class Layout {
             
             $this->obj->load->model('settings_m');
             
-            // homepage
-            if($type=='' && $id == 0){
+            // by default take the generic settings
+            $loadedData['seo_meta_title'] = $this->obj->settings_m->get_seo_meta_title();
+            $loadedData['seo_meta_keywords'] = $this->obj->settings_m->get_seo_meta_keywords();
+            $loadedData['seo_meta_description'] = $this->obj->settings_m->get_seo_meta_description();
+            $loadedData['seo_footer_text'] = $this->obj->settings_m->get_seo_footer_text();
 
-                $loadedData['seo_meta_title'] = $this->obj->settings_m->get_seo_meta_title();
-                $loadedData['seo_meta_keywords'] = $this->obj->settings_m->get_seo_meta_keywords();
-                $loadedData['seo_meta_description'] = $this->obj->settings_m->get_seo_meta_description();
-                $loadedData['seo_footer_text'] = $this->obj->settings_m->get_seo_footer_text();
-                
-            } else {
-                
-                // TODO
+            if($type!=='' && $id !== 0){
+
+                // load the object
+                $this->obj->load->model($type.'_m');
+                $object = $this->obj->{$type.'_m'}->get_by_id($id);
+
+                // some or all specific settings are provided: take the specific settings
+                    if($this->_check_current_seo_settings($object) !== 0){
+
+                        $loadedData['seo_meta_title'] = $object->seo_meta_title;
+                        $loadedData['seo_meta_keywords'] = $object->seo_meta_keywords;
+                        $loadedData['seo_meta_description'] = $object->seo_meta_description;
+                        $loadedData['seo_footer_text'] = $object->seo_footer_text;
+                }
+
                 
             }
             
             return $loadedData;
             
         }
+
+    /*
+     * private _load_seo_information($loadedData)
+     * @param   $object the current object
+     * @return  int   0 : no specific setting - 1: some specific settings - 2: all specific settings
+     * 
+     * The function will check the seo attribute of a generic object and will return an integer (see: above)
+     * 
+     */
+        function _check_current_seo_settings($object){
+
+            if( ($object->seo_meta_title && trim($object->seo_meta_title)!=='') 
+                && 
+                ($object->seo_meta_keywords && trim($object->seo_meta_keywords)!=='') 
+                && 
+                ($object->seo_meta_description && trim($object->seo_meta_description)!=='') 
+                && 
+                ($object->seo_footer_text && trim($object->seo_footer_text)!=='')
+               )  
+            {
+                return 2;
+            }
+            else 
+            if( (!$object->seo_meta_title || trim($object->seo_meta_title)=='') 
+                && 
+                (!$object->seo_meta_keywords || trim($object->seo_meta_keywords)=='') 
+                && 
+                (!$object->seo_meta_description || trim($object->seo_meta_description)=='')
+                && 
+                (!$object->seo_footer_text || trim($object->seo_footer_text)=='')
+              )  
+            {
+                return 0;
+            }
+            else return 1;
+        }
+
 }
 ?>

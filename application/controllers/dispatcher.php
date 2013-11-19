@@ -31,9 +31,17 @@ class Dispatcher extends CI_Controller {
         }
 
         if (!empty($type)) {
+            
+
             $view = (!empty($data[$type]->template)) ? $data[$type]->template->name : 'index';
 
-            $this->load->view($type.'/'.$view, $data);
+            // setting the data type and the id for the layout
+            $data['type'] = $type;
+            $data['id'] = $result->id;
+
+
+            $this->layout->view($type.'/'.$view, $data);
+
         } else {
             $this->load->view('errors/404.html');
         }
