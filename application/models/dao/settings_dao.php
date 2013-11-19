@@ -34,13 +34,23 @@ class Settings_dao extends CI_Model{
         return $settings_bean->email;
     }
 
-    public function get_seo(){
+    public function get_seo_meta_title(){
         $settings_bean = $this->get_settings();
-        return $settings_bean->seo;
+        return $settings_bean->seo_meta_title;
     }
 
-    public function get_keywords(){
+    public function get_seo_meta_keywords(){
         $settings_bean = $this->get_settings();
-        return $settings_bean->keywords;
+        return $settings_bean->seo_meta_keywords;
     }
+
+    public function get_seo_meta_description(){
+        $settings_bean = $this->get_settings();
+        return $settings_bean->seo_meta_description;
+    }
+    
+    public function get_seo_footer_text(){
+        $settings_bean = $this->get_settings();
+        return $settings_bean->seo_footer_text;
+    }    
 }

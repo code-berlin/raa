@@ -49,6 +49,7 @@ class Index extends CI_Controller {
         // Fields sanitation
         $crud->callback_column('slug', array($this, 'link_page'));
 
+        $crud->set_rules('slug','Slug','is_unique[url.slug]');
         $crud->callback_before_insert(array($this, 'before_saving_page'));
         $crud->callback_before_update(array($this, 'before_saving_page'));
 
@@ -80,6 +81,7 @@ class Index extends CI_Controller {
 
         $_POST['content_type_name'] = 'product';
 
+        $crud->set_rules('slug','Slug','is_unique[url.slug]');
         $crud->callback_before_insert(array($this, 'before_saving_content_type'));
         $crud->callback_before_update(array($this, 'before_saving_content_type'));
 

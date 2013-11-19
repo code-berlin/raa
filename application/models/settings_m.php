@@ -19,12 +19,19 @@ class Settings_m extends CI_Model{
         return $this->settings_dao->get_email();
     }
 
-    public function get_seo(){
-        return $this->settings_dao->get_seo();
+    public function get_seo_meta_title(){
+        return $this->settings_dao->get_seo_meta_title();
     }
 
-    public function get_keywords(){
-        return $this->settings_dao->get_keywords();
+    public function get_seo_meta_keywords(){
+        return $this->settings_dao->get_seo_meta_keywords();
     }
+    
+    public function get_seo_meta_description(){
+        return $this->settings_dao->get_seo_meta_description();
+    }    
 
+    public function get_seo_footer_text(){
+        return $this->settings_dao->get_seo_footer_text();
+    }        
 }

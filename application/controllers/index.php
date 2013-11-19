@@ -10,7 +10,7 @@ class Index extends CI_Controller {
 
     public function index()
     {
-       $this->load->view('home/index');
+        $this->layout->view('/templates/homepage_template');
     }
 
     public function load_menu($id_menu, $menu_template){

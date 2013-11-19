@@ -19,6 +19,5 @@ class Migration_Add_Content_To_Types_Table extends CI_Migration {
         $this->db->query("INSERT INTO `type` (`id`, `name`) VALUES
 			(1, 'page'),
 			(2, 'post');");
-
     }
 }
