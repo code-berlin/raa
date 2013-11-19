@@ -18,8 +18,8 @@ class Layout {
 	function view($view, $data=null, $return=false){
     	$loadedData['template_content'] = $this->obj->load->view($view,$data,true);
         /* load seo information */ 
-        $loadedData = $this->_load_seo_information($loadedData, $data['type'], $data['id']);
 
+        $loadedData = $this->_load_seo_information($loadedData, $data['type'], $data['id']);
 
 		if($return):
 			$output = $this->obj->load->view('layouts/'.$this->layout, $loadedData, true);
@@ -43,7 +43,7 @@ class Layout {
          * If not set, it will fill up the array with empty strings
          * 
 	 */
-        function _load_seo_information($loadedData = array(), $type = '', $id = 0){
+        function _load_seo_information($loadedData = array(), $type, $id = 0){
             
             $this->obj->load->model('settings_m');
             
@@ -54,6 +54,8 @@ class Layout {
             $loadedData['seo_footer_text'] = $this->obj->settings_m->get_seo_footer_text();
 
             if($type!=='' && $id !== 0){
+
+                if(!$type) { $type = 'page'; }
 
                 // load the object
                 $this->obj->load->model($type.'_m');
