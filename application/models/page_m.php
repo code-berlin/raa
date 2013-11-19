@@ -16,7 +16,7 @@ class Page_m extends CI_Model {
 		return $this->page_dao->get_by_id($id);
 	}
 
-	function get_by_slug($slug) {
+	function get_by_slug($slug) { 
 		return $this->page_dao->get_by_slug($slug);
 	}
 

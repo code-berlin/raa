@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"widgets",
+				"widgets_containers_m"
+			],
+			[
+				"str_r",
+				"str_replace"
+			],
+			[
 				"inline",
 				"inline-block"
 			],
@@ -16,26 +24,123 @@
 	"buffers":
 	[
 		{
-			"file": "application/controllers/test/settings_tests.php",
+			"contents": "RENAME TABLE  `widgets_container` TO  `widgetscontainer` ;\nRENAME TABLE  `widgets_containers_relation` TO  `widgetscontainersrelation` ;",
 			"settings":
 			{
-				"buffer_size": 2395,
+				"buffer_size": 136,
+				"line_ending": "Windows",
+				"name": "RENAME TABLE  `widgets_container` TO  `widgetscont"
+			}
+		},
+		{
+			"file": "application/models/widgets_containers_m.php",
+			"settings":
+			{
+				"buffer_size": 811,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/controllers/test/page_tests.php",
+			"file": "application/controllers/test/widgets_containers_tests.php",
 			"settings":
 			{
-				"buffer_size": 993,
+				"buffer_size": 1777,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/controllers/test/slug_tests.php",
+			"file": "application/controllers/test/widgets_container_tests.php",
 			"settings":
 			{
-				"buffer_size": 1908,
+				"buffer_size": 970,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/models/widgets_container_m.php",
+			"settings":
+			{
+				"buffer_size": 503,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/helpers/widgets_container_helper.php",
+			"settings":
+			{
+				"buffer_size": 495,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/controllers/page.php",
+			"settings":
+			{
+				"buffer_size": 848,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/views/page/template1.php",
+			"settings":
+			{
+				"buffer_size": 215,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/config/migration.php",
+			"settings":
+			{
+				"buffer_size": 1270,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/views/admin/left_navigation.php",
+			"settings":
+			{
+				"buffer_size": 854,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/controllers/admin/index.php",
+			"settings":
+			{
+				"buffer_size": 6649,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/migrations/007_change_menu_items_structure.php",
+			"settings":
+			{
+				"buffer_size": 1417,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/migrations/013_add_product_table.php",
+			"settings":
+			{
+				"buffer_size": 1544,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/widgets/widget2/index.php",
+			"settings":
+			{
+				"buffer_size": 176,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/widgets/weather/index.php",
+			"settings":
+			{
+				"buffer_size": 325,
 				"line_ending": "Windows"
 			}
 		}
@@ -47,11 +152,11 @@
 		"selected_items":
 		[
 			[
-				"Package Control: install",
+				"install",
 				"Package Control: Install Package"
 			],
 			[
-				"install",
+				"Package Control: install",
 				"Package Control: Install Package"
 			],
 			[
@@ -67,7 +172,7 @@
 				"Package Control: Upgrade/Overwrite All Packages"
 			]
 		],
-		"width": 400.0
+		"width": 416.0
 	},
 	"console":
 	{
@@ -84,9 +189,56 @@
 	},
 	"file_history":
 	[
-		"/C/xampp/htdocs/raacms/application/models/page_m.php",
-		"/C/xampp/htdocs/raacms/application/models/dao/page_dao.php",
+		"/C/xampp/htdocs/raacms/user_guide/installation/upgrade_120.html",
+		"/C/xampp/htdocs/raacms/application/migrations/005_change_template_reference.php",
+		"/C/xampp/htdocs/raacms/application/migrations/012_add_content_to_types_table.php",
+		"/C/xampp/htdocs/raacms/application/migrations/014_rename_widgets_container_containers_table.php",
+		"/C/xampp/htdocs/raacms/application/migrations/015_load_predefined_container.php",
+		"/C/xampp/htdocs/raacms/application/config/database.php",
+		"/C/xampp/htdocs/raacms/application/migrations/014_create_widgets_container_table.php",
+		"/C/xampp/htdocs/raacms/application/migrations/011_create_widgets_containers_relation_table.php",
+		"/C/xampp/htdocs/raacms/application/migrations/010_create_widgets_container_table.php",
+		"/C/xampp/htdocs/raacms/application/migrations/007_change_menu_items_structure.php",
+		"/C/xampp/htdocs/raacms/application/controllers/dispatcher.php",
+		"/C/xampp/htdocs/raacms/application/models/dao/db_dao.php",
+		"/C/xampp/htdocs/raacms/application/models/dao/widgets_containers_dao.php",
+		"/C/xampp/htdocs/raacms/application/models/dao/type_dao.php",
+		"/C/xampp/htdocs/raacms/application/models/type_m.php",
+		"/C/xampp/htdocs/raacms/application/controllers/admin/index.php",
 		"/C/xampp/htdocs/raacms/application/config/routes.php",
+		"/C/xampp/htdocs/raacms/application/models/widget_m.php",
+		"/C/xampp/htdocs/raacms/application/models/dao/widget_dao.php",
+		"/C/xampp/htdocs/raacms/application/controllers/test/widget_tests.php",
+		"/C/xampp/htdocs/raacms/application/helpers/widget_helper.php",
+		"/C/xampp/htdocs/raacms/application/models/dao/widgets_container_dao.php",
+		"/C/xampp/htdocs/raacms/application/models/menu_m.php",
+		"/C/xampp/htdocs/raacms/application/controllers/test/widgets_containers_tests.php",
+		"/C/xampp/htdocs/raacms/application/controllers/test/type_tests.php",
+		"/C/xampp/htdocs/raacms/application/models/url_m.php",
+		"/C/xampp/htdocs/raacms/application/models/dao/page_dao.php",
+		"/C/xampp/htdocs/raacms/application/models/dao/url_dao.php",
+		"/C/xampp/htdocs/raacms/application/controllers/test/slug_tests.php",
+		"/C/xampp/htdocs/raacms/application/models/grocery_widgets_containers_relation_model.php",
+		"/C/xampp/htdocs/raacms/application/views/admin/left_navigation.php",
+		"/C/Users/ehegi/Documents/raacms_password",
+		"/C/xampp/htdocs/raacms/application/controllers/test/widgets_containers_test.php",
+		"/C/xampp/htdocs/raacms/application/models/page_m.php",
+		"/C/xampp/htdocs/raacms/application/controllers/admin/menu.php",
+		"/C/xampp/htdocs/raacms/application/migrations/009_add_content_to_types.php",
+		"/C/xampp/htdocs/raacms/application/css/sass/admin.scss",
+		"/C/xampp/htdocs/raacms/application/migrations/004_add_widget.php",
+		"/C/xampp/htdocs/raacms/application/migrations/003_add_menu.php",
+		"/C/xampp/htdocs/raacms/application/migrations/002_basic_setup.php",
+		"/C/xampp/htdocs/raacms/.gitignore",
+		"/C/xampp/htdocs/raacms/application/config/migration.php",
+		"/C/Users/ehegi/Downloads/widgets_container.sql",
+		"/C/Users/ehegi/Downloads/widgets_containers_relation.sql",
+		"/C/xampp/htdocs/raacms/application/controllers/migrate.php",
+		"/C/xampp/htdocs/raacms/application/controllers/test/page_tests.php",
+		"/C/Users/ehegi/Documents/test.js",
+		"/C/xampp/htdocs/raacms/application/libraries/Grocery_CRUD.php",
+		"/C/xampp/htdocs/raacms/assets/grocery_crud/languages/english.php",
+		"/C/xampp/htdocs/raacms/application/controllers/test/settings_tests.php",
 		"/C/xampp/htdocs/raacms/application/controllers/admin.php",
 		"/C/xampp/htdocs/raacms/application/views/home/page.php",
 		"/C/xampp/htdocs/raacms/application/controllers/home.php",
@@ -106,13 +258,11 @@
 		"/C/xampp/htdocs/n24/trunk/site/application/config/routes.php",
 		"/C/xampp/htdocs/n24/trunk/site/application/controllers/home.php",
 		"/C/xampp/htdocs/raacms/application/views/page_crud.php",
-		"/C/xampp/htdocs/raacms/application/libraries/Grocery_CRUD.php",
 		"/C/xampp/htdocs/raacms/assets/index.html",
 		"/C/Users/ehegi/Downloads/page (1).sql",
 		"/C/Users/ehegi/Downloads/page.sql",
 		"/C/xampp/htdocs/raacms/application/controllers/main.php",
 		"/C/xampp/htdocs/raacms/application/config/config.php",
-		"/C/xampp/htdocs/raacms/application/config/database.php",
 		"/C/xampp/htdocs/raacms/application/index.html",
 		"/C/Users/ehegi/Downloads/FUEL-CMS-master/fuel/application/controllers/contact.php",
 		"/C/Users/ehegi/Downloads/FUEL-CMS-master/fuel/application/third_party/fuel/Loader.php",
@@ -166,52 +316,7 @@
 		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/views/main_news_template.php",
 		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/controllers/test/gallery_tests.php",
 		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/controllers/weather.php",
-		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/models/weather_m.php",
-		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/css/n24/sass/main_360.scss",
-		"/C/xampp/htdocs/n24/branches/NMW-1-2/site/application/.htaccess",
-		"/C/xampp/htdocs/n24/branches/NMW-139_1/site/application/config/config.php",
-		"/C/xampp/htdocs/n24/branches/NMW-139_1/site/application/views/template.php",
-		"/C/xampp/htdocs/n24/branches/NMW-139_1/site/application/models/weather_m.php",
-		"/C/xampp/htdocs/n24/branches/NMW-139_1/site/application/controllers/weather.php",
-		"/C/xampp/htdocs/n24/branches/NMW-139_1/site/application/js/typeahead.js",
-		"/C/xampp/htdocs/n24/branches/NMW-139_1/site/application/css/n24/sass/includes/_weather.scss",
-		"/C/xampp/htdocs/index.php",
-		"/C/xampp/htdocs/n24/branches/NMW-139_1/site/application/views/weather.php",
-		"/C/Users/ehegi/Desktop/typeahead.structure.json",
-		"/C/xampp/htdocs/n24/branches/NMW-139/site/application/css/n24/sass/main_360.scss",
-		"/C/xampp/htdocs/n24/branches/NMW-139/site/application/css/n24/sass/includes/_weather.scss",
-		"/C/Users/ehegi/AppData/Local/Temp/Temp1_typeahead.js.zip/typeahead.js/typeahead.js",
-		"/C/xampp/htdocs/n24/branches/NMW-139/site/application/views/template.php",
-		"/C/xampp/htdocs/n24/branches/NMW-139/site/application/views/weather.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/controllers/weather.php",
-		"/C/Users/ehegi/AppData/Local/Temp/weather.php-rev319.svn002.tmp.php",
-		"/C/xampp/htdocs/n24/branches/NMW-139/site/application/views/weather_detail.php",
-		"/C/xampp/htdocs/n24/branches/NMW-139/site/application/css/n24/sass/main_540.scss",
-		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/css/n24/sass/includes/_weather.scss",
-		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/css/main_320.css",
-		"/C/xampp/htdocs/n24/branches/NMW-139/site/application/controllers/weather.php",
-		"/C/xampp/htdocs/n24/branches/NMW-139/site/application/models/weather_m.php",
-		"/C/xampp/htdocs/n24/branches/NMW-139/site/application/views/footer.php",
-		"/C/xampp/htdocs/n24/branches/NMW-139/site/application/config/config.php",
-		"/C/xampp/htdocs/n24/branches/NMW-199 - Kopie/site/application/css/n24/sass/main_360.scss",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/ads.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/template.php",
-		"/C/xampp/htdocs/n24/branches/NMW-176/site/application/views/ads.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/header.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/models/knowledge_m.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/about_us.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/breaking_news.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/agb.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/contact.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/home.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/index.html",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/knowledge.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/knowledge_detail.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/left_sidebar.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/contact_success.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/main_news_template.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/main_gallery_teaser.php",
-		"/C/xampp/htdocs/n24/trunk/site/application/views/main_videos_teaser.php"
+		"/C/xampp/htdocs/n24/branches/NMW-203/site/application/models/weather_m.php"
 	],
 	"find":
 	{
@@ -222,6 +327,7 @@
 		"height": 90.0,
 		"where_history":
 		[
+			"",
 			"C:\\xampp\\htdocs\\n24\\trunk",
 			"C:\\xampp\\htdocs\\n24\\branches\\NMW-203",
 			"C:\\xampp\\htdocs\\n24\\branches\\NMW-176",
@@ -234,6 +340,20 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"save_slug",
+			"Widgets_container_tests",
+			"delete",
+			"results_array",
+			"post_m",
+			"post_,",
+			"echo_and_die",
+			"function set_echo_and_die",
+			"delete_layout",
+			"set_echo_and_die",
+			"delete_success_message",
+			"Your data has been successfully deleted from the database.",
+			"save_slug",
+			"create",
 			"config",
 			"domain",
 			"link-to-desktop-version",
@@ -346,15 +466,14 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 12,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "application/controllers/test/settings_tests.php",
 					"settings":
 					{
-						"buffer_size": 2395,
+						"buffer_size": 136,
 						"regions":
 						{
 						},
@@ -362,14 +481,13 @@
 						[
 							[
 								0,
-								0
+								136
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"auto_name": "RENAME TABLE  `widgets_container` TO  `widgetscont",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -379,18 +497,18 @@
 				},
 				{
 					"buffer": 1,
-					"file": "application/controllers/test/page_tests.php",
+					"file": "application/models/widgets_containers_m.php",
 					"settings":
 					{
-						"buffer_size": 993,
+						"buffer_size": 811,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								411,
-								411
+								734,
+								734
 							]
 						],
 						"settings":
@@ -406,18 +524,18 @@
 				},
 				{
 					"buffer": 2,
-					"file": "application/controllers/test/slug_tests.php",
+					"file": "application/controllers/test/widgets_containers_tests.php",
 					"settings":
 					{
-						"buffer_size": 1908,
+						"buffer_size": 1777,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1449,
-								1449
+								1556,
+								1556
 							]
 						],
 						"settings":
@@ -426,7 +544,332 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 745.0,
+						"translation.y": 123.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "application/controllers/test/widgets_container_tests.php",
+					"settings":
+					{
+						"buffer_size": 970,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								861,
+								861
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "application/models/widgets_container_m.php",
+					"settings":
+					{
+						"buffer_size": 503,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								413,
+								413
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "application/helpers/widgets_container_helper.php",
+					"settings":
+					{
+						"buffer_size": 495,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								327,
+								327
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "application/controllers/page.php",
+					"settings":
+					{
+						"buffer_size": 848,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								437,
+								437
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "application/views/page/template1.php",
+					"settings":
+					{
+						"buffer_size": 215,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								215,
+								215
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "application/config/migration.php",
+					"settings":
+					{
+						"buffer_size": 1270,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								772,
+								772
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "application/views/admin/left_navigation.php",
+					"settings":
+					{
+						"buffer_size": 854,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								533,
+								533
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "application/controllers/admin/index.php",
+					"settings":
+					{
+						"buffer_size": 6649,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5118,
+								5118
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3424.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "application/migrations/007_change_menu_items_structure.php",
+					"settings":
+					{
+						"buffer_size": 1417,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								564,
+								564
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "application/migrations/013_add_product_table.php",
+					"settings":
+					{
+						"buffer_size": 1544,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								954,
+								954
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "application/widgets/widget2/index.php",
+					"settings":
+					{
+						"buffer_size": 176,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								23,
+								23
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "application/widgets/weather/index.php",
+					"settings":
+					{
+						"buffer_size": 325,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								23,
+								23
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -464,7 +907,7 @@
 			1.0
 		]
 	},
-	"menu_visible": true,
+	"menu_visible": false,
 	"replace":
 	{
 		"height": 62.0
@@ -476,6 +919,270 @@
 		"selected_items":
 		[
 			[
+				"weather",
+				"application/widgets/weather/index.php"
+			],
+			[
+				"widget2",
+				"application/widgets/widget2/index.php"
+			],
+			[
+				"013",
+				"application/migrations/013_add_product_table.php"
+			],
+			[
+				"007",
+				"application/migrations/007_change_menu_items_structure.php"
+			],
+			[
+				"012",
+				"application/migrations/012_add_content_to_types_table.php"
+			],
+			[
+				"12",
+				"user_guide/installation/upgrade_120.html"
+			],
+			[
+				"05",
+				"application/migrations/005_change_template_reference.php"
+			],
+			[
+				"controllersadmiindex",
+				"application/controllers/admin/index.php"
+			],
+			[
+				"migration",
+				"application/config/migration.php"
+			],
+			[
+				"left",
+				"application/views/admin/left_navigation.php"
+			],
+			[
+				"014",
+				"application/migrations/014_rename_widgets_container_containers_table.php"
+			],
+			[
+				"010",
+				"application/migrations/010_create_widgets_container_table.php"
+			],
+			[
+				"011",
+				"application/migrations/011_create_widgets_containers_relation_table.php"
+			],
+			[
+				"00",
+				"application/migrations/007_change_menu_items_structure.php"
+			],
+			[
+				"dispatcher",
+				"application/controllers/dispatcher.php"
+			],
+			[
+				"dbdao",
+				"application/models/dao/db_dao.php"
+			],
+			[
+				"widgetscontainers",
+				"application/models/dao/widgets_containers_dao.php"
+			],
+			[
+				"widgetscontainersdao",
+				"application/models/dao/widgets_containers_dao.php"
+			],
+			[
+				"widgets_container",
+				"application/models/widgets_containers_m.php"
+			],
+			[
+				"db_dao",
+				"application/models/dao/db_dao.php"
+			],
+			[
+				"controllerindex",
+				"application/controllers/admin/index.php"
+			],
+			[
+				"type_dao",
+				"application/models/dao/type_dao.php"
+			],
+			[
+				"type_m",
+				"application/models/type_m.php"
+			],
+			[
+				"widgetscontainertests",
+				"application/controllers/test/widgets_container_tests.php"
+			],
+			[
+				"dispa",
+				"application/controllers/dispatcher.php"
+			],
+			[
+				"routes",
+				"application/config/routes.php"
+			],
+			[
+				"controllerpage",
+				"application/controllers/page.php"
+			],
+			[
+				"helperwidget",
+				"application/helpers/widget_helper.php"
+			],
+			[
+				"widget_tests",
+				"application/controllers/test/widget_tests.php"
+			],
+			[
+				"widget_dao",
+				"application/models/dao/widget_dao.php"
+			],
+			[
+				"widget_m",
+				"application/models/widget_m.php"
+			],
+			[
+				"menu_m",
+				"application/models/menu_m.php"
+			],
+			[
+				"widgets",
+				"application/controllers/test/widgets_containers_tests.php"
+			],
+			[
+				"type",
+				"application/controllers/test/type_tests.php"
+			],
+			[
+				"slug_tests",
+				"application/controllers/test/slug_tests.php"
+			],
+			[
+				"url_m",
+				"application/models/url_m.php"
+			],
+			[
+				"urldao",
+				"application/models/dao/url_dao.php"
+			],
+			[
+				"dao",
+				"application/models/dao/page_dao.php"
+			],
+			[
+				"database",
+				"application/config/database.php"
+			],
+			[
+				"tests",
+				"application/controllers/test/widgets_containers_tests.php"
+			],
+			[
+				"apgedao",
+				"application/models/dao/page_dao.php"
+			],
+			[
+				"page",
+				"application/models/page_m.php"
+			],
+			[
+				"controllermenu",
+				"application/controllers/admin/menu.php"
+			],
+			[
+				"09",
+				"application/migrations/009_add_content_to_types.php"
+			],
+			[
+				"adminscss",
+				"application/css/sass/admin.scss"
+			],
+			[
+				"02",
+				"application/migrations/002_basic_setup.php"
+			],
+			[
+				"03",
+				"application/migrations/003_add_menu.php"
+			],
+			[
+				"04",
+				"application/migrations/004_add_widget.php"
+			],
+			[
+				"page_dao",
+				"application/models/dao/page_dao.php"
+			],
+			[
+				"slugte",
+				"application/controllers/test/slug_tests.php"
+			],
+			[
+				"slugtests",
+				"application/controllers/test/slug_tests.php"
+			],
+			[
+				"route",
+				"application/config/routes.php"
+			],
+			[
+				"009",
+				"application/migrations/009_add_content_to_types.php"
+			],
+			[
+				"gitignore",
+				".gitignore"
+			],
+			[
+				"database.php",
+				"application/config/database.php"
+			],
+			[
+				"template1",
+				"application/views/page/template1.php"
+			],
+			[
+				"controllermigrate",
+				"application/controllers/migrate.php"
+			],
+			[
+				"template1.php",
+				"application/views/page/template1.php"
+			],
+			[
+				"type_tests",
+				"application/controllers/test/type_tests.php"
+			],
+			[
+				"widget",
+				"application/models/dao/widget_dao.php"
+			],
+			[
+				"widgettets",
+				"application/controllers/test/widget_tests.php"
+			],
+			[
+				"pagetests",
+				"application/controllers/test/page_tests.php"
+			],
+			[
+				"adminindex",
+				"application/controllers/admin/index.php"
+			],
+			[
+				"url_dao.php",
+				"application/models/dao/url_dao.php"
+			],
+			[
+				"page_tests",
+				"application/controllers/test/page_tests.php"
+			],
+			[
+				"page_m",
+				"application/models/page_m.php"
+			],
+			[
 				"slug",
 				"application/controllers/test/slug_tests.php"
 			],
@@ -484,28 +1191,12 @@
 				"application/models/dao/page_dao.php"
 			],
 			[
-				"page",
-				"application/models/page_m.php"
-			],
-			[
 				"settings_tests",
 				"application/controllers/test/settings_tests.php"
 			],
 			[
-				"page_tests",
-				"application/controllers/test/page_tests.php"
-			],
-			[
-				"route",
-				"application/config/routes.php"
-			],
-			[
 				"admin",
 				"application/controllers/admin.php"
-			],
-			[
-				"page_m",
-				"application/models/page_m.php"
 			],
 			[
 				"page_model",
@@ -524,10 +1215,6 @@
 				"application/controllers/home.php"
 			],
 			[
-				"routes",
-				"application/config/routes.php"
-			],
-			[
 				"grocery",
 				"application/libraries/Grocery_CRUD.php"
 			],
@@ -542,10 +1229,6 @@
 			[
 				"main.php",
 				"application/controllers/main.php"
-			],
-			[
-				"database.php",
-				"application/config/database.php"
 			],
 			[
 				"index",
@@ -630,10 +1313,6 @@
 			[
 				"weather_sugge",
 				"views/weather_suggestion_dropdown.php"
-			],
-			[
-				"weather",
-				"views/weather_detail.php"
 			],
 			[
 				"weather.php",

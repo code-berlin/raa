@@ -1,6 +1,5 @@
 <p><?php echo $page->title ?></p>
 
-<?php 
+<?php
 content_types_get_list('product');
 ?>
-

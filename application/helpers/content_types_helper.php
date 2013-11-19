@@ -9,7 +9,7 @@
 		if(!empty($list_elements) && is_array($list_elements)){
 
 			foreach($list_elements as $list_element){
-				
+
 				$data['object'] = $list_element;
 				$CI->load->view('content_types/'.$content_type_name.'_list_item', $data);
 			}
