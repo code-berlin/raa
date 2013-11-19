@@ -51,8 +51,6 @@ class Settings_tests extends Basic_tests
         $this->_assert_equals($settings->email,$result->email);
         $this->_assert_equals($settings->seo,$result->seo);
         $this->_assert_equals($settings->keywords,$result->keywords);
-
-
     }
 
     function test_get_blog_title(){
@@ -66,29 +64,41 @@ class Settings_tests extends Basic_tests
         $settings = $this->settings;
         $result = $this->settings_m->get_email();
         $this->_assert_equals($settings->email, $result);
-
     }
 
-    function test_get_seo(){
+    function test_get_seo_meta_title(){
         $settings = $this->settings;
-        $result = $this->settings_m->get_seo();
-        $this->_assert_equals($settings->seo, $result);
-
+        $result = $this->settings_m->get_seo_meta_title();
+        $this->_assert_equals($settings->seo_meta_title, $result);
     }
 
-    function test_get_keywords(){
+    function test_get_seo_meta_keywords(){
         $settings = $this->settings;
-        $result = $this->settings_m->get_keywords();
-        $this->_assert_equals($settings->keywords, $result);
+        $result = $this->settings_m->get_seo_meta_keywords();
+        $this->_assert_equals($settings->seo_meta_keywords, $result);
     }
+    
+    function test_get_seo_meta_description(){
+        $settings = $this->settings;
+        $result = $this->settings_m->get_seo_meta_description();
+        $this->_assert_equals($settings->seo_meta_description, $result);
+    }    
+    
+    function test_get_seo_footer_text(){
+        $settings = $this->settings;
+        $result = $this->settings_m->get_seo_footer_text();
+        $this->_assert_equals($settings->seo_footer_text, $result);
+    }        
 
     private function add_settings_fields(){
 
         $settings = R::dispense('settings');
         $settings->blog_title = "test_title";
         $settings->email = "test@settings.org";
-        $settings->seo = "seo_tests";
-        $settings->keywords = "i'm keywords";
+        $settings->seo_meta_title = "seo_meta_title";
+        $settings->seo_meta_keywords = "seo_meta_keywords";
+        $settings->get_seo_meta_description = "seo_meta_descriptino";
+        $settings->seo_footer_text = "seo_footer_text";
 
         $id = R::store($settings);
         return $settings;
