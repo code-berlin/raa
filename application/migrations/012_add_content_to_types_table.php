@@ -20,7 +20,7 @@ class Migration_Add_Content_To_Types_Table extends CI_Migration {
       	$this->db->query("INSERT INTO `type` (`id`, `name`) VALUES
 			(1, 'page'),
 			(2, 'post');");
-      	$this->db->query("ALTER TABLE `url` ADD INDEX `id_type` (`type_id`)");
+      $this->db->query("ALTER TABLE `url` ADD INDEX `id_type` (`type_id`)");
 		$this->db->query('ALTER TABLE `url` ADD CONSTRAINT `url_ibfk_1` FOREIGN KEY (`type_id`) REFERENCES `type` (`id`);');
     }
 }
