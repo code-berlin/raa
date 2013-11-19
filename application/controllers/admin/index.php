@@ -49,9 +49,9 @@ class Index extends CI_Controller {
         // Fields sanitation
         $crud->callback_column('slug', array($this, 'link_page'));
 
-        $crud->set_rules('slug','Slug','is_unique[url.slug]');
         $crud->callback_before_insert(array($this, 'before_saving_page'));
         $crud->callback_before_update(array($this, 'before_saving_page'));
+        $crud->callback_before_delete(array($this, 'before_deleting_page'));
 
         $this->load->view('admin/admin', $crud->render());
     }
@@ -68,7 +68,6 @@ class Index extends CI_Controller {
 
         $this->load->view('admin/admin', $crud->render());
     }
-
 
     /**
     *   Handles the product CRUD.
@@ -87,7 +86,6 @@ class Index extends CI_Controller {
 
         $this->load->view('admin/admin', $crud->render());
     }
-
 
     /**
     *   Handles the widget CRUD.
@@ -176,12 +174,6 @@ class Index extends CI_Controller {
         $this->load->view('admin/admin', $crud->render());
     }
 
-    /* this doesn't work - check it later */
-    // public function _hide_add_button($primary_key)
-    // {
-    //     echo "<script>alert('Talk to me!!!!!');</script>";
-    // }
-
     // Utility functions for Grocery CRUD
 
     /**
@@ -194,17 +186,50 @@ class Index extends CI_Controller {
     public function before_saving_page($post) {
         $this->load->model('type_m');
         $this->load->model('url_m');
+        $this->load->model('page_m');
 
+        // Transform special characters on dashes
         $post['slug'] = $this->url_m->sluggify($post['slug']);
-        $post['date'] = $this->set_datetime();
 
-        $page_id = (!empty($post['id'])) ? $post['id'] : 0;
+        // If we are editing, search for other pages with same slug
+        if (!empty($post['id'])) {
+            $page_id = $post['id'];
+
+            $page = $this->page_m->get_by_slug($post['slug']);
+        } else {
+            $page_id = 0;
+        }
+
+        // Check if current slug exists
+        $slugs = $this->url_m->get_by_slug($post['slug']);
+
+        // When current slug exists and is not the one on our page, make it unique
+        if ($slugs != NULL) {
+            if (empty($post['id']) || (!empty($post['id']) && !empty($page->id) && $page->id != $post['id'])) {
+                $post['slug'] = $post['slug'].'-'.uniqid();
+            }
+        }
+
+        $post['date'] = $this->set_datetime();
 
         $this->type_m->save_slug('page', $post['slug'], $page_id);
 
         return $post;
     }
 
+    public function before_deleting_page($id) {
+        /*
+        * Remove slug from list when deleting page
+        */
+        $this->load->model('url_m');
+        $this->load->model('page_m');
+
+        $page = $this->page_m->get_by_id($id);
+
+        $slug = $this->url_m->get_by_slug($page->slug);
+
+        $this->url_m->remove($slug);
+    }
 
     /**
     *   Checks page information before it's stored in the database.
