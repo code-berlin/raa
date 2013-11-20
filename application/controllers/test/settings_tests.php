@@ -43,7 +43,7 @@ class Settings_tests extends Basic_tests
     }
 
 
-    //begin tests
+    //test basic fields getters
     function test_get_settings()
     {
         $settings = $this->settings;
@@ -91,6 +91,7 @@ class Settings_tests extends Basic_tests
         $this->_assert_equals($settings->seo_footer_text, $result);
     }        
 
+    //adds a testbean
     private function add_settings_fields(){
 
         $settings = R::dispense('settings');
