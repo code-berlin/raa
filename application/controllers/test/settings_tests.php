@@ -43,6 +43,7 @@ class Settings_tests extends Basic_tests
     }
 
 
+    //test
     function test_get_settings()
     {
         $settings = $this->settings;
