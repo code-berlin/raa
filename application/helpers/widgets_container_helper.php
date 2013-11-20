@@ -11,8 +11,10 @@
 
 		$widgets_container = $CI->widgets_containers_m->get_all_by_widgets_container_name_ordered_by_position($name);
 
-		foreach ($widgets_container as $container) {
-			load_widget($container->widget->widgetname);
+		if (!empty($widgets_container)) {
+			foreach ($widgets_container as $container) {
+				load_widget($container->widget->widgetname);
+			}
 		}
 	}
 

@@ -6,5 +6,3 @@
 
 <!-- Load predefined container -->
 <?php widgets_container_load('Container'); ?>
-
-
