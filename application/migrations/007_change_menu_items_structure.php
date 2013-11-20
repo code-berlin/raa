@@ -27,6 +27,7 @@ class Migration_Change_Menu_Items_Structure extends CI_Migration {
 
       $this->db->query("ALTER TABLE  `menu_item` ADD  `url` VARCHAR( 255 ) NOT NULL AFTER  `slug`");
 
-      $this->db->query("DELETE FROM `template`");
+      $this->db->query("DELETE FROM `template` WHERE `template`.`name` = 'template1';");
+      $this->db->query("DELETE FROM `template` WHERE `template`.`name` = 'template2';");
     }
 }
