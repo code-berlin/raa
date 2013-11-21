@@ -1,6 +1,14 @@
 <?php
-class Migration_Add_Menu extends CI_Migration {
-    public function up() {
+require_once(APPPATH . 'migrations/basic_migration.php');
+class Migration_Add_Menu extends Basic_migration {
+
+    function __construct()
+    {
+        parent::__construct();
+        $this->filename =  __FILE__;
+    }
+
+    public function mig_up() {
       $this->db->query('CREATE TABLE IF NOT EXISTS `menu` (
                         `id` int(11) NOT NULL AUTO_INCREMENT,
                         `name` varchar(255) NOT NULL,
@@ -18,7 +26,7 @@ class Migration_Add_Menu extends CI_Migration {
                       ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;');
     }
 
-    public function down() {
+    public function mig_down() {
         $this->dbforge->drop_table('menu');
         $this->dbforge->drop_table('menu_item');
     }

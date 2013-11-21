@@ -1,6 +1,14 @@
 <?php
-class Migration_Basic_Setup extends CI_Migration {
-    public function up() {
+require_once(APPPATH . 'migrations/basic_migration.php');
+class Migration_Basic_Setup extends Basic_migration {
+
+    function __construct()
+    {
+        parent::__construct();
+        $this->filename =  __FILE__;
+    }
+
+    public function mig_up() {
         $this->db->query('CREATE TABLE IF NOT EXISTS `page` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `id_template` int(11) DEFAULT NULL,
@@ -42,7 +50,7 @@ class Migration_Basic_Setup extends CI_Migration {
 
     }
 
-    public function down() {
+    public function mig_down() {
         $this->dbforge->drop_table('page');
         $this->dbforge->drop_table('template');
         $this->dbforge->drop_table('url');

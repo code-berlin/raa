@@ -1,6 +1,12 @@
 <?php
-class Migration_Change_Menu_Items_Structure extends CI_Migration {
-    public function up() {
+require_once(APPPATH . 'migrations/basic_migration.php');
+class Migration_Change_Menu_Items_Structure extends Basic_migration {
+    function __construct()
+    {
+        parent::__construct();
+        $this->filename =  __FILE__;
+    }
+    public function mig_up() {
       $this->db->query("ALTER TABLE  `menu_item` CHANGE  `slug`  `url_id` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL");
 
       $this->db->query("ALTER TABLE  `menu_item` CHANGE  `url_id`  `url_id` INT( 11 ) NULL");
@@ -16,7 +22,7 @@ class Migration_Change_Menu_Items_Structure extends CI_Migration {
       $this->db->query("INSERT INTO `template` (`name`) VALUES ('template1'), ('template2');");
     }
 
-    public function down() {
+    public function mig_down() {
       $this->db->query("ALTER TABLE `menu_item` DROP FOREIGN KEY  `menu_item_ibfk_1` ");
 
       $this->db->query("ALTER TABLE  `menu_item` DROP INDEX  `url_id`");

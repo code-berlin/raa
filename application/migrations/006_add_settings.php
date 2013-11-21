@@ -1,6 +1,12 @@
 <?php
-class Migration_Add_Settings extends CI_Migration {
-    public function up() {
+require_once(APPPATH . 'migrations/basic_migration.php');
+class Migration_Add_Settings extends Basic_migration {
+    function __construct()
+    {
+        parent::__construct();
+        $this->filename =  __FILE__;
+    }
+    public function mig_up() {
         $this->db->query("CREATE TABLE IF NOT EXISTS `settings` (
                             `id` int(11) NOT NULL AUTO_INCREMENT,
                             `blog_title` varchar(255) NOT NULL,
@@ -13,7 +19,7 @@ class Migration_Add_Settings extends CI_Migration {
 
     }
 
-    public function down() {
+    public function mig_down() {
         $this->dbforge->drop_table('settings');
     }
 }
