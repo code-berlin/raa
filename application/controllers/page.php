@@ -22,7 +22,14 @@ class Page extends CI_Controller {
         $item = $this->page_m->get_by_id($id);
 
         if($item->id > 0 && $item->slug!='') { 
-            redirect(base_url($item->slug), 'location', 301);
+            if ($item->published)
+            {
+                redirect(base_url($item->slug), 'location', 301);
+            }
+            else
+            {
+                $this->load->view('errors/404.html');
+            }
         } else {
             $data['page'] = $item;
         }
@@ -31,8 +38,6 @@ class Page extends CI_Controller {
             $view = (!empty($data['page']->template)) ? $data['page']->template->name : 'index';
 
             $this->load->view('page/'.$view, $data);
-        } else {
-            $this->load->view('errors/404.html');
         }
     }
 }
