@@ -1,7 +1,13 @@
 <?php
-class Migration_Add_Seo_Metainformation_Fields_Page_And_Content_Types extends CI_Migration {
+require_once(APPPATH . 'migrations/basic_migration.php');
+class Migration_Add_Seo_Metainformation_Fields_Page_And_Content_Types extends Basic_migration {
+    function __construct()
+    {
+        parent::__construct();
+        $this->filename =  __FILE__;
+    }
 
-    public function up() {
+    public function mig_up() {
 
       /* pages */
       $this->db->query("ALTER TABLE `page` ADD `seo_meta_keywords` VARCHAR( 512 ) NULL");
@@ -18,7 +24,7 @@ class Migration_Add_Seo_Metainformation_Fields_Page_And_Content_Types extends CI
         
     }
 
-    public function down() {
+    public function mig_down() {
       
       /* pages */      
       $this->db->query("ALTER TABLE `page` DROP `seo_meta_keywords`");

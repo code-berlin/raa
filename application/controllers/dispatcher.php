@@ -9,6 +9,7 @@ class Dispatcher extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('widget');
         $this->load->helper('widgets_container');
+        $this->load->helper('published');
     }
 
     public function index($slug)
@@ -20,7 +21,9 @@ class Dispatcher extends CI_Controller {
         // Retrieve object type related to this slug
         $result = $this->url_m->get_by_slug($slug);
 
-        if(!empty($result)) {
+        $published = check_if_published($result, $slug);
+
+        if(!empty($result) && $published) {
             $type = $result->type->name;
             $model_type = $type.'_m';
 
@@ -28,6 +31,10 @@ class Dispatcher extends CI_Controller {
 
             // It's important for each class to have this method
             $data[$type] = $this->$model_type->get_by_slug($slug);
+        }
+        else
+        {
+            $this->load->view('errors/404.html');
         }
 
         if (!empty($type)) {
@@ -42,8 +49,6 @@ class Dispatcher extends CI_Controller {
 
             $this->layout->view($type.'/'.$view, $data);
 
-        } else {
-            $this->load->view('errors/404.html');
         }
     }
 }

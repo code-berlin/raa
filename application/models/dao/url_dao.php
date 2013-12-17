@@ -13,7 +13,8 @@ class Url_dao extends DB_dao {
 
 	public function get_by_slug($slug) {
 
-		$url = R::findOne($this->table, 'slug = :slug',
+		$url = R::findOne($this->table,
+			'slug = :slug',
 			array(':slug' => $slug));
 
 		if (!empty($url)) {

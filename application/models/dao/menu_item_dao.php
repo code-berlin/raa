@@ -9,8 +9,6 @@ class Menu_item_dao extends CI_Model{
 		parent::__construct();
 
 		$this->table = 'menu_item';
-
-		$this->load->library('rb');
 	}
 
 	public function get_by_menu_id($id) {
@@ -19,5 +17,21 @@ class Menu_item_dao extends CI_Model{
 		R::preload($menu_items, array('url')); // Related types
 
 		return $menu_items;
+	}
+
+	public function check_if_published($id) {
+
+		$item = R::load('menu', $id);
+
+		if ($item)
+		{
+			$published_state = $item->published;
+		}
+		else
+		{
+			$published_state = NULL;
+		}
+
+		return $published_state;
 	}
 }

@@ -1,6 +1,12 @@
 <?php
-class Migration_Create_Widgets_Containers_Relation_Table extends CI_Migration {
-    public function up() {
+require_once(APPPATH . 'migrations/basic_migration.php');
+class Migration_Create_Widgets_Containers_Relation_Table extends Basic_migration {
+    function __construct()
+    {
+        parent::__construct();
+        $this->filename =  __FILE__;
+    }
+    public function mig_up() {
       $this->db->query("CREATE TABLE IF NOT EXISTS `widgets_containers_relation` (
                         `id` int(11) NOT NULL AUTO_INCREMENT,
                         `widget_id` int(11) NOT NULL,
@@ -15,7 +21,7 @@ class Migration_Create_Widgets_Containers_Relation_Table extends CI_Migration {
       $this->db->query("ALTER TABLE `widgets_containers_relation` ADD FOREIGN KEY ( `widgets_container_id` ) REFERENCES `widgets_container` (`id`) ON DELETE CASCADE ON UPDATE CASCADE ;");
     }
 
-    public function down() {
+    public function mig_down() {
       $this->db->query("DROP TABLE widgets_containers_relation");
     }
 }

@@ -1,6 +1,12 @@
 <?php
-class Migration_Add_Product_Table extends CI_Migration {
-    public function up() {
+require_once(APPPATH . 'migrations/basic_migration.php');
+class Migration_Add_Product_Table extends Basic_migration {
+    function __construct()
+    {
+        parent::__construct();
+        $this->filename =  __FILE__;
+    }
+    public function mig_up() {
       $this->db->query('CREATE TABLE IF NOT EXISTS `product` (
                         `id` int(11) NOT NULL AUTO_INCREMENT,
                         `name` varchar(255) NOT NULL,
@@ -22,7 +28,7 @@ class Migration_Add_Product_Table extends CI_Migration {
 
     }
 
-    public function down() {
+    public function mig_down() {
         $this->dbforge->drop_table('product');
         $this->db->query("delete from `type` where `id` = 4;");
         $this->db->query("delete from `template` where `id` = 3;");
