@@ -1,3 +1,4 @@
+<?php $CI =& get_instance();?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" >
     <head>
@@ -10,6 +11,13 @@
       
     </head>
     <body>
+      <h1>This is the proof we are now using templates</h1>
+        <div class="row">
+            <div>
+                Main Menu <br />
+                <?php $CI->load_menu(1, 'horizontal_1'); ?>
+            </div>
+        </div>
         <div id="pagewidth" >
               <?php echo $template_content ?>
         </div>
