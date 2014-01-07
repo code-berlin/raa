@@ -29,7 +29,9 @@ class Migration_Add_Role_Table extends Basic_migration {
     }
 
     public function mig_down() {
+
         $this->dbforge->drop_table('role');
         $this->db->query("delete from `user` where `id` = 2;");
+        $this->db->query("ALTER TABLE `user` DROP `id_role`");
     }
 }
