@@ -1,5 +1,9 @@
 <div class="admin-left">
     <ul class="left-navigation-items nav nav-list">
+        <li class="nav-header">Users / Permissions</li>
+        <li>
+            <a href='<?php echo site_url('admin/user')?>'>Users</a>
+        </li>
         <li class="nav-header">Pages</li>
         <li>
             <a href='<?php echo site_url('admin/page')?>'>Pages</a>

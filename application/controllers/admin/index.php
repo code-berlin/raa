@@ -87,6 +87,28 @@ class Index extends CI_Controller {
         $this->load->view('admin/admin', $crud->render());
     }
 
+
+    /**
+    *   Handles the user CRUD.
+    */
+    public function user()
+    {
+        $crud = $this->grocery_crud;
+
+        $crud->set_table('user');
+        $crud->columns('username','role_id');
+        $crud->set_relation('role_id','role','title');
+
+        $_POST['content_type_name'] = 'user';
+
+        $crud->set_rules('email','Email','is_unique[user.email]');
+        $crud->callback_before_insert(array($this, 'before_saving_content_type'));
+        $crud->callback_before_update(array($this, 'before_saving_content_type'));
+
+        $this->load->view('admin/admin', $crud->render());
+    }
+
+
     /**
     *   Handles the widget CRUD.
     */
