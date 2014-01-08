@@ -20,6 +20,7 @@ class Migration_Add_Role_Table extends Basic_migration {
         $this->db->query("INSERT INTO `role` (`id`, `title`, `description`) VALUES (3, 'editor', 'An editor can CRUD contents');");
 
         $this->db->query("ALTER TABLE `user` ADD `id_role` int(11) NOT NULL;");
+        $this->db->query("ALTER TABLE `user` ADD `name` varchar(255) DEFAULT NULL;");        
 
         $this->db->query("INSERT INTO `user` (`id`, `username`, `password`, `id_role`) VALUES (2, 'superadmin@code-b.com', 'b5edbafd026b773a7eb36d9b42b1bd6a952ddfdd', 1);");
 

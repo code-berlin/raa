@@ -15,7 +15,7 @@
 		public function verify_user($username, $password)
 		{	
 
-			$user = R::findOne('user', 'username = :username and password = :password', array(':username' => $username,':password' => sha1($password)));
+			$user = R::findOne('user', 'username = :username and password = :password', array(':username' => $username,':password' => $this->encrypt->sha1($password)));
 
 			//check if the user authentication passed and the user is not disabled
 			if ($user !== null)
