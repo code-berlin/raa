@@ -15,14 +15,28 @@
 		public function verify_user($username, $password)
 		{	
 
-			$get_user = R::findOne('user', 'username = :username and password = :password', array(':username' => $username,':password' => sha1($password)));
+			$user = R::findOne('user', 'username = :username and password = :password', array(':username' => $username,':password' => $this->encrypt->sha1($password)));
 
-			if ($get_user !== null)
+			//check if the user authentication passed and the user is not disabled
+			if ($user !== null)
 			{
-				return $get_user;
+				return $user;
 			}
+			
 			return false;
 
+		}
+
+		public function is_disabled($username)
+		{
+			$user = R::findOne('user', 'username = :username', array(':username' => $username));
+			$status = intval($user->disabled);
+			
+			if($status !== 0) {
+				return true;
+			}
+
+			return false;
 		}
 	}
 
