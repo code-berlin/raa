@@ -4,7 +4,7 @@ require_once(APPPATH . 'controllers/test/basic_tests.php');
 
 class Type_tests_extended extends Basic_tests
 {
-    function Type_tests() {
+    function Type_tests_extended() {
         parent::Toast(__FILE__);
         $this->minimal_db_version = 12;
     }

@@ -108,6 +108,64 @@ class Index extends CI_Controller {
         $this->load->view('admin/admin', $crud->render());
     }
 
+    /**
+    *   Handles the roles CRUD.
+    */
+    public function role()
+    {
+        $crud = $this->grocery_crud;
+
+        $crud->set_table('role');
+
+        $crud->unset_export();
+        $crud->unset_print();
+        $crud->unset_read();
+
+        $crud->columns('title', 'description');
+        $crud->fields('title', 'description', 'permissions');
+
+        $crud->callback_field('permissions', array($this, 'permissions_list'));
+
+        $crud->callback_before_insert(array($this, 'before_saving_role'));
+        $crud->callback_before_update(array($this, 'before_saving_role'));
+
+        $this->load->view('admin/admin', $crud->render());
+    }
+
+    public function permissions_list($value, $pk) {
+        $this->load->model('role_permission_m');
+        $this->load->model('permission_m');
+
+        $permissions = $this->permission_m->get_all();
+
+        $checkboxes = '<ul>';
+
+        //var_dump($this->role_permission_m->get_by_role($pk));
+
+        foreach ($permissions as $permission) {
+            $checkboxes .='<li><input type="checkbox" name="permission[]" value="'.$permission->id.'">'.$permission->name.'</li>';
+        }
+
+        $checkboxes .= '</ul>';
+
+        return $checkboxes;
+    }
+    /**
+    *   Handles the permission CRUD.
+    */
+    public function permission()
+    {
+        $crud = $this->grocery_crud;
+
+        $crud->set_table('permission');
+        $crud->columns('name');
+
+        $crud->unset_export();
+        $crud->unset_print();
+        $crud->unset_read();
+
+        $this->load->view('admin/admin', $crud->render());
+    }
 
     /**
     *   Handles the widget CRUD.
@@ -283,6 +341,17 @@ class Index extends CI_Controller {
         $post['created'] = $this->set_datetime();
 
         return $post;
+    }
+
+    /**
+    *   Checks roles and permissions before storing information
+    */
+    public function before_saving_role($post) {
+        echo '<pre>';
+        var_dump($post);
+        echo '</pre>';
+        die;
+        //return $post;
     }
 
     /**
