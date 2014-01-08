@@ -19,4 +19,17 @@ class User_dao extends DB_dao {
 
 		return $user;
 	}
+
+	public function create() {
+		return R::dispense($this->table);
+	}
+
+	public function save($user) {
+		return R::store($user);
+	}
+
+	public function remove($user) {
+		return R::trash($user);
+	}
+
 }

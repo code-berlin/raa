@@ -12,16 +12,16 @@ class User_m extends CI_Model {
 		return $this->user_dao->get_by_username($username);
 	}
 
-	public function save($url) {
-		return $this->user_dao->save($url);
+	public function save($user) {
+		return $this->user_dao->save($user);
 	}
 
 	public function create() {
 		return $this->user_dao->create();
 	}
 
-	public function remove($url) {
-		return $this->user_dao->remove($url);
+	public function remove($user) {
+		return $this->user_dao->remove($user);
 	}
 
 }
