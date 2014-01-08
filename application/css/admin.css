@@ -49,9 +49,8 @@ ul.permissions_list {
   color: #444;
   list-style-type: none;
   font-size: 12px;
-  line-height: 16px;
+  line-height: 14px;
   vertical-align: top;
-  text-transform: lowercase;
 }
 
 /* line 45, sass/admin.scss */
