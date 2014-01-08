@@ -34,7 +34,14 @@
     <?php echo form_close(); ?>
 
     <div class="errors" style="color: red;">
-        <?php echo validation_errors(); ?>
+        <?php
+            echo validation_errors();
+
+            if (isset($disabled_message) && !empty($disabled_message))
+            {
+                echo $disabled_message;
+            }
+        ?>
     </div>
     <script src="<?php echo site_url('assets/bootstrap/js/bootstrap.min.js')?>"></script>
  
