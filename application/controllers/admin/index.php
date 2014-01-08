@@ -2,12 +2,14 @@
 
 class Index extends CI_Controller {
 
+    var $user_role;
+
     function __construct()
     {
         parent::__construct();
         $this->check_auth();
         $this->check_if_disabled();
-        $this->load->library('grocery_CRUD');
+        $this->user_role = $this->auth_l->retrieve_user_role();
     }
 
     public function check_auth()
@@ -121,6 +123,76 @@ class Index extends CI_Controller {
         $this->load->view('admin/admin', $crud->render());
     }
 
+    /**
+    *   Handles the roles CRUD.
+    */
+    public function role()
+    {
+        $crud = $this->grocery_crud;
+
+        $crud->set_table('role');
+
+        $crud->unset_export();
+        $crud->unset_print();
+        $crud->unset_read();
+
+        $crud->columns('title', 'description');
+        $crud->fields('title', 'description', 'permissions');
+
+        $crud->callback_field('permissions', array($this, 'permissions_list'));
+
+        $crud->callback_before_insert(array($this, 'before_saving_role'));
+        $crud->callback_before_update(array($this, 'before_saving_role'));
+
+        $this->load->view('admin/admin', $crud->render());
+    }
+
+    /*
+    * Display permissions list for each role
+    */
+    public function permissions_list($value, $role_id) {
+        $this->load->model('role_permission_m');
+        $this->load->model('permission_m');
+
+        $role_permission_m = $this->role_permission_m;
+
+        $permission_ids = $role_permission_m->get_role_permissions_list($role_id);
+
+        $permissions = $this->permission_m->get_all();
+
+        // Show checkboxes
+        $checkboxes = '<ul class="permissions_list">';
+
+        foreach ($permissions as $permission) {
+            $checkboxes .='<li><input type="checkbox" name="permissions[]"';
+
+            if (in_array($permission->id, $permission_ids)) {
+                $checkboxes .= ' checked=checked ';
+            }
+
+            $checkboxes .= 'value="'.$permission->id.'">'.$permission->name.'</li>';
+        }
+
+        $checkboxes .= '</ul>';
+
+        return $checkboxes;
+    }
+    /**
+    *   Handles the permission CRUD.
+    */
+    public function permission()
+    {
+        $crud = $this->grocery_crud;
+
+        $crud->set_table('permission');
+        $crud->columns('name');
+
+        $crud->unset_export();
+        $crud->unset_print();
+        $crud->unset_read();
+
+        $this->load->view('admin/admin', $crud->render());
+    }
 
     /**
     *   Handles the widget CRUD.
@@ -303,7 +375,7 @@ class Index extends CI_Controller {
     *   Checks user information before it's stored in the database.
     */
     public function before_saving_user($post) {
- 
+
         if(!empty($post['password'])){
             $post['password'] = $this->encrypt->sha1($post['password']);
         } else {
@@ -312,12 +384,46 @@ class Index extends CI_Controller {
         return $post;
     }
 
+    /**
+    *   Checks roles and permissions before storing information
+    */
+    public function before_saving_role($post, $role_id) {
+        $this->load->model('role_permission_m');
 
-    public function print_password_field_callback($value) {
-        return "<input type='password' name='password' value='' />
-                <input type='hidden' name='current_password' value='$value' />";
+        $role_permission_m = $this->role_permission_m;
+
+        // Get current permissions assign to this role
+        $permission_ids = $role_permission_m->get_role_permissions_list($role_id);
+        $new_permission_ids = array();
+
+        // If checkboxes are empty, erase current role permissions
+        if (empty($post['permissions']) && !empty($permission_ids)) {
+            $role_permission_m->clear_role_permissions($role_id);
+        } else {
+            // When role permission combo doesn't exists, store it on the databse
+            foreach($post['permissions'] as $permission_id) {
+                if (!$this->role_permission_m->check_combination_exists($role_id, $permission_id) && $permission_id != 0) {
+                    $id = $role_permission_m->create_role_permission($role_id, $permission_id);
+                }
+
+                array_push($new_permission_ids, $permission_id);
+            }
+
+            // Check for elements to erase, in case user unselected a checkbox
+            $elements_to_remove = array_diff($permission_ids, $new_permission_ids);
+
+            // Remove unselected elements
+            foreach ($elements_to_remove as $permission_id) {
+                $element_to_remove = $role_permission_m->get_by_role_and_permission($role_id, $permission_id);
+                $role_permission_m->remove($element_to_remove);
+            }
+        }
+
+        // Remove the permissions index from the post array
+        unset($post['permissions']);
+
+        return $post;
     }
-
 
     /**
     *   Makes pages slugs into links
@@ -328,6 +434,11 @@ class Index extends CI_Controller {
 
     public function set_datetime() {
         return date('Y-m-d H:i:s');
+    }
+
+    public function print_password_field_callback($value) {
+        return "<input type='password' name='password' value='' />
+                <input type='hidden' name='current_password' value='$value' />";
     }
 
 }
