@@ -6,7 +6,6 @@ class Page extends CI_Controller {
     {
         parent::__construct();
 
-        //$this->load->library('layout');
         $this->load->helper('widget');
         $this->load->helper('widgets_container');
     }
@@ -16,7 +15,7 @@ class Page extends CI_Controller {
     */
     public function index($id=0)
     {
-
+ 
         $this->load->model('page_m');
 
         $item = $this->page_m->get_by_id($id);
@@ -40,4 +39,6 @@ class Page extends CI_Controller {
             $this->load->view('page/'.$view, $data);
         }
     }
+ 
+
 }
