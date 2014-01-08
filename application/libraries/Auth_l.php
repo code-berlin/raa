@@ -47,7 +47,12 @@ class Auth_l {
         $username = $ci->session->userdata('user_name');
 
         $user = $ci->user_m->get_by_username($username);
-        $role = $ci->role_m->get_by_id($user->role_id);
+
+        if(isset($user) && !empty($user)) {
+            $role = $ci->role_m->get_by_id($user->role_id);
+        } else {
+            return false;
+        }
 
         if(isset($role) && !empty($role)) {
             return $role->title;
