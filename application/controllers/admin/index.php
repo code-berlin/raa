@@ -6,12 +6,21 @@ class Index extends CI_Controller {
     {
         parent::__construct();
         $this->check_auth();
+        $this->check_if_disabled();
         $this->load->library('grocery_CRUD');
     }
 
     public function check_auth()
     {
         if (!$this->auth_l->user_logged_in())
+        {
+            redirect('auth');
+        }
+    }
+
+    public function check_if_disabled()
+    {
+        if ($this->auth_l->user_disabled())
         {
             redirect('auth');
         }
