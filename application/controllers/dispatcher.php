@@ -14,6 +14,7 @@ class Dispatcher extends CI_Controller {
 
     public function index($slug)
     {
+
         $this->load->model('url_m');
 
         $type = '';
@@ -51,4 +52,6 @@ class Dispatcher extends CI_Controller {
 
         }
     }
+
+
 }

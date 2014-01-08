@@ -1,4 +1,3 @@
-<?php $CI =& get_instance();?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" >
     <head>
@@ -15,7 +14,7 @@
         <div class="row">
             <div>
                 Main Menu <br />
-                <?php $CI->load_menu(1, 'horizontal_1'); ?>
+                <?php load_menu(1, 'horizontal_1'); ?>
             </div>
         </div>
         <div id="pagewidth" >
