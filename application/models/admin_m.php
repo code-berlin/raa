@@ -32,7 +32,7 @@
 			$user = R::findOne('user', 'username = :username', array(':username' => $username));
 			$status = intval($user->disabled);
 			
-			if($status != 0) {
+			if($status !== 0) {
 				return true;
 			}
 
