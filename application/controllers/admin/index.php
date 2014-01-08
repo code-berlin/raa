@@ -107,6 +107,7 @@ class Index extends CI_Controller {
         $crud->set_table('user');
         $crud->columns('username','role_id');
         $crud->set_relation('role_id','role','title');
+        $crud->field_type('disabled','true_false');
 
         $_POST['content_type_name'] = 'user';
 
