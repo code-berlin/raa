@@ -30,4 +30,6 @@ class Role_m extends CI_Model {
 	function remove($object) {
 		return $this->role_dao->remove($object);
 	}
+
+
 }

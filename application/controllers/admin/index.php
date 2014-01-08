@@ -2,12 +2,17 @@
 
 class Index extends CI_Controller {
 
+    var $user_role;
+
     function __construct()
     {
         parent::__construct();
         $this->check_auth();
         $this->check_if_disabled();
+
         $this->load->library('grocery_CRUD');
+
+        $this->user_role = $this->auth_l->retrieve_user_role();
     }
 
     public function check_auth()

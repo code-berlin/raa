@@ -38,4 +38,26 @@ class Auth_l {
 
         return false;
     }
+
+    public function retrieve_user_role()
+    {
+        $ci =&get_instance();
+        $ci->load->model('user_m');
+        $ci->load->model('role_m');
+        $username = $ci->session->userdata('user_name');
+
+        $user = $ci->user_m->get_by_username($username);
+
+        if(isset($user) && !empty($user)) {
+            $role = $ci->role_m->get_by_id($user->role_id);
+        } else {
+            return false;
+        }
+
+        if(isset($role) && !empty($role)) {
+            return $role->title;
+        } else return false;
+
+    }
+
 }
