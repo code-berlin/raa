@@ -96,14 +96,17 @@ class Index extends CI_Controller {
         $crud = $this->grocery_crud;
 
         $crud->set_table('user');
-        $crud->columns('username','role_id');
+        $crud->columns('name','username','role_id');
         $crud->set_relation('role_id','role','title');
 
         $_POST['content_type_name'] = 'user';
 
-        $crud->set_rules('email','Email','is_unique[user.email]');
-        $crud->callback_before_insert(array($this, 'before_saving_content_type'));
-        $crud->callback_before_update(array($this, 'before_saving_content_type'));
+        $crud->change_field_type('password','password');
+
+        $crud->callback_edit_field('password',array($this,'print_password_field_callback'));
+
+        $crud->callback_before_insert(array($this, 'before_saving_user'));
+        $crud->callback_before_update(array($this, 'before_saving_user'));
 
         $this->load->view('admin/admin', $crud->render());
     }
@@ -284,6 +287,27 @@ class Index extends CI_Controller {
 
         return $post;
     }
+
+
+    /**
+    *   Checks user information before it's stored in the database.
+    */
+    public function before_saving_user($post) {
+ 
+        if(!empty($post['password'])){
+            $post['password'] = $this->encrypt->sha1($post['password']);
+        } else {
+            $post['password'] = $post['current_password'];
+        }
+        return $post;
+    }
+
+
+    public function print_password_field_callback($value) {
+        return "<input type='password' name='password' value='' />
+                <input type='hidden' name='current_password' value='$value' />";
+    }
+
 
     /**
     *   Makes pages slugs into links

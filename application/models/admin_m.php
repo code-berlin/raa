@@ -15,7 +15,7 @@
 		public function verify_user($username, $password)
 		{	
 
-			$get_user = R::findOne('user', 'username = :username and password = :password', array(':username' => $username,':password' => sha1($password)));
+			$get_user = R::findOne('user', 'username = :username and password = :password', array(':username' => $username,':password' => $this->encrypt->sha1($password)));
 
 			if ($get_user !== null)
 			{
