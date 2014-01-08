@@ -7,7 +7,8 @@ class Migration_Add_Role_Table extends Basic_migration {
         $this->filename =  __FILE__;
     }
     public function mig_up() {
-      $this->db->query('CREATE TABLE IF NOT EXISTS `role` (
+
+        $this->db->query('CREATE TABLE IF NOT EXISTS `role` (
                         `id` int(11) NOT NULL AUTO_INCREMENT,
                         `title` varchar(255) DEFAULT NULL,
                         `description` text,
@@ -20,7 +21,7 @@ class Migration_Add_Role_Table extends Basic_migration {
 
         $this->db->query("ALTER TABLE `user` ADD `id_role` int(11) NOT NULL;");
 
-        $this->db->query("INSERT INTO `user` (`id`, `username`, `password`, `id_role`) VALUES (NULL, 'superadmin@code-b.com', 'b5edbafd026b773a7eb36d9b42b1bd6a952ddfdd', 1);");
+        $this->db->query("INSERT INTO `user` (`id`, `username`, `password`, `id_role`) VALUES (2, 'superadmin@code-b.com', 'b5edbafd026b773a7eb36d9b42b1bd6a952ddfdd', 1);");
 
         $this->db->query("UPDATE `user` SET `id_role` = '2' WHERE `user`.`id` = 1;");
         $this->db->query("UPDATE `user` SET `id_role` = '1' WHERE `user`.`id` = 2;");
