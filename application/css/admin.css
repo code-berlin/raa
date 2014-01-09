@@ -49,11 +49,12 @@ ul.permissions_list {
   color: #444;
   list-style-type: none;
   font-size: 12px;
-  line-height: 14px;
-  vertical-align: top;
+  line-height: 18px;
+  vertical-align: middle;
+  margin-bottom: 5px;
 }
 
 /* line 45, sass/admin.scss */
 ul.permissions_list li input {
-  margin: 0 10px 10px 0;
+  margin: 3px 10px 5px 0;
 }

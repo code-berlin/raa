@@ -130,22 +130,31 @@ class Index extends CI_Controller {
     public function user()
     {
         $crud = $this->grocery_crud;
-
+        $_POST['content_type_name'] = 'user';
         $crud->set_table('user');
-        $crud->columns('name','username', 'role_id');
+
+        // list page
+        $crud->columns('name','username','role_id');
+
         $crud->set_relation('role_id','role','title');
         $crud->display_as('role_id', 'Role');
 
         $crud->field_type('disabled','true_false', array('1' => 'Yes', '0' => 'No'));
 
-        $_POST['content_type_name'] = 'user';
-
+        // create, edit page
         $crud->change_field_type('password','password');
-
+        $crud->set_rules('username','Username','valid_email');
         $crud->callback_edit_field('password',array($this,'print_password_field_callback'));
 
+        if($crud->getState() == 'add' || $crud->getState() == 'insert_validation') {
+            $crud->required_fields('username','role_id','password','disabled','creation_datetime');
+        } else {
+            $crud->required_fields('username','role_id','disabled','creation_datetime');
+            $crud->display_as('password','change password');
+        }
+
         $crud->callback_before_insert(array($this, 'before_saving_user'));
-        $crud->callback_before_update(array($this, 'before_saving_user'));
+        $crud->callback_before_update(array($this, 'before_updating_user'));
 
         $this->control_sidebar_items_display($data);
         $this->add_grocery_to_data_array($crud->render(), $data);
@@ -411,6 +420,16 @@ class Index extends CI_Controller {
     *   Checks user information before it's stored in the database.
     */
     public function before_saving_user($post) {
+        $crud = $this->grocery_crud;
+        $post['password'] = $this->encrypt->sha1($post['password']);
+        return $post;
+    }
+
+    /**
+    *   Checks user information before it's updated in the database.
+    */
+    public function before_updating_user($post) {
+        $crud = $this->grocery_crud;
 
         if(!empty($post['password'])){
             $post['password'] = $this->encrypt->sha1($post['password']);
@@ -419,6 +438,8 @@ class Index extends CI_Controller {
         }
         return $post;
     }
+
+
 
     /**
     * Save permissions for a role
