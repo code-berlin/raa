@@ -22,6 +22,13 @@ class Menu extends CI_Controller {
         $crud->display_as('id_menu','Menu');
         $crud->display_as('url_id','Slug');
 
+        
+        if(!$this->input->post('url_id')){
+            $crud->required_fields('id_menu','title','absolute_url');
+        } else {
+            $crud->required_fields('id_menu','title');    
+        }
+
         $this->load->view('admin/admin', $crud->render());
     }
 

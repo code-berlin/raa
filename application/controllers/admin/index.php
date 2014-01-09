@@ -147,7 +147,7 @@ class Index extends CI_Controller {
 
         // create, edit page
         $crud->change_field_type('password','password');
-        $crud->set_rules('username','Username','valid_email');
+        $crud->set_rules('username','Username','valid_email|required');
         $crud->callback_edit_field('password',array($this,'print_password_field_callback'));
 
         if($crud->getState() == 'add' || $crud->getState() == 'insert_validation') {
@@ -182,6 +182,7 @@ class Index extends CI_Controller {
 
         $crud->columns('name', 'url');
         $crud->fields('name', 'url', 'permissions');
+        $crud->required_fields('title');
         $crud->display_as('permissions', 'Permissions required');
 
         $this->permission_relationship_type = 'section';
@@ -239,7 +240,7 @@ class Index extends CI_Controller {
 
         $crud->set_table('permission');
         $crud->columns('name');
-
+        $crud->required_fields('name');
         $crud->unset_export();
         $crud->unset_print();
         $crud->unset_read();
