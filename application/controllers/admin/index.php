@@ -34,7 +34,7 @@ class Index extends CI_Controller {
     {
         $this->control_sidebar_items_display($data);
 
-        if (!$this->auth_l->check_section_access($this->user->role_id, $_SERVER['REQUEST_URI'])) {
+        if (!$this->auth_l->check_section_access_required_permissions($this->user->role_id, $_SERVER['REQUEST_URI'])) {
             $data['output'] = 'Not allowed';
         }
 
@@ -48,7 +48,7 @@ class Index extends CI_Controller {
     {
         $this->control_sidebar_items_display($data);
 
-        if ($this->auth_l->check_section_access($this->user->role_id, $_SERVER['REQUEST_URI'])) {
+        if ($this->auth_l->check_section_access_required_permissions($this->user->role_id, $_SERVER['REQUEST_URI'])) {
             $crud = $this->grocery_crud;
 
             $crud->set_table('page');
@@ -90,7 +90,7 @@ class Index extends CI_Controller {
     {
         $this->control_sidebar_items_display($data);
 
-        if ($this->auth_l->check_section_access($this->user->role_id, $_SERVER['REQUEST_URI'])) {
+        if ($this->auth_l->check_section_access_required_permissions($this->user->role_id, $_SERVER['REQUEST_URI'])) {
             $crud = $this->grocery_crud;
 
             $crud->set_table('menu');

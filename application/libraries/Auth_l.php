@@ -95,10 +95,9 @@ class Auth_l {
     /*
     * Retrieves credentials for given section
     *
-    * @param
-    * @param
+    * @param string $section_url url of the section
     *
-    * @return boolean
+    * @return array of permissions
     */
     public function retrieve_section_credentials($section_url) {
         $ci =&get_instance();
@@ -123,7 +122,15 @@ class Auth_l {
         return array();
     }
 
-    public function check_section_access($role_id, $section_url) {
+    /*
+    * Checks for required permissions to access the section
+    *
+    * @param string $role_id user's role id
+    * @param string $section_url url of the section
+    *
+    * @return array of permissions
+    */
+    public function check_section_access_required_permissions($role_id, $section_url) {
         $ci =&get_instance();
 
         $section_required_credentials = $ci->auth_l->retrieve_section_credentials($section_url);
