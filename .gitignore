@@ -9,3 +9,5 @@ application/logs/*
 !application/logs/.htaccess
 /nbproject
 /nbproject/*
+
+application/config/database.php

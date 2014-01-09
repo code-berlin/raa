@@ -20,6 +20,10 @@ class Permission_m extends CI_Model {
 		return $this->permission_dao->get_by_id($id);
 	}
 
+	function get_by_name($name) {
+		return $this->permission_dao->get_by('name', $name);
+	}
+
 	function save($object) {
 		return $this->permission_dao->save($object);
 	}

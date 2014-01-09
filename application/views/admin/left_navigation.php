@@ -12,23 +12,31 @@
         </li>
 
         <li class="nav-header">Pages</li>
-        <li>
-            <a href='<?php echo site_url('admin/page')?>'>Pages</a>
-        </li>
+        <?php if (isset($sidebar) && $sidebar['page']) { ?>
+            <li>
+                <a href='<?php echo site_url('admin/page')?>'>Pages</a>
+            </li>
+        <?php } ?>
+
         <li>
             <a href='<?php echo site_url('admin/product')?>'>Products</a>
         </li>
-        <li>
-            <a href='<?php echo site_url('admin/menu')?>'>Menus</a>
-        </li>
 
-        <li class="nav-header">Widgets</li>
-        <li>
-            <a href='<?php echo site_url('admin/widgets_container')?>'>Container</a>
-        </li>
-        <li>
-            <a href='<?php echo site_url('admin/widget')?>'>Widget</a>
-        </li>
+        <?php if (isset($sidebar) && $sidebar['menu']) { ?>
+            <li>
+                <a href='<?php echo site_url('admin/menu')?>'>Menus</a>
+            </li>
+        <?php } ?>
+
+        <?php if (isset($sidebar) && $sidebar['widgets']) { ?>
+            <li class="nav-header">Widgets</li>
+            <li>
+                <a href='<?php echo site_url('admin/widgets_container')?>'>Container</a>
+            </li>
+            <li>
+                <a href='<?php echo site_url('admin/widget')?>'>Widget</a>
+            </li>
+        <?php } ?>
 
         <li class="nav-header">Settings</li>
         <li>

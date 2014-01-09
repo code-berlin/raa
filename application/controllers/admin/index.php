@@ -7,12 +7,17 @@ class Index extends CI_Controller {
     function __construct()
     {
         parent::__construct();
+
         $this->check_auth();
         $this->check_if_disabled();
 
         $this->load->library('grocery_CRUD');
 
         $this->user_role = $this->auth_l->retrieve_user_role();
+        $this->user = $this->user_m->get_by_username($this->session->userdata('user_name'));
+
+        // Save role permissions from post into an array
+        $this->role_permissions = array();
     }
 
     public function check_auth()
@@ -43,6 +48,12 @@ class Index extends CI_Controller {
     {
         $crud = $this->grocery_crud;
 
+        if (!$this->auth_l->check_user_is_allowed($this->user->role_id, array('CREATE_PAGE', 'UPDATE_PAGE'))) {
+            $crud->unset_add();
+            $crud->unset_export();
+            $crud->unset_print();
+        }
+
         $crud->set_table('page');
 
         // Fields to show on the list
@@ -67,7 +78,10 @@ class Index extends CI_Controller {
         $crud->callback_before_update(array($this, 'before_saving_page'));
         $crud->callback_before_delete(array($this, 'before_deleting_page'));
 
-        $this->load->view('admin/admin', $crud->render());
+        $this->control_sidebar_items_display($data);
+        $this->add_grocery_to_data_array($crud->render(), $data);
+
+        $this->load->view('admin/admin', $data);
     }
 
     /**
@@ -75,12 +89,18 @@ class Index extends CI_Controller {
     */
     public function menu()
     {
-        $crud = $this->grocery_crud;
+        $this->control_sidebar_items_display($data);
 
-        $crud->set_table('menu');
-        $crud->add_action('edit items', base_url('/assets/grocery_crud/themes/flexigrid/css/images/edit-items.gif'), 'admin/menu/item');
+        if ($this->auth_l->check_user_is_allowed($this->user->role_id, array('CREATE_PAGE', 'UPDATE_PAGE'))) {
+            $crud = $this->grocery_crud;
 
-        $this->load->view('admin/admin', $crud->render());
+            $crud->set_table('menu');
+            $crud->add_action('edit items', base_url('/assets/grocery_crud/themes/flexigrid/css/images/edit-items.gif'), 'admin/menu/item');
+
+            $this->add_grocery_to_data_array($crud->render(), $data);
+        }
+
+        $this->load->view('admin/admin', $data);
     }
 
     /**
@@ -98,9 +118,11 @@ class Index extends CI_Controller {
         $crud->callback_before_insert(array($this, 'before_saving_content_type'));
         $crud->callback_before_update(array($this, 'before_saving_content_type'));
 
-        $this->load->view('admin/admin', $crud->render());
-    }
+        $this->control_sidebar_items_display($data);
+        $this->add_grocery_to_data_array($crud->render(), $data);
 
+        $this->load->view('admin/admin', $data);
+    }
 
     /**
     *   Handles the user CRUD.
@@ -110,8 +132,10 @@ class Index extends CI_Controller {
         $crud = $this->grocery_crud;
 
         $crud->set_table('user');
-        $crud->columns('name','username','role_id');
+        $crud->columns('name','username', 'role_id');
         $crud->set_relation('role_id','role','title');
+        $crud->display_as('role_id', 'Role');
+
         $crud->field_type('disabled','true_false', array('1' => 'Yes', '0' => 'No'));
 
         $_POST['content_type_name'] = 'user';
@@ -123,7 +147,10 @@ class Index extends CI_Controller {
         $crud->callback_before_insert(array($this, 'before_saving_user'));
         $crud->callback_before_update(array($this, 'before_saving_user'));
 
-        $this->load->view('admin/admin', $crud->render());
+        $this->control_sidebar_items_display($data);
+        $this->add_grocery_to_data_array($crud->render(), $data);
+
+        $this->load->view('admin/admin', $data);
     }
 
     /**
@@ -144,10 +171,15 @@ class Index extends CI_Controller {
 
         $crud->callback_field('permissions', array($this, 'permissions_list'));
 
-        $crud->callback_before_insert(array($this, 'before_saving_role'));
-        $crud->callback_before_update(array($this, 'before_saving_role'));
+        $crud->callback_before_update(array($this, 'before_creating_role'));
+        $crud->callback_before_insert(array($this, 'before_creating_role'));
+        $crud->callback_after_update(array($this, 'after_creating_role'));
+        $crud->callback_after_insert(array($this, 'after_creating_role'));
 
-        $this->load->view('admin/admin', $crud->render());
+        $this->control_sidebar_items_display($data);
+        $this->add_grocery_to_data_array($crud->render(), $data);
+
+        $this->load->view('admin/admin', $data);
     }
 
     /*
@@ -160,10 +192,8 @@ class Index extends CI_Controller {
         $role_permission_m = $this->role_permission_m;
 
         $permission_ids = $role_permission_m->get_role_permissions_list($role_id);
-
         $permissions = $this->permission_m->get_all();
 
-        // Show checkboxes
         $checkboxes = '<ul class="permissions_list">';
 
         foreach ($permissions as $permission) {
@@ -194,7 +224,10 @@ class Index extends CI_Controller {
         $crud->unset_print();
         $crud->unset_read();
 
-        $this->load->view('admin/admin', $crud->render());
+        $this->control_sidebar_items_display($data);
+        $this->add_grocery_to_data_array($crud->render(), $data);
+
+        $this->load->view('admin/admin', $data);
     }
 
     /**
@@ -388,44 +421,81 @@ class Index extends CI_Controller {
     }
 
     /**
-    *   Checks roles and permissions before storing information
+    * Save permissions for a role
     */
-    public function before_saving_role($post, $role_id) {
-        $this->load->model('role_permission_m');
+    public function save_permissions_for_role($post, $role_id=0) {
+        if ($role_id > 0) {
+            $this->load->model('role_permission_m');
 
-        $role_permission_m = $this->role_permission_m;
+            $role_permission_m = $this->role_permission_m;
 
-        // Get current permissions assign to this role
-        $permission_ids = $role_permission_m->get_role_permissions_list($role_id);
-        $new_permission_ids = array();
+            // Get current permissions assign to this role
+            $permission_ids = $role_permission_m->get_role_permissions_list($role_id);
+            $new_permission_ids = array();
 
-        // If checkboxes are empty, erase current role permissions
-        if (empty($post['permissions']) && !empty($permission_ids)) {
-            $role_permission_m->clear_role_permissions($role_id);
-        } else {
-            // When role permission combo doesn't exists, store it on the databse
-            foreach($post['permissions'] as $permission_id) {
-                if (!$this->role_permission_m->check_combination_exists($role_id, $permission_id) && $permission_id != 0) {
-                    $id = $role_permission_m->create_role_permission($role_id, $permission_id);
+            // If checkboxes are empty, erase current role permissions
+            if (empty($this->role_permissions)) {
+                $role_permission_m->clear_role_permissions($role_id);
+            } else {
+                // When role permission combo doesn't exists, store it on the databse
+                foreach($this->role_permissions as $permission_id) {
+                    if (!$this->role_permission_m->check_combination_exists($role_id, $permission_id) && $permission_id != 0) {
+                        $id = $role_permission_m->create_role_permission($role_id, $permission_id);
+                    }
+
+                    array_push($new_permission_ids, $permission_id);
                 }
 
-                array_push($new_permission_ids, $permission_id);
-            }
+                // Check for elements to erase, in case user unselected a checkbox
+                $elements_to_remove = array_diff($permission_ids, $new_permission_ids);
 
-            // Check for elements to erase, in case user unselected a checkbox
-            $elements_to_remove = array_diff($permission_ids, $new_permission_ids);
-
-            // Remove unselected elements
-            foreach ($elements_to_remove as $permission_id) {
-                $element_to_remove = $role_permission_m->get_by_role_and_permission($role_id, $permission_id);
-                $role_permission_m->remove($element_to_remove);
+                // Remove unselected elements
+                foreach ($elements_to_remove as $permission_id) {
+                    $element_to_remove = $role_permission_m->get_by_role_and_permission($role_id, $permission_id);
+                    $role_permission_m->remove($element_to_remove);
+                }
             }
         }
 
-        // Remove the permissions index from the post array
+        return $post;
+    }
+
+    public function before_creating_role($post) {
+        return $this->clone_role_permissions($post);
+    }
+
+    public function after_creating_role($post, $role_id) {
+        return $this->save_permissions_for_role($post, $role_id);
+    }
+
+    /*
+    * Saves permissions info on a new array to avoid storing unwanted data
+    */
+    public function clone_role_permissions($post) {
+        $this->role_permissions = $post['permissions'];
+
         unset($post['permissions']);
 
         return $post;
+    }
+
+    /**
+    * Sets basic sidebar items display
+    */
+    public function control_sidebar_items_display(&$data) {
+        $data['sidebar']['menu'] = true;
+        $data['sidebar']['page'] = true;
+        $data['sidebar']['widgets'] = true;
+    }
+
+    /**
+    * Grocery takes full control of the data array. What we want to do here is to change
+    * this so we can make use of the data array without complications.
+    */
+    public function add_grocery_to_data_array($grocery, &$data) {
+        foreach ($grocery as $key => $value) {
+            $data[$key] = $value;
+        }
     }
 
     /**
@@ -443,5 +513,4 @@ class Index extends CI_Controller {
         return "<input type='password' name='password' value='' />
                 <input type='hidden' name='current_password' value='$value' />";
     }
-
 }
