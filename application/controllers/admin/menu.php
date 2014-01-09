@@ -5,7 +5,7 @@ class Menu extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-        $this->load->database();
+        $this->load->library('grocery_CRUD');
     }
 
     public function item($id_menu)
