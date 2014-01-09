@@ -1,7 +1,7 @@
 <?php
 require_once(APPPATH . 'migrations/basic_migration.php');
 
-class Migration_create_section_table extends Basic_migration {
+class Migration_create_section_permission_table extends Basic_migration {
     function __construct()
     {
         parent::__construct();
