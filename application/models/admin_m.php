@@ -30,7 +30,12 @@
 		public function is_disabled($username)
 		{
 			$user = R::findOne('user', 'username = :username', array(':username' => $username));
-			$status = intval($user->disabled);
+			$status = 0;
+
+			if(isset($user) && !empty($user))
+			{
+				$status = intval($user->disabled);
+			}
 			
 			if($status !== 0) {
 				return true;
