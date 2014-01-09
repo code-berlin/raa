@@ -557,7 +557,9 @@ class Index extends CI_Controller {
 
             // If checkboxes are empty, erase current role permissions
             if (empty($this->relationships)) {
-                $model->clear_relationship($type_id);
+                if (count($permission_ids) > 0) {
+                    $model->clear_relationships($type_id);
+                }
             } else {
                 // When role permission combo doesn't exists, store it on the databse
                 foreach($this->relationships as $permission_id) {
@@ -594,9 +596,11 @@ class Index extends CI_Controller {
     * Saves permissions info on a new array to avoid storing unwanted data
     */
     public function clone_relationships($post) {
-        $this->relationships = $post['permissions'];
+        if (!empty($post['permissions'])) {
+            $this->relationships = $post['permissions'];
 
-        unset($post['permissions']);
+            unset($post['permissions']);
+        }
 
         return $post;
     }
