@@ -8,6 +8,9 @@
             <a href='<?php echo site_url('admin/role')?>'>Roles</a>
         </li>
         <li>
+            <a href='<?php echo site_url('admin/section')?>'>Sections</a>
+        </li>
+        <li>
             <a href='<?php echo site_url('admin/permission')?>'>Permissions</a>
         </li>
 

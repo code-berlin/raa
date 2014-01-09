@@ -23,7 +23,7 @@ class Role_permission_tests extends Basic_tests
 		$this->load->model('role_permission_m');
 
 		for($i=0; $i<PERMISSIONS; $i++) {
-			$id = $this->role_permission_m->create_role_permission(ROLE, $i);
+			$id = $this->role_permission_m->create_relationship(ROLE, $i);
 			array_push($this->role_permissions, $id);
 		}
 	}
@@ -51,7 +51,7 @@ class Role_permission_tests extends Basic_tests
 	}
 
 	function test_retrieve_set_of_permissions_by_role() {
-		$role_permissions = $this->role_permission_m->get_by_role(ROLE);
+		$role_permissions = $this->role_permission_m->get_by_type(ROLE);
 
 		$this->_assert_not_empty($role_permissions);
 	}

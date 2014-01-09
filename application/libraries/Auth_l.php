@@ -79,7 +79,7 @@ class Auth_l {
             $permission = $ci->permission_m->get_by_name($permission_required);
 
             if (!empty($permission)) {
-                if ($ci->role_permission_m->get_by_role_and_permission($role_id, $permission->id)) {
+                if ($ci->role_permission_m->get_by_relationship($role_id, $permission->id)) {
                     $valid_permissions++;
                 }
             }
@@ -92,4 +92,48 @@ class Auth_l {
         return false;
     }
 
+    /*
+    * Retrieves credentials for given section
+    *
+    * @param
+    * @param
+    *
+    * @return boolean
+    */
+    public function retrieve_section_credentials($section_url) {
+        $ci =&get_instance();
+        $ci->load->model('section_m');
+        $ci->load->model('permission_m');
+        $ci->load->model('section_permission_m');
+
+        $section = $ci->section_m->get_by('url', $section_url);
+
+        if (!empty($section)) {
+            $permissions_required = $ci->section_permission_m->get_by_type($section->id);
+            $permissions = array();
+
+            foreach ($permissions_required as $permission_required) {
+                $permission = $ci->permission_m->get_by_id($permission_required->permission_id);
+                array_push($permissions, $permission->name);
+            }
+
+            return $permissions;
+        }
+
+        return array();
+    }
+
+    public function check_section_access($role_id, $section_url) {
+        $ci =&get_instance();
+
+        $section_required_credentials = $ci->auth_l->retrieve_section_credentials($section_url);
+
+        if (!empty($section_required_credentials)) {
+            if (!$this->check_user_is_allowed($role_id, $section_required_credentials)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
