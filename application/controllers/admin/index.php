@@ -177,7 +177,7 @@ class Index extends CI_Controller {
 
         $crud->columns('title', 'description');
         $crud->fields('title', 'description', 'permissions');
-
+        $crud->required_fields('title');
         $crud->callback_field('permissions', array($this, 'permissions_list'));
 
         $crud->callback_before_update(array($this, 'before_creating_role'));
