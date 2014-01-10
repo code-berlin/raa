@@ -10,7 +10,6 @@ class Menu_dao extends CI_Model{
 
 		$this->table = 'menu';
 
-		$this->load->library('rb');
 	}
 
 	public function get_by_id($id) {

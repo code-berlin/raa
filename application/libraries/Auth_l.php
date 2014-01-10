@@ -159,4 +159,33 @@ class Auth_l {
 
         return false;
     }
+
+    public function create_super_admin()
+    {
+        $ci =&get_instance();
+
+        $ci->load->model('permission_m');
+        $ci->load->model('role_permission_m');
+
+        $permissions = $ci->permission_m->get_all();
+
+        if (!empty($permissions)) {
+            define('SUPERADMIN_ID', 1);
+
+            $role_permission = $ci->role_permission_m;
+
+            foreach ($permissions as $permission) {
+                $id = $permission->id;
+                $name = $permission->name;
+
+                if (!$role_permission->check_combination_exists(SUPERADMIN_ID, $id)) {
+                    $role_permission->create_relationship(SUPERADMIN_ID, $id);
+
+                    echo '<pre>Permission granted: '.$name.'</pre>';
+                } else {
+                    echo '<pre>Permission already granted: '.$name.'</pre>';
+                }
+            }
+        }
+    }
 }

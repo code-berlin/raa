@@ -17,7 +17,7 @@ class Product_dao extends CI_Model{
 
 	public function get_all() {
 		$this->object = R::find($this->table);
-		
+
 		//$this->preload_template();
 
 		return $this->object;

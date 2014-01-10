@@ -2,25 +2,28 @@
     <?php if (isset($sidebar)) { ?>
         <ul class="left-navigation-items nav nav-list">
 
-            <?php if ($sidebar['VIEW_USERS']) { ?>
+            <?php if ($sidebar['VIEW_USER']) { ?>
                 <li class="nav-header">Users / Permissions</li>
                 <li>
                     <a href='<?php echo site_url('admin/user')?>'>Users</a>
                 </li>
             <?php } ?>
-            <?php if ($sidebar['VIEW_ROLES']) { ?>
+            <?php if ($sidebar['VIEW_ROLE']) { ?>
                 <li>
                     <a href='<?php echo site_url('admin/role')?>'>Roles</a>
                 </li>
             <?php } ?>
-            <?php if ($sidebar['VIEW_SECTIONS']) { ?>
+            <?php if ($sidebar['VIEW_SECTION']) { ?>
                 <li>
                     <a href='<?php echo site_url('admin/section')?>'>Sections</a>
                 </li>
             <?php } ?>
-            <?php if ($sidebar['VIEW_PERMISSIONS']) { ?>
+            <?php if ($sidebar['VIEW_PERMISSION']) { ?>
                 <li>
                     <a href='<?php echo site_url('admin/permission')?>'>Permissions</a>
+                </li>
+                <li>
+                    <a href='<?php echo site_url('admin/permissions_group')?>'>Group of permissions </a>
                 </li>
             <?php } ?>
 
@@ -43,7 +46,7 @@
                 </li>
             <?php } ?>
 
-            <?php if ($sidebar['VIEW_WIDGETS']) { ?>
+            <?php if ($sidebar['VIEW_WIDGET']) { ?>
                 <li class="nav-header">Widgets</li>
                 <li>
                     <a href='<?php echo site_url('admin/widgets_container')?>'>Container</a>
@@ -53,7 +56,7 @@
                 </li>
             <?php } ?>
 
-            <?php if ($sidebar['VIEW_SETTINGS']) { ?>
+            <?php if ($sidebar['VIEW_GENERAL_SETTINGS']) { ?>
                 <li class="nav-header">Settings</li>
                 <li>
                     <a href='<?php echo site_url('admin/general_settings')?>'>General Settings</a>

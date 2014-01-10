@@ -1,7 +1,7 @@
 <?php
 
 	/**
-	* 
+	*
 	*/
 	class Admin_m extends CI_Model
 	{
@@ -13,7 +13,7 @@
 		}
 
 		public function verify_user($username, $password)
-		{	
+		{
 
 			$user = R::findOne('user', 'username = :username and password = :password', array(':username' => $username,':password' => $this->encrypt->sha1($password)));
 
@@ -22,7 +22,7 @@
 			{
 				return $user;
 			}
-			
+
 			return false;
 
 		}
@@ -36,7 +36,7 @@
 			{
 				$status = intval($user->disabled);
 			}
-			
+
 			if($status !== 0) {
 				return true;
 			}

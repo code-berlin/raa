@@ -56,19 +56,7 @@ class Index extends CI_Controller {
             $crud = $this->grocery_crud;
 
             // Page permissions
-            if (!$auth->check_user_has_permission($role_id, 'UPDATE_PAGE')) {
-                $crud->unset_edit();
-            }
-
-            if (!$auth->check_user_has_permission($role_id, 'DELETE_PAGE')) {
-                $crud->unset_delete();
-            }
-
-            if (!$auth->check_user_has_permission($role_id, 'CREATE_PAGE')) {
-                $crud->unset_add();
-                $crud->unset_export();
-                $crud->unset_print();
-            }
+            $this->check_section_permissions($role_id, $url, $crud, $auth);
 
             $crud->set_table('page');
 
@@ -99,7 +87,6 @@ class Index extends CI_Controller {
             } catch(Exception $e) {
                 $data['output'] = $e->getMessage();
             }
-
         } else {
             $data['output'] = 'Not allowed';
         }
@@ -114,13 +101,23 @@ class Index extends CI_Controller {
     {
         $this->control_sidebar_items_display($data);
 
-        if ($this->auth_l->check_section_access_required_permissions($this->user->role_id, $_SERVER['REQUEST_URI'])) {
+        $auth = $this->auth_l;
+        $role_id = $this->user->role_id;
+        $url = $_SERVER['REQUEST_URI'];
+
+        if ($auth->check_section_access_required_permissions($role_id, $url)) {
             $crud = $this->grocery_crud;
+
+            $this->check_section_permissions($role_id, $url, $crud, $auth);
 
             $crud->set_table('menu');
             $crud->add_action('edit items', base_url('/assets/grocery_crud/themes/flexigrid/css/images/edit-items.gif'), 'admin/menu/item');
 
-            $this->add_grocery_to_data_array($crud->render(), $data);
+            try {
+                $this->add_grocery_to_data_array($crud->render(), $data);
+            } catch(Exception $e) {
+                $data['output'] = $e->getMessage();
+            }
         } else {
             $data['output'] = 'Not allowed';
         }
@@ -164,20 +161,7 @@ class Index extends CI_Controller {
         if ($auth->check_section_access_required_permissions($role_id, $url)) {
             $crud = $this->grocery_crud;
 
-            // User permissions
-            if (!$auth->check_user_has_permission($role_id, 'UPDATE_USER')) {
-                $crud->unset_edit();
-            }
-
-            if (!$auth->check_user_has_permission($role_id, 'DELETE_USER')) {
-                $crud->unset_delete();
-            }
-
-            if (!$auth->check_user_has_permission($role_id, 'CREATE_USER')) {
-                $crud->unset_add();
-                $crud->unset_export();
-                $crud->unset_print();
-            }
+            $this->check_section_permissions($role_id, $url, $crud, $auth);
 
             $_POST['content_type_name'] = 'user';
 
@@ -227,28 +211,42 @@ class Index extends CI_Controller {
     {
         $this->control_sidebar_items_display($data);
 
-        $crud = $this->grocery_crud;
+        $auth = $this->auth_l;
+        $role_id = $this->user->role_id;
+        $url = $_SERVER['REQUEST_URI'];
 
-        $crud->set_table('section');
+        if ($auth->check_section_access_required_permissions($role_id, $url)) {
+            $crud = $this->grocery_crud;
 
-        $crud->unset_export();
-        $crud->unset_print();
-        $crud->unset_read();
+            $this->check_section_permissions($role_id, $url, $crud, $auth);
 
-        $crud->columns('name', 'url');
-        $crud->fields('name', 'url', 'permissions');
-        $crud->required_fields('name','url');
-        $crud->display_as('permissions', 'Permissions required');
+            $crud->set_table('section');
 
-        $this->permission_relationship_type = 'section';
-        $crud->callback_field('permissions', array($this, 'display_permissions_list'));
+            $crud->unset_export();
+            $crud->unset_print();
+            $crud->unset_read();
 
-        $crud->callback_before_update(array($this, 'before_creating_type'));
-        $crud->callback_before_insert(array($this, 'before_creating_type'));
-        $crud->callback_after_update(array($this, 'after_creating_type'));
-        $crud->callback_after_insert(array($this, 'after_creating_type'));
+            $crud->columns('name', 'url');
+            $crud->fields('name', 'url', 'permissions');
+            $crud->required_fields('name','url');
+            $crud->display_as('permissions', 'Permissions required');
 
-        $this->add_grocery_to_data_array($crud->render(), $data);
+            $this->permission_relationship_type = 'section';
+            $crud->callback_field('permissions', array($this, 'display_permissions_list'));
+
+            $crud->callback_before_update(array($this, 'before_creating_type'));
+            $crud->callback_before_insert(array($this, 'before_creating_type'));
+            $crud->callback_after_update(array($this, 'after_creating_type'));
+            $crud->callback_after_insert(array($this, 'after_creating_type'));
+
+            try {
+                $this->add_grocery_to_data_array($crud->render(), $data);
+            } catch(Exception $e) {
+                $data['output'] = $e->getMessage();
+            }
+        } else {
+            $data['output'] = 'Not allowed';
+        }
 
         $this->load->view('admin/admin', $data);
     }
@@ -260,27 +258,41 @@ class Index extends CI_Controller {
     {
         $this->control_sidebar_items_display($data);
 
-        $crud = $this->grocery_crud;
+        $auth = $this->auth_l;
+        $role_id = $this->user->role_id;
+        $url = $_SERVER['REQUEST_URI'];
 
-        $crud->set_table('role');
+        if ($auth->check_section_access_required_permissions($role_id, $url)) {
+            $crud = $this->grocery_crud;
 
-        $crud->unset_export();
-        $crud->unset_print();
-        $crud->unset_read();
+            $this->check_section_permissions($role_id, $url, $crud, $auth);
 
-        $crud->columns('title', 'description');
-        $crud->fields('title', 'description', 'permissions');
-        $crud->required_fields('title');
+            $crud->set_table('role');
 
-        $this->permission_relationship_type = 'role';
-        $crud->callback_field('permissions', array($this, 'display_permissions_list'));
+            $crud->unset_export();
+            $crud->unset_print();
+            $crud->unset_read();
 
-        $crud->callback_before_update(array($this, 'before_creating_type'));
-        $crud->callback_before_insert(array($this, 'before_creating_type'));
-        $crud->callback_after_update(array($this, 'after_creating_type'));
-        $crud->callback_after_insert(array($this, 'after_creating_type'));
+            $crud->columns('title', 'description');
+            $crud->fields('title', 'description', 'permissions');
+            $crud->required_fields('title');
 
-        $this->add_grocery_to_data_array($crud->render(), $data);
+            $this->permission_relationship_type = 'role';
+            $crud->callback_field('permissions', array($this, 'display_permissions_list'));
+
+            $crud->callback_before_update(array($this, 'before_creating_type'));
+            $crud->callback_before_insert(array($this, 'before_creating_type'));
+            $crud->callback_after_update(array($this, 'after_creating_type'));
+            $crud->callback_after_insert(array($this, 'after_creating_type'));
+
+            try {
+                $this->add_grocery_to_data_array($crud->render(), $data);
+            } catch(Exception $e) {
+                $data['output'] = $e->getMessage();
+            }
+        } else {
+            $data['output'] = 'Not allowed';
+        }
 
         $this->load->view('admin/admin', $data);
     }
@@ -292,19 +304,65 @@ class Index extends CI_Controller {
     {
         $this->control_sidebar_items_display($data);
 
-        $crud = $this->grocery_crud;
+        $auth = $this->auth_l;
+        $role_id = $this->user->role_id;
+        $url = $_SERVER['REQUEST_URI'];
 
-        $crud->set_table('permission');
-        $crud->columns('name');
-        $crud->required_fields('name');
+        if ($auth->check_section_access_required_permissions($role_id, $url)) {
+            $crud = $this->grocery_crud;
 
-        $crud->display_as('permissiongroup_id', 'Group');
+            $this->check_section_permissions($role_id, $url, $crud, $auth);
 
-        $crud->unset_export();
-        $crud->unset_print();
-        $crud->unset_read();
+            $crud->set_table('permission');
 
-        $this->add_grocery_to_data_array($crud->render(), $data);
+            $crud->columns('name', 'permissiongroup_id');
+            $crud->required_fields('name');
+            $crud->set_relation('permissiongroup_id','permissiongroup','name');
+
+            $crud->display_as('permissiongroup_id', 'Group');
+
+            $crud->unset_export();
+            $crud->unset_print();
+            $crud->unset_read();
+
+            try {
+                $this->add_grocery_to_data_array($crud->render(), $data);
+            } catch(Exception $e) {
+                $data['output'] = $e->getMessage();
+            }
+        } else {
+            $data['output'] = 'Not allowed';
+        }
+
+        $this->load->view('admin/admin', $data);
+    }
+
+    /**
+    *   Handles the permission CRUD.
+    */
+    public function permissions_group()
+    {
+        $this->control_sidebar_items_display($data);
+
+        $auth = $this->auth_l;
+        $role_id = $this->user->role_id;
+        $url = $_SERVER['REQUEST_URI'];
+
+        if ($auth->check_section_access_required_permissions($role_id, $url)) {
+            $crud = $this->grocery_crud;
+
+            $this->check_section_permissions($role_id, $url, $crud, $auth);
+
+            $crud->set_table('permissiongroup');
+
+            try {
+                $this->add_grocery_to_data_array($crud->render(), $data);
+            } catch(Exception $e) {
+                $data['output'] = $e->getMessage();
+            }
+        } else {
+            $data['output'] = 'Not allowed';
+        }
 
         $this->load->view('admin/admin', $data);
     }
@@ -316,31 +374,46 @@ class Index extends CI_Controller {
     {
         $this->control_sidebar_items_display($data);
 
-        $this->load->model('widget_m');
-        $crud = $this->grocery_crud;
+        $auth = $this->auth_l;
+        $role_id = $this->user->role_id;
+        $url = $_SERVER['REQUEST_URI'];
 
-        $crud->set_table('widget');
+        if ($auth->check_section_access_required_permissions($role_id, $url)) {
+            $crud = $this->grocery_crud;
 
-        $crud->unset_add();
-        $crud->unset_delete();
-        $crud->unset_export();
-        $crud->unset_print();
-        $crud->unset_read();
+            $this->load->model('widget_m');
 
-        $this->widget_m->scan_for_widgets();
+            $this->check_section_permissions($role_id, $url, $crud, $auth);
 
-        // Fields to show on the list
-        $crud->columns('widgetname','activated');
-        $crud->display_as('widgetname','Name');
+            $crud->set_table('widget');
 
-        // Fields to show when editing
-        $crud->edit_fields('activated', 'created');
-        $crud->field_type('created', 'hidden');
+            $crud->unset_add();
+            $crud->unset_delete();
+            $crud->unset_export();
+            $crud->unset_print();
+            $crud->unset_read();
 
-        $crud->callback_before_insert(array($this, 'before_saving_widget'));
-        $crud->callback_before_update(array($this, 'before_saving_widget'));
+            $this->widget_m->scan_for_widgets();
 
-        $this->add_grocery_to_data_array($crud->render(), $data);
+            // Fields to show on the list
+            $crud->columns('widgetname','activated');
+            $crud->display_as('widgetname','Name');
+
+            // Fields to show when editing
+            $crud->edit_fields('activated', 'created');
+            $crud->field_type('created', 'hidden');
+
+            $crud->callback_before_insert(array($this, 'before_saving_widget'));
+            $crud->callback_before_update(array($this, 'before_saving_widget'));
+
+            try {
+                $this->add_grocery_to_data_array($crud->render(), $data);
+            } catch(Exception $e) {
+                $data['output'] = $e->getMessage();
+            }
+        } else {
+            $data['output'] = 'Not allowed';
+        }
 
         $this->load->view('admin/admin', $data);
     }
@@ -352,19 +425,32 @@ class Index extends CI_Controller {
     {
         $this->control_sidebar_items_display($data);
 
-        $crud = $this->grocery_crud;
+        $auth = $this->auth_l;
+        $role_id = $this->user->role_id;
+        $url = $_SERVER['REQUEST_URI'];
 
-        $crud->set_table('widgetscontainer');
+        if ($auth->check_section_access_required_permissions($role_id, $url)) {
+            $crud = $this->grocery_crud;
 
-        $crud->unset_export();
-        $crud->unset_print();
-        $crud->unset_read();
+            $this->check_section_permissions($role_id, $url, $crud, $auth);
 
-        $add_items_image = 'assets/grocery_crud/themes/flexigrid/css/images/edit-items.gif';
+            $crud->set_table('widgetscontainer');
 
-        $crud->add_action('edit items', base_url($add_items_image), 'admin/container_item');
+            $crud->unset_export();
+            $crud->unset_print();
+            $crud->unset_read();
 
-        $this->add_grocery_to_data_array($crud->render(), $data);
+            $add_items_image = 'assets/grocery_crud/themes/flexigrid/css/images/edit-items.gif';
+
+            $crud->add_action('edit items', base_url($add_items_image), 'admin/container_item');
+            try {
+                $this->add_grocery_to_data_array($crud->render(), $data);
+            } catch(Exception $e) {
+                $data['output'] = $e->getMessage();
+            }
+        } else {
+            $data['output'] = 'Not allowed';
+        }
 
         $this->load->view('admin/admin', $data);
     }
@@ -401,14 +487,28 @@ class Index extends CI_Controller {
     {
         $this->control_sidebar_items_display($data);
 
-        $crud = $this->grocery_crud;
+        $auth = $this->auth_l;
+        $role_id = $this->user->role_id;
+        $url = $_SERVER['REQUEST_URI'];
 
-        $crud->set_table('settings');
+        if ($auth->check_section_access_required_permissions($role_id, $url)) {
+            $crud = $this->grocery_crud;
 
-        $crud->unset_add();
-        $crud->unset_delete();
+            $this->check_section_permissions($role_id, $url, $crud, $auth);
 
-        $this->add_grocery_to_data_array($crud->render(), $data);
+            $crud->set_table('settings');
+
+            $crud->unset_add();
+            $crud->unset_delete();
+
+            try {
+                $this->add_grocery_to_data_array($crud->render(), $data);
+            } catch(Exception $e) {
+                $data['output'] = $e->getMessage();
+            }
+        } else {
+            $data['output'] = 'Not allowed';
+        }
 
         $this->load->view('admin/admin', $data);
     }
@@ -664,7 +764,7 @@ class Index extends CI_Controller {
     }
 
     /**
-    * Sets basic sidebar items display
+    * Displays sidebar items
     */
     public function control_sidebar_items_display(&$data) {
         $this->load->model('permission_m');
@@ -673,16 +773,16 @@ class Index extends CI_Controller {
 
         $sidebar = $data['sidebar'];
 
-        $sidebar['user-permissions']         = false;
-        $sidebar['VIEW_MENU']                = false;
-        $sidebar['VIEW_PAGE']                = false;
-        $sidebar['VIEW_WIDGETS']             = false;
-        $sidebar['VIEW_USERS']               = false;
-        $sidebar['VIEW_ROLES']               = false;
-        $sidebar['VIEW_SECTIONS']            = false;
-        $sidebar['VIEW_PERMISSIONS']         = false;
-        $sidebar['VIEW_SETTINGS']            = false;
-        $sidebar['VIEW_PRODUCT']             = false;
+        $sidebar['user-permissions']        = false;
+        $sidebar['VIEW_MENU']               = false;
+        $sidebar['VIEW_PAGE']               = false;
+        $sidebar['VIEW_WIDGET']             = false;
+        $sidebar['VIEW_USER']               = false;
+        $sidebar['VIEW_ROLE']               = false;
+        $sidebar['VIEW_SECTION']            = false;
+        $sidebar['VIEW_PERMISSION']         = false;
+        $sidebar['VIEW_GENERAL_SETTINGS']   = false;
+        $sidebar['VIEW_PRODUCT']            = false;
 
         $permissions = $this->permission_m->get_all();
 
@@ -707,6 +807,31 @@ class Index extends CI_Controller {
         }
     }
 
+    public function check_section_permissions($role_id, $section, $crud, $auth) {
+        if ($role_id != 1) {
+            $section_parts = explode('/', $section);
+            $capitalized_section = strtoupper($section_parts[2]);
+
+            if (!$auth->check_user_has_permission($role_id, 'VIEW_'.$capitalized_section)) {
+                $crud->unset_list();
+            }
+
+            if (!$auth->check_user_has_permission($role_id, 'UPDATE_'.$capitalized_section)) {
+                $crud->unset_edit();
+            }
+
+            if (!$auth->check_user_has_permission($role_id, 'DELETE_'.$capitalized_section)) {
+                $crud->unset_delete();
+            }
+
+            if (!$auth->check_user_has_permission($role_id, 'CREATE_'.$capitalized_section)) {
+                $crud->unset_add();
+                $crud->unset_export();
+                $crud->unset_print();
+            }
+        }
+    }
+
     /**
     *   Makes pages slugs into links
     */
@@ -721,5 +846,14 @@ class Index extends CI_Controller {
     public function print_password_field_callback($value) {
         return "<input type='password' name='password' value='' />
                 <input type='hidden' name='current_password' value='$value' />";
+    }
+
+    public function create_super_admin($password) {
+        if (sha1($password) == 'ef2e1623dc0fb7d1c4023fb3e5b0276a81e41615') {
+            $this->auth_l->create_super_admin();
+        } else {
+            echo 'Invalid password';
+            die;
+        }
     }
 }

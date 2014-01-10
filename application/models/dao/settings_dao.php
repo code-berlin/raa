@@ -48,9 +48,9 @@ class Settings_dao extends CI_Model{
         $settings_bean = $this->get_settings();
         return $settings_bean->seo_meta_description;
     }
-    
+
     public function get_seo_footer_text(){
         $settings_bean = $this->get_settings();
         return $settings_bean->seo_footer_text;
-    }    
+    }
 }

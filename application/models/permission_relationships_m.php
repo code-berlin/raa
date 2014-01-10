@@ -82,7 +82,7 @@ class Permission_relationships_m extends CI_Model {
 	}
 
 	function clear_relationships($relationship_id) {
-		$relationships = $this->get_by_relationship($relationship_id);
+		$relationships = $this->get_by_type($relationship_id);
 
 		foreach ($relationships as $relationship) {
 			$this->remove($relationship);
