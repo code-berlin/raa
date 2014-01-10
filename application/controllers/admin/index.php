@@ -296,6 +296,9 @@ class Index extends CI_Controller {
         $crud->set_table('permission');
         $crud->columns('name');
         $crud->required_fields('name');
+
+        $crud->display_as('permissiongroup_id', 'Group');
+
         $crud->unset_export();
         $crud->unset_print();
         $crud->unset_read();
