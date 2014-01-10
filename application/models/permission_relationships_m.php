@@ -30,7 +30,7 @@ class Permission_relationships_m extends CI_Model {
 	}
 
 	function get_by($field, $value) {
-		return $this->model->get_by($field, $value);
+		return $this->model->get_by($field, $id);
 	}
 
 	function get_by_type($relationship_id) {

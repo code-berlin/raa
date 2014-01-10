@@ -48,8 +48,27 @@ class Index extends CI_Controller {
     {
         $this->control_sidebar_items_display($data);
 
-        if ($this->auth_l->check_section_access_required_permissions($this->user->role_id, $_SERVER['REQUEST_URI'])) {
+        $auth = $this->auth_l;
+        $role_id = $this->user->role_id;
+        $url = $_SERVER['REQUEST_URI'];
+
+        if ($auth->check_section_access_required_permissions($role_id, $url)) {
             $crud = $this->grocery_crud;
+
+            // Page permissions
+            if (!$auth->check_user_has_permission($role_id, 'UPDATE_PAGE')) {
+                $crud->unset_edit();
+            }
+
+            if (!$auth->check_user_has_permission($role_id, 'DELETE_PAGE')) {
+                $crud->unset_delete();
+            }
+
+            if (!$auth->check_user_has_permission($role_id, 'CREATE_PAGE')) {
+                $crud->unset_add();
+                $crud->unset_export();
+                $crud->unset_print();
+            }
 
             $crud->set_table('page');
 
@@ -75,7 +94,12 @@ class Index extends CI_Controller {
             $crud->callback_before_update(array($this, 'before_saving_page'));
             $crud->callback_before_delete(array($this, 'before_deleting_page'));
 
-            $this->add_grocery_to_data_array($crud->render(), $data);
+            try {
+                $this->add_grocery_to_data_array($crud->render(), $data);
+            } catch(Exception $e) {
+                $data['output'] = $e->getMessage();
+            }
+
         } else {
             $data['output'] = 'Not allowed';
         }
@@ -133,34 +157,65 @@ class Index extends CI_Controller {
     {
         $this->control_sidebar_items_display($data);
 
-        $crud = $this->grocery_crud;
-        $_POST['content_type_name'] = 'user';
-        $crud->set_table('user');
+        $auth = $this->auth_l;
+        $role_id = $this->user->role_id;
+        $url = $_SERVER['REQUEST_URI'];
 
-        // list page
-        $crud->columns('name','username','role_id');
+        if ($auth->check_section_access_required_permissions($role_id, $url)) {
+            $crud = $this->grocery_crud;
 
-        $crud->set_relation('role_id','role','title');
-        $crud->display_as('role_id', 'Role');
+            // User permissions
+            if (!$auth->check_user_has_permission($role_id, 'UPDATE_USER')) {
+                $crud->unset_edit();
+            }
 
-        $crud->field_type('disabled','true_false', array('1' => 'Yes', '0' => 'No'));
+            if (!$auth->check_user_has_permission($role_id, 'DELETE_USER')) {
+                $crud->unset_delete();
+            }
 
-        // create, edit page
-        $crud->change_field_type('password','password');
-        $crud->set_rules('username','Username','valid_email|required');
-        $crud->callback_edit_field('password',array($this,'print_password_field_callback'));
+            if (!$auth->check_user_has_permission($role_id, 'CREATE_USER')) {
+                $crud->unset_add();
+                $crud->unset_export();
+                $crud->unset_print();
+            }
 
-        if($crud->getState() == 'add' || $crud->getState() == 'insert_validation') {
-            $crud->required_fields('username','role_id','password','disabled','creation_datetime');
+            $_POST['content_type_name'] = 'user';
+
+            $crud->set_table('user');
+
+            $crud->unset_read();
+            // list page
+            $crud->columns('name','username','role_id');
+
+            $crud->set_relation('role_id','role','title');
+            $crud->display_as('role_id', 'Role');
+
+            $crud->field_type('disabled','true_false', array('1' => 'Yes', '0' => 'No'));
+
+            // create, edit page
+            $crud->change_field_type('password','password');
+            $crud->set_rules('username','Username','valid_email|required');
+            $crud->callback_edit_field('password',array($this,'print_password_field_callback'));
+
+            if($crud->getState() == 'add' || $crud->getState() == 'insert_validation') {
+                $crud->required_fields('username','role_id','password','disabled','creation_datetime');
+            } else {
+                $crud->required_fields('username','role_id','disabled','creation_datetime');
+                $crud->display_as('password','change password');
+            }
+
+            $crud->callback_before_insert(array($this, 'before_saving_user'));
+            $crud->callback_before_update(array($this, 'before_updating_user'));
+
+            // When user is not allowed to CRUD the section, Grocery shows an error message
+            try {
+                $this->add_grocery_to_data_array($crud->render(), $data);
+            } catch(Exception $e) {
+                $data['output'] = $e->getMessage();
+            }
         } else {
-            $crud->required_fields('username','role_id','disabled','creation_datetime');
-            $crud->display_as('password','change password');
+            $data['output'] = 'Not allowed';
         }
-
-        $crud->callback_before_insert(array($this, 'before_saving_user'));
-        $crud->callback_before_update(array($this, 'before_updating_user'));
-
-        $this->add_grocery_to_data_array($crud->render(), $data);
 
         $this->load->view('admin/admin', $data);
     }
@@ -186,7 +241,7 @@ class Index extends CI_Controller {
         $crud->display_as('permissions', 'Permissions required');
 
         $this->permission_relationship_type = 'section';
-        $crud->callback_field('permissions', array($this, 'permissions_list'));
+        $crud->callback_field('permissions', array($this, 'display_permissions_list'));
 
         $crud->callback_before_update(array($this, 'before_creating_type'));
         $crud->callback_before_insert(array($this, 'before_creating_type'));
@@ -218,7 +273,7 @@ class Index extends CI_Controller {
         $crud->required_fields('title');
 
         $this->permission_relationship_type = 'role';
-        $crud->callback_field('permissions', array($this, 'permissions_list'));
+        $crud->callback_field('permissions', array($this, 'display_permissions_list'));
 
         $crud->callback_before_update(array($this, 'before_creating_type'));
         $crud->callback_before_insert(array($this, 'before_creating_type'));
@@ -359,7 +414,7 @@ class Index extends CI_Controller {
     *                                                               *
     *                                                               *
     *                                                               *
-    *              Utility functions for Grocery CRUD               *
+    *                       Utility functions                       *
     *                                                               *
     *                                                               *
     *                                                               *
@@ -388,7 +443,7 @@ class Index extends CI_Controller {
     * @param int $id user's role id
     * @param string $type role or section
     */
-    public function permissions_list($value, $id) {
+    public function display_permissions_list($value, $id) {
         switch($this->permission_relationship_type) {
             case 'role':
                 $this->load->model('role_permission_m');
@@ -501,7 +556,6 @@ class Index extends CI_Controller {
         return $post;
     }
 
-
     /**
     *   Checks widget information before it's stored in the database.
     */
@@ -610,9 +664,34 @@ class Index extends CI_Controller {
     * Sets basic sidebar items display
     */
     public function control_sidebar_items_display(&$data) {
-        $data['sidebar']['menu'] = true;
-        $data['sidebar']['page'] = true;
-        $data['sidebar']['widgets'] = true;
+        $this->load->model('permission_m');
+
+        $role_id = $this->user->role_id;
+
+        $sidebar = $data['sidebar'];
+
+        $sidebar['user-permissions']         = false;
+        $sidebar['VIEW_MENU']                = false;
+        $sidebar['VIEW_PAGE']                = false;
+        $sidebar['VIEW_WIDGETS']             = false;
+        $sidebar['VIEW_USERS']               = false;
+        $sidebar['VIEW_ROLES']               = false;
+        $sidebar['VIEW_SECTIONS']            = false;
+        $sidebar['VIEW_PERMISSIONS']         = false;
+        $sidebar['VIEW_SETTINGS']            = false;
+        $sidebar['VIEW_PRODUCT']             = false;
+
+        $permissions = $this->permission_m->get_all();
+
+        foreach ($permissions as $permission) {
+            $name = $permission->name;
+
+            if ($this->auth_l->check_user_has_permission($role_id, $name)) {
+                $sidebar[$name] = true;
+            }
+        }
+
+        $data['sidebar'] = $sidebar;
     }
 
     /**
