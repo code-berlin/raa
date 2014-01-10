@@ -237,7 +237,7 @@ class Index extends CI_Controller {
 
         $crud->columns('name', 'url');
         $crud->fields('name', 'url', 'permissions');
-        $crud->required_fields('title');
+        $crud->required_fields('name','url');
         $crud->display_as('permissions', 'Permissions required');
 
         $this->permission_relationship_type = 'section';
