@@ -12,12 +12,11 @@
 
 /* line 11, sass/admin.scss */
 .admin-right {
-  background: #ddd;
   width: 83%;
   float: left;
 }
 
-/* line 17, sass/admin.scss */
+/* line 16, sass/admin.scss */
 .admin-footer {
   border-top: 1px #ccc solid;
   margin-top: 40px;
@@ -25,13 +24,18 @@
   font-size: 13px;
 }
 
+/* line 23, sass/admin.scss */
+#ajax_list {
+  background: #ddd;
+}
+
 /* permissions - checkboxes */
-/* line 25, sass/admin.scss */
+/* line 28, sass/admin.scss */
 #permissions_field_box {
   margin-top: 10px;
 }
 
-/* line 28, sass/admin.scss */
+/* line 31, sass/admin.scss */
 #permissions_display_as_box {
   color: #222;
   font-size: 15px;
@@ -39,12 +43,12 @@
   padding: 0;
 }
 
-/* line 34, sass/admin.scss */
+/* line 37, sass/admin.scss */
 ul.permissions_list {
   margin-left: 5px;
 }
 
-/* line 37, sass/admin.scss */
+/* line 40, sass/admin.scss */
 .permissions_list li {
   color: #444;
   list-style-type: none;
@@ -54,7 +58,7 @@ ul.permissions_list {
   margin-bottom: 5px;
 }
 
-/* line 45, sass/admin.scss */
+/* line 48, sass/admin.scss */
 ul.permissions_list li input {
   margin: 3px 10px 5px 0;
 }

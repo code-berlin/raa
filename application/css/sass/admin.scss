@@ -9,7 +9,6 @@
 }
 
 .admin-right {
-    background: #ddd;
     width: 83%;
     float: left;
 }
@@ -19,6 +18,10 @@
     margin-top: 40px;
     color: #ccc;
     font-size: 13px;
+}
+
+#ajax_list {
+	background: #ddd;
 }
 
 /* permissions - checkboxes */
