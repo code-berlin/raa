@@ -34,6 +34,14 @@
                 </li>
             <?php } ?>
 
+            <li>
+                <a href='<?php echo site_url('admin/facebook_app')?>'>Facebook Apps</a>
+            </li>
+
+            <li>
+                <a href='<?php echo site_url('admin/facebook_page')?>'>Facebook Pages</a>
+            </li>
+
             <?php if ($sidebar['VIEW_PRODUCT']) { ?>
                 <li>
                     <a href='<?php echo site_url('admin/product')?>'>Products</a>

@@ -126,6 +126,113 @@ class Index extends CI_Controller {
     }
 
     /**
+    *   Handles the facebook app CRUD.
+    */
+    public function facebook_app()
+    {
+        $this->control_sidebar_items_display($data);
+
+        $auth = $this->auth_l;
+        $role_id = $this->user->role_id;
+        $url = $_SERVER['REQUEST_URI'];
+
+        if ($auth->check_section_access_required_permissions($role_id, $url)) {
+            $crud = $this->grocery_crud;
+
+            // Facebook post on page test
+            /*$facebook = $this->facebook_api;
+
+            $facebook->update_facebook_config(array(
+                'appId' => 792724064078078,
+                'secret' => 'a71ac94ecb76cf4c928538bc2261b921',
+                'cookie' => true
+            ));
+
+            $facebook->update_facebook_object();
+
+            $user = $facebook->check_facebook_user();
+
+            if ($user > 0) {
+                $facebook->load_user_pages();
+                $user_pages = $facebook->get_user_pages();
+
+                foreach($user_pages as $id => $page) {
+                    $message = 'This is a test message from RAACMS.';
+                    //$facebook->post_on_page($id, $message, $page['access_token']);
+                }
+            } else {
+                $this->get_log_url($user);
+                die;
+            }*/
+            // Facebook post on page test
+
+            $crud->set_table('facebookapp');
+
+            // Fields to show on the list
+            $crud->columns('app_name','app_id','status');
+            $crud->display_as('app_name', 'Facebook app Name');
+            $crud->display_as('app_id', 'Facebook app ID');
+            $crud->display_as('app_secret', 'Facebook app secret');
+            $crud->display_as('user_id', 'Related user');
+
+            $crud->set_relation('user_id','user','name');
+
+            $crud->add_action('Check credentials', base_url('/assets/grocery_crud/themes/flexigrid/css/images/load.png'), 'admin/check_facebook_credentials');
+
+            try {
+                $this->add_grocery_to_data_array($crud->render(), $data);
+            } catch(Exception $e) {
+                $data['output'] = $e->getMessage();
+            }
+        } else {
+            $data['output'] = 'Not allowed';
+        }
+
+        $this->load->view('admin/admin', $data);
+    }
+
+    /**
+    *   Handles the facebook pages CRUD.
+    */
+    public function facebook_page()
+    {
+        $this->control_sidebar_items_display($data);
+
+        $auth = $this->auth_l;
+        $role_id = $this->user->role_id;
+        $url = $_SERVER['REQUEST_URI'];
+
+        if ($auth->check_section_access_required_permissions($role_id, $url)) {
+            $crud = $this->grocery_crud;
+
+            $crud->set_table('facebookpage');
+
+            // Fields to show on the list
+            $crud->columns('page_name','page_id','facebookapp_id');
+            $crud->fields('page_name','page_id','facebookapp_id', 'user_id', 'page_image', 'status');
+
+            $crud->display_as('page_name', 'Facebook page Name');
+            $crud->display_as('page_id', 'Facebook page ID');
+            $crud->display_as('page_image', 'Image');
+            $crud->display_as('user_id', 'Related user');
+            $crud->display_as('facebookapp_id', 'Facebook app name');
+
+            $crud->set_relation('facebookapp_id','facebookapp','app_name');
+            $crud->set_relation('user_id','user','name');
+
+            try {
+                $this->add_grocery_to_data_array($crud->render(), $data);
+            } catch(Exception $e) {
+                $data['output'] = $e->getMessage();
+            }
+        } else {
+            $data['output'] = 'Not allowed';
+        }
+
+        $this->load->view('admin/admin', $data);
+    }
+
+    /**
     *   Handles the product CRUD.
     */
     public function product()
@@ -537,6 +644,28 @@ class Index extends CI_Controller {
         {
             redirect('auth');
         }
+    }
+
+    public function update_facebook_app_config($application_internal_id=0) {
+        $this->facebook_api->update_facebook_config(array(
+            'appId' => 792724064078078,
+            'secret' => 'a71ac94ecb76cf4c928538bc2261b921',
+            'cookie' => true
+        ));
+
+        $this->facebook_api->update_facebook_object();
+    }
+
+    public function check_facebook_credentials($application_internal_id=0) {
+        $this->update_facebook_app_config();
+
+        $this->facebook_api->check_credentials();
+    }
+
+    public function get_log_url($user) {
+        $url = $this->facebook_api->get_status_url($user);
+
+        header('Location: '.$url);
     }
 
     /*

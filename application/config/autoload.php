@@ -52,7 +52,15 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database', 'rb', 'auth_l', 'session', 'layout', 'encrypt');
+$autoload['libraries'] = array(
+	'database',
+	'rb',
+	'auth_l',
+	'session',
+	'layout',
+	'encrypt',
+	'facebook_api'
+);
 
 /*
 | -------------------------------------------------------------------
@@ -63,7 +71,12 @@ $autoload['libraries'] = array('database', 'rb', 'auth_l', 'session', 'layout', 
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url', 'form', 'content_types', 'menu');
+$autoload['helper'] = array(
+	'url',
+	'form',
+	'content_types',
+	'menu'
+);
 
 
 /*
@@ -79,7 +92,7 @@ $autoload['helper'] = array('url', 'form', 'content_types', 'menu');
 |
 */
 
-$autoload['config'] = array();
+$autoload['config'] = array('facebook');
 
 
 /*
