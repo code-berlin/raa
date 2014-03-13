@@ -37,7 +37,7 @@ class Dispatcher extends CI_Controller {
             // It's important for each class to have this method
             $data[$type] = $this->$model_type->get_by_slug($slug);
         } else {
-            $this->load->view('errors/404.html');
+            show_404();
         }
 
         if (!empty($type)) {

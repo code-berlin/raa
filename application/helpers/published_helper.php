@@ -1,6 +1,9 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 function check_if_published($result, $slug) {
+    if (!isset($result) || empty($result)){
+            return false;
+    }
     $type = R::load('type', $result->type_id);
         
     $table_name = $type->name;

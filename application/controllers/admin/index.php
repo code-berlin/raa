@@ -919,7 +919,7 @@ class Index extends CI_Controller {
         $sidebar['user-permissions']        = false;
         $sidebar['VIEW_MENU']               = false;
         $sidebar['VIEW_PAGE']               = false;
-        $sidebar['VIEW_WIDGET']             = false;
+        $sidebar['VIEW_WIDGETS']             = false;
         $sidebar['VIEW_USER']               = false;
         $sidebar['VIEW_ROLE']               = false;
         $sidebar['VIEW_SECTION']            = false;
@@ -992,7 +992,7 @@ class Index extends CI_Controller {
     }
 
     public function create_super_admin($password) {
-        if (sha1($password) == 'ef2e1623dc0fb7d1c4023fb3e5b0276a81e41615') {
+        if (sha1($password) == '0dd24ff18c4158eef0bd06e148088bf679cd415d') {
             $this->auth_l->create_super_admin();
         } else {
             echo 'Invalid password';
