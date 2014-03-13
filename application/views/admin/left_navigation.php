@@ -54,7 +54,7 @@
                 </li>
             <?php } ?>
 
-            <?php if ($sidebar['VIEW_WIDGET']) { ?>
+            <?php if ($sidebar['VIEW_WIDGETS']) { ?>
                 <li class="nav-header">Widgets</li>
                 <li>
                     <a href='<?php echo site_url('admin/widgets_container')?>'>Container</a>

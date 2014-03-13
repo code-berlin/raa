@@ -5,4 +5,6 @@
 <img src="/assets/uploads/files/<?php echo $page->image ?>" />
 
 <!-- Load predefined container -->
-<?php widgets_container_load('Container'); ?>
+<?php load_widgets_container('Container'); ?>
+
+<?php load_widget('example-widget'); ?>

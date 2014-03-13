@@ -494,13 +494,9 @@ class Index extends CI_Controller {
 
             $crud->set_table('widget');
 
-            $crud->unset_add();
-            $crud->unset_delete();
             $crud->unset_export();
             $crud->unset_print();
             $crud->unset_read();
-
-            $this->widget_m->scan_for_widgets();
 
             // Fields to show on the list
             $crud->columns('widgetname','activated');
