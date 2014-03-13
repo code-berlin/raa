@@ -2,8 +2,7 @@
 
 class Page extends CI_Controller {
 
-    function __construct()
-    {
+    function __construct() {
         parent::__construct();
 
         $this->load->helper('widget');
@@ -13,24 +12,19 @@ class Page extends CI_Controller {
     /**
     *   Retrieves pages by id
     */
-    public function index($id=0)
-    {
- 
+    public function index($id=0) {
         $this->load->model('page_m');
 
         $item = $this->page_m->get_by_id($id);
 
-        if($item->id > 0 && $item->slug!='') { 
-            if ($item->published)
-            {
+        if($item->id > 0 && $item->slug!='') {
+            if ($item->published) {
                 redirect(base_url($item->slug), 'location', 301);
-            }
-            else
-            {
+            } else {
                 $this->load->view('errors/404.html');
             }
         } else {
-            $data['page'] = $item;
+            $this->load->view('errors/404.html');
         }
 
         if (!empty($data['page']) && $data['page']->id > 0) {
@@ -39,6 +33,4 @@ class Page extends CI_Controller {
             $this->load->view('page/'.$view, $data);
         }
     }
- 
-
 }

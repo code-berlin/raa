@@ -1,8 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 // DEFAULT ROUTES
-$route['default_controller'] = "index";
-$route['404_override'] = '';
+$route['default_controller'] = "dispatcher";
 
 // DB MIGRATION TOOL
 $route['migrate'] = "migrate/index";
@@ -22,9 +21,9 @@ $route['page/(:num)'] = "page/index/$1";
 $route['product/(:num)'] = "content_type/index/$1/product";
 
 /*
- * FRONTEND SLUGS
- * IMPORTANT: don't move this item from this position! must be the last!
- */
+* FRONTEND SLUGS
+* IMPORTANT: don't move this item from this position! must be the last!
+*/
 $route['([a-z0-9-]*)'] = "dispatcher/index/$1";
 
 /* End of file routes.php */

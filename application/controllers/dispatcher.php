@@ -2,8 +2,7 @@
 
 class Dispatcher extends CI_Controller {
 
-    function __construct()
-    {
+    function __construct() {
         parent::__construct();
 
         $this->load->helper('url');
@@ -12,12 +11,17 @@ class Dispatcher extends CI_Controller {
         $this->load->helper('published');
     }
 
-    public function index($slug)
-    {
-
+    public function index($slug='') {
         $this->load->model('url_m');
 
-        $type = '';
+        // Retrieve homepage in case it exists.
+        if (empty($slug)) {
+            $this->load->model('settings_m');
+            $this->load->model('page_m');
+
+            $page = $this->page_m->get_by_id($this->settings_m->get_homepage());
+            $slug = $page->slug;
+        }
 
         // Retrieve object type related to this slug
         $result = $this->url_m->get_by_slug($slug);
@@ -32,26 +36,18 @@ class Dispatcher extends CI_Controller {
 
             // It's important for each class to have this method
             $data[$type] = $this->$model_type->get_by_slug($slug);
-        }
-        else
-        {
+        } else {
             $this->load->view('errors/404.html');
         }
 
         if (!empty($type)) {
-            
-
             $view = (!empty($data[$type]->template)) ? $data[$type]->template->name : 'index';
 
             // setting the data type and the id for the layout
             $data['type'] = $type;
             $data['id'] = $result->id;
 
-
             $this->layout->view($type.'/'.$view, $data);
-
         }
     }
-
-
 }

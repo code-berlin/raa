@@ -4,18 +4,18 @@
  *
  */
 class Settings_dao extends CI_Model{
+    private $settings_bean;
 
     public function __construct(){
         parent::__construct();
 
         $this->load->library('rb');
 
-        $this->object = new stdClass();
+        $this->settings_bean = $this->get_settings();
     }
 
     public function get_settings(){
-        $settings_bean = R::findOne('settings', 'id > :id',
-            array(':id' => '0'));
+        $settings_bean = R::findOne('settings', 'id > :id', array(':id' => '0'));
 
         if ($settings_bean == null){
             R::dispense('settings');
@@ -25,32 +25,30 @@ class Settings_dao extends CI_Model{
     }
 
     public function get_blog_title(){
-        $settings_bean = $this->get_settings();
-        return $settings_bean->blog_title;
+        return $this->settings_bean->blog_title;
     }
 
     public function get_email(){
-        $settings_bean = $this->get_settings();
-        return $settings_bean->email;
+        return $this->settings_bean->email;
+    }
+
+    public function get_homepage(){
+        return $this->settings_bean->page_id;
     }
 
     public function get_seo_meta_title(){
-        $settings_bean = $this->get_settings();
-        return $settings_bean->seo_meta_title;
+        return $this->settings_bean->seo_meta_title;
     }
 
     public function get_seo_meta_keywords(){
-        $settings_bean = $this->get_settings();
-        return $settings_bean->seo_meta_keywords;
+        return $this->settings_bean->seo_meta_keywords;
     }
 
     public function get_seo_meta_description(){
-        $settings_bean = $this->get_settings();
-        return $settings_bean->seo_meta_description;
+        return $this->settings_bean->seo_meta_description;
     }
 
     public function get_seo_footer_text(){
-        $settings_bean = $this->get_settings();
-        return $settings_bean->seo_footer_text;
+        return $this->settings_bean->seo_footer_text;
     }
 }

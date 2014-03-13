@@ -605,6 +605,9 @@ class Index extends CI_Controller {
 
             $crud->set_table('settings');
 
+            $crud->display_as('page_id','Homepage');
+            $crud->set_relation('page_id','page','title');
+
             $crud->unset_add();
             $crud->unset_delete();
 
