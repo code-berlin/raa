@@ -9,6 +9,7 @@ class Migration_big_permission_fix extends Basic_migration {
     }
 
     public function mig_up() {
+        $this->db->query("TRUNCATE permission");
         $this->db->query("INSERT INTO `permission` (`id`, `name`, `permissiongroup_id`) VALUES
                         (1, 'CREATE_USER', 0),
                         (2, 'DELETE_USER', 0),
