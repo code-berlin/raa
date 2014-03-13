@@ -563,24 +563,39 @@ class Index extends CI_Controller {
     */
     public function container_item($id)
     {
-        $crud = $this->grocery_crud;
+        $this->control_sidebar_items_display($data);
 
-        $crud->set_table('widgetscontainersrelation');
+        $auth = $this->auth_l;
+        $role_id = $this->user->role_id;
+        $url = $_SERVER['REQUEST_URI'];
 
-        $crud->columns('widget_id', 'widget_position');
+        if ($auth->check_section_access_required_permissions($role_id, $url)) {
 
-        $crud->where('widgets_container_id', $id);
+            $crud = $this->grocery_crud;
 
-        $crud->set_relation('widget_id','widget','widgetname');
-        $crud->display_as('widget_id','Widget');
-        $crud->display_as('widget_position','Position');
+            $crud->set_table('widgetscontainersrelation');
+
+            $crud->columns('widget_id', 'widget_position');
+
+            $crud->where('widgets_container_id', $id);
+
+            $crud->set_relation('widget_id','widget','widgetname');
+            $crud->display_as('widget_id','Widget');
+            $crud->display_as('widget_position','Position');
 
 
-        $crud->field_type('widgets_container_id', 'hidden');
+            $crud->field_type('widgets_container_id', 'hidden');
 
-        $_POST['widgets_container_id'] = $id;
+            $_POST['widgets_container_id'] = $id;
 
-        $this->add_grocery_to_data_array($crud->render(), $data);
+            try {
+                $this->add_grocery_to_data_array($crud->render(), $data);
+            } catch(Exception $e) {
+                $data['output'] = $e->getMessage();
+            }
+        } else {
+            $data['output'] = 'Not allowed';
+        }
 
         $this->load->view('admin/admin', $data);
     }
