@@ -1,5 +1,5 @@
 <?php
-class Section_m extends CI_Model {
+class Section_m extends RedBean_SimpleModel {
 
 	function __construct()
 	{

@@ -55,11 +55,10 @@ $autoload['packages'] = array();
 $autoload['libraries'] = array(
 	'database',
 	'rb',
+    'rb_loader',
 	'auth_l',
-	'session',
 	'layout',
 	'encrypt',
-	'facebook_api',
 	'tools'
 );
 

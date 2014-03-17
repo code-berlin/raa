@@ -1,5 +1,5 @@
 <?php
-class Settings_m extends CI_Model{
+class Settings_m extends RedBean_SimpleModel{
     function __construct()
     {
         parent::__construct();

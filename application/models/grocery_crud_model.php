@@ -27,7 +27,7 @@
  * @version    	1.2
  * @link		http://www.grocerycrud.com/documentation
  */
-class grocery_CRUD_Model  extends CI_Model  {
+class grocery_CRUD_Model  extends RedBean_SimpleModel  {
 
 	protected $primary_key = null;
 	protected $table_name = null;

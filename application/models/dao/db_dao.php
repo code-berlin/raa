@@ -7,8 +7,8 @@ class DB_dao extends CI_Model{
 
 	public function __construct($table){
 		parent::__construct();
-
-		$this->load->library('rb');
+        $CI = & get_instance();
+        $CI->load->library('rb');
 
 		$this->table = $table;
 	}

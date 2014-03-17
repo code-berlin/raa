@@ -46,13 +46,13 @@ abstract class Toast extends CI_Controller
 		$this->modelname = $name;
 		$this->modelname_short = basename($name, '.php');
 		$this->messages = array();
-
-		//$this->_load_db($db);
+		$this->_load_db($db);
 	}
 
 	function _load_db($db){
 		if(!isset($db)) $db = $this->config->config['stage'] . '_test';
 		$this->db = $this->load->database($db,TRUE);
+        $this->rb_loader->reload_connection();
 
 	}
 

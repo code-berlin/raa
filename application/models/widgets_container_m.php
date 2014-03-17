@@ -1,5 +1,5 @@
 <?php
-class Widgets_container_m extends CI_Model {
+class Widgets_container_m extends RedBean_SimpleModel {
 
 	function __construct()
 	{

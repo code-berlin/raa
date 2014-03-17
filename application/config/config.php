@@ -14,7 +14,13 @@
 | path to your installation.
 |
 */
-$config['base_url']	= '';
+//$config['base_url']	= '';
+
+$config['stage']['dev11.raa.code-b-development.com'] = 'dev11';
+$config['stage']['test.raa.code-b-development.com'] = 'test';
+
+$config['base_url']['dev11']= "http://dev11.raa.code-b-development.com";
+$config['base_url']['test']	= "htpp://test.raa.code-b-development.com";
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +50,7 @@ $config['index_page'] = '';
 | 'ORIG_PATH_INFO'	Uses the ORIG_PATH_INFO
 |
 */
-$config['uri_protocol']	= 'AUTO';
+$config['uri_protocol']	= 'REQUEST_URI';
 
 /*
 |--------------------------------------------------------------------------

@@ -52,6 +52,7 @@ class Settings_tests extends Basic_tests
         $this->_assert_equals($settings->email,$result->email);
         $this->_assert_equals($settings->seo,$result->seo);
         $this->_assert_equals($settings->keywords,$result->keywords);
+        die("test");
     }
 
     function test_get_blog_title(){

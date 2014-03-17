@@ -1,5 +1,5 @@
 <?php
-class Permission_relationships_m extends CI_Model {
+class Permission_relationships_m extends RedBean_SimpleModel {
 
 	function __construct($type)
 	{

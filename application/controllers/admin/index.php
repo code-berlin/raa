@@ -648,7 +648,7 @@ class Index extends CI_Controller {
     {
         if (!$this->auth_l->user_logged_in())
         {
-            redirect('auth');
+            redirect('/auth');
         }
     }
 
@@ -656,7 +656,7 @@ class Index extends CI_Controller {
     {
         if ($this->auth_l->user_disabled())
         {
-            redirect('auth');
+            redirect('/auth');
         }
     }
 

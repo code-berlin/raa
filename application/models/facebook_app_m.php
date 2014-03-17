@@ -1,5 +1,5 @@
 <?php
-class Facebook_app_m extends CI_Model {
+class Facebook_app_m extends RedBean_SimpleModel {
 	function __construct() {
 		parent::__construct();
 

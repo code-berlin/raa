@@ -38,7 +38,7 @@ class Auth extends CI_Controller
                     {
                         $user = array('user_name'=>$result->username);
                         $this->session->set_userdata($user);
-                        redirect('admin/index');
+                        redirect('/admin/index');
                     }
                     else {
                         $data['disabled_message'] = "You don't have permission to access this page.";
@@ -52,7 +52,7 @@ class Auth extends CI_Controller
     public function logout()
     {
         $this->session->unset_userdata('user_name');
-        redirect('auth');
+        redirect('/auth');
     }
 
 }
