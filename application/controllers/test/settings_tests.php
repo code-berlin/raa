@@ -78,18 +78,18 @@ class Settings_tests extends Basic_tests
         $result = $this->settings_m->get_seo_meta_keywords();
         $this->_assert_equals($settings->seo_meta_keywords, $result);
     }
-    
+
     function test_get_seo_meta_description(){
         $settings = $this->settings;
         $result = $this->settings_m->get_seo_meta_description();
         $this->_assert_equals($settings->seo_meta_description, $result);
-    }    
-    
+    }
+
     function test_get_seo_footer_text(){
         $settings = $this->settings;
         $result = $this->settings_m->get_seo_footer_text();
         $this->_assert_equals($settings->seo_footer_text, $result);
-    }        
+    }
 
     //adds a testbean
     private function add_settings_fields(){

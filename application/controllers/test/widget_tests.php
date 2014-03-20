@@ -17,23 +17,6 @@ class Widget_tests extends Basic_tests
 
 	function _post() {}
 
-	function test_load_widget()
-	{
-		$widgets = $this->widget_m->get_all();
-
-		$total_widgets = count($widgets);
-		$available_widgets = 0;
-
-		if (!empty($widgets)) {
-			foreach ($widgets as $widget) {
-				if (file_exists('application/widgets/'.$widget->widgetname)) {
-					$available_widgets++;
-				}
-			}
-		}
-
-		$this->_assert_equals($total_widgets, $available_widgets);
-	}
 }
 
 // End of file example_test.php */
