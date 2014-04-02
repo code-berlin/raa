@@ -16,10 +16,12 @@
 */
 //$config['base_url']	= '';
 
+$config['stage']['dev4.raa.code-b-development.com'] = 'dev4';
 $config['stage']['dev11.raa.code-b-development.com'] = 'dev11';
 $config['stage']['dev21.raa.code-b-development.com'] = 'dev21';
 $config['stage']['test.raa.code-b-development.com'] = 'test';
 
+$config['base_url']['dev4']= "http://dev4.raa.code-b-development.com";
 $config['base_url']['dev11']= "http://dev11.raa.code-b-development.com";
 $config['base_url']['dev21']= "http://dev21.raa.code-b-development.com";
 $config['base_url']['test']	= "htpp://test.raa.code-b-development.com";
