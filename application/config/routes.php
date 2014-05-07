@@ -20,6 +20,9 @@ $route['page/(:num)'] = "page/index/$1";
 
 $route['product/(:num)'] = "content_type/index/$1/product";
 
+//CONTACT FORM
+$route['sendemail/contact'] = 'sendemail/contact';
+
 /*
 * FRONTEND SLUGS
 * IMPORTANT: don't move this item from this position! must be the last!

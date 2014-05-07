@@ -3,3 +3,4 @@
 $config['migration_enabled'] = TRUE;
 $config['migration_version'] = 30;
 $config['migration_path'] = APPPATH . 'migrations/';
+$config['admin_email'] = 'k.burchardi@code-b.com';

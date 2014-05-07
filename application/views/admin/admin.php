@@ -1,7 +1,7 @@
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de" >
 <head>
-
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF -8" />
     <title>RAA CMS</title>
 
     <?php

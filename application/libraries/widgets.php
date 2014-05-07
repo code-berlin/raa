@@ -19,6 +19,20 @@ class Widgets {
 		$this->ci =& get_instance();
 	}
 
+    public function contact($id) {
+        $ci = $this->ci;
+        $data['contact_us'] = language_get_string('contact_form', 'contact_form_footer_header');
+        $data['contact_info'] = language_get_string('contact_form', 'contact_form_footer_info');
+        $data['contact_form_disclaimer'] = language_get_string('contact_form', 'contact_form_disclaimer');
+        $data['contact_submit'] = language_get_string('contact_form', 'contact_form_send');
+        // Palceholders
+        $data['name_placeholder'] = language_get_string('contact_form', 'contact_form_name');
+        $data['email_placeholder'] = language_get_string('contact_form', 'contact_form_email');
+        $data['message_placeholder'] = language_get_string('contact_form', 'contact_form_message');
+
+        $ci->load->view('widgets/contact/index', $data);
+    }
+
 	public function example_widget($id) {
 		$ci = $this->ci;
 		// Load models:
