@@ -1,5 +1,4 @@
 (function ($) {
-
     var FooterWidget = function () {
         this.initialized = false; // Widget is initialized
         this.current_form_selector = '#contact-form';
