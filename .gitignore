@@ -13,3 +13,5 @@ application/logs/*
 application/config/database.php
 
 *.sublime-project
+*.sublime-workspace
+*.idea

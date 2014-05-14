@@ -1,4 +1,6 @@
 (function ($) {
+    "use strict";
+
     var FooterWidget = function () {
         this.initialized = false; // Widget is initialized
         this.current_form_selector = '#contact-form';
@@ -69,7 +71,7 @@
         },
         getCurrentFormSelector: function () {
             // Set current form selector
-            if ($('#form_wrapper').length != 0) {
+            if ($('#form_wrapper').length !== 0) {
                 this.current_form_selector = '#form_wrapper';
             }
         },
@@ -101,24 +103,24 @@
                     return 'IE '+(tem[1] || '');
                 }
                 M= M[2]? [M[1], M[2]]:[navigator.appName, navigator.appVersion, '-?'];
-                if((tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
+                if((tem= ua.match(/version\/([\.\d]+)/i))!== null) M[2]= tem[1];
                 return M.join(' ');
             })();
 
             // Fix for IE: href="tel:..."
-            if (navigator.sayswho.indexOf("IE") == 0 || navigator.sayswho.indexOf("MSIE") == 0) {
+            if (navigator.sayswho.indexOf("IE") === 0 || navigator.sayswho.indexOf("MSIE") === 0) {
                 var $phone_box = $('#tel');
                 var content = $phone_box.html();
                 $phone_box.replaceWith($('<div id="tel">' + content + '</div>'));
             }
 
             // Fix for IE8-9: contact form placeholders
-            if ($(".ie9").length != 0) {
+            if ($(".ie9").length !== 0) {
                 // Inputs
-                if ($(".contact-form input").length != 0) {
-                    var $input = $(".contact-form input");
-                } else if ($("#form_wrapper input").length != 0) {
-                    var $input = $("#form_wrapper input");
+                var $input = $(".contact-form input");
+
+                 if ($("#form_wrapper input").length !== 0) {
+                    $input = $("#form_wrapper input");
                 }
 
                 $.each($input, function() {
@@ -138,11 +140,11 @@
                 });
                 // Textarea
                 var $textarea = $("textarea");
-                if ($textarea.length != 0) {
+                if ($textarea.length !== 0) {
                     var $current_placeholder = $textarea.attr("placeholder");
                     $textarea.text($current_placeholder);
                     $textarea.focus(function() {
-                        if ($textarea.val() == $current_placeholder) {
+                        if ($textarea.val() === $current_placeholder) {
                             $textarea.text("");
                         }
                     })
@@ -175,7 +177,7 @@
                         success: function (data) {
                             alert('Vielen Dank für Ihre Kontaktanfrage!');
                             // Fix for IE
-                            if (navigator.sayswho.indexOf("IE") == 0 || navigator.sayswho.indexOf("MSIE") == 0) {
+                            if (navigator.sayswho.indexOf("IE") === 0 || navigator.sayswho.indexOf("MSIE") === 0) {
                                 that.clearInputs(this.current_form_selector);
                             } else {
                                 $(this.current_form_selector).find('input[name="name"], input[name="email"], input[name="message"], input[name="url"], textarea').val('');
@@ -187,11 +189,13 @@
                 e.preventDefault();
             });
         }
-    }
+    };
 
     window.footerWidget = new FooterWidget();
 })(jQuery);
 
 jQuery(function () {
+    "use strict";
+
     window.footerWidget.init();
 });

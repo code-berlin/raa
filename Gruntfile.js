@@ -20,22 +20,13 @@ module.exports = function(grunt) {
       },
       my_target: {
         files: {
-          // Everything we need for the home page.
-          'assets/js/min/scripts.min.js': [
-            'assets/js/jquery-1.11.0.min.js',
-            'assets/js/jquery-ui-1.10.4.easings.min.js',
-            'assets/js/widget/footer.js',
-            'assets/js/app/main_menu.js',
-            'assets/js/app/team.js',
-            'assets/js/app/portfolio.js',
-            'assets/js/app/carousel.js',
-            'assets/js/app/main.js'
-          ],
           'assets/js/min/modernizr.min.js': [
-            'assets/js/modernizr.js'
+            'assets/js/lib/modernizr.js'
           ],
-          'assets/js/min/google_map.min.js': [
-            'assets/js/app/google_map.js'
+          'assets/js/min/scripts.min.js': [
+            'assets/js/lib/jquery-1.11.0.min.js',
+            'assets/js/min/modernizr.min.js',
+            'assets/js/app/footer.js'
           ]
         }
       }
@@ -45,17 +36,22 @@ module.exports = function(grunt) {
         options: {
           import: 2
         },
-        src: ['assets/css/style.css']
+        src: [
+        'assets/css/admin.css',
+        'assets/css/main.css',
+        ]
       }
     },
     cssmin: {
       add_banner: {
         options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+          banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
         },
         files: {
-          'assets/css/style.min.css': [
-            'assets/css/style.css'
+          'assets/css/min/admin.min.css': [
+            'assets/bootstrap/css/bootstrap.min.css',
+            'assets/css/admin.css',
+            'assets/css/main.css'
           ]
         }
       }
@@ -67,7 +63,8 @@ module.exports = function(grunt) {
           noCache: true
         },
         files: {
-          'assets/css/style.css': 'assets/css/codeb/sass/style.scss'
+          'assets/css/admin.css': 'assets/css/sass/admin.scss',
+          'assets/css/main.css': 'assets/css/sass/main.scss'
         }
       }
     },
@@ -77,20 +74,20 @@ module.exports = function(grunt) {
         files: ['assets/js/app/*.js'],
         tasks: ['minify-js'],
         options: {
-          livereload: true
+          livereload: false
         }
       },
       css: {
-        files: ['assets/css/codeb/sass/*.scss'],
+        files: ['assets/css/sass/*.scss'],
         tasks: ['sass', 'cssmin'],
         options: {
-          livereload: true
+          livereload: false
         }
       },
       php: {
         files: ['application/views/**/*.php'],
         options: {
-          livereload: true
+          livereload: false
         }
       }
     }

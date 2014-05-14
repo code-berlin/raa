@@ -1,0 +1,76 @@
+.carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+
+    .carousel-container {
+        width: 100%;
+
+        .carousel {
+            background: #36A9E1;
+            width: 9999px;
+            overflow: hidden;
+
+            .chariots {
+                float: left;
+                display: inline-block;
+
+                img {
+                    width: 100%;
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .carousel-buttons {
+        position: absolute;
+        bottom: 20px;
+        text-align: center;
+        width: 100%;
+
+        li {
+            display: inline-block;
+            width: 13px;
+            height: 13px;
+            background: url("/assets/images/sprite.png") no-repeat -84px -5px;
+            margin-right: 5px;
+
+            &.selected {
+                background-position: -112px -5px;
+            }
+        }
+    }
+}
+
+.carousel-text-wrapper {
+    position: relative;
+
+    .carousel-text {
+        padding-bottom: 13px;
+        text-align: center;
+        margin-bottom: 40px;
+
+        h2,
+        p {
+            background: #36A9E1;
+            color: white;
+        }
+
+        h2 {
+            font-size: 29px;
+            padding-bottom: 10px;
+            padding-top: 40px;
+        }
+
+        p {
+            padding-bottom: 40px;
+            font-size: 22px;
+        }
+    }
+
+    .arrow {
+        border-top: 18px solid #36A9E1;
+        top: auto;
+        bottom: -5px;
+    }
+}
