@@ -307,17 +307,34 @@ class Admin_Controller extends Main_Admin_Controller {
     public function profile() {
         $this->check_section_permissions();
 
+        $this->control_sidebar_items_display($data);
+
         $this->load->model('user_m');
-        $this->load->model('language_m');
+        //$this->load->model('language_m');
         $this->load->model('role_m');
 
-        $data['left_navigation'] = $this->admin_navigation->getSidebarMenu();
-
         $data['user'] = $this->user;
-        $data['language'] = $this->language_m->get_by_id($this->user->language_id);
         $data['role'] = $this->role_m->get_by_id($this->user->role_id);
         $data['is_edit_section'] = false;
         $data['user_can_edit_profile'] = $this->role_m->can_edit_profile($this->user->role_id);
+
+        $this->load->view('admin/custom_user', $data);
+    }
+
+    /**
+    * Edits the profile info.
+    */
+    public function profile_edit() {
+        $this->check_section_permissions();
+
+        $this->control_sidebar_items_display($data);
+
+        $this->load->model('user_m');
+        //$this->load->model('language_m');
+
+        $data['user'] = $this->user;
+        $data['is_edit_section'] = true;
+        $data['errors'] = $this->session->flashdata('errors');
 
         $this->load->view('admin/custom_user', $data);
     }

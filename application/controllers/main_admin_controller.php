@@ -14,6 +14,8 @@ class Main_Admin_Controller extends CI_Controller {
         $this->check_if_disabled();
 
         $this->user = $this->user_m->get_by_username($this->session->userdata('user_name'));
+        $this->role_id = $this->user->role_id;
+        $this->url = $_SERVER['REQUEST_URI'];
 
         // Save role permissions from post into an array
         $this->relationships = array();
@@ -335,27 +337,36 @@ class Main_Admin_Controller extends CI_Controller {
         }
     }
 
-    public function check_section_permissions($role_id, $section, $crud, $auth) {
-        if ($role_id != 1) {
-            $section_parts = explode('/', $section);
+    public function check_section_permissions($crud = null) {
+        // If user is not superadmin, check permissions.
+        if ($this->role_id != SUPERADMIN_ID) {
+            $section_parts = explode('/', $this->url);
             $capitalized_section = strtoupper($section_parts[2]);
 
-            if (!$auth->check_user_has_permission($role_id, 'VIEW_'.$capitalized_section)) {
-                $crud->unset_list();
+            if (!$this->auth_1->check_user_has_permission($this->role_id, 'VIEW_' . $capitalized_section)) {
+                if ($crud) {
+                    $crud->unset_list();
+                }
             }
 
-            if (!$auth->check_user_has_permission($role_id, 'UPDATE_'.$capitalized_section)) {
-                $crud->unset_edit();
+            if (!$this->auth_1->check_user_has_permission($this->role_id, 'UPDATE_' . $capitalized_section)) {
+                if ($crud) {
+                    $crud->unset_edit();
+                }
             }
 
-            if (!$auth->check_user_has_permission($role_id, 'DELETE_'.$capitalized_section)) {
-                $crud->unset_delete();
+            if (!$this->auth_1->check_user_has_permission($this->role_id, 'DELETE_' . $capitalized_section)) {
+                if ($crud) {
+                    $crud->unset_delete();
+                }
             }
 
-            if (!$auth->check_user_has_permission($role_id, 'CREATE_'.$capitalized_section)) {
-                $crud->unset_add();
-                $crud->unset_export();
-                $crud->unset_print();
+            if (!$this->auth_1->check_user_has_permission($this->role_id, 'CREATE_' . $capitalized_section)) {
+                if ($crud) {
+                    $crud->unset_add();
+                    $crud->unset_export();
+                    $crud->unset_print();
+                }
             }
         }
     }
@@ -383,5 +394,83 @@ class Main_Admin_Controller extends CI_Controller {
             echo 'Invalid password';
             die;
         }
+    }
+
+
+    /**
+    * Saves the user profile
+    */
+    public function save_user_profile() {
+        $this->load->model('user_m');
+        $this->load->model('role_m');
+
+        $this->load->library('form_validation');
+
+        $redirection_url = '/admin/profile';
+
+        $post = $this->input->post();
+        $id = $post['id'];
+        $can_edit = $this->role_m->can_edit_profile($this->user->role_id);
+
+        if ($id == $this->user->id && $can_edit) {
+            $user = (!empty($id) && $id > 0) ? $this->user_m->get_by_id($id) : $this->user_m->create();
+
+            $this->form_validation->set_rules('name', 'name', 'required|xss_clean');
+            $this->form_validation->set_rules('surname', 'surname', 'required|xss_clean');
+            $this->form_validation->set_rules('nickname', 'nickname', 'xss_clean');
+            $this->form_validation->set_rules('email', 'email', 'required|xss_clean|valid_email|callback_check_email_is_unique');
+
+            if (!empty($post['password'])) {
+                if ($post['password'] == $post['confirm_password']) {
+                    $user->password = sha1($post['password']);
+                } else {
+                    $this->session->set_flashdata('passwords_match', "Passwords don't match");
+                    $redirection_url = '/admin/profile/edit';
+                }
+            }
+
+            if ($this->form_validation->run()) {
+                $excluded_fields = array('password', 'confirm_password', 'delete_image');
+
+                // Set user profile
+                foreach ($post as $field => $value) {
+                    if (!in_array($field, $excluded_fields)) {
+                        $user->{$field} = $value;
+                    }
+                }
+
+                // Upload image
+                $this->load->library('upload', array(
+                    'upload_path' => './assets/uploads/',
+                    'allowed_types' => 'gif|jpg|png',
+                    'max_size' => '10000'
+                ));
+
+                if ($this->upload->do_upload()) {
+                    $uploaded_file = $this->upload->data();
+
+                    $user->image = $uploaded_file['file_name'];
+                }
+
+                // Delete image
+                if ($post['delete_image'] > 0) {
+                    $user->image = '';
+                }
+
+                $this->user_m->save($user);
+
+                // Set language.
+                // Change email value in session, otherwise everything will crash.
+
+                $this->session->set_userdata(array(
+                    'email' => $post['email']
+                ));
+            } else {
+                $this->session->set_flashdata('errors', $this->form_validation->error_array());
+                $redirection_url = '/admin/profile/edit';
+            }
+        }
+
+        redirect($redirection_url);
     }
 }
