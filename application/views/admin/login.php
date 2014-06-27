@@ -3,8 +3,8 @@
 <head>
     <title>RAACMS</title>
 
-    <link charset="utf-8" href="<?php echo base_url('/application/css/admin.css')?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url('../assets/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet" media="screen" />
+    <link charset="utf-8" href="<?php echo base_url('/assets/css/admin.css')?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url('/assets/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet" type="text/css"/>
 </head>
 <body>
     <div class="login-container">
@@ -12,11 +12,11 @@
 
         <?php echo form_open('/auth/login'); ?>
 
-            <?php echo form_label('Email', 'email'); ?>
-            <?php echo form_input('email', set_value('email'),'id="email"'); ?>
+            <?php echo form_label('Email', 'username'); ?>
+            <?php echo form_input('username', set_value('username'),'id="username"'); ?>
 
-            <?php echo form_label('Password', 'user_password'); ?>
-            <?php echo form_password('user_password', '', 'id="user_password"'); ?>
+            <?php echo form_label('Password', 'password'); ?>
+            <?php echo form_password('password', '', 'id="password"'); ?>
 
             <?php
                 $submit_attributes = array(

@@ -52,3 +52,10 @@ ul.permissions_list {
 /* line 48, sass/admin.scss */
 ul.permissions_list li input {
   margin: 3px 10px 5px 0; }
+
+/* line 52, sass/admin.scss */
+.login-container {
+  width: 230px;
+  height: 250px;
+  margin: 0 auto;
+  margin-top: 20px; }

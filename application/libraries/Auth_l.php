@@ -6,7 +6,7 @@ class Auth_l {
     {
         $ci =&get_instance();
         $username = $ci->session->userdata('user_name');
-    	if (!$username)
+        if (!$username)
         {
             redirect('admin/auth/login');
         }
@@ -16,7 +16,7 @@ class Auth_l {
     {
         $ci =&get_instance();
         $username = $ci->session->userdata('user_name');
-    	if (!$username)
+        if (!$username)
         {
             return false;
         }

@@ -11,7 +11,8 @@ $route['migrate/(:any)'] = "migrate/index/$1";
 $route['auth/(:any)'] = 'admin/auth/$1'; // admin auth
 $route['auth'] = 'admin/auth/login'; // admin auth
 $route['admin/menu/item/(:any)'] = 'admin/menu/item/$1'; // specific for the menu item section
-$route['admin/(:any)'] = 'admin/$1'; // admin generic sections
+$route['admin/(:any)'] = 'admin_controller/$1'; // admin generic sections
+$route['admin'] = 'admin_controller'; // admin generic sections
 
 // FRONTEND PAGES
 $route['page'] = "page/index";
