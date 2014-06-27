@@ -1,0 +1,54 @@
+/* line 1, sass/admin.scss */
+.admin-header {
+  background: #fff; }
+
+/* line 5, sass/admin.scss */
+.admin-left {
+  width: 16%;
+  float: left;
+  margin-right: 1%; }
+
+/* line 11, sass/admin.scss */
+.admin-right {
+  width: 83%;
+  float: left; }
+
+/* line 16, sass/admin.scss */
+.admin-footer {
+  border-top: 1px #ccc solid;
+  margin-top: 40px;
+  color: #ccc;
+  font-size: 13px; }
+
+/* line 23, sass/admin.scss */
+#ajax_list {
+  background: #ddd; }
+
+/* permissions - checkboxes */
+/* line 28, sass/admin.scss */
+#permissions_field_box {
+  margin-top: 10px; }
+
+/* line 31, sass/admin.scss */
+#permissions_display_as_box {
+  color: #222;
+  font-size: 15px;
+  line-height: 16px;
+  padding: 0; }
+
+/* line 37, sass/admin.scss */
+ul.permissions_list {
+  margin-left: 5px; }
+
+/* line 40, sass/admin.scss */
+.permissions_list li {
+  color: #444;
+  list-style-type: none;
+  font-size: 12px;
+  line-height: 18px;
+  vertical-align: middle;
+  margin-bottom: 5px; }
+
+/* line 48, sass/admin.scss */
+ul.permissions_list li input {
+  margin: 3px 10px 5px 0; }
