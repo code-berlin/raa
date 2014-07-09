@@ -275,7 +275,7 @@ class Admin_Controller extends Main_Admin_Controller {
 
             // create, edit page
             $crud->change_field_type('password','password');
-            $crud->set_rules('username','Username','valid_email|required');
+            $crud->set_rules('username','Username','required');
             $crud->callback_edit_field('password',array($this,'print_password_field_callback'));
 
             if($crud->getState() == 'add' || $crud->getState() == 'insert_validation') {
