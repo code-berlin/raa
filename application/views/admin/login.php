@@ -31,16 +31,24 @@
 
         <?php echo form_close(); ?>
 
-        <div class="errors" style="color: red;">
-            <?php
-                echo validation_errors();
+        <?php $validation_errors = validation_errors(); ?>
+        <?php if (!empty($validation_errors) || !empty($disabled_message) || !empty($wrong_credentials)) { ?>
+            <div class="alert alert-danger">
+                <?php
+                    if (isset($validation_errors) && !empty($validation_errors)) {
+                        echo $validation_errors;
+                    }
 
-                if (isset($disabled_message) && !empty($disabled_message))
-                {
-                    echo '<div class="alert alert-danger">' . $disabled_message . '</div>';
-                }
-            ?>
-        </div>
+                    if (isset($disabled_message) && !empty($disabled_message)) {
+                        echo $disabled_message;
+                    }
+
+                    if (isset($wrong_credentials) && !empty($wrong_credentials)) {
+                        echo $wrong_credentials;
+                    }
+                ?>
+            </div>
+        <?php } ?>
     </div>
 </body>
 </html>
