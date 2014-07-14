@@ -46,7 +46,7 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud = $this->grocery_crud;
 
             // Page permissions
-            $this->check_section_permissions($role_id, $url, $crud, $auth);
+            $this->check_section_permissions($crud);
 
             $crud->set_table('page');
 
@@ -98,7 +98,7 @@ class Admin_Controller extends Main_Admin_Controller {
         if ($auth->check_section_access_required_permissions($role_id, $url)) {
             $crud = $this->grocery_crud;
 
-            $this->check_section_permissions($role_id, $url, $crud, $auth);
+            $this->check_section_permissions($crud);
 
             $crud->set_table('menu');
             $crud->add_action('edit items', base_url('/assets/grocery_crud/themes/flexigrid/css/images/edit-items.gif'), 'admin/menu/item');
@@ -258,7 +258,7 @@ class Admin_Controller extends Main_Admin_Controller {
         if ($auth->check_section_access_required_permissions($role_id, $url)) {
             $crud = $this->grocery_crud;
 
-            $this->check_section_permissions($role_id, $url, $crud, $auth);
+            $this->check_section_permissions($crud);
 
             $_POST['content_type_name'] = 'user';
 
@@ -353,7 +353,7 @@ class Admin_Controller extends Main_Admin_Controller {
         if ($auth->check_section_access_required_permissions($role_id, $url)) {
             $crud = $this->grocery_crud;
 
-            $this->check_section_permissions($role_id, $url, $crud, $auth);
+            $this->check_section_permissions($crud);
 
             $crud->set_table('section');
 
@@ -400,7 +400,7 @@ class Admin_Controller extends Main_Admin_Controller {
         if ($auth->check_section_access_required_permissions($role_id, $url)) {
             $crud = $this->grocery_crud;
 
-            $this->check_section_permissions($role_id, $url, $crud, $auth);
+            $this->check_section_permissions($crud);
 
             $crud->set_table('role');
 
@@ -446,7 +446,7 @@ class Admin_Controller extends Main_Admin_Controller {
         if ($auth->check_section_access_required_permissions($role_id, $url)) {
             $crud = $this->grocery_crud;
 
-            $this->check_section_permissions($role_id, $url, $crud, $auth);
+            $this->check_section_permissions($crud);
 
             $crud->set_table('permission');
 
@@ -486,7 +486,7 @@ class Admin_Controller extends Main_Admin_Controller {
         if ($auth->check_section_access_required_permissions($role_id, $url)) {
             $crud = $this->grocery_crud;
 
-            $this->check_section_permissions($role_id, $url, $crud, $auth);
+            $this->check_section_permissions($crud);
 
             $crud->set_table('permissiongroup');
 
@@ -518,7 +518,7 @@ class Admin_Controller extends Main_Admin_Controller {
 
             $this->load->model('widget_m');
 
-            $this->check_section_permissions($role_id, $url, $crud, $auth);
+            $this->check_section_permissions($crud);
 
             $crud->set_table('widget');
 
@@ -563,7 +563,7 @@ class Admin_Controller extends Main_Admin_Controller {
         if ($auth->check_section_access_required_permissions($role_id, $url)) {
             $crud = $this->grocery_crud;
 
-            $this->check_section_permissions($role_id, $url, $crud, $auth);
+            $this->check_section_permissions($crud);
 
             $crud->set_table('widgetscontainer');
 
@@ -640,7 +640,7 @@ class Admin_Controller extends Main_Admin_Controller {
         if ($auth->check_section_access_required_permissions($role_id, $url)) {
             $crud = $this->grocery_crud;
 
-            $this->check_section_permissions($role_id, $url, $crud, $auth);
+            $this->check_section_permissions($crud);
 
             $crud->set_table('settings');
 
