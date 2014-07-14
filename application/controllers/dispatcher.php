@@ -23,22 +23,10 @@ class Dispatcher extends CI_Controller {
             $slug = $page->slug;
         }
 
-        echo '<pre>';
-        var_dump($slug);
-        echo '</pre>';
-
         // Retrieve object type related to this slug
         $result = $this->url_m->get_by_slug($slug);
 
         $published = check_if_published($result, $slug);
-
-        echo '<pre>';
-        var_dump($result);
-        echo '</pre>';
-
-        echo '<pre>';
-        var_dump($published);
-        echo '</pre>';
 
         if(!empty($result) && $published) {
             $type = $result->type->name;
@@ -49,14 +37,8 @@ class Dispatcher extends CI_Controller {
             // It's important for each class to have this method
             $data[$type] = $this->$model_type->get_by_slug($slug);
         } else {
-            echo '<pre>';
-            var_dump('not found');
-            echo '</pre>';
-            die;
-            //show_404();
+            show_404();
         }
-
-
 
         if (!empty($type)) {
             $view = (!empty($data[$type]->template)) ? $data[$type]->template->name : 'index';
