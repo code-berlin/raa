@@ -15,6 +15,17 @@ class Rb {
 		$pass = $db[$active_group]['password'];
 		$db = $db[$active_group]['database'];
 
+		echo '<pre>';
+		var_dump($db);
+		echo '</pre>';
+
+
+		echo '<pre>';
+		var_dump($active_group);
+		echo '</pre>';
+
+		die;
+
 		// Setup DB connection
 		R::setup("mysql:host=$host;dbname=$db", $user, $pass);
 	} //end __contruct()
