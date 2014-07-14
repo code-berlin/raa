@@ -345,25 +345,25 @@ class Main_Admin_Controller extends CI_Controller {
             $section_parts = explode('/', $this->url);
             $capitalized_section = strtoupper($section_parts[2]);
 
-            if (!$this->auth_1->check_user_has_permission($this->role_id, 'VIEW_' . $capitalized_section)) {
+            if (!$this->auth_l->check_user_has_permission($this->role_id, 'VIEW_' . $capitalized_section)) {
                 if ($crud) {
                     $crud->unset_list();
                 }
             }
 
-            if (!$this->auth_1->check_user_has_permission($this->role_id, 'UPDATE_' . $capitalized_section)) {
+            if (!$this->auth_l->check_user_has_permission($this->role_id, 'UPDATE_' . $capitalized_section)) {
                 if ($crud) {
                     $crud->unset_edit();
                 }
             }
 
-            if (!$this->auth_1->check_user_has_permission($this->role_id, 'DELETE_' . $capitalized_section)) {
+            if (!$this->auth_l->check_user_has_permission($this->role_id, 'DELETE_' . $capitalized_section)) {
                 if ($crud) {
                     $crud->unset_delete();
                 }
             }
 
-            if (!$this->auth_1->check_user_has_permission($this->role_id, 'CREATE_' . $capitalized_section)) {
+            if (!$this->auth_l->check_user_has_permission($this->role_id, 'CREATE_' . $capitalized_section)) {
                 if ($crud) {
                     $crud->unset_add();
                     $crud->unset_export();
