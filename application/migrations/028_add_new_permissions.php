@@ -9,16 +9,16 @@ class Migration_add_new_permissions extends Basic_migration {
     }
 
     public function mig_up() {
-        $this->db->query("INSERT INTO `permission` (`id`, `name`, `permissiongroup_id`) VALUES
-                          (16, 'VIEW_MENU', 0),
-                          (17, 'VIEW_PAGES', 0),
-                          (18, 'VIEW_PRODUCTS', 0),
-                          (19, 'VIEW_USERS', 0),
-                          (20, 'VIEW_ROLES', 0),
-                          (21, 'VIEW_SECTIONS', 0),
-                          (22, 'VIEW_PERMISSIONS', 0),
-                          (23, 'VIEW_SETTINGS', 0),
-                          (26, 'VIEW_WIDGETS', 0);");
+        $this->db->query("INSERT INTO `permission` (`name`, `permissiongroup_id`) VALUES
+                          ('VIEW_MENU', 0),
+                          ('VIEW_PAGES', 0),
+                          ('VIEW_PRODUCTS', 0),
+                          ('VIEW_USERS', 0),
+                          ('VIEW_ROLES', 0),
+                          ('VIEW_SECTIONS', 0),
+                          ('VIEW_PERMISSIONS', 0),
+                          ('VIEW_SETTINGS', 0),
+                          ('VIEW_WIDGETS', 0);");
     }
 
     public function mig_down() {
