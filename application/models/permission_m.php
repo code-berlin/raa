@@ -16,6 +16,14 @@ class Permission_m extends CI_Model {
         return $this->permission_dao->get_all();
     }
 
+    function get_all_admin_permissions() {
+        return $this->permission_dao->get_all_admin_permissions();
+    }
+
+    function get_by($field, $value) {
+        return $this->permission_dao->get_by($field, $value);
+    }
+
     function get_by_id($id) {
         return $this->permission_dao->get_by_id($id);
     }

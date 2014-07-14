@@ -6,7 +6,7 @@ class Auth_l {
     {
         $ci =&get_instance();
         $username = $ci->session->userdata('user_name');
-    	if (!$username)
+        if (!$username)
         {
             redirect('admin/auth/login');
         }
@@ -16,7 +16,7 @@ class Auth_l {
     {
         $ci =&get_instance();
         $username = $ci->session->userdata('user_name');
-    	if (!$username)
+        if (!$username)
         {
             return false;
         }
@@ -170,8 +170,6 @@ class Auth_l {
         $permissions = $ci->permission_m->get_all();
 
         if (!empty($permissions)) {
-            define('SUPERADMIN_ID', 1);
-
             $role_permission = $ci->role_permission_m;
 
             foreach ($permissions as $permission) {

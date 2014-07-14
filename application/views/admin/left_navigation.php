@@ -8,6 +8,9 @@
                     <a href='<?php echo site_url('admin/user')?>'>Users</a>
                 </li>
             <?php } ?>
+            <li>
+                <a href='<?php echo site_url('admin/profile')?>'>Profile</a>
+            </li>
             <?php if ($sidebar['VIEW_ROLE']) { ?>
                 <li>
                     <a href='<?php echo site_url('admin/role')?>'>Roles</a>
