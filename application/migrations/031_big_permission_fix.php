@@ -41,17 +41,17 @@ class Migration_big_permission_fix extends Basic_migration {
 
     public function mig_down() {
         $this->db->query("TRUNCATE permission");
-        $this->db->query("INSERT INTO `permission` (`id`, `name`) VALUES
-                            (1, 'CREATE_USER'),
-                            (2, 'DELETE_USER'),
-                            (3, 'UPDATE_USER'),
-                            (4, 'CREATE_POST'),
-                            (5, 'DELETE_POST'),
-                            (6, 'UPDATE_POST'),
-                            (7, 'VIEW_PAGE'),
-                            (8, 'CREATE_PAGE'),
-                            (9, 'DELETE_PAGE'),
-                            (10, 'UPDATE_PAGE'),
+        $this->db->query("INSERT INTO `permission` (`id`, `name`, `permissiongroup_id`) VALUES
+                            (1, 'CREATE_USER', 0),
+                            (2, 'DELETE_USER', 0),
+                            (3, 'UPDATE_USER', 0),
+                            (4, 'CREATE_POST', 0),
+                            (5, 'DELETE_POST', 0),
+                            (6, 'UPDATE_POST', 0),
+                            (7, 'VIEW_PAGE', 0),
+                            (8, 'CREATE_PAGE', 0),
+                            (9, 'DELETE_PAGE', 0),
+                            (10, 'UPDATE_PAGE', 0),
                             (16, 'VIEW_MENU', 0),
                             (17, 'VIEW_PAGES', 0),
                             (18, 'VIEW_PRODUCTS', 0),
