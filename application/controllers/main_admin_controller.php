@@ -10,8 +10,8 @@ class Main_Admin_Controller extends CI_Controller {
         $this->load->model('user_m');
         $this->load->model('role_permission_m');
 
-        /*$this->check_auth();
-        $this->check_if_disabled();*/
+        $this->check_auth();
+        $this->check_if_disabled();
 
         $this->user = $this->user_m->get_by_username($this->session->userdata('user_name'));
         $this->role_id = $this->user->role_id;
@@ -35,6 +35,7 @@ class Main_Admin_Controller extends CI_Controller {
     {
         if (!$this->auth_l->user_logged_in())
         {
+            echo 'check auth';
             redirect('auth');
         }
     }
@@ -43,6 +44,7 @@ class Main_Admin_Controller extends CI_Controller {
     {
         if ($this->auth_l->user_disabled())
         {
+            echo 'check disabled';
             redirect('auth');
         }
     }
