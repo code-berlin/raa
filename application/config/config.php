@@ -24,7 +24,7 @@ $config['stage']['test.raa.code-b-development.com'] = 'test';
 $config['base_url']['dev4']= "http://dev4.raa.code-b-development.com";
 $config['base_url']['dev11']= "http://dev11.raa.code-b-development.com";
 $config['base_url']['dev21']= "http://dev21.raa.code-b-development.com";
-$config['base_url']['test']	= "htpp://test.raa.code-b-development.com";
+$config['base_url']['test']	= "http://test.raa.code-b-development.com";
 
 /*
 |--------------------------------------------------------------------------
