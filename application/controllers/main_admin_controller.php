@@ -36,8 +36,6 @@ class Main_Admin_Controller extends CI_Controller {
     {
         if (!$this->auth_l->user_logged_in())
         {
-            echo 'redirect auth';
-            die;
             redirect('auth');
         }
     }
