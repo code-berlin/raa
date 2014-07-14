@@ -31,13 +31,16 @@
 
         <?php echo form_close(); ?>
 
-        <div class="errors" style="color: red;">
+        <div class="alert alert-danger">
             <?php
                 echo validation_errors();
 
-                if (isset($disabled_message) && !empty($disabled_message))
-                {
-                    echo '<div class="alert alert-danger">' . $disabled_message . '</div>';
+                if (isset($disabled_message) && !empty($disabled_message)) {
+                    echo $disabled_message;
+                }
+
+                if (isset($wrong_credentials) && !empty($wrong_credentials)) {
+                    echo $wrong_credentials;
                 }
             ?>
         </div>
