@@ -16,6 +16,8 @@ class Auth extends CI_Controller
 
         $data = [];
 
+        echo 'login';
+
         if ($this->form_validation->run())
         {
             $this->load->model('admin_m');
@@ -32,13 +34,15 @@ class Auth extends CI_Controller
                 {
                     $user = array('user_name'=>$result->username);
                     $this->session->set_userdata($user);
-                    redirect('admin/index');
+                    redirect('admin_controller/index');
                 }
                 else {
                     $data['disabled_message'] = "You don't have permission to access this page.";
                 }
             }
         }
+
+        die;
 
         $this->load->view('admin/login', $data);
     }

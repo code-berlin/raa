@@ -35,8 +35,7 @@ class Main_Admin_Controller extends CI_Controller {
     {
         if (!$this->auth_l->user_logged_in())
         {
-            echo 'check auth';
-            //redirect('auth');
+            redirect('auth');
         }
     }
 
@@ -44,8 +43,7 @@ class Main_Admin_Controller extends CI_Controller {
     {
         if ($this->auth_l->user_disabled())
         {
-            echo 'check disabled';
-            //redirect('auth');
+            redirect('auth');
         }
     }
 
