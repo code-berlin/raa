@@ -60,6 +60,10 @@ function &DB($params = '', $active_record_override = NULL)
 			show_error('Active group');
 		}
 
+		echo $active_group;
+
+		var_dump($db);
+
 		if (! isset($db[$active_group]))
 		{
 			show_error('DB active group');
