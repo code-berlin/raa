@@ -10,6 +10,8 @@ class Main_Admin_Controller extends CI_Controller {
         $this->load->model('user_m');
         $this->load->model('role_permission_m');
 
+        $this->load->library('auth_l');
+
         $this->check_auth();
         $this->check_if_disabled();
 
