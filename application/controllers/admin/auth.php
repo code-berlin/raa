@@ -16,8 +16,6 @@ class Auth extends CI_Controller
 
         $data = [];
 
-        echo 'login';
-
         if ($this->form_validation->run())
         {
             $this->load->model('admin_m');
@@ -41,8 +39,6 @@ class Auth extends CI_Controller
                 }
             }
         }
-
-        //die;
 
         $this->load->view('admin/login', $data);
     }

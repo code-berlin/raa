@@ -21,7 +21,6 @@ class Main_Admin_Controller extends CI_Controller {
         $this->relationships = array();
     }
 
-
     /****************************************************************
     *                                                               *
     *                                                               *
