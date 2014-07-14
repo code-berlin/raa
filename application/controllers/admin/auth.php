@@ -42,7 +42,7 @@ class Auth extends CI_Controller
             }
         }
 
-        die;
+        //die;
 
         $this->load->view('admin/login', $data);
     }
