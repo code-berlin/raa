@@ -52,21 +52,7 @@ function &DB($params = '', $active_record_override = NULL)
 
 		if ( ! isset($active_group) OR ! isset($db[$active_group]))
 		{
-			//show_error('You have specified an invalid database connection group.');
-		}
-
-		if ( ! isset($active_group))
-		{
-			show_error('Active group');
-		}
-
-		echo $active_group;
-
-		var_dump($db);
-
-		if (! isset($db[$active_group]))
-		{
-			show_error('DB active group');
+			show_error('You have specified an invalid database connection group.');
 		}
 
 		$params = $db[$active_group];
