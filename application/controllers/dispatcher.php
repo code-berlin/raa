@@ -1,18 +1,33 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Dispatcher extends CI_Controller {
+    private $data;
+    private $type;
+    private $language;
 
-    function __construct() {
+    public function __construct() {
         parent::__construct();
 
         $this->load->helper('url');
         $this->load->helper('widget');
         $this->load->helper('widgets_container');
         $this->load->helper('published');
+
+        $this->data = array();
+        $this->type = '';
+        $this->language = $this->tools->get_language_value();
     }
 
     public function index($slug='') {
         $this->load->model('url_m');
+
+        $page = '';
+        $result = '';
+        $published = false;
+        $view = '';
+        $templates_folder = 'templates';
+
+        $this->data['language'] = $this->language;
 
         // Retrieve homepage in case it exists.
         if (empty($slug)) {
@@ -29,25 +44,31 @@ class Dispatcher extends CI_Controller {
         $published = check_if_published($result, $slug);
 
         if(!empty($result) && $published) {
-            $type = $result->type->name;
-            $model_type = $type.'_m';
+            $this->type = $result->type->name;
 
-            $this->load->model($model_type);
+            if (!empty($this->type)) {
+                $model_type = $this->type.'_m';
 
-            // It's important for each class to have this method
-            $data[$type] = $this->$model_type->get_by_slug($slug);
-        } else {
-            show_404();
+                $this->load->model($model_type);
+
+                // It's important for each class to have this method
+                $this->data[$this->type] = $this->$model_type->get_by_slug($slug);
+
+                // setting the data type and the id for the layout
+                $this->data['type'] = $this->type;
+                $this->data['id'] = $result->id;
+                $this->data['section_name'] =  $this->data[$this->type]->slug;
+
+                if (!empty($this->data[$this->type]->template)) {
+                    $view = $this->data[$this->type]->template->name;
+                } else {
+                    return $this->tools->show_not_implemented_page();
+                }
+
+                return $this->layout->view($this->type.'/'.$templates_folder.'/'.$view, $this->data);
+            }
         }
 
-        if (!empty($type)) {
-            $view = (!empty($data[$type]->template)) ? $data[$type]->template->name : 'index';
-
-            // setting the data type and the id for the layout
-            $data['type'] = $type;
-            $data['id'] = $result->id;
-
-            $this->layout->view($type.'/'.$view, $data);
-        }
+        $this->tools->show_error_page();
     }
 }

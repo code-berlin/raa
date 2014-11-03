@@ -18,7 +18,7 @@ class Tools {
     /*
     * Debugs content with style ;)
     */
-    public function debug($content) {
+    public function d($content) {
         echo '<pre>';
         var_dump($content);
         echo '</pre>';
@@ -49,5 +49,34 @@ class Tools {
         }
 
         return $this->ci->upload->data();
+    }
+
+    public function get_language_value() {
+        $session = $this->ci->session->userdata('language');
+
+        $language = (!empty($session)) ? $session : $this->ci->config->item('language_abbr');
+
+        return $language;
+    }
+
+    public function set_language_value($language) {
+        $ci = $this->ci;
+        $cleansed_language = $ci->security->xss_clean($language);
+        $ci->session->set_userdata('language', $cleansed_language);
+    }
+
+    public function show_error_page() {
+        header('HTTP/1.0 404 Not Found');
+
+        $data['lang'] = $this->get_language_value();
+        $data['error_message'] = '404 '.language_get_string('404', 'error_message');
+
+        $this->ci->load->view('errors/404', $data);
+    }
+
+    public function show_not_implemented_page() {
+        header('HTTP/1.0 501 Not Implemented');
+
+        return $this->ci->layout->view('errors/501');
     }
 }
