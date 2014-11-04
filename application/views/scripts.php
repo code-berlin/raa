@@ -1,0 +1,3 @@
+<?php
+	// JavaScript goes here
+?>

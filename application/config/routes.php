@@ -21,7 +21,7 @@ $route['page/(:num)'] = "page/index/$1";
 
 $route['product/(:num)'] = "content_type/index/$1/product";
 
-//CONTACT FORM
+// CONTACT FORM
 $route['sendemail/contact'] = 'sendemail/contact';
 
 /*

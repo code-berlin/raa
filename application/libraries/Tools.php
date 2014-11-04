@@ -68,10 +68,10 @@ class Tools {
     public function show_error_page() {
         header('HTTP/1.0 404 Not Found');
 
-        $data['lang'] = $this->get_language_value();
-        $data['error_message'] = '404 '.language_get_string('404', 'error_message');
+        // $data['lang'] = $this->get_language_value();
+        // $data['error_message'] = '404 '.language_get_string('404', 'error_message');
 
-        $this->ci->load->view('errors/404', $data);
+        $this->ci->load->view('errors/404');
     }
 
     public function show_not_implemented_page() {
