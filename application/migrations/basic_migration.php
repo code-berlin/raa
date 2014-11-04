@@ -4,12 +4,21 @@ class Basic_migration  extends CI_Migration {
     public $filename = __FILE__;
     function __construct()
     {        parent::__construct();
+             $this->load->library('rb_loader');
 
     }
     public function up() {
         log_message('debug', 'Starting to run up on Version '.$this->filename);
         try{
+            //migrate up on current database, switch to test database migrate up there and then switch back
             $this->mig_up();
+            $db = $this->config->config['stage'] . '_test';
+            $this->db = $this->load->database($db,TRUE);
+            $this->rb_loader->reload_connection();
+            $this->mig_up();
+            $db = $this->config->config['stage'];
+            $this->db = $this->load->database($db,TRUE);
+            $this->rb_loader->reload_connection();
         }catch (Exception $e){
             log_message('error', 'Error while trying to run up on Version '.$this->filename.' .Error was: '.$e->getMessage() );
         }
@@ -23,7 +32,15 @@ class Basic_migration  extends CI_Migration {
     public function down(){
         log_message('debug', 'Starting to run down on Version '.$this->filename);
         try{
+            //migrate down on current database, switch to test database migrate down there and then switch back
             $this->mig_down();
+            $db = $this->config->config['stage'] . '_test';
+            $this->db = $this->load->database($db,TRUE);
+            $this->rb_loader->reload_connection();
+            $this->mig_down();
+            $db = $this->config->config['stage'];
+            $this->db = $this->load->database($db,TRUE);
+            $this->rb_loader->reload_connection();
         }catch (Exception $e){
             log_message('error', 'Error while trying to run down on Version '.$this->filename.' .Error was: '.$e->getMessage() );
         }
