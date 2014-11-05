@@ -31,4 +31,12 @@ class Page_m extends CI_Model {
 	function delete($page) {
 		return $this->page_dao->delete($page);
 	}
+
+	function get_all_subpages_ordered_by_menu_order() {
+		return $this->page_dao->get_all_subpages_ordered_by_menu_order();
+	}
+
+	function get_children($page_id) {
+		return $this->page_dao->get_children($page_id);
+	}
 }

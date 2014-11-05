@@ -1,7 +1,26 @@
 <?php
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-	function load_menu($id_menu, $menu_template){
+	// Default 2-level navigation based on the pages created in the backend
+    function show_main_menu() {
+        $ci =& get_instance();
+        $ci->load->model('page_m');
+
+        $menu_items = $ci->page_m->get_all_subpages_ordered_by_menu_order();
+
+        $data['current_page'] = $ci->uri->segment(1);
+        $data['url']  = $_SERVER['REQUEST_URI'];
+        $data['menu_items'] = $menu_items;
+
+        foreach ($menu_items as $key => $item) {
+            $data['menu_items'][$key]['children'] = $ci->page_m->get_children($item['id']);
+        }
+
+        $ci->load->view('main_menu', $data);
+    }
+
+    // Old function based on the idea of creating custom templates for menus
+    function load_menu($id_menu, $menu_template) {
         $CI =& get_instance();
         $CI->load->model('menu_item_m');
 

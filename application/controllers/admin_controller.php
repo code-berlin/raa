@@ -51,10 +51,10 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->set_table('page');
 
             // Fields to show on the list
-            $crud->columns('title','text','image','slug');
+            $crud->columns('menu_title', 'slug', 'menu_order', 'published');
 
             // Fields to show when editing
-            $crud->edit_fields('template_id', 'menu_order', 'title', 'text', 'date', 'image', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text');
+            $crud->edit_fields('template_id', 'parent_id','main_category', 'menu_order', 'menu_title', 'text', 'date', 'image', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text');
 
             $crud->field_type('id', 'hidden');
             $crud->field_type('date', 'hidden');
@@ -64,6 +64,10 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->set_field_upload('image','assets/uploads/files');
 
             $crud->display_as('template_id','Template');
+            $crud->display_as('main_category','Is parent');
+
+            $crud->set_relation('parent_id','page','slug');
+            $crud->display_as('parent_id','Parent section');
 
             // Fields sanitation
             $crud->callback_column('slug', array($this, 'link_page'));
