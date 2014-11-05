@@ -15,3 +15,5 @@ application/config/database.php
 *.sublime-project
 *.sublime-workspace
 *.idea
+raa.iml
+application/config/config.php

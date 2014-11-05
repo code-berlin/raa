@@ -174,14 +174,9 @@ class Auth_l {
 
             foreach ($permissions as $permission) {
                 $id = $permission->id;
-                $name = $permission->name;
 
                 if (!$role_permission->check_combination_exists(SUPERADMIN_ID, $id)) {
                     $role_permission->create_relationship(SUPERADMIN_ID, $id);
-
-                    echo '<pre>Permission granted: '.$name.'</pre>';
-                } else {
-                    echo '<pre>Permission already granted: '.$name.'</pre>';
                 }
             }
         }

@@ -56,6 +56,8 @@ class Migrate extends CI_Controller {
                 show_error($this->migration->error_string());
             }
             $result_string = "Migrating to latest version: ".$latest_version;
+            $result_string .= "<br><a href='/'>Go to homepage</a>";
+            $result_string .= "<br><a href='/admin'>Go to admin panel</a>";
 
         }
 

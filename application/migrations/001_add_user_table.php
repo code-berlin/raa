@@ -16,8 +16,6 @@ class Migration_Add_User_Table extends Basic_migration {
       PRIMARY KEY (`id`),
       UNIQUE INDEX `username_UNIQUE` (`username` ASC))
         ENGINE = InnoDB;');
-
-      $this->db->query("INSERT INTO `user` (`id`, `username`, `password`) VALUES (NULL, 'admin@code-b.com', 'b5edbafd026b773a7eb36d9b42b1bd6a952ddfdd');");
     }
 
     public function mig_down() {

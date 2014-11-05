@@ -16,17 +16,25 @@
 */
 //$config['base_url']	= '';
 
-$config['stage']['dev4.raa.code-b-development.com'] = 'dev4';
+$config['stage']['dev23.raacms.code-b-development.com'] = 'dev23';
+/*
 $config['stage']['dev11.raa.code-b-development.com'] = 'dev11';
 $config['stage']['dev21.raa.code-b-development.com'] = 'dev21';
 $config['stage']['dev23.raacms.code-b-development.com'] = 'dev23';
 $config['stage']['test.raa.code-b-development.com'] = 'test';
+*/
 
-$config['base_url']['dev4']= "http://dev4.raa.code-b-development.com";
+$config['base_url']['dev23']= "http://dev23.raacms.code-b-development.com";
+/*
 $config['base_url']['dev11']= "http://dev11.raa.code-b-development.com";
 $config['base_url']['dev21']= "http://dev21.raa.code-b-development.com";
 $config['base_url']['dev23']= "http://dev23.raacms.code-b-development.com";
 $config['base_url']['test']	= "http://test.raa.code-b-development.com";
+*/
+
+// configures the admin username
+$config['superadmin']['username']= "superadmin@code-b.com";
+$config['superadmin']['password']= "b5edbafd026b773a7eb36d9b42b1bd6a952ddfdd";
 
 /*
 |--------------------------------------------------------------------------
