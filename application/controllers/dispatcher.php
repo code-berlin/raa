@@ -35,6 +35,13 @@ class Dispatcher extends CI_Controller {
             $this->load->model('page_m');
 
             $page = $this->page_m->get_by_id($this->settings_m->get_homepage());
+            
+            // If $page is false, it means there's no homepage set yet
+            if (!$page) {
+                $this->tools->show_error_page();
+                die;
+            }
+
             $slug = $page->slug;
         }
 

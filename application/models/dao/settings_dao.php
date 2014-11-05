@@ -24,15 +24,14 @@ class Settings_dao extends CI_Model{
         return $settings_bean;
     }
 
-    public function get_blog_title(){
-        return $this->settings_bean->blog_title;
-    }
-
     public function get_email(){
         return $this->settings_bean->email;
     }
 
     public function get_homepage(){
+        if (!$this->settings_bean) {
+            return false; // There's no homepage yet (migration was not ran, database is empty)
+        }
         return $this->settings_bean->page_id;
     }
 
