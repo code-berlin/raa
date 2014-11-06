@@ -649,7 +649,7 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->set_table('settings');
 
             $crud->display_as('page_id','Homepage');
-            $crud->set_relation('page_id','page','title');
+            $crud->set_relation('page_id','page','menu_title');
 
             $crud->unset_add();
             $crud->unset_delete();
