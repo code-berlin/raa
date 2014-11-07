@@ -1,17 +1,14 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Dispatcher extends CI_Controller {
+require('page.php');
+
+class Dispatcher extends Page {
     private $data;
     private $type;
     private $language;
 
     public function __construct() {
         parent::__construct();
-
-        $this->load->helper('url');
-        $this->load->helper('widget');
-        $this->load->helper('widgets_container');
-        $this->load->helper('published');
 
         $this->data = array();
         $this->type = '';
@@ -65,7 +62,20 @@ class Dispatcher extends CI_Controller {
                 $this->data['type'] = $this->type;
                 $this->data['id'] = $result->id;
                 $this->data['section_name'] =  $this->data[$this->type]->slug;
+                
+                // Get extra data for current page based on its slug
+                // If $page_method exists, it can be found in page.php controller
+                $page_method = $slug;
 
+                if (strpos($page_method, '-') !== false) { // Is there a dash in the page's slug?
+                    $page_method = str_replace('-', '_', $page_method);
+                }
+                
+                if (method_exists($this, $page_method)) { // Is there a method in page.php that extends the template?
+                    $this->data['extra_data'] = $this->$page_method();
+                }
+
+                // Set the template name or throw error
                 if (!empty($this->data[$this->type]->template)) {
                     $view = $this->data[$this->type]->template->name;
                 } else {
