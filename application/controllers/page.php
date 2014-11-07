@@ -1,6 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /*
+* HOW-TO
 *
 * To add additional information (that don't come from the database) to a template,
 * create a function named exaclty like the slug of the page you want to extend
