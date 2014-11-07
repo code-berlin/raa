@@ -1,51 +1,9 @@
 <?php
 
-/*
- *
- * DEVELOPER: USE THIS DIRECT URL TO ADD THE FACEBOOK TAB APP TO YOUR FACEBOOK PROFILE
- * https://www.facebook.com/dialog/pagetab?app_id=YOUR_APP_ID&display=popup&next=CANVAS_PAGE
- *
- * */
+$config['facebook']['app_id'] = '1549286808650603';
+$config['facebook']['app_secret'] = '28bf8e6c1fa34a280a98b8265f1432b4';
+$config['facebook']['app_path'] = 'https://apps.facebook.com/raacmstest';
 
-/* Facebook general settings */
-$config['fb_config'] = array(
-	'appId' => '',
-	'secret' =>  '',
-	'cookie' => true
-);
-
-$config['fb_application_namespace'] = '';
-
-$config['use_fangate']	= true; // enable or disable the "like-button" process
-$config['develop_inside_fb'] = true; // enable or disable the facebook dipencencies (to run the app also outside fb)
-
-
-/*
- * Facebook wall post settings
- *
- */
-$config['fb_application_auth_redirect'] = '';
-$config['fb_application_tab_url'] = '';
-$config['fb_application_picture'] = '';
-$config['fb_application_message'] = '';
-$config['fb_application_caption'] = '';
-
-/* Facebook action post settings */
-$config['fb_application_opengraph_page'] = '';
-$config['fb_application_opengraph_object'] = '';
-$config['fb_application_opengraph_action'] = '';
-
-/* Facebook invite friends settings */
-$config['fb_application_invite_friends_message'] = '';
-$config['fb_application_invited_friends_message'] = '';
-
-/* Error messages */
-$config['fb_signed_request_error_message'] = 'Could not authenticate the signed request';
-$config['fb_api_connection_error_message'] = 'Could not connect to the Facebook API';
-
-/* Application general error messages */
-$config['db_connection_error_message'] = 'Could not connect to the database';
-$config['page_not_found_error_message'] = 'The page does not exist';
-
-/* Application condition terms text */
-$config['application_condition_message'] = '';
+// Usually we need one extra permission at the beginning of any project: email.
+// If more permissions are needed, they should be added below as comma-separated values.
+$config['facebook']['permissions'] = 'email';

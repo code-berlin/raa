@@ -23,12 +23,92 @@
 
 class Page extends CI_Controller {
 
+    protected $facebook_user;
+
     function __construct() {
         parent::__construct();
 
+        // Helpers
         $this->load->helper('url');
         $this->load->helper('widget');
         $this->load->helper('widgets_container');
         $this->load->helper('published');
+        
+        // Libraries
+        $this->load->library('facebook');
+
+        // Models
+        $this->load->model('facebook_user_m');
+        
+        // Functions
+        $this->set_facebook_user_state();
+    }
+
+    /******************************************
+    *
+    *               EXTRA DATA FOR PAGES
+    *
+    *******************************************/
+
+    protected function home() {
+        $this->tools->d($this->session->userdata);
+    }
+
+     protected function custom() {
+        $this->tools->d($this->session->userdata);
+    }
+
+    /******************************************
+    *
+    *               HELPER FUNCTIONS
+    *
+    *******************************************/
+
+    // Checks if Facebook user exists, and sets (or unsets) session userdata
+    protected function set_facebook_user_state() {
+
+        $this->facebook_user = $this->facebook->get_user();
+        
+        if ($this->facebook_user) {
+            // User exists, let's add him or her to the session if needed
+            if (!$this->session->userdata('facebook_user')) {
+                $this->session->set_userdata('facebook_user', $this->facebook_user);
+            }
+            // Create new Facebook user if needed
+            $this->create_new_facebook_user($this->facebook_user);
+        } else {
+            // No user, no fun. Kill session userdata
+            // and redirect to homepage (for authorization)
+            $this->session->unset_userdata('facebook_user');
+            if (uri_string()) {
+                redirect('/');
+            }
+        }
+    }
+
+    /*
+    * Creates a new Facebook user in the database if needed
+    * @param $fb_user {Array} array got from facebook API call for a user
+    * @return {int} Database ID of the created user
+    */
+    private function create_new_facebook_user($fb_user) {
+        
+        $user_exists = $this->facebook_user_m->get_by('facebook_id', $fb_user['id']);
+        
+        if ($user_exists) {
+            // User is already in the database, stop the script
+            return;
+        }
+        
+        $new_user = array(
+            'name' => $fb_user['first_name'].' '.$fb_user['last_name'],
+            'facebook_id' => $fb_user['id'],
+            'email' => $fb_user['email']
+        );
+
+        $this->facebook_user_m->create();
+        $this->facebook_user_m->set($new_user);
+
+        return $this->facebook_user_m->save();
     }
 }

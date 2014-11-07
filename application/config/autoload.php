@@ -59,7 +59,6 @@ $autoload['libraries'] = array(
 	'session',
 	'layout',
 	'encrypt',
-	'facebook_api',
 	'tools'
 );
 

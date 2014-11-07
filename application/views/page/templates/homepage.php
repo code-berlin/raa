@@ -5,3 +5,5 @@
 	<li>Go to <strong>/views/page/templates/homepage.php</strong> to modify this page</li>
 	<li>Go to <strong>/views/page/layouts/default.php</strong> to modify the default layout</li>
 </ul>
+
+<?php $this->load->view('facebook/login_button'); ?>
