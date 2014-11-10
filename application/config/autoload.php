@@ -92,7 +92,7 @@ $autoload['helper'] = array(
 |
 */
 
-$autoload['config'] = array('facebook');
+$autoload['config'] = array();
 
 
 /*
