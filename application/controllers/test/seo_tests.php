@@ -142,7 +142,6 @@ class Seo_tests extends Basic_tests
     private function add_settings_fields(){
 
         $settings = R::dispense('settings');
-        $settings->blog_title = "test_title";
         $settings->email = "test@settings.org";
         $settings->seo_meta_title = "seo_meta_title";
         $settings->seo_meta_keywords = "seo_meta_keywords";
@@ -155,7 +154,6 @@ class Seo_tests extends Basic_tests
     private function add_page_seo_fields(){
 
         $page = R::dispense('page');
-        $page->title = "title of a page with seo";
         $page->slug = 'test-page-with-seo-23179213879123';
         $page->seo_meta_title = "page_seo_meta_title";
         $page->seo_meta_keywords = "page_seo_meta_keywords";
@@ -169,7 +167,6 @@ class Seo_tests extends Basic_tests
     private function add_page_no_seo_fields(){
 
         $page = R::dispense('page');
-        $page->title = "title of a page with no seo";
         $page->slug = 'test-page-with-no-seo-98732478432';
         $page->seo_meta_title = "";
         $page->seo_meta_keywords = "";
@@ -183,7 +180,6 @@ class Seo_tests extends Basic_tests
     private function add_page_some_seo_fields(){
 
         $page = R::dispense('page');
-        $page->title = "title of a page with some seo";
         $page->slug = 'test-page-with-some-seo-129837213';
         $page->seo_meta_title = "meta title";
         $page->seo_meta_keywords = "";

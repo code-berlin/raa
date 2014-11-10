@@ -24,7 +24,6 @@ class Slug_tests extends Basic_tests
 		$this->slug_id = $this->type_m->save_slug('page', $this->example_slug, 0);
 
 		$page = $this->page_m->create();
-		$page->title = 'test';
 		$this->page_id = $this->page_m->save($page);
 	}
 
