@@ -48,7 +48,6 @@ class Settings_tests extends Basic_tests
     {
         $settings = $this->settings;
         $result = $this->settings_m->get_settings();
-        $this->_assert_equals($settings->blog_title,$result->blog_title);
         $this->_assert_equals($settings->email,$result->email);
         $this->_assert_equals($settings->seo,$result->seo);
         $this->_assert_equals($settings->keywords,$result->keywords);
@@ -89,7 +88,6 @@ class Settings_tests extends Basic_tests
     private function add_settings_fields(){
 
         $settings = R::dispense('settings');
-        $settings->blog_title = "test_title";
         $settings->email = "test@settings.org";
         $settings->seo_meta_title = "seo_meta_title";
         $settings->seo_meta_keywords = "seo_meta_keywords";
