@@ -54,12 +54,6 @@ class Settings_tests extends Basic_tests
         $this->_assert_equals($settings->keywords,$result->keywords);
     }
 
-    function test_get_blog_title(){
-        $settings = $this->settings;
-        $result = $this->settings_m->get_blog_title();
-        $this->_assert_equals($settings->blog_title, $result);
-
-    }
 
     function test_get_email(){
         $settings = $this->settings;

@@ -11,9 +11,6 @@ class Settings_m extends CI_Model{
         return $this->settings_dao->get_settings();
     }
 
-    public function get_blog_title(){
-        return $this->settings_dao->get_blog_title();
-    }
 
     public function get_email(){
         return $this->settings_dao->get_email();
