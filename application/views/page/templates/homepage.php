@@ -6,4 +6,10 @@
 	<li>Go to <strong>/views/page/layouts/default.php</strong> to modify the default layout</li>
 </ul>
 
-<?php $this->load->view('facebook/login_button'); ?>
+<?php
+	
+	if (!facebook_user_logged_in()) {
+		$this->load->view('facebook/login_button');
+	}
+
+?>

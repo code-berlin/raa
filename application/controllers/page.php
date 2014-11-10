@@ -33,6 +33,7 @@ class Page extends CI_Controller {
         $this->load->helper('widget');
         $this->load->helper('widgets_container');
         $this->load->helper('published');
+        $this->load->helper('facebook');
         
         // Libraries
         $this->load->library('facebook');
@@ -50,13 +51,11 @@ class Page extends CI_Controller {
     *
     *******************************************/
 
-    protected function home() {
-        $this->tools->d($this->session->userdata);
-    }
-
-     protected function custom() {
-        $this->tools->d($this->session->userdata);
-    }
+    // protected function home() {
+    //     $data['info'] = "Value";
+    //     $data['other_info'] = "Other value";
+    //     return $data;
+    // }
 
     /******************************************
     *

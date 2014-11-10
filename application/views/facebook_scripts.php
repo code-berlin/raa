@@ -1,7 +1,7 @@
 <script>
 	window.fbAsyncInit = function() {
 		FB.init({
-		    appId: <?php echo $this->config->item('facebook')['app_id']; ?>,            
+		    appId: '<?php echo $this->config->item("facebook")["app_id"]; ?>',            
 		    status: true,
 		    xfbml: true,
 		    cookie: true // Crucial for PHP SDK
@@ -9,7 +9,15 @@
 
 		// Check login status
 		FB.getLoginStatus(function(response) {
-			console.dir(response);
+			
+			// User login status has changed, but Facebook PHP SDK session is not refreshed
+			// Let's reload the page to update the session
+			var	fb_token = '<?php echo $this->session->userdata("fb_token") ?>' || undefined;
+			if (response.status === 'connected' && fb_token === undefined ||
+				response.status === 'unknown' && fb_token !== undefined) {
+				window.location.reload(true);
+			}
+			
 			if (response.status === 'not_authorized') {
 				// User did not authorize our app
 				FB.login(
@@ -19,7 +27,7 @@
 						}
 					},
 					{
-						scope: <?php echo $this->config->item('facebook')['permissions'] ?>
+						scope: '<?php echo $this->config->item("facebook")["permissions"] ?>'
 					}
 				);
 			}
@@ -27,7 +35,7 @@
 	}
 
 	function goToMainPage() {
-        var app_url = "<?php echo $this->config->item('facebook')['app_path']; ?>";
+        var app_url = '<?php echo $this->config->item("facebook")["app_path"]; ?>';
     	window.top.location = app_url;
     }
 </script>
