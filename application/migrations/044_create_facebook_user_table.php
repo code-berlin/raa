@@ -12,7 +12,8 @@ class Migration_Create_Facebook_User_Table extends Basic_migration {
             "CREATE TABLE IF NOT EXISTS `facebook_user` (
               `id` int(11) NOT NULL AUTO_INCREMENT,
               `facebook_id` bigint(30) NOT NULL,
-              `name` varchar(255) NOT NULL,
+              `first_name` varchar(255) NOT NULL,
+              `last_name` varchar(255) NOT NULL,
               `email` varchar(255) NOT NULL,
               PRIMARY KEY (`id`)
             ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=65;"

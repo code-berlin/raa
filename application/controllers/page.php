@@ -100,7 +100,8 @@ class Page extends CI_Controller {
         }
         
         $new_user = array(
-            'name' => $fb_user['first_name'].' '.$fb_user['last_name'],
+            'first_name' => $fb_user['first_name'],
+            'last_name' => $fb_user['last_name'],
             'facebook_id' => $fb_user['id'],
             'email' => $fb_user['email']
         );
