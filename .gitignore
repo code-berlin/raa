@@ -9,11 +9,12 @@ application/logs/*
 !application/logs/.htaccess
 /nbproject
 /nbproject/*
-
-application/config/database.php
-
 *.sublime-project
 *.sublime-workspace
 *.idea
 raa.iml
+
+node_modules
+
 application/config/config.php
+application/config/database.php
