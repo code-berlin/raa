@@ -13,6 +13,7 @@ application/logs/*
 *.sublime-workspace
 *.idea
 raa.iml
+.sass-cache
 
 node_modules
 
