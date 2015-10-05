@@ -8,7 +8,7 @@ class Auth_l {
         $username = $ci->session->userdata('user_name');
         if (!$username)
         {
-            redirect('admin/auth/login');
+            redirect('/auth');
         }
     }
 

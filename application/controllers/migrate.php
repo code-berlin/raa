@@ -17,7 +17,7 @@ class Migrate extends CI_Controller {
         $result_string = "";
 
         //if migrations table and users table exists it can't be the first usage -> force auth
-        if($this->db->table_exists('migrations') && $this->db->table_exists('user') ){
+        if($this->db->table_exists('migrations') && $this->db->table_exists('user') && $this->db->table_exists('role') ){
             if (!$this->auth_l->user_logged_in()){
                 $this->auth_l->user_logged_in_with_redirect();
             }else{

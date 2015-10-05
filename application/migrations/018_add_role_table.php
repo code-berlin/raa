@@ -22,8 +22,7 @@ class Migration_Add_Role_Table extends Basic_migration {
         $this->db->query("ALTER TABLE `user` ADD `id_role` int(11) NOT NULL;");
         $this->db->query("ALTER TABLE `user` ADD `name` varchar(255) DEFAULT NULL;");
 
-        $this->db->query("INSERT  INTO `user` (`id`,`username`, `password`, `id_role`) VALUES (1,'".$this->config->item("superadmin")["username"]."', '".$this->config->item("superadmin")["password"]."', 1);");
-
+        $this->db->query("INSERT  INTO `user` (`id`,`username`, `password`, `id_role`) VALUES (1,'".$this->config->item("superadmin")["username"]."', '".$this->encrypt->sha1($this->config->item("superadmin")["password"])."', 1);");
 
     }
 
@@ -32,5 +31,6 @@ class Migration_Add_Role_Table extends Basic_migration {
         $this->dbforge->drop_table('role');
         $this->db->query("delete from `user` where `id` = 1;");
         $this->db->query("ALTER TABLE `user` DROP `id_role`");
+    
     }
 }

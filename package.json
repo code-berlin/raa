@@ -1,5 +1,5 @@
 {
-  "name": "Really Awesome Amazing CMS.",
+  "name": "ReallyAwesomeAmazingCMS",
   "version": "0.2.0",
   "description": "CMS based on Codeigniter.",
   "main": "index.php",
@@ -12,5 +12,12 @@
   },
   "author": "code-b",
   "license": "",
-  "gitHead": ""
+  "gitHead": "",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-jshint": "~0.11.3",
+    "grunt-contrib-compass": "~1.0.4",
+    "grunt-contrib-concat": "~0.5.1"
+  }
 }

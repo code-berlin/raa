@@ -18,3 +18,12 @@ node_modules
 
 application/config/config.php
 application/config/database.php
+
+assets/css/admin.css
+assets/css/main.css
+assets/js/min/scripts.min.js
+assets/css/admin.css.map
+assets/css/main.css.map
+assets/css/min/main.min.css
+assets/css/min/main.min.css.map
+assets/js/min/scripts.min.js.map
