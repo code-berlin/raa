@@ -15,7 +15,8 @@ class Dispatcher extends Page {
         $this->language = $this->tools->get_language_value();
     }
 
-    public function index($slug='') {
+    public function index($slug='', $subslug = '') {
+
         $this->load->model('url_m');
 
         $page = '';
@@ -43,9 +44,13 @@ class Dispatcher extends Page {
         }
 
         // Retrieve object type related to this slug
-        $result = $this->url_m->get_by_slug($slug);
+        if (!empty($subslug)) {
+            $result = $this->url_m->get_by_slug($subslug);
+        } else {
+            $result = $this->url_m->get_by_slug($slug);
+        }     
 
-        $published = check_if_published($result, $slug);
+        $published = check_if_published($result, $slug, $subslug);
 
         if(!empty($result) && $published) {
             $this->type = $result->type->name;
@@ -56,7 +61,11 @@ class Dispatcher extends Page {
                 $this->load->model($model_type);
 
                 // It's important for each class to have this method
-                $this->data[$this->type] = $this->$model_type->get_by_slug($slug);
+                if (!empty($subslug)) {
+                    $this->data[$this->type] = $this->$model_type->get_by_slug($subslug);
+                } else {
+                    $this->data[$this->type] = $this->$model_type->get_by_slug($slug);
+                }                
 
                 // setting the data type and the id for the layout
                 $this->data['type'] = $this->type;
@@ -81,7 +90,6 @@ class Dispatcher extends Page {
                 } else {
                     return $this->tools->show_not_implemented_page();
                 }
-
                 return $this->layout->view($this->type.'/'.$templates_folder.'/'.$view, $this->data);
             }
         }

@@ -3,10 +3,11 @@
 class Basic_migration  extends CI_Migration {
     public $filename = __FILE__;
     function __construct()
-    {        parent::__construct();
-             $this->load->library('rb_loader');
-
+    {        
+        parent::__construct();
+        $this->load->library('rb_loader');
     }
+
     public function up() {
         log_message('debug', 'Starting to run up on Version '.$this->filename);
         try{

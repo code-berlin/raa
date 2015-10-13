@@ -28,6 +28,7 @@ $route['sendemail/contact'] = 'sendemail/contact';
 * FRONTEND SLUGS
 * IMPORTANT: don't move this item from this position! must be the last!
 */
+$route['([a-z0-9-]*)/([a-z0-9-]*)'] = "dispatcher/index/$1/$2";
 $route['([a-z0-9-]*)'] = "dispatcher/index/$1";
 
 /* End of file routes.php */

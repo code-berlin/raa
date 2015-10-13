@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-function check_if_published($result, $slug) {
+function check_if_published($result, $slug, $subslug = '') {
     if (!isset($result) || empty($result)){
             return false;
     }
@@ -8,9 +8,25 @@ function check_if_published($result, $slug) {
         
     $table_name = $type->name;
 
-     $item = R::findOne($table_name,
-        'slug = :slug',
-         array(':slug' => $slug));
+    // check for nested pages
+    if (!empty($subslug) && $result->type_id == '1') {
+
+        $qry = 'SELECT child.id, child.published, child.slug FROM page as child LEFT JOIN page as parent ON child.parent_id = parent.id WHERE child.slug = ? AND parent.slug = ? AND child.published = 1 AND parent.published = 1';
+
+        $row = R::getRow($qry,
+                array($subslug, $slug)
+            );
+
+        $item = new stdClass();
+        $item->published = $row['published'];
+ 
+    } else {
+
+        $item = R::findOne($table_name,
+            'slug = :slug',
+            array(':slug' => $slug));
+
+    }    
 
     if (isset($item) && !empty($item))
     {
@@ -18,7 +34,7 @@ function check_if_published($result, $slug) {
     }
     else
     {
-        return false;
+        $published_state = false;
     }
 
     return $published_state;

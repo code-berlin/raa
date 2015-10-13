@@ -42,7 +42,7 @@ class Page extends CI_Controller {
         $this->load->model('facebook_user_m');
         
         // Functions
-        $this->set_facebook_user_state();
+        //$this->set_facebook_user_state();
     }
 
     /******************************************
