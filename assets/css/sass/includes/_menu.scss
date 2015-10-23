@@ -1,0 +1,58 @@
+.sf-menu {
+	
+	li, li:hover, li.sfHover, ul li {
+		background: #ffffff;
+	}
+
+	a {
+		color: $menu-link-color;
+		border-bottom: $menu-bottom-border-width solid #ffffff;
+
+		&:hover, &:active {
+			color: $menu-link-color-hover;
+			border-bottom: $menu-bottom-border-width solid $menu-link-color-hover;
+			text-decoration: none;
+		}
+
+	}
+}
+
+#mobnav-btn {
+    display: none;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #333333;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.mobnav-subarrow {
+    display: none;
+}
+
+@media only screen and (max-width: $page-break-tablet) {
+    
+    #mobnav-btn {
+        display: block;
+    }
+
+    .mobnav-subarrow {
+        display: block;
+        background-color: #333333;
+        opacity: .3;
+        border-bottom: 1px solid white;
+        border-top: 1px solid black;
+        height: 20px;
+        width: 30px;
+        background-position: top left!important;
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+        -webkit-transition: all .1s ease-in-out;
+    }
+
+}

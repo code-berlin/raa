@@ -2,9 +2,13 @@ module.exports = function(grunt) {
 
 	"use strict";
 
+    var theme = 'tm';
+
 	var JS_FILES = [
-        'assets/lib/jquery-1.11.0.min.js',
-        'assets/js/app/**/*.js'
+        'assets/js/lib/jquery-1.11.0.min.js',
+        'assets/js/app/**/*.js',
+        'assets/js/lib/superfish.min.js',
+        'assets/js/themes/' + theme + '/**/*.js'
     ];
 	
 	grunt.initConfig({
@@ -12,6 +16,7 @@ module.exports = function(grunt) {
 		jshint: {
 			files: [
 				'assets/js/app/**/*.js',
+                'assets/js/themes/' + theme + '/**/*.js',
 				'Gruntfile.js'
 			],
 			options: {
@@ -39,7 +44,8 @@ module.exports = function(grunt) {
                 // the files to concatenate
                 src: [                    
                     'assets/bootstrap/css/bootstrap.css',
-                    'assets/bootstrap/css/bootstrap-responsive.css',
+                    'assets/css/vendor/font-awesome.min.css',
+                    'assets/css/vendor/superfish.css',
                     'assets/css/main.css'
                 ],
                 // the location of the resulting CSS file
@@ -53,7 +59,8 @@ module.exports = function(grunt) {
                 // the files to concatenate
                 src: [
                     'assets/bootstrap/css/bootstrap.min.css',
-                    'assets/bootstrap/css/bootstrap-responsive.min.css',
+                    'assets/css/vendor/font-awesome.min.css',
+                    'assets/css/vendor/superfish.css',
                     'assets/css/main.css'
                 ],
                 // the location of the resulting CSS file
@@ -80,31 +87,18 @@ module.exports = function(grunt) {
             }
         },
 		watch: {
-            js: {
-                 files: [
-                    'Gruntfile.js',
-                    'assets/js/**/*.js',
-                    'assets/**/*.js'
-                ],
-                tasks: [
-                    'jshint',
-                    'concat:devJS'
-                ]
-            },
-            sass: {
-                files: [
-                    'assets/sass/*.scss',
-                    'assets/sass/includes/*.scss'
-                ],
-                tasks: [
-                    'compass:dev',
-                    'concat:devCSS'
-                ],
-                options: {
-                    livereload: false,
-                    spawn: true
-                }
-            }
+            files: [
+                'Gruntfile.js',
+                'assets/js/**/*.js',
+                'assets/css/sass/*.scss',
+                'assets/css/sass/includes/*.scss'
+            ],
+            tasks: [
+                'jshint',
+                'concat:devJS',
+                'compass:dev',
+                'concat:devCSS'
+            ]
         },
 	});
 

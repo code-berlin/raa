@@ -1,0 +1,45 @@
+ul {
+	-webkit-padding-start: 0px;
+}
+
+.cl {
+	clear: both;
+}
+
+body {
+	background-color: $background-color;
+	font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	line-height: 24px;
+	font-size: 14px;
+}
+
+.container {
+	background-color: #ffffff;
+}
+
+.flex-container {	
+	display: -webkit-flex;
+  	display: flex;
+}
+
+.flex-column {
+	-webkit-flex: 1;
+    flex: 1;
+}
+
+.content {
+	padding: 0px 30px;
+}
+
+a {
+	
+	&:link, &:visited, &:hover, &:active {
+		color: $link-color;
+	}
+
+	&:hover, &:active {
+		text-decoration: underline;
+	}
+}
+
+

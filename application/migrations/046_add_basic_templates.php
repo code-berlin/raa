@@ -10,12 +10,14 @@ class Migration_Add_Basic_Templates extends Basic_migration {
     public function mig_up() {
         $this->db->query("INSERT INTO `template` (`name`) VALUES ('contact');");
         $this->db->query("INSERT INTO `template` (`name`) VALUES ('static');");
-        $this->db->query("INSERT INTO `template` (`name`) VALUES ('width_sidebar');");
+        $this->db->query("INSERT INTO `template` (`name`) VALUES ('with_sidebar');");
+        $this->db->query("INSERT INTO `template` (`name`) VALUES ('list_page');");
     }
 
     public function mig_down() {
         $this->db->query("DELETE FROM `template` WHERE (`name`) = ('contact');");
         $this->db->query("DELETE FROM `template` WHERE (`name`) = ('static');");
         $this->db->query("DELETE FROM `template` WHERE (`name`) = ('with_sidebar');");
+        $this->db->query("DELETE FROM `template` WHERE (`name`) = ('list_page');");
     }
 }

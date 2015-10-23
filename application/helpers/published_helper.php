@@ -20,6 +20,12 @@ function check_if_published($result, $slug, $subslug = '') {
         $item = new stdClass();
         $item->published = $row['published'];
  
+    } elseif ($result->type_id == '1') {
+
+        $item = R::findOne($table_name,
+            'slug = :slug AND parent_id IS NULL',
+            array(':slug' => $slug));
+
     } else {
 
         $item = R::findOne($table_name,

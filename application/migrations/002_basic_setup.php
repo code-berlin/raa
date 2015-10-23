@@ -43,7 +43,7 @@ class Migration_Basic_Setup extends Basic_migration {
         ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;');
 
         $this->db->query('ALTER TABLE `page`
-          ADD CONSTRAINT `page_ibfk_1` FOREIGN KEY (`id_template`) REFERENCES `template` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;');
+          ADD CONSTRAINT `page_ibfk_1` FOREIGN KEY (`id_template`) REFERENCES `template` (`id`);');
 
         $this->db->query('ALTER TABLE `url`
           ADD CONSTRAINT `url_ibfk_1` FOREIGN KEY (`type_id`) REFERENCES `type` (`id`);');

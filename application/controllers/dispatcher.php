@@ -48,9 +48,11 @@ class Dispatcher extends Page {
             $result = $this->url_m->get_by_slug($subslug);
         } else {
             $result = $this->url_m->get_by_slug($slug);
-        }     
+        }
 
         $published = check_if_published($result, $slug, $subslug);
+
+        $this->data['menu'] = load_main_menu();
 
         if(!empty($result) && $published) {
             $this->type = $result->type->name;
@@ -68,10 +70,10 @@ class Dispatcher extends Page {
                 }                
 
                 // setting the data type and the id for the layout
-                $this->data['type'] = $this->type;
+                $this->data['type'] = $this->type;                
                 $this->data['id'] = $result->id;
                 $this->data['section_name'] =  $this->data[$this->type]->slug;
-                
+
                 // Get extra data for current page based on its slug
                 // If $page_method exists, it can be found in page.php controller
                 $page_method = $slug;

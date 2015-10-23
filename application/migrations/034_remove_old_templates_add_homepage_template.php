@@ -15,7 +15,7 @@ class Migration_Remove_Old_Templates_Add_Homepage_Template extends Basic_migrati
         $this->db->query("TRUNCATE template");
         $this->db->query("INSERT INTO `template` (`id`, `name`) VALUES (1, 'homepage');");
 
-        $this->db->query("ALTER TABLE `page` ADD FOREIGN KEY (`template_id`) REFERENCES `template` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;");
+        $this->db->query("ALTER TABLE `page` ADD FOREIGN KEY (`template_id`) REFERENCES `template` (`id`);");
     }
 
     public function mig_down() {
@@ -29,6 +29,6 @@ class Migration_Remove_Old_Templates_Add_Homepage_Template extends Basic_migrati
                             (3, 'productlist'),
                             (4, 'template1');");
 
-        $this->db->query("ALTER TABLE `page` ADD FOREIGN KEY (`template_id`) REFERENCES `template` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;");
+        $this->db->query("ALTER TABLE `page` ADD FOREIGN KEY (`template_id`) REFERENCES `template` (`id`);");
     }
 }

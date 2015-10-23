@@ -1,0 +1,45 @@
+.content-wrapper {
+	margin-right: 30px;
+
+	h2 {
+		color: $main-color;
+		line-height: 34px;
+		font-size: 24px;
+	}
+
+	.content-img-wrapper {
+		float: right;
+		margin: 0px 0px 10px 10px;
+	}
+
+	.content-disclaimer {
+		padding-top: 15px;
+		border-top: 1px solid $accent-color;
+
+		span {
+			color: $link-color-hover;
+		}
+
+	}
+
+}
+
+.sidebar {
+	width: 300px;
+}
+
+@media only screen and (max-width: $page-break-tablet) {
+
+	.content-container {
+		display: block;
+	}
+
+	.content-wrapper { 
+		margin-right: 0px;
+	}
+
+	.sidebar {
+		margin: 0px auto;
+	}
+
+}

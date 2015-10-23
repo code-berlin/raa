@@ -16,9 +16,9 @@ class Migration_Create_Widgets_Containers_Relation_Table extends Basic_migration
                         KEY `widget_id` (`widget_id`,`widgets_container_id`)
                       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;");
 
-      $this->db->query("ALTER TABLE  `widgets_containers_relation` ADD FOREIGN KEY ( `widget_id` ) REFERENCES `widget` (`id`) ON DELETE CASCADE ON UPDATE CASCADE ;");
+      $this->db->query("ALTER TABLE  `widgets_containers_relation` ADD FOREIGN KEY ( `widget_id` ) REFERENCES `widget` (`id`) ;");
 
-      $this->db->query("ALTER TABLE `widgets_containers_relation` ADD FOREIGN KEY ( `widgets_container_id` ) REFERENCES `widgets_container` (`id`) ON DELETE CASCADE ON UPDATE CASCADE ;");
+      $this->db->query("ALTER TABLE `widgets_containers_relation` ADD FOREIGN KEY ( `widgets_container_id` ) REFERENCES `widgets_container` (`id`) ;");
     }
 
     public function mig_down() {

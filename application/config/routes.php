@@ -24,6 +24,8 @@ $route['product/(:num)'] = "content_type/index/$1/product";
 // CONTACT FORM
 $route['sendemail/contact'] = 'sendemail/contact';
 
+$route['gsearch'] = 'search/gsearch';
+
 /*
 * FRONTEND SLUGS
 * IMPORTANT: don't move this item from this position! must be the last!

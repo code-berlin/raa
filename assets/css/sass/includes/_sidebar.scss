@@ -1,0 +1,129 @@
+.sidebar {
+
+	.sidebar-item {
+		margin-top: 20px;
+		color: $font-accent-color;
+
+		&:first-child {
+			margin-top: 0px;
+		}		
+
+		h3 {
+			margin-top: 0px;
+		}
+
+	}
+
+
+	.sidebar-search {
+
+		span {
+			position: relative;
+
+			input {
+				width: 100%;
+				padding: 9px 25px 8px 10px;
+			}
+
+			a {
+				position: absolute;
+				width: 13px;
+				height: 14px;
+				right: 10px;
+				top: -2px;
+			}
+
+		}
+
+	}
+
+	.sidebar-menu {
+		-webkit-padding-start: 0px;
+		list-style-type: none;
+
+		.sidebar-menu-item {
+			position: relative;
+			
+			&.active {
+				border-top: 1px solid $accent-color;
+
+				a {
+					color: #ffffff;
+					background: $main-color;
+					border-top: 1px solid $main-color;
+				}
+
+				ul {
+					border-left: 3px solid $main-color;
+					display: block;
+					
+					li {
+
+						&:first-child {
+					
+							a {
+								border-top: 1px solid #ffffff;
+							}
+
+						}
+
+					}
+
+					a {
+						background: #ffffff;
+						color: $font-color;
+						border-top: 1px solid $accent-color;
+
+						&:hover, &:active, &:focus {
+							background: $main-color;
+							color: #ffffff;
+							text-decoration: none;
+						}
+
+					}
+
+				}
+
+			}
+
+			a {
+				color: $font-color;
+				display: block;
+				padding: 10px;
+				border-top: 1px solid $accent-color;
+
+				&:hover, &:active, &:focus {
+					background: $main-color;
+					color: #ffffff;
+					text-decoration: none;
+				}
+
+			}
+
+			.sidebar-menu-submenu-toogle {
+				display: block;
+				position: absolute;
+				right: 0px;
+				top: 0px;
+				width: 45px;
+				height: 45px;
+				text-align: center;
+
+				i {
+					margin-top: 14px;
+				}
+
+			}
+
+			ul {
+				-webkit-padding-start: 0px;
+				list-style-type: none;
+				padding-left: 3px;
+				display: none;
+			}
+
+		}
+
+	}
+
+}

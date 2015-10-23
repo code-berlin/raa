@@ -3,6 +3,18 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 	// Default 2-level navigation based on the pages created in the backend
     function show_main_menu() {
+
+        $ci =& get_instance();
+        
+        $data = load_main_menu();
+
+        $ci->load->view('main_menu', $data);
+
+    }
+
+    // Default 2-level navigation based on the pages created in the backend
+    function load_main_menu() {
+
         $ci =& get_instance();
         $ci->load->model('page_m');
 
@@ -16,7 +28,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             $data['menu_items'][$key]['children'] = $ci->page_m->get_children($item['id']);
         }
 
-        $ci->load->view('main_menu', $data);
+        return $data;
+
     }
 
     // Old function based on the idea of creating custom templates for menus

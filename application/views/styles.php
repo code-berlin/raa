@@ -1,1 +1,1 @@
-<link rel="stylesheet" href="/assets/css/min/admin.min.css" type="text/css">
+<link rel="stylesheet" href="/assets/css/min/main.min.css?<?php echo filemtime(FCPATH . 'assets/css/min/main.min.css'); ?>" type="text/css">
