@@ -6,6 +6,10 @@ ul {
 	clear: both;
 }
 
+.hidden {
+	display: none;
+}
+
 body {
 	background-color: $background-color;
 	font-family: "Open Sans", Arial, Helvetica, sans-serif;

@@ -74,16 +74,28 @@ class Dispatcher extends Page {
                 $this->data['id'] = $result->id;
                 $this->data['section_name'] =  $this->data[$this->type]->slug;
 
-                // Get extra data for current page based on its slug
-                // If $page_method exists, it can be found in page.php controller
-                $page_method = $slug;
+                 // Get extra data for current page based on its slug
+                // If $template_method exists, it can be found in page.php controller
+                $template_method = $this->data[$this->type]->template->name;
 
-                if (strpos($page_method, '-') !== false) { // Is there a dash in the page's slug?
-                    $page_method = str_replace('-', '_', $page_method);
+                if (strpos($template_method, '-') !== false) { // Is there a dash in the page's slug?
+                    $template_method = str_replace('-', '_', $template_method);
                 }
                 
-                if (method_exists($this, $page_method)) { // Is there a method in page.php that extends the template?
-                    $this->data['extra_data'] = $this->$page_method();
+                if (method_exists($this, $template_method)) { // Is there a method in page.php that extends the template?
+                    $this->data['template_data'] = $this->$template_method($this->data['id']);
+                }
+
+                // Get extra data for current page based on its template type
+                // If $slug_method exists, it can be found in page.php controller
+                $slug_method = $slug;
+
+                if (strpos($slug_method, '-') !== false) { // Is there a dash in the page's slug?
+                    $slug_method = str_replace('-', '_', $slug_method);
+                }
+                
+                if (method_exists($this, $slug_method)) { // Is there a method in page.php that extends the template?
+                    $this->data['extra_data'] = $this->$slug_method();
                 }
 
                 // Set the template name or throw error

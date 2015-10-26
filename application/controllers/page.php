@@ -111,4 +111,40 @@ class Page extends CI_Controller {
 
         return $this->facebook_user_m->save();
     }
+
+
+    function with_sidebar($page_id) {
+
+        $data = array();
+
+        $this->load->model('page_m');
+
+        $page = $this->page_m->get_by_id($page_id);
+
+        $data['social']['title'] = $page->menu_title;
+        $data['social']['description'] = $page->teaser_text;
+        $data['social']['image'] = $page->image;
+
+        return $data;
+
+    }
+
+
+    function list_page($page_id) {
+
+        $data = array();
+
+        $this->load->model('page_m');
+
+        $page = $this->page_m->get_by_id($page_id);
+
+        $data['social']['title'] = $page->menu_title;
+        $data['social']['description'] = $page->teaser_text;
+        $data['social']['image'] = $page->image;
+
+        $data['children'] = $this->page_m->get_children($page_id);
+
+        return $data;
+
+    }
 }

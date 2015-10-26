@@ -63,6 +63,6 @@ class Page_dao extends CI_Model{
     }
 
     public function get_children($page_id) {
-        return R::getAll('SELECT menu_title, slug, id FROM '.$this->table.' WHERE parent_id = '.$page_id.' AND published = 1 ORDER BY menu_order ASC');
+        return R::getAll('SELECT menu_title, slug, teaser_text, image, id FROM '.$this->table.' WHERE parent_id = '.$page_id.' AND published = 1 ORDER BY menu_order ASC');
     }
 }
