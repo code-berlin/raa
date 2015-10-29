@@ -1,22 +1,42 @@
+.content-container {
+	padding: 25px 0;
+}
+
 .content-wrapper {
 
 	margin-right: 30px;
+	padding-left: 15px;
 
 	h2 {
 		color: $main-color;
 		line-height: 34px;
 		font-size: 24px;
+		font-weight: normal;
+		-webkit-margin-before: 0;
+    	-webkit-margin-after: 0;
+    	padding-bottom: 15px;
 	}
 
 }
 
 .content-img-wrapper {
 	float: right;
-	margin: 10px 0px 10px 15px;
+	margin: 5px 0px 10px 15px;
+
+	img {
+		max-width: 350px;
+	}
+
 }
 
 .content-content {
+
 	padding-bottom: 15px;
+
+	p {
+		-webkit-margin-before: 0;
+	}
+
 }
 
 .content-disclaimer {
@@ -33,10 +53,6 @@
 
 }
 
-.content-container {
-	padding: 30px 0;
-}
-
 @media only screen and (max-width: $page-break-tablet) {
 
 	.content-img-wrapper {
@@ -45,6 +61,7 @@
 		margin: 0px 0px 15px 0px;
 
 		img {
+			max-width: 100%;
 			width: 100%;
 		}
 
@@ -61,6 +78,7 @@
 
 	.content-wrapper {
 		margin-right: 0px;
+		padding-left: 0px;
 	}
 
 }

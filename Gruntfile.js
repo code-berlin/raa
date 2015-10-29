@@ -43,7 +43,7 @@ module.exports = function(grunt) {
                 },
                 // the files to concatenate
                 src: [
-                    'assets/bootstrap/css/bootstrap.css',
+                    'assets/css/vendor/normalize.css',
                     'assets/css/vendor/font-awesome.min.css',
                     'assets/css/vendor/superfish.css',
                     'assets/css/main.css'
@@ -58,7 +58,7 @@ module.exports = function(grunt) {
                 },
                 // the files to concatenate
                 src: [
-                    'assets/bootstrap/css/bootstrap.min.css',
+                    'assets/css/vendor/normalize.css',
                     'assets/css/vendor/font-awesome.min.css',
                     'assets/css/vendor/superfish.css',
                     'assets/css/main.css'
