@@ -1,0 +1,26 @@
+footer {
+
+    @include background-image(linear-gradient($main-color, $main-color-light));
+
+    padding: 15px;
+    height: 150px;
+    line-height: 14px;
+    color: $white-color;
+
+    a {
+
+        color: $white-color;
+        display: inline-block;
+        padding: 0px 5px;
+        border-right: 1px solid $white-color;
+
+        &:last-child {
+            border-right: none;
+        }
+
+        &:link, &:visited, &:hover, &:active {
+            color: $white-color;
+        }
+
+    }
+}

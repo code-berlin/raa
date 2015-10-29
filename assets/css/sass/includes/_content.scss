@@ -1,4 +1,5 @@
 .content-wrapper {
+
 	margin-right: 30px;
 
 	h2 {
@@ -7,39 +8,59 @@
 		font-size: 24px;
 	}
 
-	.content-img-wrapper {
-		float: right;
-		margin: 0px 0px 10px 10px;
+}
+
+.content-img-wrapper {
+	float: right;
+	margin: 10px 0px 10px 15px;
+}
+
+.content-content {
+	padding-bottom: 15px;
+}
+
+.content-disclaimer {
+
+	padding: 15px;
+	border: 1px solid $neutral-color;
+
+	span {
+		display: inline-block;
+		color: $main-color;
+		font-weight: bold;
+		padding-bottom: 3px;
 	}
 
-	.content-disclaimer {
-		padding-top: 15px;
-		border-top: 1px solid $accent-color;
+}
 
-		span {
-			color: $link-color-hover;
+.content-container {
+	padding: 30px 0;
+}
+
+@media only screen and (max-width: $page-break-tablet) {
+
+	.content-img-wrapper {
+
+		float: none;
+		margin: 0px 0px 15px 0px;
+
+		img {
+			width: 100%;
 		}
 
 	}
 
 }
 
-.sidebar {
-	width: 300px;
-}
-
-@media only screen and (max-width: $page-break-tablet) {
+@media only screen and (max-width: $page-break-ipad - 1) {
 
 	.content-container {
 		display: block;
+		padding: 20px 0;
 	}
 
-	.content-wrapper { 
+	.content-wrapper {
 		margin-right: 0px;
-	}
-
-	.sidebar {
-		margin: 0px auto;
 	}
 
 }

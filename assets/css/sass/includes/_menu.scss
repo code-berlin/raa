@@ -1,58 +1,209 @@
 .sf-menu {
-	
-	li, li:hover, li.sfHover, ul li {
-		background: #ffffff;
-	}
 
-	a {
-		color: $menu-link-color;
-		border-bottom: $menu-bottom-border-width solid #ffffff;
+    float: none;
+    margin-bottom: 0px;
+    border-bottom: 1px solid $neutral-color;
+    // background: #f7f7f7;
+    // background: #fff;
 
-		&:hover, &:active {
-			color: $menu-link-color-hover;
-			border-bottom: $menu-bottom-border-width solid $menu-link-color-hover;
-			text-decoration: none;
-		}
+    > li {
 
-	}
+        background: transparent;
+
+        a {
+            border: none;
+            font-size: 18px;
+            // font-weight: bold;
+            padding: 13px 15px;
+            color: $main-color-light;
+
+        }
+
+        ul {
+
+            @include box-shadow(none);
+            border: none;
+
+            li {
+
+                border: none;
+                background: $main-color;
+
+                a {
+                    padding: 12px 12px;
+                    font-weight: normal;
+                    border-top: none;
+                    border-bottom: 1px dotted $main-color-light;
+                    text-transform: none;
+                    text-decoration: none;
+                    color: #FFF;
+                    font-size: 14px;
+                }
+
+                &:last-child {
+                    a {
+                        border-bottom: none;
+                    }
+                }
+
+                &:hover {
+
+                    background: $main-color-light;
+
+                    a {
+                        text-decoration: none;
+                    }
+
+                }
+            }
+        }
+
+        &:hover,
+        &.active,
+        &.sfHover {
+
+            background: transparent;
+
+            a {
+                color: $main-color;
+                text-decoration: none;
+            }
+
+            ul {
+                li {
+                    a {
+                        color: $white-color;
+                    }
+                }
+            }
+        }
+
+    }
+
+    &.sf-arrows {
+
+        > li {
+
+            .sf-with-ul {
+
+                padding-right: 35px;
+
+                &:after {
+                    border-top-color: $main-color-light;
+                    margin-top: -1px;
+                }
+            }
+
+            &.active {
+
+                .sf-with-ul {
+                    &:after {
+                        border-top-color: $main-color;
+                    }
+                }
+
+            }
+        }
+    }
 }
 
 #mobnav-btn {
+
     display: none;
-    font-size: 20px;
-    font-weight: bold;
-    background-color: #333333;
+    font-size: 18px;
+    font-weight: normal;
+    background-color: $main-color;
     color: white;
-    padding: 10px;
+    padding: 13px 15px;
     cursor: pointer;
+
+    i {
+        margin: 2px 5px 0px 0px;
+        float: right;
+    }
+
+    .__text {
+        position: relative;
+        top: -1px;
+    }
+
 }
 
 .mobnav-subarrow {
     display: none;
 }
 
-@media only screen and (max-width: $page-break-tablet) {
-    
+@media only screen and (max-width: $page-break-ipad) {
+
+    .sf-menu {
+
+        border-bottom: none;
+
+        > li {
+
+            a {
+                border-bottom: 1px solid $neutral-color;
+            }
+
+            &:hover,
+            &.sfHover {
+                a {
+                    color: $main-color-light;
+                }
+            }
+
+            &.xpopdrop,
+            &.active {
+
+                a {
+                    color: $main-color;
+                }
+
+                ul {
+                    li {
+                        a {
+                            color: $white-color;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.sf-arrows {
+
+            > li {
+
+                &.xpopdrop,
+                &.active {
+                    .sf-with-ul {
+                        &:after {
+                            border-top-color: $main-color;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
     #mobnav-btn {
         display: block;
     }
 
     .mobnav-subarrow {
         display: block;
-        background-color: #333333;
-        opacity: .3;
-        border-bottom: 1px solid white;
-        border-top: 1px solid black;
-        height: 20px;
-        width: 30px;
-        background-position: top left!important;
+        background-color: transparent;
+        opacity: 1;
+        border-bottom: none;
+        border-top: none;
+        height: 48px;
+        width: 48px;
         position: absolute;
-        top: 8px;
-        right: 10px;
-        -webkit-border-radius: 5px;
-        border-radius: 5px;
+        top: 0px;
+        right: 0px;
+        @include border-radius(0);
         cursor: pointer;
-        -webkit-transition: all .1s ease-in-out;
+
     }
 
 }

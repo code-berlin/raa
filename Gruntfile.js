@@ -10,7 +10,7 @@ module.exports = function(grunt) {
         'assets/js/lib/superfish.min.js',
         'assets/js/themes/' + theme + '/**/*.js'
     ];
-	
+
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		jshint: {
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
                     sourceMap: true
                 },
                 // the files to concatenate
-                src: [                    
+                src: [
                     'assets/bootstrap/css/bootstrap.css',
                     'assets/css/vendor/font-awesome.min.css',
                     'assets/css/vendor/superfish.css',

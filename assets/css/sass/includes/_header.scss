@@ -1,8 +1,47 @@
-.logo {
-	background: url(/assets/images/tinnitus_logo.png);
-	display: block;
-	width: 419px;
-	height: 76px;
-	margin-top: 15px;
-	margin-bottom: 5px;
+.logobar {
+    padding: 40px 0px 20px 10px;
 }
+
+.logo {
+
+	display: block;
+
+    img {
+        width: 335px;
+    }
+
+}
+
+@media only screen and (max-width: $page-break-ipad) {
+
+    .logobar {
+        padding: 35px 0px 30px 15px;
+    }
+
+    .logo {
+
+        img {
+            width: 335px;
+        }
+
+    }
+
+}
+
+@media only screen and (max-width: $page-break-phone) {
+
+    .logobar {
+        padding: 25px 0px 25px 10px;
+    }
+
+    .logo {
+
+        img {
+            width: 260px;
+        }
+
+    }
+
+}
+
+
