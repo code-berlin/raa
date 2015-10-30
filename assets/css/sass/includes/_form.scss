@@ -10,7 +10,7 @@ input {
 
     &:focus {
         outline-style: none;
-        border: 1px solid $main-color-light;
+        border: 1px solid $main-color-75pct;
     }
 
     &::-ms-clear {

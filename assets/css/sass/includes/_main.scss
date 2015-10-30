@@ -35,15 +35,23 @@ body {
 }
 
 .flex-container {
-	display: -webkit-flex;
+
+    display: -webkit-flex;
+    display: -ms-flex;
   	display: flex;
+
+    ._column {
+        flex-direction: column;
+    }
+
 }
 
-.flex-column {
+.flex {
 	-webkit-flex: 1;
 	-ms-flex: 1;
     flex: 1;
 }
+
 
 .main-container {
     padding: 0px 30px;
@@ -72,8 +80,14 @@ a {
 @media only screen and (max-width: $page-break-tablet) {
 
     .main-container {
-        padding: 0px 15px;
+        padding: 0px 10px;
         width: 100%;
+    }
+
+    .flex-container {
+        &._desktop {
+            display: block;
+        }
     }
 
 }

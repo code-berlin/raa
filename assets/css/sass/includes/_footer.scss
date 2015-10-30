@@ -1,6 +1,6 @@
 footer {
 
-    @include background-image(linear-gradient($main-color, $main-color-light));
+    @include background-image(linear-gradient($main-color, $main-color-75pct));
 
     padding: 15px;
     height: 150px;

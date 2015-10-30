@@ -2,9 +2,7 @@
 
     float: none;
     margin-bottom: 0px;
-    border-bottom: 1px solid $neutral-color;
-    // background: #f7f7f7;
-    // background: #fff;
+    border-bottom: 1px solid $main-color-40pct;
 
     > li {
 
@@ -13,9 +11,9 @@
         a {
             border: none;
             font-size: 18px;
-            // font-weight: bold;
+            font-weight: 600;
             padding: 13px 15px;
-            color: $main-color-light;
+            color: $main-color-75pct;
 
         }
 
@@ -33,7 +31,7 @@
                     padding: 12px 12px;
                     font-weight: normal;
                     border-top: none;
-                    border-bottom: 1px dotted $main-color-light;
+                    border-bottom: 1px dotted $main-color-75pct;
                     text-transform: none;
                     text-decoration: none;
                     color: #FFF;
@@ -48,7 +46,7 @@
 
                 &:hover {
 
-                    background: $main-color-light;
+                    background: $main-color-75pct;
 
                     a {
                         text-decoration: none;
@@ -58,6 +56,7 @@
             }
         }
 
+        &:active,
         &:hover,
         &.active,
         &.sfHover {
@@ -89,7 +88,7 @@
                 padding-right: 35px;
 
                 &:after {
-                    border-top-color: $main-color-light;
+                    border-top-color: $main-color-75pct;
                     margin-top: -1px;
                 }
             }
@@ -148,7 +147,7 @@
             &:hover,
             &.sfHover {
                 a {
-                    color: $main-color-light;
+                    color: $main-color-75pct;
                 }
             }
 
@@ -201,7 +200,7 @@
         position: absolute;
         top: 0px;
         right: 0px;
-        @include border-radius(0);
+        @include border-radius(0px);
         cursor: pointer;
 
     }

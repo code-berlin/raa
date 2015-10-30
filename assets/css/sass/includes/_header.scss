@@ -1,5 +1,5 @@
 .logobar {
-    padding: 50px 0px 30px 15px;
+    padding: 45px 0px 30px 15px;
 }
 
 .logo {
@@ -12,7 +12,7 @@
 
 }
 
-@media only screen and (max-width: $page-break-ipad) {
+@media only screen and (max-width: $page-break-tablet) {
 
     .logobar {
         padding: 35px 0px 30px 15px;
@@ -31,7 +31,7 @@
 @media only screen and (max-width: $page-break-phone) {
 
     .logobar {
-        padding: 25px 0px 25px 10px;
+        padding: 30px 0px 25px 10px;
     }
 
     .logo {

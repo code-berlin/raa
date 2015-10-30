@@ -1,15 +1,19 @@
 /* sizes and page breaks*/
-$page-break-phone: 400px;
-$page-break-tablet: 800px;
+$page-break-phone: 412px;
 $page-break-ipad: 768px;
+$page-break-tablet: 800px;
 $page-break-desktop: 992px;
+$three-columns-break: 600px;
 
 /* colors */
 $white-color: #ffffff;
 $background-color: #f7f7f7;
 $main-color: #50aa07;
-$main-color-light: #7cbf45;
-$main-color-lighter: #a7d483;
+$main-color-75pct: #7cbf45;
+$main-color-50pct: #a7d483;
+$main-color-40pct: #b9dd9c;
+$main-color-25pct: #d3eac1;
+
 $neutral-color: #cccccc;
 $neutral-color-darker: #bbbbbb;
 
