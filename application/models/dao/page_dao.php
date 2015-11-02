@@ -65,4 +65,12 @@ class Page_dao extends CI_Model{
     public function get_children($page_id) {
         return R::getAll('SELECT menu_title, slug, teaser_text, image, id FROM '.$this->table.' WHERE parent_id = '.$page_id.' AND published = 1 ORDER BY menu_order ASC');
     }
+
+    public function get_parent($page_id) {
+        return R::getCell('SELECT parent_id FROM '.$this->table.' WHERE id = '.$page_id.' AND published = 1');
+    }
+
+    public function get_siblings($page_id) {
+        return R::getAll('SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.id, child.parent_id, parent.slug as parent_slug FROM '.$this->table.' as child LEFT JOIN '.$this->table.' as parent ON parent.id = child.parent_id WHERE child.parent_id = (SELECT parent_id FROM '.$this->table.' WHERE id = '.$page_id.' AND published = 1) AND child.published = 1 AND parent.published = 1 ORDER BY child.menu_order ASC');
+    }
 }

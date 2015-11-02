@@ -112,6 +112,14 @@ class Page extends CI_Controller {
         return $this->facebook_user_m->save();
     }
 
+    function homepage($page_id) {
+
+        $data =  array();
+
+        return $data;
+
+    }
+
 
     function with_sidebar($page_id) {
 
@@ -124,6 +132,8 @@ class Page extends CI_Controller {
         $data['social']['title'] = $page->menu_title;
         $data['social']['description'] = $page->teaser_text;
         $data['social']['image'] = $page->image;
+
+        $data['children'] = $this->page_m->get_siblings($page_id);
 
         return $data;
 

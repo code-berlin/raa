@@ -1,6 +1,6 @@
 <head>
 	<meta charset="UTF-8">
-	
+
 	<?php
 		// Optional meta content (can be set in the backend's General Settings)
 	?>
