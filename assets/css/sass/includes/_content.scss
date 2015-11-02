@@ -11,6 +11,15 @@
     	-webkit-margin-after: 0;
     	padding-bottom: 20px;
 
+    	&._bar {
+    		color: $white-color;
+    		padding: 6px 10px;
+		    background: $main-color-65pct;
+		    margin-bottom: 20px;
+		    font-size: 18px;
+		    font-weight: 500;
+    	}
+
 	}
 
 }
