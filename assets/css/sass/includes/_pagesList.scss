@@ -1,8 +1,5 @@
 .pages-list {
 
-    padding-top: 5px;
-    padding-bottom: 15px;
-
     .__teaser-row {
 
         margin-bottom: 30px;
@@ -128,6 +125,10 @@
 
         .__bottom {
             height: 162px;
+        }
+
+        &._last {
+            margin-bottom: 0px;
         }
 
         &._dummy {
