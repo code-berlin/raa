@@ -2,7 +2,7 @@
 
     float: none;
     margin-bottom: 0px;
-    border-bottom: 1px solid $main-color-40pct;
+    border-bottom: 1px dotted $main-color-60pct;
 
     > li {
 
@@ -13,7 +13,7 @@
             font-size: 18px;
             font-weight: 600;
             padding: 13px 15px;
-            color: $main-color-75pct;
+            color: $main-color-80pct;
 
         }
 
@@ -31,7 +31,7 @@
                     padding: 12px 12px;
                     font-weight: normal;
                     border-top: none;
-                    border-bottom: 1px dotted $main-color-75pct;
+                    border-bottom: 1px dotted $main-color-80pct;
                     text-transform: none;
                     text-decoration: none;
                     color: #FFF;
@@ -46,7 +46,7 @@
 
                 &:hover {
 
-                    background: $main-color-75pct;
+                    background: $main-color-80pct;
 
                     a {
                         text-decoration: none;
@@ -88,7 +88,7 @@
                 padding-right: 35px;
 
                 &:after {
-                    border-top-color: $main-color-75pct;
+                    border-top-color: $main-color-80pct;
                     margin-top: -1px;
                 }
             }
@@ -147,7 +147,7 @@
             &:hover,
             &.sfHover {
                 a {
-                    color: $main-color-75pct;
+                    color: $main-color-80pct;
                 }
             }
 

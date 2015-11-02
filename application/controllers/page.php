@@ -34,13 +34,13 @@ class Page extends CI_Controller {
         $this->load->helper('widgets_container');
         $this->load->helper('published');
         $this->load->helper('facebook');
-        
+
         // Libraries
         $this->load->library('facebook');
 
         // Models
         $this->load->model('facebook_user_m');
-        
+
         // Functions
         //$this->set_facebook_user_state();
     }
@@ -67,7 +67,7 @@ class Page extends CI_Controller {
     protected function set_facebook_user_state() {
 
         $this->facebook_user = $this->facebook->get_user();
-        
+
         if ($this->facebook_user) {
             // User exists, let's add him or her to the session if needed
             if (!$this->session->userdata('facebook_user')) {
@@ -91,14 +91,14 @@ class Page extends CI_Controller {
     * @return {int} Database ID of the created user
     */
     private function create_new_facebook_user($fb_user) {
-        
+
         $user_exists = $this->facebook_user_m->get_by('facebook_id', $fb_user['id']);
-        
+
         if ($user_exists) {
             // User is already in the database, stop the script
             return;
         }
-        
+
         $new_user = array(
             'first_name' => $fb_user['first_name'],
             'last_name' => $fb_user['last_name'],
@@ -149,6 +149,7 @@ class Page extends CI_Controller {
         $page = $this->page_m->get_by_id($page_id);
 
         $data['social']['title'] = $page->menu_title;
+        $data['social']['slug'] = $page->slug;
         $data['social']['description'] = $page->teaser_text;
         $data['social']['image'] = $page->image;
 

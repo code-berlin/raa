@@ -11,6 +11,15 @@
     	-webkit-margin-after: 0;
     	padding-bottom: 20px;
 
+    	&._bar {
+    		color: $white-color;
+    		padding: 6px 10px;
+		    background: $main-color-60pct;
+		    margin-bottom: 25px;
+		    font-size: 18px;
+		    font-weight: 500;
+    	}
+
 	}
 
 }
@@ -23,7 +32,7 @@
 
 .content-img-wrapper {
 	float: right;
-	margin: 5px 0px 10px 15px;
+	margin: 0px 0px 10px 15px;
 	width: 40%;
 
 	img {
@@ -34,7 +43,7 @@
 
 .content-content {
 
-	padding-bottom: 15px;
+	margin-bottom: 15px;
 
 	p {
 		-webkit-margin-before: 0;
@@ -46,6 +55,8 @@
 
 	padding: 15px;
 	border: 1px solid $neutral-color;
+	margin-bottom: 15px;
+
 
 	span {
 		display: inline-block;
@@ -54,6 +65,15 @@
 		padding-bottom: 3px;
 	}
 
+}
+
+.sharing-box {
+
+	margin-bottom: 15px;
+
+	.__title {
+		margin-bottom: 7px;
+	}
 }
 
 @media only screen and (max-width: $page-break-tablet) {
