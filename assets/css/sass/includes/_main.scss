@@ -41,6 +41,8 @@ body {
   	display: flex;
 
     ._column {
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
         flex-direction: column;
     }
 
@@ -76,6 +78,7 @@ a {
 		text-decoration: underline;
 	}
 }
+
 
 @media only screen and (max-width: $page-break-tablet) {
 

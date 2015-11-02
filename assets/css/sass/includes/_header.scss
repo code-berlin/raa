@@ -1,5 +1,10 @@
+header {
+    // border-bottom: 1px dotted $main-color-60pct;
+}
+
 .logobar {
-    padding: 45px 0px 30px 15px;
+    padding: 45px 0px 15px 15px;
+    position: relative;
 }
 
 .logo {
@@ -7,7 +12,27 @@
 	display: block;
 
     img {
-        width: 335px;
+        width: 270px;
+    }
+
+}
+
+.dj {
+
+    position: absolute;
+    top: 31px;
+    right: 10px;
+
+    .__text {
+        font-size: 12px;
+        color: $neutral-color-lighter;
+        margin: 42px 1px 11px 0px;
+        padding-right: 10px;
+        border-right: 1px solid $neutral-color;
+    }
+
+    img {
+        width: 80px;
     }
 
 }
@@ -16,14 +41,6 @@
 
     .logobar {
         padding: 35px 0px 30px 15px;
-    }
-
-    .logo {
-
-        img {
-            width: 335px;
-        }
-
     }
 
 }

@@ -1,0 +1,128 @@
+.home-teaser-1 {
+
+    border: 1px dotted $main-color-40pct;
+    // border-top: none;
+
+    .__headline {
+
+        position: relative;
+
+        background: $main-color;
+        @include background-image(linear-gradient($main-color-80pct, $main-color));
+
+        h1 {
+
+            -webkit-margin-before: 0;
+            -webkit-margin-after: 0;
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            font-size: 26px;
+            line-height: 38px;
+            font-weight: 500;
+            color: $white-color;
+            padding: 25px 35px;
+
+        }
+
+    }
+
+    .__img {
+
+        position: relative;
+
+        .__link {
+            position: absolute;
+            right: 15px;
+            bottom: 15px;
+        }
+
+    }
+
+    .btn {
+
+        font-size: 16px;
+        display: block;
+        color: $white-color;
+        background: $main-color;
+        padding: 13px 15px;
+        @include border-radius(1px);
+        font-weight: 600;
+
+        i {
+            font-size: 12px;
+            margin-left: 10px;
+        }
+
+    }
+
+}
+
+
+@media only screen and (max-width: $page-break-desktop) {
+
+    .home-teaser-1 {
+
+        .__headline {
+
+            h1 {
+
+                font-size: 22px;
+                line-height: 30px;
+                padding: 25px 35px;
+
+            }
+
+        }
+
+        .__img {
+
+            img {
+                width: 400px;
+            }
+
+        }
+
+    }
+
+}
+
+@media only screen and (max-width: $page-break-tablet) {
+
+
+    .home-teaser-1 {
+
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+
+        .__headline {
+
+            h1 {
+
+                position: static;
+                padding: 25px 25px;
+
+            }
+
+        }
+
+        .__img {
+
+            img {
+                width: 100%;
+            }
+
+            .__link {
+                text-align: center;
+                left: 50%;
+                right: auto;
+                @include transform(translate3d(-50%, 0, 0));
+            }
+
+        }
+
+    }
+
+}

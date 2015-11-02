@@ -1,3 +1,7 @@
+.menu-wrapper {
+    // padding-top: 45px;
+}
+
 .sf-menu {
 
     float: none;
@@ -10,32 +14,41 @@
 
         a {
             border: none;
-            font-size: 18px;
+            font-size: 14px;
             font-weight: 600;
             padding: 13px 15px;
-            color: $main-color-80pct;
+            color: $main-color;
 
         }
 
         ul {
 
             @include box-shadow(none);
-            border: none;
+            border: 1px dotted $main-color-60pct;
+            border-top: none;
 
             li {
 
                 border: none;
-                background: $main-color;
+                background: #fff;
 
                 a {
-                    padding: 12px 12px;
+
+                    padding: 12px 15px;
                     font-weight: normal;
                     border-top: none;
-                    border-bottom: 1px dotted $main-color-80pct;
+                    border-bottom: 1px dotted $main-color-60pct;
                     text-transform: none;
                     text-decoration: none;
-                    color: #FFF;
+                    color: $main-color;
                     font-size: 14px;
+
+                }
+
+                &:first-child {
+                    a {
+                        border-top: 1px dotted $main-color-60pct;
+                    }
                 }
 
                 &:last-child {
@@ -44,15 +57,6 @@
                     }
                 }
 
-                &:hover {
-
-                    background: $main-color-80pct;
-
-                    a {
-                        text-decoration: none;
-                    }
-
-                }
             }
         }
 
@@ -65,13 +69,24 @@
 
             a {
                 color: $main-color;
-                text-decoration: none;
+                text-decoration: underline;
             }
 
             ul {
                 li {
+
                     a {
-                        color: $white-color;
+                        text-decoration: none;
+                    }
+
+                    &:hover {
+
+                        background: $main-color-80pct;
+
+                        a {
+                            text-decoration: none;
+                            color: $white-color;
+                        }
                     }
                 }
             }
