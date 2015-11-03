@@ -15,7 +15,7 @@
         a {
             border: none;
             font-size: 14px;
-            font-weight: 600;
+            // font-weight: 600;
             padding: 13px 15px;
             color: $main-color;
 
@@ -68,7 +68,6 @@
             background: transparent;
 
             a {
-                color: $main-color;
                 text-decoration: underline;
             }
 
@@ -88,6 +87,8 @@
                             color: $white-color;
                         }
                     }
+
+
                 }
             }
         }
@@ -156,13 +157,13 @@
         > li {
 
             a {
-                border-bottom: 1px solid $neutral-color;
+                border-bottom: 1px dotted $main-color-60pct;
             }
 
             &:hover,
             &.sfHover {
                 a {
-                    color: $main-color-80pct;
+                    color: $main-color;
                 }
             }
 
@@ -174,9 +175,19 @@
                 }
 
                 ul {
+
+                    border: none;
+
                     li {
                         a {
+                            background: $main-color-80pct;
                             color: $white-color;
+                        }
+
+                        &:last-child {
+                            a {
+                                border-bottom: 1px dotted $main-color-60pct;
+                            }
                         }
                     }
                 }

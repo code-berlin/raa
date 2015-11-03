@@ -1,7 +1,3 @@
-header {
-    // border-bottom: 1px dotted $main-color-60pct;
-}
-
 .logobar {
     padding: 45px 0px 15px 15px;
     position: relative;
@@ -20,14 +16,14 @@ header {
 .dj {
 
     position: absolute;
-    top: 31px;
+    top: 51px;
     right: 10px;
 
     .__text {
-        font-size: 12px;
+        font-size: 11px;
         color: $neutral-color-lighter;
-        margin: 42px 1px 11px 0px;
-        padding-right: 10px;
+        margin: 40px 1px 11px 0px;
+        padding-right: 9px;
         border-right: 1px solid $neutral-color;
     }
 
@@ -37,10 +33,35 @@ header {
 
 }
 
+@media only screen and (max-width: $page-break-desktop) {
+
+    .dj {
+        top: 31px;
+    }
+
+}
+
 @media only screen and (max-width: $page-break-tablet) {
 
     .logobar {
-        padding: 35px 0px 30px 15px;
+        padding: 35px 0px 50px 5px;
+    }
+
+    .dj {
+
+        top: 70px;
+        right: -5px;
+
+        .__text {
+            font-size: 10px;
+            margin: 26px 1px 11px 0px;
+            padding-right: 8px;
+        }
+
+        img {
+            width: 60px;
+        }
+
     }
 
 }

@@ -1,6 +1,6 @@
 .content-container {
 
-	padding: 25px 15px;
+	padding: 25px 0px;
 
 	h1 {
 		color: $main-color;
@@ -14,7 +14,7 @@
     	&._bar {
     		color: $white-color;
     		padding: 6px 10px;
-		    background: $main-color-60pct;
+		    background: $main-color-80pct;
 		    margin-bottom: 25px;
 		    font-size: 18px;
 		    font-weight: 500;
@@ -79,7 +79,7 @@
 @media only screen and (max-width: $page-break-tablet) {
 
 	.content-container {
-		padding: 20px 5px;
+		padding: 20px 0px;
 	}
 
 	.content-wrapper {
