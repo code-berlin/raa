@@ -7,7 +7,7 @@
 		color: $font-accent-color;
 
 		h3 {
-			margin-top: 0px;
+			margin-top: 12px;
 			margin-bottom: 10px;
 			font-size: 18px;
 			font-weight: normal;
@@ -24,27 +24,25 @@
 		-webkit-padding-start: 0px;
 		list-style-type: none;
 
-		border-top: 1px solid $main-color-40pct;
+		border-top: 1px dotted $main-color-60pct;
 
 		.sidebar-menu-item {
 
 			position: relative;
 
 			a, .__dummy-a {
-				border-bottom: 1px solid $main-color-40pct;
+				border-bottom: 1px dotted $main-color-60pct;
 			}
 
 			a {
 
 				padding: 12px 10px;
 				display: block;
-				color: $main-color-80pct;
+				color: $main-color;
 				background: $white-color;
 				font-size: 16px;
-				font-weight: 600;
 
 				&:hover, &:active {
-					color: $main-color;
 					text-decoration: none;
 					background: $white-color;
 				}
@@ -60,7 +58,7 @@
 			&.active {
 
 				a {
-					color: $main-color;
+
 				}
 
 				.__submenu {
