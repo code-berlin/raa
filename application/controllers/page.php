@@ -155,6 +155,8 @@ class Page extends CI_Controller {
 
         $data['children'] = $this->page_m->get_children($page_id);
 
+        $data['teaserColumns'] = 3;
+
         return $data;
 
     }

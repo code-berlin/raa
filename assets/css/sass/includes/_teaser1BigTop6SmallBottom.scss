@@ -1,0 +1,238 @@
+.teaser-1-big-top-6-small-bottom {
+
+    .__main {
+
+        border: 1px solid $main-color-40pct;
+        margin-bottom: 15px;
+
+        .__img {
+
+            img {
+                width: 350px;
+            }
+
+        }
+
+        .__text {
+
+            padding: 15px;
+            background: $main-color;
+            color: $white-color;
+            position: relative;
+
+            a {
+                color: $white-color;
+            }
+
+        }
+
+        .__headline {
+            display: block;
+            font-size: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dotted $white-color;
+            margin-bottom: 13px;
+        }
+
+        .__readmore {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+        }
+
+    }
+
+    .__minis {
+
+        .__mini-item {
+
+            display: block;
+            height: 138px;
+            border: 1px solid $neutral-color-lighter;
+            position: relative;
+            background-repeat: no-repeat;
+            background-size: auto 100%;
+            background-position: center top;
+
+            span {
+                display: block;
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                right: 0px;
+                color: $main-color;
+                background: $white-color;
+                font-size: 12px;
+                font-weight: 600;
+                line-height: 18px;
+                text-align: center;
+                padding: 7px 5px;
+            }
+
+            &:hover {
+                span {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .__first {
+
+            .__mini-item {
+
+                margin-right: 16px;
+
+                &:last-child {
+                    margin-right: 8px;
+                }
+
+            }
+
+        }
+
+        .__second {
+
+            .__mini-item {
+
+                margin-left: 16px;
+
+                &:first-child {
+                    margin-left: 8px;
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+@media only screen and (max-width: $page-break-desktop) {
+
+    .teaser-1-big-top-6-small-bottom {
+
+        .__main {
+
+            height: 291px;
+
+            .__img {
+
+                position: relative;
+                overflow: hidden;
+
+                -webkit-flex: 1;
+                -ms-flex: 1;
+                flex: 1;
+
+                img {
+                    width: auto;
+                    height: 100%;
+                    position: absolute;
+                    left: 50%;
+                    @include transform(translate3d(-50%, 0, 0));
+                }
+
+            }
+
+            .__text {
+
+                width: 490px;
+                -webkit-flex: none;
+                -ms-flex: none;
+                flex: none;
+
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: $page-break-tablet) {
+
+    .teaser-1-big-top-6-small-bottom {
+
+        .__minis {
+
+            display: block;
+
+            .__mini-item {
+
+                background-size: 100% auto;
+
+            }
+
+            .__first {
+
+                margin-bottom: 15px;
+
+                .__mini-item {
+
+                    margin-right: 15px;
+
+                    &:last-child {
+                        margin-right: 0px;
+                    }
+
+                }
+
+            }
+
+            .__second {
+
+                .__mini-item {
+
+                    margin-left: 15px;
+
+                    &:first-child {
+                        margin-left: 0px;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+@media only screen and (max-width: $special-teaser-break) {
+
+    .teaser-1-big-top-6-small-bottom {
+
+        .__main {
+
+            display: block;
+            height: auto;
+
+            .__img {
+
+                width: auto;
+                height: 195px;
+
+                img {
+                    width: 100%;
+                    height: auto;
+
+                    top: 50%;
+                    left: 50%;
+                    @include transform(translate3d(-50%, -50%, 0));
+                }
+
+            }
+
+            .__text {
+                width: auto;
+                padding-bottom: 39px;
+            }
+
+        }
+
+        .__minis {
+
+            .__mini-item {
+
+                background-size: auto 100%;
+
+            }
+        }
+    }
+
+}
