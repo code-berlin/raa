@@ -53,27 +53,47 @@
 
 .content-disclaimer {
 
-	padding: 15px;
-	border: 1px solid $neutral-color;
+	padding: 10px 15px 12px 15px;
+	border: 1px dotted $neutral-color;
 	margin-bottom: 15px;
+	font-size: 12px;
+	line-height: 22px;
 
-
-	span {
-		display: inline-block;
+	.__title {
 		color: $main-color;
-		font-weight: bold;
 		padding-bottom: 3px;
+	}
+	.__sub {
+		padding-top: 3px;
 	}
 
 }
 
 .sharing-box {
 
+
+	margin-top: 25px;
 	margin-bottom: 15px;
 
 	.__title {
+		width: 210px;
 		margin-bottom: 7px;
 	}
+
+	.list-page & {
+		border-top: 1px dotted $neutral-color;
+		padding-top: 25px;
+		margin-top: 15px;
+	}
+
+	.addthis_sharing_toolbox {
+		padding-top: 10px;
+	}
+
+	.at-share-tbx-element .at-share-btn {
+		margin: 0px 5px;
+	}
+
 }
 
 @media only screen and (max-width: $page-break-tablet) {
