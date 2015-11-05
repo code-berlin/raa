@@ -33,7 +33,7 @@ class Dispatcher extends Page {
             $this->load->model('page_m');
 
             $page = $this->page_m->get_by_id($this->settings_m->get_homepage());
-            
+
             // If $page is false, it means there's no homepage set yet
             if (!$page) {
                 $this->tools->show_error_page();
@@ -67,21 +67,22 @@ class Dispatcher extends Page {
                     $this->data[$this->type] = $this->$model_type->get_by_slug($subslug);
                 } else {
                     $this->data[$this->type] = $this->$model_type->get_by_slug($slug);
-                }                
+                }
 
                 // setting the data type and the id for the layout
-                $this->data['type'] = $this->type;                
+                $this->data['type'] = $this->type;
                 $this->data['id'] = $result->id;
                 $this->data['section_name'] =  $this->data[$this->type]->slug;
 
                  // Get extra data for current page based on its slug
                 // If $template_method exists, it can be found in page.php controller
                 $template_method = $this->data[$this->type]->template->name;
+                $this->data['template_method'] = $template_method;
 
                 if (strpos($template_method, '-') !== false) { // Is there a dash in the page's slug?
                     $template_method = str_replace('-', '_', $template_method);
                 }
-                
+
                 if (method_exists($this, $template_method)) { // Is there a method in page.php that extends the template?
                     $this->data['template_data'] = $this->$template_method($this->data['id']);
                 }
@@ -93,7 +94,7 @@ class Dispatcher extends Page {
                 if (strpos($slug_method, '-') !== false) { // Is there a dash in the page's slug?
                     $slug_method = str_replace('-', '_', $slug_method);
                 }
-                
+
                 if (method_exists($this, $slug_method)) { // Is there a method in page.php that extends the template?
                     $this->data['extra_data'] = $this->$slug_method();
                 }

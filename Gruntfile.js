@@ -8,6 +8,7 @@ module.exports = function(grunt) {
         'assets/js/lib/jquery-1.11.0.min.js',
         'assets/js/app/**/*.js',
         'assets/js/lib/superfish.min.js',
+        'assets/js/lib/slick.min.js',
         'assets/js/themes/' + theme + '/**/*.js'
     ];
 
@@ -46,6 +47,7 @@ module.exports = function(grunt) {
                     'assets/css/vendor/normalize.css',
                     'assets/css/vendor/font-awesome.min.css',
                     'assets/css/vendor/superfish.css',
+                    'assets/css/vendor/slick.css',
                     'assets/css/main.css'
                 ],
                 // the location of the resulting CSS file

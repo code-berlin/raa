@@ -75,9 +75,13 @@
 	margin-top: 25px;
 	margin-bottom: 15px;
 
+	padding: 15px;
+	background: $light-grey-color;
+
 	.__title {
-		width: 210px;
-		margin-bottom: 7px;
+		color: $font-grey-color;
+		padding-top: 4px;
+		padding-right: 10px;
 	}
 
 	.list-page & {
@@ -87,11 +91,25 @@
 	}
 
 	.addthis_sharing_toolbox {
-		padding-top: 10px;
+		text-align: right;
+		line-height: 0px;
 	}
 
-	.at-share-tbx-element .at-share-btn {
-		margin: 0px 5px;
+	.at-share-tbx-element {
+
+		.at-share-btn {
+
+			margin: 0px 5px;
+
+			&:first-child {
+				margin-left: 0px;
+			}
+
+			&:last-child {
+				margin-right: 0px;
+			}
+		}
+
 	}
 
 }
