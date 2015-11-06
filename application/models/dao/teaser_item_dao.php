@@ -26,7 +26,7 @@ class Teaser_item_dao extends CI_Model {
 	}
 
 	public function count_by_teaser_instance_id($teaser_instance_id) {
-		$this->object = R::count($this->table, $teaser_instance_id);
+		$this->object = R::count($this->table, 'teaser_instanceId = ? ', [ $teaser_instance_id ]);
 
 		return $this->object;
 	}
