@@ -716,10 +716,6 @@ class Admin_Controller extends Main_Admin_Controller {
 
             $crud->set_rules('teaser_types_id','Teaser Type','required');
             
-            $crud->callback_before_insert(array($this, 'before_saving_page'));
-            $crud->callback_before_update(array($this, 'before_saving_page'));
-            $crud->callback_before_delete(array($this, 'before_deleting_page'));
-
             try {
                 $this->add_grocery_to_data_array($crud->render(), $data);
             } catch(Exception $e) {
@@ -774,8 +770,8 @@ class Admin_Controller extends Main_Admin_Controller {
             $teaser_type = $this->teaser_m->get_teaser_type_by_id($teaser_instance['teaser_types_id']);
 
             if ($teaser_type['field_amount'] > 0) {
-                $teaser_items_count = $this->teaser_m->count_teaser_items($teaser_instance['teaser_types_id']);
-                if ($teaser_items_count > $teaser_type['field_amount']) {
+                $teaser_items_count = $this->teaser_m->count_teaser_items($teaser_instance_id);
+                if ($teaser_items_count >= $teaser_type['field_amount']) {
                    $crud->unset_add(); 
                }
             }
@@ -783,12 +779,6 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->field_type('id', 'hidden');
             $crud->field_type('teaser_instanceId', 'hidden', $teaser_instance_id);
             $crud->field_type('content_type', 'hidden', 'page');
-
-            #$crud->set_rules('teaser_types_id','Teaser Type','required');
-
-            $crud->callback_before_insert(array($this, 'before_saving_page'));
-            $crud->callback_before_update(array($this, 'before_saving_page'));
-            $crud->callback_before_delete(array($this, 'before_deleting_page'));
 
             try {
                 $this->add_grocery_to_data_array($crud->render(), $data);
