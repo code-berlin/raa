@@ -78,21 +78,20 @@
 	padding: 15px;
 	background: $light-grey-color;
 
+	position: relative;
+
 	.__title {
 		color: $font-grey-color;
-		padding-top: 4px;
-		padding-right: 10px;
-	}
-
-	.list-page & {
-		border-top: 1px dotted $neutral-color;
-		padding-top: 25px;
-		margin-top: 15px;
+		padding-right: 173px;
 	}
 
 	.addthis_sharing_toolbox {
-		text-align: right;
+		position: absolute;
 		line-height: 0px;
+		// width: 158px;
+		top: 50%;
+		right: 15px;
+		@include transform(translate3d(0, -50%, 0));
 	}
 
 	.at-share-tbx-element {
@@ -131,5 +130,40 @@
 		width: 100%;
 
 	}
+
+}
+
+@media only screen and (max-width: $special-teaser-break) {
+
+	.sharing-box {
+		.__title {
+			span {
+				display: block;
+			}
+		}
+	}
+
+
+}
+
+@media only screen and (max-width: $page-break-phone) {
+
+	.sharing-box {
+
+		.__title {
+			padding-right: 0px;
+			padding-bottom: 15px;
+			text-align: center;
+		}
+
+		.addthis_sharing_toolbox {
+			text-align: center;
+			position: static;
+			@include transform(translate3d(0, 0, 0));
+		}
+
+
+	}
+
 
 }
