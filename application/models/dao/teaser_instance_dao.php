@@ -24,7 +24,7 @@ class Teaser_instance_dao extends CI_Model {
 
 	public function get_by_page_id($page_id) {
 
-		$qry = 'SELECT `instance`.`id`, `instance`.`position`, `instance`.`title`, `instance`.`text`, `types`.`name` FROM `' . $this->table . '` as `instance` LEFT JOIN `teaser_types` AS `types` ON `types`.`id` = `instance`.`teaser_types_id` WHERE `instance`.`page_id` = :page_id AND `instance`.`published` = 1 ORDER BY `instance`.`position`;';
+		$qry = 'SELECT `instance`.`id` as id, `instance`.`position` as position, `instance`.`title` as title, `instance`.`text` as text, `types`.`name` as name FROM `' . $this->table . '` as `instance` LEFT JOIN `teaser_types` AS `types` ON `types`.`id` = `instance`.`teaser_types_id` WHERE `instance`.`page_id` = :page_id AND `instance`.`published` = 1 ORDER BY `instance`.`position`;';
 
 		$this->object = R::getAll($qry, [ 'page_id' => $page_id ]);
 

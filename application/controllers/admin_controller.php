@@ -751,6 +751,8 @@ class Admin_Controller extends Main_Admin_Controller {
 
             $crud->set_table('teaser_item');
 
+            $crud->where('teaser_instanceId', $teaser_instance_id);
+
             // Fields to show on the list
             $crud->columns('title', 'text', 'position', 'published');
 
@@ -773,7 +775,7 @@ class Admin_Controller extends Main_Admin_Controller {
 
             if ($teaser_type['field_amount'] > 0) {
                 $teaser_items_count = $this->teaser_m->count_teaser_items($teaser_instance['teaser_types_id']);
-                if ($teaser_items_count >= $teaser_type['field_amount']) {
+                if ($teaser_items_count > $teaser_type['field_amount']) {
                    $crud->unset_add(); 
                }
             }
