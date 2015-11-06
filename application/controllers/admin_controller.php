@@ -69,6 +69,10 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->set_relation('parent_id','page','slug');
             $crud->display_as('parent_id','Parent section');
 
+            if ($auth->check_user_has_permission($role_id, 'EDIT_TEASER')) {
+                $crud->add_action('Teaser Verwaltung --- Icons made by Freepik from www.flaticon.com is licensed by CC BY 3.0', '/assets/images/screen114.png', site_url('admin/teaser_instance') . '/');
+            }
+            
             // Fields sanitation
             $crud->callback_column('slug', array($this, 'link_page'));
 
@@ -665,4 +669,136 @@ class Admin_Controller extends Main_Admin_Controller {
 
         $this->load->view('admin/admin', $data);
     }
+
+    /**
+    *   Handles the page CRUD.
+    */
+    public function teaser_instance($page_id)
+    {
+        $this->control_sidebar_items_display($data);
+
+        $auth = $this->auth_l;
+        $role_id = $this->user->role_id;
+        $url = $_SERVER['REQUEST_URI'];
+
+        if ($auth->check_section_access_required_permissions($role_id, $url)) {
+            $crud = $this->grocery_crud;
+
+            // Page permissions
+            $this->check_section_permissions($crud);
+
+            $crud->set_table('teaser_instance');
+
+            $crud->where('page_id', $page_id);
+
+            // Fields to show on the list
+            $crud->columns('title', 'text', 'position', 'published');
+
+            $crud->add_action('Teaser Item Verwaltung --- Icons made by Freepik from www.flaticon.com is licensed by CC BY 3.0', '/assets/images/tabs.png', site_url('admin/teaser_item') . '/');
+
+            $crud->add_fields('id', 'page_id', 'teaser_types_id', 'title', 'text', 'position', 'published');
+            $crud->edit_fields('id', 'page_id', 'teaser_types_id', 'title', 'text', 'position', 'published');
+
+            // add page relation
+            $this->load->model('teaser_m');
+            $teaser_types = $this->teaser_m->get_all_teaser_types();
+            $teaser_types_array = array();
+            foreach ($teaser_types as $key => $value) {
+                $teaser_types_array[$value['id']] = $value['name'];
+            }
+
+            $crud->field_type('teaser_types_id','dropdown',
+                $teaser_types_array);
+
+            $crud->field_type('published','true_false', array('1' => 'Yes', '0' => 'No'));
+            $crud->field_type('page_id', 'hidden', $page_id);
+            $crud->field_type('id', 'hidden');
+
+            $crud->set_rules('teaser_types_id','Teaser Type','required');
+            
+            $crud->callback_before_insert(array($this, 'before_saving_page'));
+            $crud->callback_before_update(array($this, 'before_saving_page'));
+            $crud->callback_before_delete(array($this, 'before_deleting_page'));
+
+            try {
+                $this->add_grocery_to_data_array($crud->render(), $data);
+            } catch(Exception $e) {
+                $data['output'] = $e->getMessage();
+            }
+        } else {
+            $data['output'] = 'Not allowed';
+        }
+
+        $this->load->view('admin/admin', $data);
+    }
+
+    /**
+    *   Handles the page CRUD.
+    */
+    public function teaser_item($teaser_instance_id)
+    {
+        $this->control_sidebar_items_display($data);
+
+        $auth = $this->auth_l;
+        $role_id = $this->user->role_id;
+        $url = $_SERVER['REQUEST_URI'];
+
+        if ($auth->check_section_access_required_permissions($role_id, $url)) {
+            $crud = $this->grocery_crud;
+
+            // Page permissions
+            $this->check_section_permissions($crud);
+
+            $crud->set_table('teaser_item');
+
+            // Fields to show on the list
+            $crud->columns('title', 'text', 'position', 'published');
+
+            // add page relation
+            $this->load->model('page_m');
+            $pages = $this->page_m->get_all();
+            $pages_array = array();
+            foreach ($pages as $key => $value) {
+                $pages_array[$value['id']] = $value['menu_title'];
+            }
+
+            $crud->field_type('contentId','dropdown',
+                $pages_array);
+
+            // add page relation
+            $this->load->model('teaser_m');
+            $teaser_instance = $this->teaser_m->get_teaser_instance_by_id($teaser_instance_id);
+
+            $teaser_type = $this->teaser_m->get_teaser_type_by_id($teaser_instance['teaser_types_id']);
+
+            if ($teaser_type['field_amount'] > 0) {
+                $teaser_items_count = $this->teaser_m->count_teaser_items($teaser_instance['teaser_types_id']);
+                if ($teaser_items_count >= $teaser_type['field_amount']) {
+                   $crud->unset_add(); 
+               }
+            }
+            
+            $crud->field_type('id', 'hidden');
+            $crud->field_type('teaser_instanceId', 'hidden', $teaser_instance_id);
+            $crud->field_type('content_type', 'hidden', 'page');
+
+            #$crud->set_rules('teaser_types_id','Teaser Type','required');
+
+            $crud->callback_before_insert(array($this, 'before_saving_page'));
+            $crud->callback_before_update(array($this, 'before_saving_page'));
+            $crud->callback_before_delete(array($this, 'before_deleting_page'));
+
+            try {
+                $this->add_grocery_to_data_array($crud->render(), $data);
+            } catch(Exception $e) {
+                $data['output'] = $e->getMessage();
+            }
+        } else {
+            $data['output'] = 'Not allowed';
+        }
+
+        $this->load->view('admin/admin', $data);
+    }
+
+
 }

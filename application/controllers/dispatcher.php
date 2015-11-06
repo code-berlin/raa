@@ -74,6 +74,25 @@ class Dispatcher extends Page {
                 $this->data['id'] = $result->id;
                 $this->data['section_name'] =  $this->data[$this->type]->slug;
 
+                $this->load->model('teaser_m');
+                $teaser_instances = $this->teaser_m->get_teaser_instance_by_page_id($result->id);
+
+                $teaser = array();
+
+                if (!empty($teaser_instances)) {
+
+                    foreach ($teaser_instances as $key => $value) {
+                        $teaser[$value['id']]['title'] = $value['title'];
+                        $teaser[$value['id']]['text'] = $value['text'];
+
+                        $teaser[$value['id']]['items'] = $this->teaser_m->get_teaser_items_by_teaser_instance_id($value['id']);
+
+                    }
+
+                }
+
+                $this->data['teaser'] = $teaser;
+
                  // Get extra data for current page based on its slug
                 // If $template_method exists, it can be found in page.php controller
                 $template_method = $this->data[$this->type]->template->name;
