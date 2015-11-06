@@ -1,0 +1,341 @@
+.teaser-content-title {
+
+    margin: 15px 0px 25px 0px;
+    color: $main-color;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    padding: 10px 15px 13px 15px;
+    border-bottom: 1px dotted $main-color-60pct;
+
+}
+
+.teaser-content {
+
+    padding: 0px 20px;
+    position: relative;
+    border-bottom: 1px dotted $neutral-color;
+    margin-top: 30px;
+
+    .__item {
+
+        margin: 0px 10px;
+        color: $font-color;
+        padding-bottom: 20px;
+        display: block;
+
+        .__bottom {
+            height: 162px;
+        }
+
+        .__part {
+            display: block;
+        }
+
+        .img {
+
+            display: block;
+            cursor: pointer;
+
+            &._hover-mask {
+
+                display: block;
+                position: relative;
+
+                &:after {
+                    content:'';
+                    display: block;
+                    position: absolute;
+                    top: 0px;
+                    right: 0px;
+                    bottom: 0px;
+                    left: 0px;
+                    background: $main-color;
+                    opacity: 0;
+                    @include transition(opacity .05s ease-in);
+                }
+
+            }
+
+            &:hover {
+                &._hover-mask {
+                    &:after {
+                        opacity: 0.3;
+                    }
+                }
+            }
+
+
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .__teaser-title {
+            color: $font-color;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .__teaser-text,
+        .__teaser-text span {
+            color: $font-color !important;
+            font-family: "Open Sans", Arial, Helvetica, sans-serif !important;
+            font-size: 13px !important;
+            line-height: 21px !important;
+        }
+
+        .__teaser-text p {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        .__teaser-text {
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .__teaser-more {
+
+            color: $main-color !important;
+            text-align: right;
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+        }
+
+        &:last-child {
+            margin-right: 0px;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+    }
+
+    .slick-arrow {
+
+        border: none;
+        background: transparent;
+        overflow: hidden;
+        text-indent: -999px;
+        width: 40px;
+        height: 40px;
+        padding: 0px;
+
+        position: absolute;
+        top: 50%;
+        @include transform(translate3d(0, -50%, 0));
+
+        &:after {
+            display: block;
+            content: '';
+            border-top: 14px solid transparent;
+            border-bottom: 14px solid transparent;
+            top: 6px;
+            position: absolute;
+        }
+
+        &.slick-prev {
+
+            left: -10px;;
+
+            &:after {
+
+                border-right: 8px solid $main-color-80pct;
+                left: 10px;
+
+           }
+
+        }
+
+        &.slick-next {
+
+            right: -10px;
+
+            &:after {
+
+                border-left: 8px solid $main-color-80pct;
+                right: 10px;
+
+            }
+
+        }
+
+        &:hover {
+
+            &.slick-prev {
+                &:after {
+                    border-right: 8px solid $main-color;
+               }
+            }
+
+            &.slick-next {
+                &:after {
+                    border-left: 8px solid $main-color;
+                }
+            }
+
+        }
+
+        &.slick-disabled {
+
+            &.slick-prev {
+                &:after {
+                    border-right: 8px solid $main-color-40pct;
+               }
+            }
+
+            &.slick-next {
+                &:after {
+                    border-left: 8px solid $main-color-40pct;
+                }
+            }
+
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+    }
+
+    .slick-dots {
+
+        text-align: center;
+
+        li {
+
+            display: inline-block;
+
+            button {
+
+                border: none;
+                background: transparent;
+                width: 20px;
+                height: 20px;
+                position: relative;
+                overflow: hidden;
+                text-indent: -999px;
+                padding: 0px;
+
+                &:after {
+                    display: block;
+                    content: '';
+                    width: 10px;
+                    height: 10px;
+                    background: $neutral-color;
+                    @include border-radius(5px);
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    @include transform(translate3d(-50%, -50%, 0));
+                }
+
+                &:focus {
+                    outline: none;
+                }
+
+            }
+
+            &.slick-active {
+                button {
+                    &:after {
+                        background: $neutral-color-darker;
+                    }
+                }
+            }
+
+        }
+    }
+
+}
+
+@media only screen and (max-width: $page-break-phone) {
+
+    .teaser-content {
+
+        .__item {
+
+            margin: 0px 5px;
+            padding-bottom: 5px;
+
+        }
+
+        .slick-arrow {
+
+            width: 35px;
+
+            &:after {
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+                top: 9px;
+            }
+
+            &.slick-prev {
+
+                &:after {
+
+                    border-right: 5px solid $main-color-80pct;
+                    left: 14px;
+
+               }
+
+            }
+
+            &.slick-next {
+
+                &:after {
+
+                    border-left: 5px solid $main-color-80pct;
+                    right: 14px;
+
+                }
+
+            }
+
+            &:hover {
+
+                &.slick-prev {
+                    &:after {
+                        border-right: 5px solid $main-color;
+                   }
+                }
+
+                &.slick-next {
+                    &:after {
+                        border-left: 5px solid $main-color;
+                    }
+                }
+
+            }
+
+            &.slick-disabled {
+
+                &.slick-prev {
+                    &:after {
+                        border-right: 5px solid $main-color-40pct;
+                   }
+                }
+
+                &.slick-next {
+                    &:after {
+                        border-left: 5px solid $main-color-40pct;
+                    }
+                }
+
+            }
+
+            &:focus {
+                outline: none;
+            }
+
+        }
+
+    }
+
+}

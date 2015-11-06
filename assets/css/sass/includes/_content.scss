@@ -75,23 +75,40 @@
 	margin-top: 25px;
 	margin-bottom: 15px;
 
-	.__title {
-		width: 210px;
-		margin-bottom: 7px;
-	}
+	padding: 15px;
+	background: $light-grey-color;
 
-	.list-page & {
-		border-top: 1px dotted $neutral-color;
-		padding-top: 25px;
-		margin-top: 15px;
+	position: relative;
+
+	.__title {
+		color: $font-grey-color;
+		padding-right: 173px;
 	}
 
 	.addthis_sharing_toolbox {
-		padding-top: 10px;
+		position: absolute;
+		line-height: 0px;
+		// width: 158px;
+		top: 50%;
+		right: 15px;
+		@include transform(translate3d(0, -50%, 0));
 	}
 
-	.at-share-tbx-element .at-share-btn {
-		margin: 0px 5px;
+	.at-share-tbx-element {
+
+		.at-share-btn {
+
+			margin: 0px 5px;
+
+			&:first-child {
+				margin-left: 0px;
+			}
+
+			&:last-child {
+				margin-right: 0px;
+			}
+		}
+
 	}
 
 }
@@ -113,5 +130,40 @@
 		width: 100%;
 
 	}
+
+}
+
+@media only screen and (max-width: $special-teaser-break) {
+
+	.sharing-box {
+		.__title {
+			span {
+				display: block;
+			}
+		}
+	}
+
+
+}
+
+@media only screen and (max-width: $page-break-phone) {
+
+	.sharing-box {
+
+		.__title {
+			padding-right: 0px;
+			padding-bottom: 15px;
+			text-align: center;
+		}
+
+		.addthis_sharing_toolbox {
+			text-align: center;
+			position: static;
+			@include transform(translate3d(0, 0, 0));
+		}
+
+
+	}
+
 
 }
