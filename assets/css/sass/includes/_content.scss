@@ -3,23 +3,15 @@
 	padding: 25px 0px;
 
 	h1 {
-		color: $main-color;
-		line-height: 34px;
-		font-size: 24px;
-		font-weight: 600;
 		-webkit-margin-before: 0;
-    	-webkit-margin-after: 0;
-    	padding-bottom: 20px;
-
-    	&._bar {
-    		color: $white-color;
-    		padding: 6px 10px;
-		    background: $main-color-80pct;
-		    margin-bottom: 25px;
-		    font-size: 18px;
-		    font-weight: 500;
-    	}
-
+		-webkit-margin-after: 0;
+		color: $white-color;
+		padding: 7px 15px;
+	    background: $main-color-80pct;
+	    margin-bottom: 25px;
+	    font-size: 20px;
+	    line-height: 32px;
+	    font-weight: 500;
 	}
 
 }
@@ -43,10 +35,68 @@
 
 .content-content {
 
-	margin-bottom: 15px;
+	padding-bottom: 20px;
+
+	&._article {
+		padding-left: 10px;
+	}
+
+	h2 {
+		font-size: 18px;
+		line-height: 28px;
+		font-weight: 600;
+		margin-top: 20px;
+		margin-bottom: 15px;
+	}
+
+	h3 {
+		font-size: 16px;
+		line-height: 26px;
+		font-weight: 600;
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
 
 	p {
 		-webkit-margin-before: 0;
+		margin-bottom: 15px;
+	}
+
+	b, strong {
+		font-weight: 600;
+	}
+
+	ul, ol {
+		margin-left: 35px;
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+
+	li {
+		margin-bottom: 5px;
+		&:last-child {
+			margin-bottom: 0px;
+		}
+	}
+
+	blockquote {
+
+		border: 1px dotted $main-color-40pct;
+		margin: 25px 0px;
+		padding: 15px 20px 15px 20px;
+		background: $main-color-05pct;
+
+		h3 {
+			margin-top: 5px;
+			margin-bottom: 15px;
+			text-align: center;
+		}
+
+		ol, ul {
+			margin-left: 0px;
+			-webkit-padding-start: 20px;
+		}
+
 	}
 
 }
@@ -128,6 +178,14 @@
 		float: none;
 		margin: 0px 0px 15px 0px;
 		width: 100%;
+
+	}
+
+	.content-content {
+
+		&._article {
+			padding-left: 0px;
+		}
 
 	}
 
