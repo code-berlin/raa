@@ -72,7 +72,7 @@ class Admin_Controller extends Main_Admin_Controller {
             if ($auth->check_user_has_permission($role_id, 'EDIT_TEASER')) {
                 $crud->add_action('Teaser Verwaltung --- Icons made by Freepik from www.flaticon.com is licensed by CC BY 3.0', '/assets/images/screen114.png', site_url('admin/teaser_instance') . '/');
             }
-            
+
             // Fields sanitation
             $crud->callback_column('slug', array($this, 'link_page'));
 
@@ -715,7 +715,7 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->field_type('id', 'hidden');
 
             $crud->set_rules('teaser_types_id','Teaser Type','required');
-            
+
             try {
                 $this->add_grocery_to_data_array($crud->render(), $data);
             } catch(Exception $e) {
@@ -772,10 +772,10 @@ class Admin_Controller extends Main_Admin_Controller {
             if ($teaser_type['field_amount'] > 0) {
                 $teaser_items_count = $this->teaser_m->count_teaser_items($teaser_instance_id);
                 if ($teaser_items_count >= $teaser_type['field_amount']) {
-                   $crud->unset_add(); 
+                   $crud->unset_add();
                }
             }
-            
+
             $crud->field_type('id', 'hidden');
             $crud->field_type('teaser_instanceId', 'hidden', $teaser_instance_id);
             $crud->field_type('content_type', 'hidden', 'page');
