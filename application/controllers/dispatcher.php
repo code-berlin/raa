@@ -18,6 +18,7 @@ class Dispatcher extends Page {
     public function index($slug='', $subslug = '') {
 
         $this->load->model('url_m');
+        $this->load->model('page_m');
 
         $page = '';
         $result = '';
@@ -29,8 +30,7 @@ class Dispatcher extends Page {
 
         // Retrieve homepage in case it exists.
         if (empty($slug)) {
-            $this->load->model('settings_m');
-            $this->load->model('page_m');
+            $this->load->model('settings_m');            
 
             $page = $this->page_m->get_by_id($this->settings_m->get_homepage());
 
@@ -104,7 +104,7 @@ class Dispatcher extends Page {
                 }
 
                 if (method_exists($this, $template_method)) { // Is there a method in page.php that extends the template?
-                    $this->data['template_data'] = $this->$template_method($this->data['id']);
+                    $this->data['template_data'] = $this->$template_method($this->data[$this->type]->id);
                 }
 
                 // Get extra data for current page based on its template type
