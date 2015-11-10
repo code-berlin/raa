@@ -42,6 +42,7 @@ if ( ! function_exists('site_url'))
 	function site_url($uri = '')
 	{
 		$CI =& get_instance();
+
 		return $CI->config->site_url($uri);
 	}
 }
@@ -64,7 +65,7 @@ if ( ! function_exists('base_url'))
 	function base_url($uri = '')
 	{
 		$CI =& get_instance();
-		return $CI->config->base_url($uri);
+		return rtrim($CI->config->base_url($uri), '/') . '/';;
 	}
 }
 
