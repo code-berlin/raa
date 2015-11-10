@@ -1,26 +1,57 @@
 footer {
 
     @include background-image(linear-gradient($main-color, $main-color-80pct));
-
-    padding: 15px;
-    height: 150px;
-    line-height: 14px;
+    background: $main-color;
     color: $white-color;
 
-    a {
+    .__top {
+        padding: 30px;
+    }
 
-        color: $white-color;
-        display: inline-block;
-        padding: 0px 5px;
-        border-right: 1px solid $white-color;
+    .__bottom {
+        border-top: 1px dotted $main-color-60pct;
+        padding: 20px 30px;
+    }
 
-        &:last-child {
-            border-right: none;
-        }
+    .__left {
+        position: relative;
+    }
 
-        &:link, &:visited, &:hover, &:active {
+    .__middle {
+        text-align: center;
+    }
+
+    .__right {
+
+        a {
+
             color: $white-color;
+            display: block;
+            padding: 10px 15px 10px 15px;
+
+            &:link, &:visited, &:hover, &:active {
+                color: $white-color;
+            }
+
         }
 
     }
+
+    .__logo {
+
+        width: 210px;
+        position: absolute;
+        top: 50%;
+        @include transform(translate3d(0, -50%, 0));
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .__text {
+        font-size: 13px;
+        line-height: 22px;
+    }
+
 }
