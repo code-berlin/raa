@@ -126,7 +126,7 @@
 #mobnav-btn {
 
     display: none;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: normal;
     background-color: $main-color;
     color: white;
@@ -134,6 +134,7 @@
     cursor: pointer;
 
     i {
+        font-size: 18px;
         margin: 2px 5px 0px 0px;
         float: right;
     }

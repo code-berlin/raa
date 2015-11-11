@@ -5,28 +5,27 @@ footer {
     color: $white-color;
 
     .__top {
-        padding: 30px 30px 20px 30px;
-        img {
-            width: 210px;
-        }
-    }
-
-    .__middle {
-
-        padding: 0px 30px;
-
-        .__inner {
-            border-top: 1px dotted $main-color-80pct;
-            padding: 20px 0px 23px 15px;
-        }
-
+        padding: 30px 30px 50px 30px;
     }
 
     .__left {
+
+        width: 320px;
+        padding: 5px 0px 0px 5px;
+
+        img {
+            width: 210px;
+        }
+
+    }
+
+    .__middle {
+        padding-right: 150px;
         font-size: 13px;
         line-height: 21px;
         width: 500px;
     }
+
 
     .__links {
         float: right;
@@ -38,12 +37,7 @@ footer {
         text-align: right;
         border-bottom: 1px dotted $main-color-80pct;
 
-        &:first-child {
-            padding: 0px 15px 5px 15px;
-        }
-
         &:last-child {
-            padding: 5px 15px 0px 15px;
             border: none;
         }
 
@@ -63,8 +57,6 @@ footer {
         padding: 20px 30px;
     }
 
-
-
 }
 
 @media only screen and (max-width: $page-break-tablet) {
@@ -72,44 +64,41 @@ footer {
     footer {
 
         .__top {
-            padding: 35px 30px 20px 30px;
-        }
-
-        .__middle {
-
-            padding: 0px 30px;
-
-            .__inner {
-                display: block;
-                padding: 0px
-            }
-
+            padding: 30px 30px 0px 30px;
+            display: block;
         }
 
         .__left {
             width: auto;
-            padding: 20px 0px 23px 15px;
-            border-bottom: 1px dotted $main-color-80pct;
+            padding: 5px 0px 0px 0px;
+        }
+
+        .__middle {
+            padding: 30px 0px;
+            width: auto;
+        }
+
+        .__right {
+            margin: 0px -30px;
+            border-top: 1px dotted $main-color-80pct;
         }
 
         .__links {
             float: none;
-            padding: 0px 0px 30px 0px;
         }
 
         .__link {
 
+            padding: 0px;
             text-align: left;
-            padding: 10px 15px 10px 15px;
 
-            &:first-child {
-                padding: 10px 15px 10px 15px;
+            a {
+                display: block;
+                padding: 15px 30px;
             }
 
-            &:last-child {
-                padding: 10px 15px 10px 15px;
-            }
         }
+
 
 
     }
