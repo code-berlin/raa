@@ -67,7 +67,8 @@
             background: $white-color;
 
             a {
-                text-decoration: underline;
+                text-decoration: none;
+                font-style: italic;
             }
 
             ul {
@@ -75,6 +76,7 @@
 
                     a {
                         text-decoration: none;
+                        font-style: normal;
                     }
 
                     &:hover {

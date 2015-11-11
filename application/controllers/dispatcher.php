@@ -30,7 +30,7 @@ class Dispatcher extends Page {
 
         // Retrieve homepage in case it exists.
         if (empty($slug)) {
-            $this->load->model('settings_m');            
+            $this->load->model('settings_m');
 
             $page = $this->page_m->get_by_id($this->settings_m->get_homepage());
 
@@ -53,6 +53,7 @@ class Dispatcher extends Page {
         $published = check_if_published($result, $slug, $subslug);
 
         $this->data['menu'] = load_main_menu();
+        $this->data['static_pages'] = $this->page_m->get_all_staticpages();
 
         if(!empty($result) && $published) {
             $this->type = $result->type->name;
