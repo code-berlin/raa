@@ -4,13 +4,13 @@ input {
     height: 46px;
     padding: 0px 10px 0px 10px;
     -webkit-appearance: none;
-    border: 1px solid $neutral-color-darker;
+    border: 1px solid $neutral-color-lighter;
     @include border-radius(0px);
     color: $font-color;
 
     &:focus {
         outline-style: none;
-        border: 1px solid $main-color-80pct;
+        border: 1px solid $main-color-60pct;
     }
 
     &::-ms-clear {
