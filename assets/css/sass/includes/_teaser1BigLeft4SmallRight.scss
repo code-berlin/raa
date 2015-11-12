@@ -101,6 +101,17 @@
 
 }
 
+@media only screen and (max-width: $special-teaser-break-ipad-ls) {
+
+    .teaser-1-big-left-4-small-right {
+        .__main {
+            .__text {
+                width: 335px;
+            }
+        }
+    }
+}
+
 @media only screen and (max-width: $page-break-desktop) {
 
 
@@ -178,6 +189,12 @@
 
     .teaser-1-big-left-4-small-right {
 
+        .__main {
+            .__text {
+                width: 335px;
+            }
+        }
+
         .__minis {
 
             .__row {
@@ -204,16 +221,11 @@
 
             .__img {
 
-                width: auto;
-                height: 195px;
-
                 img {
                     width: 100%;
                     height: auto;
-
-                    top: 50%;
-                    left: 50%;
-                    @include transform(translate3d(-50%, -50%, 0));
+                    position: static;
+                    @include transform(translate3d(0, 0, 0));
                 }
 
             }

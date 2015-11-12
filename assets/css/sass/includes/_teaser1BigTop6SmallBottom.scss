@@ -151,6 +151,12 @@
 
     .teaser-1-big-top-6-small-bottom {
 
+        .__main {
+            .__text {
+                width: 335px;
+            }
+        }
+
         .__minis {
 
             display: block;
@@ -204,16 +210,11 @@
 
             .__img {
 
-                width: auto;
-                height: 195px;
-
                 img {
                     width: 100%;
                     height: auto;
-
-                    top: 50%;
-                    left: 50%;
-                    @include transform(translate3d(-50%, -50%, 0));
+                    position: static;
+                    @include transform(translate3d(0, 0, 0));
                 }
 
             }
