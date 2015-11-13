@@ -66,7 +66,7 @@ if ( ! function_exists('base_url'))
 	{
 		$CI =& get_instance();
 
-		if ($uri == '') {
+		if ($uri == '' || $uri == '/') {
 			return $CI->config->base_url($uri);
 		} else {
 			return $CI->config->base_url($uri) . (stripos($uri, '.') === false ? '/' : '');
