@@ -135,6 +135,25 @@
 
 }
 
+.foundation {
+
+	font-size: 12px;
+	padding: 15px;
+	border: 1px solid $neutral-color-lighter-2;
+	text-align: center;
+
+	a {
+		margin-top: 8px;
+		display: block;
+	}
+
+	img {
+		width: 170px;
+		margin: auto;
+	}
+
+}
+
 @media only screen and (max-width: $page-break-tablet) {
 
 	.sidebar {
