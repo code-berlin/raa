@@ -30,18 +30,19 @@
 		line-height: 22px;
 
 		h3 {
-			margin-top: 0px;
-			padding-top: 15px;
+			margin-top: 15px;
+			padding-top: 0px;
 			margin-bottom: 10px;
 		}
 
 	}
 
 	.sidebar-menu-hl {
-		margin-bottom: 15px;
+		margin-bottom: 0px;
 		padding: 12px 15px;
 		color: $white-color;
-		background: $neutral-color-lighter-1;
+		background: $neutral-color-darker;
+		font-weight: 600;
 	}
 
 	.sidebar-menu {
@@ -49,8 +50,6 @@
 		-webkit-padding-start: 0px;
 		list-style-type: none;
 		padding-bottom: 20px;
-		border-top: 1px dotted $main-color-60pct;
-
 
 	}
 
