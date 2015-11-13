@@ -65,3 +65,48 @@
 .pa50, .ph50, .pl50 {padding-left: 50px !important;}
 .pa50, .pv50, .pt50 {padding-top: 50px !important;}
 .pa50, .pv50, .pb50 {padding-bottom: 50px !important;}
+
+
+.display-inline-if-enough-space {
+    display: inline;
+}
+
+.display-none-if-enough-space {
+    display: none;
+}
+
+@media only screen and (max-width: $page-break-desktop) {
+
+    .display-inline-if-enough-space {
+        display: none;
+    }
+
+    .display-none-if-enough-space {
+        display: inline;
+    }
+
+}
+
+@media only screen and (max-width: $page-break-tablet) {
+
+    .display-inline-if-enough-space {
+        display: inline;
+    }
+
+    .display-none-if-enough-space {
+        display: none;
+    }
+
+}
+
+@media only screen and (max-width: $page-break-phone) {
+
+    .display-inline-if-enough-space {
+        display: none;
+    }
+
+    .display-none-if-enough-space {
+        display: inline;
+    }
+
+}
