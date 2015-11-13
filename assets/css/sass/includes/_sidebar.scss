@@ -2,19 +2,25 @@
 
 	width: 300px;
 
-	.__upper {
-		background: $main-color-thin;
-	}
-
 	.sidebar-item {
 
-		padding: 0px 15px;
 		margin: 15px 0px;
+
+		&._about-us {
+			// border: 1px solid $neutral-color-lighter;
+			// padding: 15px;
+		}
 
 		&:first-child {
 			margin-top: 0px;
 		}
 
+	}
+
+	h3 {
+		color: $font-grey-color;
+		font-size: 16px;
+		font-weight: 500;
 	}
 
 	.about-us {
@@ -24,23 +30,26 @@
 		line-height: 22px;
 
 		h3 {
-			color: $font-grey-color;
 			margin-top: 0px;
-			padding-top: 19px;
+			padding-top: 15px;
 			margin-bottom: 10px;
-			font-size: 16px;
-			font-weight: 500;
 		}
 
+	}
+
+	.sidebar-menu-hl {
+		margin-bottom: 15px;
+		padding: 12px 15px;
+		color: $white-color;
+		background: $neutral-color-lighter-1;
 	}
 
 	.sidebar-menu {
 
 		-webkit-padding-start: 0px;
 		list-style-type: none;
-
-		border-top: 1px dotted $main-color-60pct;
 		padding-bottom: 20px;
+		border-top: 1px dotted $main-color-60pct;
 
 
 	}
@@ -59,7 +68,7 @@
 
 			&:hover, &:active {
 				text-decoration: none;
-				font-style: italic;
+				font-weight: 600;
 			}
 
 		}
@@ -72,7 +81,7 @@
 
 		&._actual-page {
 			> a {
-				font-style: italic;
+				font-weight: 600;
 			}
 		}
 
@@ -87,14 +96,14 @@
 					a {
 
 						padding: 12px 10px 12px 23px;
-						font-weight: 400;
+						font-weight: 500;
 						font-size: 14px;
 
 						&:hover, &:active, &:focus, &._active {
 							background: $main-color-80pct;
 							color: $white-color;
 							text-decoration: none;
-							font-style: normal;
+							font-weight: 500;
 						}
 					}
 				}
@@ -119,7 +128,7 @@
 		}
 
 		&:hover {
-			background: $main-color-20pct;
+			background: $main-color-thin;
 		}
 
 	}
@@ -140,7 +149,7 @@
 		}
 
 		&:active {
-			background: $main-color-20pct;
+			background: $main-color-thin;
 		}
 
 	}
