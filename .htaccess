@@ -1,6 +1,19 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    #DOC-571
+    RedirectMatch  301 ^/ursachen-von-tinnitus/horsturz-und-tinnitus/$ /ursachen-von-tinnitus/hoersturz-und-tinnitus/
+    RedirectMatch  301 ^/ursachen-von-tinnitus/objektiver-tinnituszusammenhang-bluthochdruck/$ /ursachen-von-tinnitus/objektiver-tinnitus-bluthochdruck/
+    RedirectMatch  301 ^/ursachen-von-tinnitus/halswirbelsaule-und-tinnitus/$ /ursachen-von-tinnitus/halswirbelsaeule-und-tinnitus/
+    RedirectMatch  301 ^/ursachen-von-tinnitus/kiefer-kiefergelenk-und-zahne-und-tinnitus/$ /ursachen-von-tinnitus/tinnitus-kieferfehlstellung-zahnbeschwerden/
+    RedirectMatch  301 ^/behandlung-und-therapie-bei-tinnitus/homoopathie-bei-tinnitus/$ /behandlung-und-therapie-bei-tinnitus/homoeopathie-bei-tinnitus/
+    RedirectMatch  301 ^/behandlung-und-therapie-bei-tinnitus/hortherapie-bei-tinnitus/$ /behandlung-und-therapie-bei-tinnitus/hoertherapie-bei-tinnitus/
+    RedirectMatch  301 ^/tinnitus-wissen/tinnitus-litaratur/$ /tinnitus-wissen/tinnitus-literatur-und-links/
+    RedirectMatch  301 ^/diagnose-und-symptome-bei-tinnitus/bio-psycho-soziale-anamnese/$ /diagnose-und-symptome-bei-tinnitus/diagnose-des-tinnitus/
+    RedirectMatch  301 ^/kontakt/$ /ueber-uns/
+    RedirectMatch  301 ^/tinnitus-wissen/tinnitus-anatomie-und-physiologie-des-horens/$ /tinnitus-wissen/tinnitus-anatomie-und-physiologie-des-hoerens/
+    RedirectMatch  301 ^/tinnitus-wissen/was-ist-ein-horsturz-zusammenhang-tinnitus/$ /tinnitus-wissen/was-ist-ein-hoersturz-zusammenhang-tinnitus/
+
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
 

@@ -14,8 +14,14 @@ class Search extends CI_Controller {
     	$data['seo_meta_description'] = '';
     	$data['seo_meta_keywords'] = '';
     	$data['seo_footer_text'] = '';
+        $data['seo_meta_title'] = '';
     	
     	$data['type'] = 'search';
+
+        $data['menu'] = load_main_menu();
+        $data['static_pages'] = $this->page_m->get_all_staticpages();    
+
+        $data['template_method'] = '';
 
     	$data['template_content'] = $this->load->view('search/gsearch', '', true);
 
