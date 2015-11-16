@@ -120,6 +120,13 @@ class Dispatcher extends Page {
                     $this->data['extra_data'] = $this->$slug_method();
                 }
 
+                // Get extra data for current page based on its template type
+                // If $slug_method exists, it can be found in page.php controller
+                
+                $this->load->library('theme');
+
+                $this->data['lib_data'] = $this->theme->get_template_data();
+
                 // Set the template name or throw error
                 if (!empty($this->data[$this->type]->template)) {
                     $view = $this->data[$this->type]->template->name;

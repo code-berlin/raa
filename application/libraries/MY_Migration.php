@@ -96,9 +96,19 @@ class MY_Migration extends CI_Migration {
 		$migrations = array();
 
 		// We now prepare to actually DO the migrations
-		// But first let's make sure that everything is the way it should be		
+		// But first let's make sure that everything is the way it should be
+		
+		if ($fork === true) {
+			var_dump('there',$start, $stop, $step, $start + $step);
+		}
+
+
 		for ($i = $start; $i != $stop; $i += $step)
 		{
+			
+			if ($fork === true) {
+				var_dump('here',$start, $stop, $step, $i + $step);
+			}
 			$f = glob(sprintf(($fork === false ? $this->_migration_path : $this->_migration_path_fork) . '%03d_*.php', $i));
 
 			// Only one migration per step is permitted
@@ -181,7 +191,6 @@ class MY_Migration extends CI_Migration {
 			// Run the migration class
 			$class = 'Migration_' . ucfirst(strtolower($migration));
 			call_user_func(array(new $class, $method));
-
 			$current_version += $step;
 			$this->_update_version($current_version, $fork);
 		}

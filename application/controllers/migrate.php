@@ -35,7 +35,7 @@ class Migrate extends CI_Controller {
                 } else {
                     $mig_result = $this->db->get('migrations');
                     $current_version = 0;
-                    foreach ($mig_result->result()  as $mr){
+                    foreach ($mig_result->result() as $mr){
                         $current_version = $mr->version;
                         break;
                     }
