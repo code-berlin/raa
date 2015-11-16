@@ -14,6 +14,10 @@
 	    font-weight: 500;
 	}
 
+	&._home {
+		padding: 40px 0px 50px 0px;
+	}
+
 }
 
 .content-wrapper {
@@ -95,7 +99,7 @@
 		border: 1px dotted $main-color-40pct;
 		margin: 25px 0px;
 		padding: 15px 20px 15px 20px;
-		background: $main-color-05pct;
+		background: $main-color-thin;
 
 		h3 {
 			margin-top: 5px;
@@ -112,6 +116,101 @@
 
 	.contact-info {
 		margin-bottom: 15px;
+	}
+
+	.other-portal {
+
+		padding-bottom: 20px;
+		border-bottom: 1px dotted $neutral-color;
+
+		.__img {
+
+			width: 260px;
+
+			img {
+				margin: auto;
+			}
+
+		}
+
+		.__right {
+			padding-right: 15px;
+		}
+
+		&._dj {
+
+			padding-top: 30px;
+
+			.__img {
+				img {
+					width: 130px;
+				}
+			}
+
+			.__right {
+				padding-top: 20px;
+			}
+
+		}
+
+		&._sbr {
+
+			padding-top: 50px;
+
+			.__img {
+				img {
+					width: 187px;
+				}
+			}
+
+		}
+
+		&._mr {
+
+			padding-top: 25px;
+
+			.__img {
+				img {
+					width: 180px;
+				}
+			}
+
+			.__right {
+				padding-top: 25px;
+			}
+
+		}
+
+		&._nr {
+
+			padding-top: 20px;
+
+			.__img {
+				img {
+					width: 183px;
+				}
+			}
+
+			.__right {
+				padding-top: 30px;
+			}
+
+		}
+
+		&:last-child {
+			border: none;
+		}
+
+		.__link {
+
+			padding-top: 15px;
+			text-align: right;
+
+			a {
+				font-weight: 600;
+			}
+		}
+
 	}
 
 }
@@ -198,7 +297,8 @@
 
 	.content-content {
 
-		&._article {
+		&._article,
+		&._static {
 			padding-left: 0px;
 		}
 
@@ -214,6 +314,57 @@
 				display: block;
 			}
 		}
+	}
+
+	.content-content {
+
+		.other-portal {
+
+			display: block;
+			padding-bottom: 14px;
+
+			.__img {
+
+				width: 260px;
+				margin: auto;
+
+				img {
+					margin: auto;
+				}
+
+			}
+
+			.__right {
+				padding-left: 15px;
+				padding-right: 15px;
+				text-align: center;
+			}
+
+			&._dj, &._sbr, &._mr, &._nr {
+
+				padding-top: 30px;
+
+				.__right {
+					padding-top: 20px;
+				}
+
+			}
+
+			.__link {
+
+				padding-top: 6px;
+				text-align: center;
+
+				a {
+					display: inline-block;
+					padding-top: 9px;
+					height: 40px;
+				}
+
+			}
+
+		}
+
 	}
 
 

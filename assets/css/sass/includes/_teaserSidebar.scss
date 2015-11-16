@@ -20,15 +20,11 @@
     }
 
     .__bottom {
-        background: $main-color;
+        background: $main-color-80pct;
         color: $white-color;
         padding: 12px 10px;
         text-align: center;
         font-weight: 600;
-    }
-
-    &:first-child {
-        margin-top: 0px;
     }
 
 }

@@ -73,13 +73,13 @@ class MY_Router extends CI_Router {
 		// the URI doesn't correlated to a valid controller.
 		$this->default_controller = ( ! isset($this->routes['default_controller']) OR $this->routes['default_controller'] == '') ? FALSE : strtolower($this->routes['default_controller']);
 
-		if (!empty($this->uri->uri_string) && stripos($this->uri->uri_string, 'admin') === false && stripos($this->uri->uri_string, 'auth') === false) {
+		if (!empty($this->uri->uri_string) && stripos($this->uri->uri_string, 'admin') === false && stripos($this->uri->uri_string, 'auth') === false && stripos($_SERVER['REQUEST_URI'], '.') === false) {
 
 			$excepted = '/' . $this->uri->uri_string . '/';
 
 	        $parsed_url = parse_url("http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
 	        
-	       	if($parsed_url["path"] != $excepted) {	       		
+	       	if($parsed_url["path"] != $excepted) {
 	        	$this->redirect("http://" . $_SERVER['HTTP_HOST'] . $excepted . (isset($parsed_url['query']) ? "?" . $parsed_url['query'] : ""),'location',301);
 	        }
 

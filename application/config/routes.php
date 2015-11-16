@@ -26,6 +26,10 @@ $route['sendemail/contact'] = 'sendemail/contact';
 
 $route['gsearch'] = 'search/gsearch';
 
+$route['sitemap\.xml'] = 'sitemap/index';
+
+$route['sitemap'] = 'sitemap/index';
+
 /*
 * FRONTEND SLUGS
 * IMPORTANT: don't move this item from this position! must be the last!

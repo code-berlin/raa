@@ -16,7 +16,7 @@ class MY_Migration extends CI_Migration {
     	$this->_migration_path = $CI->config->item('migration_path');
     	$this->_migration_version = $CI->config->item('migration_version');
     	$this->_migration_enabled = $CI->config->item('migration_enabled');
-    	$this->_migration_path_fork = $CI->config->item('migration_path_fork');
+    	$this->_migration_path_fork = $CI->config->item('migration_path_fork') . $CI->config->item('theme') . '/';
     	$this->_migration_version_fork = $CI->config->item('migration_version_fork');
 
     	log_message('debug', 'MY_Migrations class initialized');
@@ -96,19 +96,10 @@ class MY_Migration extends CI_Migration {
 		$migrations = array();
 
 		// We now prepare to actually DO the migrations
-		// But first let's make sure that everything is the way it should be
-		
-		if ($fork === true) {
-			var_dump('there',$start, $stop, $step, $start + $step);
-		}
-
 
 		for ($i = $start; $i != $stop; $i += $step)
 		{
-			
-			if ($fork === true) {
-				var_dump('here',$start, $stop, $step, $i + $step);
-			}
+
 			$f = glob(sprintf(($fork === false ? $this->_migration_path : $this->_migration_path_fork) . '%03d_*.php', $i));
 
 			// Only one migration per step is permitted

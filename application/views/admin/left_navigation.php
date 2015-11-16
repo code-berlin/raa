@@ -67,6 +67,13 @@
                 </li>
             <?php } ?>
 
+            <?php if ($sidebar['EDIT_SIDEBAR_TEASER']) { ?>
+                <li class="nav-header">Sidebar Teaser</li>
+                <li>
+                    <a href='<?php echo site_url('admin/sidebar_teaser'); ?>'>Sidebar Teaser</a>
+                </li>
+            <?php } ?>
+
             <?php if ($sidebar['VIEW_GENERAL_SETTINGS']) { ?>
                 <li class="nav-header">Settings</li>
                 <li>

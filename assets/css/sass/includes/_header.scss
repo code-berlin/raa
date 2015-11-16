@@ -31,6 +31,10 @@
         width: 80px;
     }
 
+    &:link, &:visited, &:hover, &:active {
+        color: $neutral-color-darker;
+    }
+
 }
 
 @media only screen and (max-width: $page-break-desktop) {
@@ -60,6 +64,10 @@
 
         img {
             width: 60px;
+        }
+
+        &:hover {
+            text-decoration: none;
         }
 
     }
