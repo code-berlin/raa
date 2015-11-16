@@ -16,7 +16,7 @@ class Page_dao extends CI_Model{
 	}
 
 	public function get_all() {
-		$this->object = R::find($this->table);
+		$this->object = R::find($this->table, 'published = 1');
 
 		$this->preload_template();
 
