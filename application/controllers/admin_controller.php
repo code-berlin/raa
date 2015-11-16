@@ -54,10 +54,13 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->columns('menu_title', 'slug', 'menu_order', 'published');
 
             // Fields to show when editing
-            $crud->edit_fields('template_id', 'parent_id','main_category', 'menu_order', 'menu_title', 'teaser_text', 'text', 'date', 'image', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text');
+            $crud->edit_fields('template_id', 'parent_id','main_category', 'menu_order', 'menu_title', 'teaser_text', 'text', 'date', 'image', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio');
 
             $crud->field_type('id', 'hidden');
             $crud->field_type('date', 'hidden');
+
+            $crud->field_type('sitemap_prio','dropdown',
+                array('0.1' => '0.1', '0.3' => '0.3', '0.5' => '0.5', '0.8' => '0.8', '1' => '1'));
 
             // Set relations using foreign keys
             $crud->set_relation('template_id','template','name');

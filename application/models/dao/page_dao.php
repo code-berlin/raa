@@ -16,11 +16,9 @@ class Page_dao extends CI_Model{
 	}
 
 	public function get_all() {
-		$this->object = R::find($this->table, 'published = 1');
+		
+		return R::getAll("SELECT `child`.*, (SELECT `slug` FROM `page` as `parent` WHERE `parent`.`id` = `child`.`parent_id`) as `parent_slug` FROM `page` as `child` WHERE `published` = 1");
 
-		$this->preload_template();
-
-		return $this->object;
 	}
 
 	public function get_by_id($id) {

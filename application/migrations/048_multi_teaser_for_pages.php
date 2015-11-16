@@ -2,6 +2,7 @@
 require_once(APPPATH . 'migrations/basic_migration.php');
 
 class Migration_Multi_Teaser_For_Pages extends Basic_migration {
+    
     function __construct()
     {
         parent::__construct();

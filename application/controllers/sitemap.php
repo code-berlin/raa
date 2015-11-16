@@ -17,30 +17,24 @@ class Sitemap extends CI_Controller {
     	$data['loc'] = base_url('/');
         $data['priority'] = '1';
     	$output .= $this->load->view('sitemap/url_entry',$data, TRUE);
-
-    	// get pages with type 1
-    	$data['priority'] = '0.1';
-
+ 	
     	$pages = $this->page_m->get_all();
 
-    	var_dump($pages);exit;
-        	
-    	/*
-    	$data['loc'] = 'https://www.docjones.de/impressum';
-    	$output .= $this->load->view('sitemap/url_entry',$data, TRUE);
-		$data['loc'] = 'https://www.docjones.de/agb';
-    	$output .= $this->load->view('sitemap/url_entry',$data, TRUE);
-    	$data['loc'] = 'https://www.docjones.de/datenschutz';
-    	$output .= $this->load->view('sitemap/url_entry',$data, TRUE);
-    	$data['loc'] = 'https://www.docjones.de/presse';
-    	$output .= $this->load->view('sitemap/url_entry',$data, TRUE);
-    	$data['loc'] = 'https://www.docjones.de/ueberuns';
-    	$output .= $this->load->view('sitemap/url_entry',$data, TRUE);
+    	foreach ($pages as $key => $value) {
+            
+            if ($value['slug'] == 'home') continue;
 
-*/
-    	$data['priority'] = '0.8';
+            if (!empty($value['parent_id'])) {
+                $data['loc'] = base_url($value['parent_slug'] . '/' . $value['slug']);
+            } else {
+                $data['loc'] = base_url($value['slug']);
+            }
+            $data['priority'] = $value['sitemap_prio'];
 
-    	// get pages with type 1
+            $output .= $this->load->view('sitemap/url_entry',$data, TRUE);
+
+        }
+
 
     	$output .= $this->load->view('sitemap/sitemap_foot', '', TRUE);
 
