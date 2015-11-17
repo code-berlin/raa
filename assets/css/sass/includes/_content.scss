@@ -42,7 +42,8 @@
 	padding-bottom: 20px;
 
 	&._article,
-	&._static {
+	&._static,
+	&._list-page, {
 		padding-left: 10px;
 	}
 
@@ -298,7 +299,8 @@
 	.content-content {
 
 		&._article,
-		&._static {
+		&._static,
+		&._list-page {
 			padding-left: 0px;
 		}
 
