@@ -72,11 +72,12 @@ class Dispatcher extends Page {
 
                 // setting the data type and the id for the layout
                 $this->data['type'] = $this->type;
-                $this->data['id'] = $result->id;
+                
+                $this->data['id'] = $this->data[$this->type]->id;
                 $this->data['section_name'] =  $this->data[$this->type]->slug;
 
                 $this->load->model('teaser_m');
-                $teaser_instances = $this->teaser_m->get_teaser_instance_by_page_id($result->id);
+                $teaser_instances = $this->teaser_m->get_teaser_instance_by_page_id($this->data[$this->type]->id);
 
                 $teaser = array();
 
@@ -133,6 +134,7 @@ class Dispatcher extends Page {
                 } else {
                     return $this->tools->show_not_implemented_page();
                 }
+
                 return $this->layout->view($this->type.'/'.$templates_folder.'/'.$view, $this->data);
             }
         }

@@ -6,7 +6,7 @@ class Layout {
 	var $obj;
 	var $layout;
 
-	function Layout($layout = "default"){
+	function Layout($layout = "default"){        
 		$this->obj =& get_instance();
 		$this->layout = $layout;
 	}
@@ -62,7 +62,7 @@ class Layout {
                 $object = $this->obj->{$type.'_m'}->get_by_id($id);
 
                 // some or all specific settings are provided: take the specific settings
-                    if($this->_check_current_seo_settings($object) !== 0){
+                if($this->_check_current_seo_settings($object) !== 0){
 
                         $loadedData['seo_meta_title'] = $object->seo_meta_title;
                         $loadedData['seo_meta_keywords'] = $object->seo_meta_keywords;
