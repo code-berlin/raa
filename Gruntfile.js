@@ -38,6 +38,16 @@ module.exports = function(grunt) {
                 // the location of the resulting JS file
                 dest: 'assets/js/min/scripts.min.js'
             },
+            distJS: {
+                options: {
+                    separator: ';',
+                    sourceMap: false
+                },
+                // the files to concatenate
+                src: JS_FILES,
+                // the location of the resulting JS file
+                dest: 'assets/js/min/scripts.min.js'
+            },
             devCSS: {
                 options: {
                     separator: '',
@@ -65,6 +75,8 @@ module.exports = function(grunt) {
                     'assets/css/vendor/normalize.css',
                     'assets/css/vendor/font-awesome.min.css',
                     'assets/css/vendor/superfish.css',
+                    'assets/css/vendor/slick.css',
+                    'assets/css/vendor/jquery.cookiebar.css',
                     'assets/css/main.css'
                 ],
                 // the location of the resulting CSS file
@@ -111,5 +123,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-compass');
 	grunt.registerTask('default', ['compass:dev', 'jshint', 'concat:devJS', 'concat:devCSS', 'watch']);
+    grunt.registerTask('dist', ['compass:dist', 'jshint', 'concat:distJS', 'concat:distCSS']);
 
 };
