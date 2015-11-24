@@ -35,7 +35,7 @@ class Migration_Menu extends Basic_migration {
     }
 
     public function mig_down() {
-#return true;
+
         $this->db->query("ALTER TABLE `menu_item` DROP `position`;");
 
     	$this->db->query("ALTER TABLE `menu_item` DROP `contentId`;");

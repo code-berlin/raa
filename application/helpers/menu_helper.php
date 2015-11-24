@@ -5,6 +5,9 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
         $ci =& get_instance();
 
+        $ci->load->model('menu_m');
+        $ci->load->model('menu_item_m');
+
         $data = '';
 
         $data['menus'] = $ci->menu_m->get_all();

@@ -18,9 +18,7 @@ class Dispatcher extends Page {
     public function index($slug='', $subslug = '') {
 
         $this->load->model('url_m');
-        $this->load->model('page_m');
-        $this->load->model('menu_m');
-        $this->load->model('menu_item_m');
+        $this->load->model('page_m');        
 
         $page = '';
         $result = '';

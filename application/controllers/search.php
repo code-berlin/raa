@@ -18,7 +18,7 @@ class Search extends CI_Controller {
     	
     	$data['type'] = 'search';
 
-        $this->data['menu'] = load_menus();
+        $data['menu'] = load_menus();
 
         $data['template_method'] = '';
 
