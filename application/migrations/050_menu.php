@@ -11,7 +11,9 @@ class Migration_Menu extends Basic_migration {
 
     public function mig_up() {
         
-    	$this->db->query("ALTER TABLE `menu_item` DROP FOREIGN KEY `menu_item_ibfk_1`");
+    	$this->db->query("ALTER TABLE `menu_item` DROP FOREIGN KEY `menu_item_ibfk_1`;");
+
+        $this->db->query("ALTER TABLE `menu_item` DROP INDEX `url_id`;");
 
     	$this->db->query("ALTER TABLE `menu_item` DROP `url_id`;");
 
@@ -33,7 +35,7 @@ class Migration_Menu extends Basic_migration {
     }
 
     public function mig_down() {
-
+#return true;
         $this->db->query("ALTER TABLE `menu_item` DROP `position`;");
 
     	$this->db->query("ALTER TABLE `menu_item` DROP `contentId`;");
@@ -48,7 +50,9 @@ class Migration_Menu extends Basic_migration {
 
     	$this->db->query("ALTER TABLE `menu_item` ADD `url_id` int(11) DEFAULT NULL AFTER `title`;");
 
-    	$this->db->query("ALTER TABLE `menu_item` ADD CONSTRAINT `menu_item_ibfk_1` FOREIGN KEY (`url_id`) REFERENCES `url` (`id`);");
+        $this->db->query("ALTER TABLE `menu_item` ADD INDEX (`url_id`);");
+
+        $this->db->query("ALTER TABLE `menu_item` ADD CONSTRAINT menu_item_ibfk_1 FOREIGN KEY (`url_id`) REFERENCES `url` (`id`);");
 
     	$this->db->query("ALTER TABLE `menu_item` ADD `absolute_url` varchar(255) NOT NULL AFTER `url_id`;");
 
