@@ -18,8 +18,7 @@ class Search extends CI_Controller {
     	
     	$data['type'] = 'search';
 
-        $data['menu'] = load_main_menu();
-        $data['static_pages'] = $this->page_m->get_all_staticpages();    
+        $this->data['menu'] = load_menus();
 
         $data['template_method'] = '';
 

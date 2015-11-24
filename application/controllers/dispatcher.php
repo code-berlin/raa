@@ -19,6 +19,8 @@ class Dispatcher extends Page {
 
         $this->load->model('url_m');
         $this->load->model('page_m');
+        $this->load->model('menu_m');
+        $this->load->model('menu_item_m');
 
         $page = '';
         $result = '';
@@ -52,8 +54,7 @@ class Dispatcher extends Page {
 
         $published = check_if_published($result, $slug, $subslug);
 
-        $this->data['menu'] = load_main_menu();
-        $this->data['static_pages'] = $this->page_m->get_all_staticpages();
+        $this->data['menu'] = load_menus();
 
         if(!empty($result) && $published) {
             $this->type = $result->type->name;

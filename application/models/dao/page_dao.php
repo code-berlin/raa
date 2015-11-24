@@ -57,13 +57,9 @@ class Page_dao extends CI_Model{
 	}
 
 	public function get_all_subpages_ordered_by_menu_order() {
-        return R::getAll('SELECT menu_title, slug, id, main_category FROM '.$this->table.' WHERE (parent_id IS NULL OR parent_id = 0) AND published = 1 AND (menu_title != "") AND (template_id != 3) ORDER BY menu_order ASC');
+        return R::getAll('SELECT menu_title, slug, id, main_category FROM '.$this->table.' WHERE (parent_id IS NULL OR parent_id = 0) AND published = 1 AND (menu_title != "") ORDER BY menu_order ASC');
     }
-
-    public function get_all_staticpages() {
-        return R::getAll('SELECT menu_title, slug, id, main_category FROM '.$this->table.' WHERE published = 1 AND (menu_title != "") AND (template_id = 3) ORDER BY menu_order ASC');
-    }
-
+    
     public function get_children($page_id) {
         return R::getAll('SELECT menu_title, slug, teaser_text, image, id FROM '.$this->table.' WHERE parent_id = '.$page_id.' AND published = 1 ORDER BY menu_order ASC');
     }

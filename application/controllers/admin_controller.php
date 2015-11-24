@@ -100,6 +100,7 @@ class Admin_Controller extends Main_Admin_Controller {
     */
     public function menu()
     {
+        
         $this->control_sidebar_items_display($data);
 
         $auth = $this->auth_l;
@@ -112,7 +113,7 @@ class Admin_Controller extends Main_Admin_Controller {
             $this->check_section_permissions($crud);
 
             $crud->set_table('menu');
-            $crud->add_action('edit items', base_url('/assets/grocery_crud/themes/flexigrid/css/images/edit-items.gif'), 'admin/menu/item');
+            $crud->add_action('Edit 1. Level Menu Items', base_url('/assets/grocery_crud/themes/flexigrid/css/images/edit-items.gif'), 'admin/menu_item');
 
             try {
                 $this->add_grocery_to_data_array($crud->render(), $data);
@@ -124,6 +125,64 @@ class Admin_Controller extends Main_Admin_Controller {
         }
 
         $this->load->view('admin/admin', $data);
+    }
+
+    public function menu_item($menu_id, $parent_id = '') {
+
+        $this->control_sidebar_items_display($data);
+
+        $auth = $this->auth_l;
+        $role_id = $this->user->role_id;
+        $url = $_SERVER['REQUEST_URI'];
+
+        if ($auth->check_section_access_required_permissions($role_id, $url)) {
+
+            $crud = $this->grocery_crud;
+
+            $this->check_section_permissions($crud);
+
+            $crud->set_table('menu_item');
+            $crud->where('id_menu', $menu_id);
+            $crud->where('content_type', 'page');
+
+            $crud->field_type('id_menu', 'hidden', $menu_id);
+
+            $crud->field_type('id', 'hidden');
+            $crud->field_type('content_type', 'hidden', 'page');            
+
+            $crud->columns('contentId','position','published');
+
+            if (intval($parent_id) == 0) {
+                $crud->add_action('Edit 2. Level Menu Items', base_url('/assets/grocery_crud/themes/flexigrid/css/images/edit-items.gif'), 'admin/menu_item/' . $menu_id);
+                $crud->field_type('parent_id', 'hidden');
+                $crud->where('parent_id', NULL);
+            } else {
+                $crud->where('parent_id', $parent_id);
+                $crud->field_type('parent_id', 'hidden', $parent_id);
+            }
+            
+            // add page relation
+            $this->load->model('page_m');
+            $pages = $this->page_m->get_all();
+            $pages_array = array();
+            foreach ($pages as $key => $value) {
+                $pages_array[$value['id']] = $value['menu_title'];
+            }
+
+            $crud->field_type('contentId','dropdown',
+                $pages_array);
+
+            try {
+                $this->add_grocery_to_data_array($crud->render(), $data);
+            } catch(Exception $e) {
+                $data['output'] = $e->getMessage();
+            }
+        } else {
+            $data['output'] = 'Not allowed';
+        }
+
+        $this->load->view('admin/admin', $data);
+
     }
 
     /**

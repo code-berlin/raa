@@ -15,4 +15,8 @@ class Menu_item_m extends CI_Model {
 	public function check_if_published($id) {
 		return $this->menu_item_dao->check_if_published($id);
 	}
+
+	public function get_menu_items_by_menu_id_and_parent_id($menu_id, $parent_id) {
+		return $this->menu_item_dao->get_menu_items_by_menu_id_and_parent_id($menu_id, $parent_id);
+	}
 }
