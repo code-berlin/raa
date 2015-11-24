@@ -3,7 +3,11 @@
 	.data-page-search {
 
 		.flex-container {
-			display: block;
+			
+			&.content-container {
+				display: block;
+			}
+
 		}
 
 	}
