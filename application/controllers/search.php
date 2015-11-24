@@ -18,11 +18,15 @@ class Search extends CI_Controller {
     	
     	$data['type'] = 'search';
 
-        $data['menu'] = load_menus();
+        $data['menu'] = $subdata['menu'] = load_menus();
 
         $data['template_method'] = '';
 
-    	$data['template_content'] = $this->load->view('search/gsearch', '', true);
+        $this->load->library('theme');
+
+        $subdata['lib_data'] = $this->theme->get_template_data();
+
+    	$data['template_content'] = $this->load->view('search/gsearch', $subdata, true);
 
     	$this->load->view('layouts/default', $data);
     }
