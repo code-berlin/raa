@@ -2,7 +2,7 @@
 
 <p><?php echo $page->text ?></p>
 
-<img src="/assets/uploads/files/<?php echo $page->image ?>" />
+<img src="<?php echo '/' . $this->config->item('upload_folder') . '/' . $page->image ?>" />
 
 <!-- Load predefined container -->
 <?php load_widgets_container('Container'); ?>

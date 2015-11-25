@@ -4937,10 +4937,13 @@ class Grocery_CRUD extends grocery_CRUD_States
 	 */
 	public function set_field_upload($field_name, $upload_dir = '')
 	{
+		
+		$ci =& get_instance();
+
 		$upload_dir = !empty($upload_dir) && substr($upload_dir,-1,1) == '/'
 						? substr($upload_dir,0,-1)
 						: $upload_dir;
-		$upload_dir = !empty($upload_dir) ? $upload_dir : 'assets/uploads/files';
+		$upload_dir = !empty($upload_dir) ? $upload_dir : $ci->config->item('upload_folder');
 
 		/** Check if the upload Url folder exists. If not then throw an exception **/
 		if (!is_dir(FCPATH.$upload_dir)) {

@@ -28,6 +28,8 @@ $route['gsearch'] = 'search/gsearch';
 
 $route['sitemap\.xml'] = 'sitemap/index';
 
+$route['image/preview/(:num)/(:num)/(:any)/(:any)'] = 'image/preview/$1/$2/$3/$4';
+
 /*
 * FRONTEND SLUGS
 * IMPORTANT: don't move this item from this position! must be the last!

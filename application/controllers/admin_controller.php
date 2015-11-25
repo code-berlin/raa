@@ -64,7 +64,7 @@ class Admin_Controller extends Main_Admin_Controller {
 
             // Set relations using foreign keys
             $crud->set_relation('template_id','template','name');
-            $crud->set_field_upload('image','assets/uploads/files');
+            $crud->set_field_upload('image', $this->config->item('upload_folder'));
 
             $crud->display_as('template_id','Template');
             $crud->display_as('main_category','Is parent');
@@ -880,7 +880,7 @@ class Admin_Controller extends Main_Admin_Controller {
 
             $crud->field_type('published','true_false', array('1' => 'Yes', '0' => 'No'));
 
-            $crud->set_field_upload('image','assets/uploads/files');
+            $crud->set_field_upload('image', $this->config->item('upload_folder'));
 
             try {
                 $this->add_grocery_to_data_array($crud->render(), $data);
