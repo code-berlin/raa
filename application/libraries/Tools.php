@@ -65,15 +65,6 @@ class Tools {
         $ci->session->set_userdata('language', $cleansed_language);
     }
 
-    public function show_error_page() {
-        header('HTTP/1.0 404 Not Found');
-
-        // $data['lang'] = $this->get_language_value();
-        // $data['error_message'] = '404 '.language_get_string('404', 'error_message');
-
-        $this->ci->load->view('errors/404');
-    }
-
     public function show_not_implemented_page() {
         header('HTTP/1.0 501 Not Implemented');
 

@@ -18,7 +18,7 @@ class Dispatcher extends Page {
     public function index($slug='', $subslug = '') {
 
         $this->load->model('url_m');
-        $this->load->model('page_m');        
+        $this->load->model('page_m');
 
         $page = '';
         $result = '';
@@ -71,7 +71,7 @@ class Dispatcher extends Page {
 
                 // setting the data type and the id for the layout
                 $this->data['type'] = $this->type;
-                
+
                 $this->data['id'] = $this->data[$this->type]->id;
                 $this->data['section_name'] =  $this->data[$this->type]->slug;
 
@@ -122,7 +122,7 @@ class Dispatcher extends Page {
 
                 // Get extra data for current page based on its template type
                 // If $slug_method exists, it can be found in page.php controller
-                
+
                 $this->load->library('theme');
 
                 $this->data['lib_data'] = $this->theme->get_template_data();
@@ -138,6 +138,12 @@ class Dispatcher extends Page {
             }
         }
 
-        $this->tools->show_error_page();
+        // show error page
+        $this->data['type'] = 'page';
+        $this->data['id'] = 0;
+        $this->data['template_method'] = 'error_404';
+        $this->data['template_data'] = $this->error_404();
+        return $this->layout->view('page/'.$templates_folder.'/error_404', $this->data);
+
     }
 }

@@ -133,7 +133,7 @@ class Page extends CI_Controller {
         $data['social']['description'] = $page->teaser_text;
         $data['social']['image'] = $page->image;
 
-        $data['children'] = $this->page_m->get_siblings($page_id);
+        $data['teaserContentItems'] = $this->page_m->get_siblings($page_id);
 
         return $data;
 
@@ -149,15 +149,28 @@ class Page extends CI_Controller {
         $page = $this->page_m->get_by_id($page_id);
 
         $data['social']['title'] = $page->menu_title;
-        $data['social']['slug'] = $page->slug;
         $data['social']['description'] = $page->teaser_text;
         $data['social']['image'] = $page->image;
 
-        $data['children'] = $this->page_m->get_children($page_id);
+        $data['teaserItems'] = $this->page_m->get_children($page_id);
 
         $data['teaserColumns'] = 3;
 
         return $data;
 
     }
+
+    function error_404() {
+
+        $data = array();
+
+        $this->load->model('page_m');
+        $data['teaserItems'] = $this->page_m->get_all_subpages();
+        $data['teaserColumns'] = 3;
+
+        // var_dump($data['listItems']);
+
+        return $data;
+    }
+
 }

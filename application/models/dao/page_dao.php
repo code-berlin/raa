@@ -16,7 +16,7 @@ class Page_dao extends CI_Model{
 	}
 
 	public function get_all() {
-		
+
 		return R::getAll("SELECT `child`.*, (SELECT `slug` FROM `page` as `parent` WHERE `parent`.`id` = `child`.`parent_id`) as `parent_slug` FROM `page` as `child` WHERE `published` = 1");
 
 	}
@@ -56,12 +56,12 @@ class Page_dao extends CI_Model{
 		return R::trash($page);
 	}
 
-	public function get_all_subpages_ordered_by_menu_order() {
-        return R::getAll('SELECT menu_title, slug, id, main_category FROM '.$this->table.' WHERE (parent_id IS NULL OR parent_id = 0) AND published = 1 AND (menu_title != "") ORDER BY menu_order ASC');
+	public function get_all_subpages() {
+        return R::getAll('SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.id, child.parent_id, parent.slug as parent_slug FROM '.$this->table.' as child LEFT JOIN '.$this->table.' as parent ON parent.id = child.parent_id WHERE (child.parent_id IS NOT NULL OR child.parent_id > 0) AND child.published = 1 AND parent.published = 1 ORDER BY child.menu_order ASC');
     }
-    
+
     public function get_children($page_id) {
-        return R::getAll('SELECT menu_title, slug, teaser_text, image, id FROM '.$this->table.' WHERE parent_id = '.$page_id.' AND published = 1 ORDER BY menu_order ASC');
+        return R::getAll('SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.id, child.parent_id, parent.slug as parent_slug FROM '.$this->table.' as child LEFT JOIN '.$this->table.' as parent ON parent.id = child.parent_id WHERE child.parent_id = '.$page_id.' AND child.published = 1 AND parent.published = 1 ORDER BY child.menu_order ASC');
     }
 
     public function get_parent($page_id) {
