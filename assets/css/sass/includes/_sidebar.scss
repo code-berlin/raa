@@ -41,7 +41,7 @@
 		margin-bottom: 0px;
 		padding: 12px 15px;
 		color: $white-color;
-		background: $neutral-color-darker;
+		background: $main-color-80pct;
 		font-weight: 600;
 	}
 
@@ -59,7 +59,7 @@
 
 		a {
 
-			border-bottom: 1px dotted $main-color-60pct;
+			border-bottom: $divider-neutral;
 			padding: 12px 15px;
 			display: block;
 			color: $main-color;

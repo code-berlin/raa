@@ -36,4 +36,10 @@ $link-decoration: none;
 $link-color: $main-color;
 $link-color-hover: $main-color;
 
+/* borders */
+
+$divider-main: 1px dotted $main-color-60pct;
+$divider-neutral: 1px dotted $neutral-color-darker;
+$divider-neutral-light: 1px dotted $neutral-color;
+
 

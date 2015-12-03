@@ -6,7 +6,7 @@
     font-size: 24px;
     line-height: 32px;
     padding: 10px 15px 13px 15px;
-    border-bottom: 1px dotted $main-color-60pct;
+    border-bottom: $divider-main;
 
 }
 
@@ -14,7 +14,7 @@
 
     padding: 0px 20px;
     position: relative;
-    border-bottom: 1px dotted $neutral-color;
+    border-bottom: $divider-neutral-light;
     margin-top: 30px;
 
     .__item {
