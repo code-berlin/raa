@@ -59,12 +59,18 @@
             height: 138px;
             border: 1px solid $neutral-color-lighter;
             position: relative;
-            background-repeat: no-repeat;
-            background-size: auto 100%;
-            background-position: center top;
+            overflow: hidden;
 
             &:first-child {
                 margin-right: 15px;
+            }
+
+            img {
+                width: auto;
+                height: 100%;
+                position: relative;
+                left: 50%;
+                @include transform(translate3d(-50%, 0, 0));
             }
 
             span {
@@ -148,7 +154,10 @@
                     -ms-flex: 1;
                     flex: 1;
 
-                    background-size: 100% auto;
+                    img {
+                        width: 100%;
+                        height: auto;
+                    }
 
                 }
 
@@ -201,7 +210,10 @@
 
                 .__mini-item {
 
-                    background-size: auto 100%;
+                    img {
+                        width: auto;
+                        height: 100%;
+                    }
 
                 }
             }
