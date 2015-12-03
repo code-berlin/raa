@@ -6,10 +6,12 @@ module.exports = function(grunt) {
 
 	var JS_FILES = [
         'assets/js/lib/jquery-1.11.0.min.js',
+        'assets/js/lib/jquery.mobile.custom.min.js',
         'assets/js/app/**/*.js',
         'assets/js/lib/superfish.min.js',
         'assets/js/lib/slick.min.js',
         'assets/js/lib/jquery.cookiebar.js',
+        'assets/js/lib/jquery.onAppear.min.js',
         'assets/js/themes/' + theme + '/**/*.js'
     ];
 
