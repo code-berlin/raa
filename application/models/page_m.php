@@ -32,8 +32,8 @@ class Page_m extends CI_Model {
 		return $this->page_dao->delete($page);
 	}
 
-	function get_all_subpages() {
-		return $this->page_dao->get_all_subpages();
+	function get_random_subpages($count) {
+		return $this->page_dao->get_random_subpages($count);
 	}
 
 	function get_children($page_id) {

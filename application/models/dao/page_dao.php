@@ -56,8 +56,8 @@ class Page_dao extends CI_Model{
 		return R::trash($page);
 	}
 
-	public function get_all_subpages() {
-        return R::getAll('SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.id, child.parent_id, parent.slug as parent_slug FROM '.$this->table.' as child LEFT JOIN '.$this->table.' as parent ON parent.id = child.parent_id WHERE (child.parent_id IS NOT NULL OR child.parent_id > 0) AND child.published = 1 AND parent.published = 1 ORDER BY child.menu_order ASC');
+	public function get_random_subpages($count) {
+        return R::getAll('SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.id, child.parent_id, parent.slug as parent_slug FROM '.$this->table.' as child LEFT JOIN '.$this->table.' as parent ON parent.id = child.parent_id WHERE (child.parent_id IS NOT NULL OR child.parent_id > 0) AND child.published = 1 AND parent.published = 1 ORDER BY RAND() LIMIT '.$count);
     }
 
     public function get_children($page_id) {

@@ -17,9 +17,11 @@ class Layout {
 
 	function view($view, $data=null, $return=false){
     	$loadedData['template_content'] = $this->obj->load->view($view,$data,true);
-        /* load seo information */
 
-        $loadedData = $this->_load_seo_information($loadedData, $data['type'], $data['id']);
+        /* load seo information */
+        if (isset($data['type']) && isset($data['id'])) {
+            $loadedData = $this->_load_seo_information($loadedData, $data['type'], $data['id']);
+        }
 
 		if($return):
 			$output = $this->obj->load->view('layouts/'.$this->layout, $loadedData, true);

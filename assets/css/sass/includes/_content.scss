@@ -47,6 +47,13 @@
 		padding-left: 10px;
 	}
 
+	&._404-page {
+		padding: 15px 20px;
+		border: 1px solid $main-color-40pct;
+		background: $main-color-10pct;
+		color: $font-color;
+	}
+
 	h2, h3, h4 {
 		font-weight: 600;
 	}
@@ -276,6 +283,16 @@
 
 	}
 
+}
+
+.recommend-title {
+    margin: 15px 0px 25px 0px;
+    color: $main-color;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    padding: 10px 15px 13px 15px;
+    border-bottom: $divider-main;
 }
 
 @media only screen and (max-width: $page-break-tablet) {

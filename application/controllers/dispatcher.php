@@ -139,8 +139,7 @@ class Dispatcher extends Page {
         }
 
         // show error page
-        $this->data['type'] = 'page';
-        $this->data['id'] = 0;
+        header('HTTP/1.0 404 Not Found');
         $this->data['template_method'] = 'error_404';
         $this->data['template_data'] = $this->error_404();
         return $this->layout->view('page/'.$templates_folder.'/error_404', $this->data);

@@ -165,10 +165,8 @@ class Page extends CI_Controller {
         $data = array();
 
         $this->load->model('page_m');
-        $data['teaserItems'] = $this->page_m->get_all_subpages();
+        $data['teaserItems'] = $this->page_m->get_random_subpages(6);
         $data['teaserColumns'] = 3;
-
-        // var_dump($data['listItems']);
 
         return $data;
     }
