@@ -117,7 +117,7 @@ module.exports = function(grunt) {
                 'compass:dev',
                 'concat:devCSS'
             ]
-        },
+        }
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-jshint');

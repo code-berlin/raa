@@ -7,7 +7,6 @@ class Image extends CI_Controller {
 
     function preview($x, $y, $image, $refresh = false) {
 
-    	// fetch parameter via get, thus . in directory names is forbidden by CI
     	$sixe_x =  $x;
 	    $sixe_y =  $y;
 
@@ -42,8 +41,6 @@ class Image extends CI_Controller {
 	    		}
 
 	    	}
-
-
 
 	    	if (file_exists($thumb_FS)) {	
 
