@@ -80,10 +80,8 @@
 
         .__teaser-text,
         .__teaser-text span {
-            color: $font-color !important;
-            font-family: "Open Sans", Arial, Helvetica, sans-serif !important;
-            font-size: 13px !important;
-            line-height: 21px !important;
+            font-size: 13px;
+            line-height: 21px;
         }
 
         .__teaser-text p {
@@ -97,8 +95,7 @@
         }
 
         .__teaser-more {
-
-            color: $main-color !important;
+            color: $main-color;
             text-align: right;
 
             &:hover {

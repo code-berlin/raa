@@ -48,7 +48,7 @@ module.exports = function(grunt) {
                 // the files to concatenate
                 src: JS_FILES,
                 // the location of the resulting JS file
-                dest: 'assets/js/min/scripts.min.js'
+                dest: 'assets/js/min/scripts.tmp.js'
             },
             devCSS: {
                 options: {
@@ -82,7 +82,7 @@ module.exports = function(grunt) {
                     'assets/css/main.css'
                 ],
                 // the location of the resulting CSS file
-                dest: 'assets/css/min/main.min.css'
+                dest: 'assets/css/min/main.tmp.css'
 
             },
         },
@@ -117,6 +117,28 @@ module.exports = function(grunt) {
                 'compass:dev',
                 'concat:devCSS'
             ]
+        },
+        cssmin: {
+            options: {
+                shorthandCompacting: false,
+                roundingPrecision: -1
+            },
+            target: {
+                files: {
+                    'assets/css/min/main.min.css': [
+                        'assets/css/min/main.tmp.css'
+                    ]
+                }
+            }
+        },
+        uglify: {
+            dist: {
+                files: {
+                    'assets/js/min/scripts.min.js': [
+                        'assets/js/min/scripts.tmp.js'
+                    ]
+                }
+            }
         }
 	});
 
@@ -124,7 +146,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-compass');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.registerTask('default', ['compass:dev', 'jshint', 'concat:devJS', 'concat:devCSS', 'watch']);
-    grunt.registerTask('dist', ['compass:dist', 'jshint', 'concat:distJS', 'concat:distCSS']);
+    grunt.registerTask('dist', ['compass:dist', 'jshint', 'concat:distJS', 'uglify:dist', 'concat:distCSS', 'cssmin']);
 
 };
