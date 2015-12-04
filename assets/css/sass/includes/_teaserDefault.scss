@@ -3,7 +3,7 @@
     .__teaser-row {
 
         margin-bottom: 30px;
-        border-bottom: 1px dotted $neutral-color;
+        border-bottom: $divider-neutral-light;
 
         &:last-child {
             margin-bottom: 0px;
@@ -117,7 +117,7 @@
         .__item {
 
             margin-right: 0px;
-            border-bottom: 1px dotted $neutral-color;
+            border-bottom: $divider-neutral-light;
             margin-bottom: 30px;
 
             .__bottom {

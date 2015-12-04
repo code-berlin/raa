@@ -6,7 +6,7 @@
 
     float: none;
     margin-bottom: 0px;
-    border-bottom: 1px dotted $main-color-60pct;
+    border-bottom: $divider-neutral;
 
     > li {
 
@@ -15,15 +15,26 @@
         a {
             border: none;
             font-size: 16px;
-            // font-weight: 600;
-            padding: 13px 15px;
+            padding: 12px 15px 13px 15px;
             color: $main-color;
+            text-align: center;
+
+            &:before {
+                display:block;
+                content:attr(title);
+                font-weight: 600;
+                height:1px;
+                color:transparent;
+                overflow:hidden;
+                visibility:hidden;
+            }
+
         }
 
         ul {
 
             @include box-shadow(none);
-            border: 1px dotted $main-color-60pct;
+            border: $divider-neutral;
             border-top: none;
 
             li {
@@ -36,17 +47,22 @@
                     padding: 12px 15px;
                     font-weight: normal;
                     border-top: none;
-                    border-bottom: 1px dotted $main-color-60pct;
+                    border-bottom: $divider-neutral;
                     text-transform: none;
                     text-decoration: none;
                     color: $main-color;
                     font-size: 14px;
+                    text-align: left;
+
+                    &:after {
+                        display: none;
+                    }
 
                 }
 
                 &:first-child {
                     a {
-                        border-top: 1px dotted $main-color-60pct;
+                        border-top: $divider-neutral;
                     }
                 }
 
@@ -67,8 +83,10 @@
             background: $white-color;
 
             a {
+
                 text-decoration: none;
                 font-weight: 600;
+
             }
 
             ul {
@@ -130,7 +148,7 @@
     font-weight: normal;
     background-color: $main-color;
     color: white;
-    padding: 13px 15px;
+    padding: 13px 10px 13px 15px;
     cursor: pointer;
 
     i {
@@ -159,7 +177,10 @@
         > li {
 
             a {
-                border-bottom: 1px dotted $main-color-60pct;
+
+                border-bottom: $divider-neutral;
+                text-align: left;
+
             }
 
             &:hover,
@@ -188,7 +209,7 @@
 
                         &:last-child {
                             a {
-                                border-bottom: 1px dotted $main-color-60pct;
+                                border-bottom: $divider-neutral;
                             }
                         }
                     }
@@ -199,6 +220,12 @@
         &.sf-arrows {
 
             > li {
+
+                .sf-with-ul {
+                    &:after {
+                        right: 19px;
+                    }
+                }
 
                 &.xpopdrop,
                 &.active {
