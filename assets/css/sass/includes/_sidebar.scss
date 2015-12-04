@@ -20,7 +20,7 @@
 	h3 {
 		color: $font-grey-color;
 		font-size: 16px;
-		font-weight: 500;
+		font-weight: 400;
 	}
 
 	.about-us {
@@ -95,14 +95,14 @@
 					a {
 
 						padding: 12px 10px 12px 23px;
-						font-weight: 500;
+						font-weight: 400;
 						font-size: 14px;
 
 						&:hover, &:active, &:focus, &._active {
 							background: $main-color-80pct;
 							color: $white-color;
 							text-decoration: none;
-							font-weight: 500;
+							font-weight: 400;
 						}
 					}
 				}
