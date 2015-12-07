@@ -30,3 +30,5 @@ assets/css/min/main.min.css.map
 assets/js/min/scripts.min.js.map
 assets/css/min/main.tmp.css
 assets/js/min/scripts.tmp.js
+
+config.json
