@@ -1,8 +1,10 @@
+var config = require('./config.json');
+
 module.exports = function(grunt) {
 
 	"use strict";
 
-    var theme = 'tm';
+    var theme = config.theme;
 
 	var JS_FILES = [
         'assets/js/lib/jquery-1.11.0.min.js',
