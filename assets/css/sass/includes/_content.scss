@@ -231,13 +231,20 @@
 	font-size: 12px;
 	line-height: 22px;
 
-	.__title {
-		color: $main-color;
-		padding-bottom: 3px;
+	div {
+
+		margin: 0px 0px 3px 0px;
+
+		&.__title {
+			color: $main-color;
+		}
+
+		&.__sub {
+			margin: 0px;
+		}
+
 	}
-	.__sub {
-		padding-top: 3px;
-	}
+
 
 }
 
