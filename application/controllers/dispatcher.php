@@ -63,11 +63,13 @@ class Dispatcher extends Page {
                 $this->load->model($model_type);
 
                 // It's important for each class to have this method
+                // page data comes now as multi id bean, which only has one entry where index = id
                 if (!empty($subslug)) {
-                    $this->data[$this->type] = $this->$model_type->get_by_slug($subslug);
+                    $bean_data = $this->$model_type->get_by_slug($subslug);
                 } else {
-                    $this->data[$this->type] = $this->$model_type->get_by_slug($slug);
+                    $bean_data = $this->$model_type->get_by_slug($slug);
                 }
+                $this->data[$this->type] = $bean_data[key($bean_data)];                
 
                 // setting the data type and the id for the layout
                 $this->data['type'] = $this->type;

@@ -30,8 +30,13 @@ class Page_dao extends CI_Model{
 	}
 
 	public function get_by_slug($slug) {
-		$this->object = R::findOne($this->table, 'slug = :slug',
-			array(':slug' => $slug));
+
+		#var_dump($slug);
+
+		$qry = 'SELECT *, (SELECT `default_copyright_text` FROM `settings` LIMIT 1) as `default_copyright_text` FROM '.$this->table.' WHERE slug = :slug LIMIT 1;';
+
+		$res = R::getAll($qry, [ 'slug' => $slug ]);
+		$this->object = R::convertToBeans($this->table,$res);
 
 		$this->preload_template();
 
