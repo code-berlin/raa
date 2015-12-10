@@ -91,7 +91,7 @@ module.exports = function(grunt) {
         // compile sass
         compass: {
             options: {
-                sassDir: 'assets/css/sass',
+                sassDir: 'assets/css/sass/themes/' + theme,
                 cssDir: 'assets/css'
             },
             dev: {
@@ -110,8 +110,8 @@ module.exports = function(grunt) {
             files: [
                 'Gruntfile.js',
                 'assets/js/**/*.js',
-                'assets/css/sass/*.scss',
-                'assets/css/sass/includes/*.scss'
+                'assets/css/sass/themes/' + theme + '/*.scss',
+                'assets/css/sass/themes/' + theme + '/includes/*.scss'
             ],
             tasks: [
                 'jshint',
