@@ -6,7 +6,7 @@
 
 		?>
 
-			<h2 class="home-h2"><?php echo $value['title']; ?></h2>
+			<h2 class="teaser-h2"><?php echo $value['title']; ?></h2>
 
 		<?php
 
