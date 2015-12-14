@@ -64,7 +64,8 @@ module.exports = function(grunt) {
                     'assets/css/vendor/superfish.css',
                     'assets/css/vendor/slick.css',
                     'assets/css/vendor/jquery.cookiebar.css',
-                    'assets/css/main.css'
+                    'assets/css/raa/main.css',
+                    'assets/css/theme/main.css'
                 ],
                 // the location of the resulting CSS file
                 dest: 'assets/css/min/main.min.css'
@@ -81,7 +82,8 @@ module.exports = function(grunt) {
                     'assets/css/vendor/superfish.css',
                     'assets/css/vendor/slick.css',
                     'assets/css/vendor/jquery.cookiebar.css',
-                    'assets/css/main.css'
+                    'assets/css/raa/main.css',
+                    'assets/css/theme/main.css'
                 ],
                 // the location of the resulting CSS file
                 dest: 'assets/css/min/main.tmp.css'
@@ -90,19 +92,38 @@ module.exports = function(grunt) {
         },
         // compile sass
         compass: {
-            options: {
-                sassDir: 'assets/css/sass/themes/' + theme,
-                cssDir: 'assets/css'
+            raa: {
+               options: {
+                    sassDir: 'assets/css/sass/raa',
+                    cssDir: 'assets/css/raa'
+                },
+                dev: {
+                    options: {
+                        sourcemap: true
+                    }
+                },
+                dist: {
+                    options: {
+                        sourcemap: false,
+                        outputStyle: 'compressed'
+                    }
+                } 
             },
-            dev: {
+            theme : {
                 options: {
-                    sourcemap: true
-                }
-            },
-            dist: {
-                options: {
-                    sourcemap: false,
-                    outputStyle: 'compressed'
+                    sassDir: 'assets/css/sass/themes/' + theme,
+                    cssDir: 'assets/css/theme'
+                },
+                dev: {
+                    options: {
+                        sourcemap: true
+                    }
+                },
+                dist: {
+                    options: {
+                        sourcemap: false,
+                        outputStyle: 'compressed'
+                    }
                 }
             }
         },
@@ -110,13 +131,16 @@ module.exports = function(grunt) {
             files: [
                 'Gruntfile.js',
                 'assets/js/**/*.js',
+                'assets/css/sass/raa/*.scss',
+                'assets/css/sass/raa/includes/*.scss',
                 'assets/css/sass/themes/' + theme + '/*.scss',
                 'assets/css/sass/themes/' + theme + '/includes/*.scss'
             ],
             tasks: [
                 'jshint',
                 'concat:devJS',
-                'compass:dev',
+                'compass:raa:dev',
+                'compass:theme:dev',
                 'concat:devCSS'
             ]
         },
@@ -150,7 +174,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
-	grunt.registerTask('default', ['compass:dev', 'jshint', 'concat:devJS', 'concat:devCSS', 'watch']);
-    grunt.registerTask('dist', ['compass:dist', 'jshint', 'concat:distJS', 'uglify:dist', 'concat:distCSS', 'cssmin']);
+	grunt.registerTask('default', ['compass:raa:dev', 'compass:theme:dev', 'jshint', 'concat:devJS', 'concat:devCSS', 'watch']);
+    grunt.registerTask('dist', ['compass:raa:dist','compass:theme:dist', 'jshint', 'concat:distJS', 'uglify:dist', 'concat:distCSS', 'cssmin']);
 
 };
