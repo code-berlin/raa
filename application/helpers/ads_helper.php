@@ -6,18 +6,17 @@
  * @param $keyword keyword for choosing right ad
  * @return mixed the new content
  */
-function add_ad_tag_to_text($text, $keyword = false) {
-	
+function add_ad_tag_to_text($text) {
+
 	$CI = & get_instance();
 
 	$regx = '/<h2.*?>(\s|\S)+?<\/h2>/i';
 	preg_match_all($regx, $text, $matches);
 	if (isset($matches[0])) {
-		// empty <p></p> tag is for design border, see #DOC-413
 		if (isset($matches[0][1])) {
-			$text = str_replace($matches[0][1], $matches[0][1] . '<p></p><div class="cis2">' . $CI->load->view('/component/ads', array('ad_id'=>2, 'ad_tag'=> get_ad_tag(2), 'ad_name' => get_ad_name(2), 'ad_map' => get_ad_map(2), 'keyword' => $keyword), true) . '</div>', $text);
+			$text = str_replace($matches[0][1], '<div class="cis2">' . $CI->load->view('/component/ads', array('ad_id'=>2, 'ad_tag'=> get_ad_tag(2), 'ad_name' => get_ad_name(2), 'ad_map' => get_ad_map(2)), true) . '</div>' . $matches[0][1], $text);
 		} else if (isset($matches[0][0])) {
-			$text = str_replace($matches[0][0], $matches[0][0] . '<p></p><div class="cis2">' . $CI->load->view('/component/ads', array('ad_id'=>2, 'ad_tag'=> get_ad_tag(2), 'ad_name' => get_ad_name(2), 'ad_map' => get_ad_map(2), 'keyword' => $keyword), true) . '</div>', $text);
+			$text = str_replace($matches[0][0], '<div class="cis2">' . $CI->load->view('/component/ads', array('ad_id'=>2, 'ad_tag'=> get_ad_tag(2), 'ad_name' => get_ad_name(2), 'ad_map' => get_ad_map(2)), true) . '</div>' . $matches[0][0], $text);
 		}
 	}
 
