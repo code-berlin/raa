@@ -92,7 +92,6 @@ class Dispatcher extends Page {
                         $teaser[$value['id']]['type'] = $value['name'];
 
                         $teaser[$value['id']]['items'] = $this->teaser_m->get_teaser_items_by_teaser_instance_id($value['id']);
-
                     }
 
                 }
