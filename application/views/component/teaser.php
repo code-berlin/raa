@@ -12,7 +12,7 @@
 
 			}
 
-			$this->load->view('teaser/teaser_' . $value['type'], $value);
+			$this->load->view('teaser/teaser_' . $value['teaser_type'], $value);
 
 		}
 	}
