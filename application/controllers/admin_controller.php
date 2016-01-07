@@ -100,7 +100,7 @@ class Admin_Controller extends Main_Admin_Controller {
     */
     public function menu()
     {
-        
+
         $this->control_sidebar_items_display($data);
 
         $auth = $this->auth_l;
@@ -148,7 +148,7 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->field_type('id_menu', 'hidden', $menu_id);
 
             $crud->field_type('id', 'hidden');
-            $crud->field_type('content_type', 'hidden', 'page');            
+            $crud->field_type('content_type', 'hidden', 'page');
 
             $crud->columns('contentId','position','published');
 
@@ -160,7 +160,7 @@ class Admin_Controller extends Main_Admin_Controller {
                 $crud->where('parent_id', $parent_id);
                 $crud->field_type('parent_id', 'hidden', $parent_id);
             }
-            
+
             // add page relation
             $this->load->model('page_m');
             $pages = $this->page_m->get_all();
@@ -842,7 +842,7 @@ class Admin_Controller extends Main_Admin_Controller {
 
             $crud->field_type('id', 'hidden');
             $crud->field_type('teaser_instanceId', 'hidden', $teaser_instance_id);
-            
+
             try {
                 $this->add_grocery_to_data_array($crud->render(), $data);
             } catch(Exception $e) {
@@ -876,11 +876,13 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->set_table('sidebar_teaser');
 
             // Fields to show on the list
-            $crud->columns('id', 'text', 'image', 'url', 'published');           
+            $crud->columns('id', 'text', 'image', 'url', 'published');
 
             $crud->field_type('id', 'hidden');
 
             $crud->field_type('published','true_false', array('1' => 'Yes', '0' => 'No'));
+
+            $crud->field_type('external','true_false', array('1' => 'Yes', '0' => 'No'));
 
             $crud->set_field_upload('image', $this->config->item('upload_folder'));
 
