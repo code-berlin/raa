@@ -18,7 +18,21 @@ class Teaser_item_dao extends CI_Model {
 
 	public function get_by_teaser_instance_id($teaser_instance_id) {
 
-		$qry = 'SELECT `item`.`title`, `item`.`text`, `page`.`id` as `page_id`, `page`.`slug` as `page_slug`, `page`.`image` as `page_image`, `page`.`menu_title` as `page_title`, `page`.`teaser_text` as `page_text`, `parent`.`slug` as `parent_slug` FROM `teaser_item` as `item` LEFT JOIN page ON `page`.`id` = `item`.`contentId` LEFT JOIN `page` as `parent` ON `parent`.`id` = `page`.`parent_id` WHERE `item`.`published` = 1 and `item`.`teaser_instanceId` = :teaser_instance_id AND `page`.`published` = 1 ORDER BY `item`.`position`;';
+		$qry = 'SELECT 
+					`item`.`title`, `item`.`text`, `page`.`id` AS `page_id`, `page`.`slug` AS `page_slug`, `page`.`image` AS `page_image`, 
+					`page`.`menu_title` AS `page_title`, `page`.`teaser_text` AS `page_text`, `parent`.`slug` AS `parent_slug`,
+					`item`.`content_type` as `content_type`, `item`.`external_link` as `external_link`, `item`.`external_image` as `external_image`
+				FROM `teaser_item` AS `item` 
+				LEFT JOIN 
+					page ON `page`.`id` = `item`.`contentId` 
+				LEFT JOIN 
+					`page` AS `parent` ON `parent`.`id` = `page`.`parent_id` 
+				WHERE 
+					`item`.`published` = 1 AND 
+					`item`.`teaser_instanceId` = :teaser_instance_id AND 
+					IF (`content_type` = \'page\', `page`.`published`, 1) = 1 
+				ORDER BY 
+					`item`.`position`;';
 
 		$this->object = R::getAll($qry, [ 'teaser_instance_id' => $teaser_instance_id ]);
 

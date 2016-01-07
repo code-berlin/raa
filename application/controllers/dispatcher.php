@@ -19,6 +19,7 @@ class Dispatcher extends Page {
 
         $this->load->model('url_m');
         $this->load->model('page_m');
+
         $this->lang->load('std');
 
         $page = '';
@@ -79,6 +80,7 @@ class Dispatcher extends Page {
                 $this->data['section_name'] =  $this->data[$this->type]->slug;
 
                 $this->load->model('teaser_m');
+                
                 $teaser_instances = $this->teaser_m->get_teaser_instance_by_page_id($this->data[$this->type]->id);
 
                 $teaser = array();
@@ -88,10 +90,9 @@ class Dispatcher extends Page {
                     foreach ($teaser_instances as $key => $value) {
                         $teaser[$value['id']]['title'] = $value['title'];
                         $teaser[$value['id']]['text'] = $value['text'];
-                        $teaser[$value['id']]['type'] = $value['name'];
+                        $teaser[$value['id']]['teaser_type'] = $value['name'];
 
                         $teaser[$value['id']]['items'] = $this->teaser_m->get_teaser_items_by_teaser_instance_id($value['id']);
-
                     }
 
                 }
@@ -138,6 +139,7 @@ class Dispatcher extends Page {
                 }
 
                 return $this->layout->view($this->type.'/'.$templates_folder.'/'.$view, $this->data);
+
             }
         }
 

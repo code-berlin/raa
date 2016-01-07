@@ -10,21 +10,22 @@ class Search extends CI_Controller {
     }
 
     function gsearch() {
-    	
+
     	$data['seo_meta_description'] = '';
     	$data['seo_meta_keywords'] = '';
     	$data['seo_footer_text'] = '';
         $data['seo_meta_title'] = '';
-    	
+
     	$data['type'] = 'search';
 
         $data['menu'] = $subdata['menu'] = load_menus();
 
-        $data['template_method'] = '';
+        $data['template_method'] = 'search';
 
         $this->load->library('theme');
 
         $subdata['lib_data'] = $this->theme->get_template_data();
+        $subdata['searchterm'] = $_REQUEST['gs'];
 
     	$data['template_content'] = $this->load->view('search/gsearch', $subdata, true);
 

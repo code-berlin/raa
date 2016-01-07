@@ -754,7 +754,7 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->where('page_id', $page_id);
 
             // Fields to show on the list
-            $crud->columns('title', 'text', 'position', 'published');
+            $crud->columns('title', 'text', 'position', 'published', 'teaser_types_id');
 
             $crud->add_action('Teaser Item Verwaltung --- Icons made by Freepik from www.flaticon.com is licensed by CC BY 3.0', '/assets/images/tabs.png', site_url('admin/teaser_item') . '/');
 
@@ -825,6 +825,8 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->field_type('contentId','dropdown',
                 $pages_array);
 
+            $crud->set_field_upload('external_image', $this->config->item('upload_folder'));
+
             // add page relation
             $this->load->model('teaser_m');
             $teaser_instance = $this->teaser_m->get_teaser_instance_by_id($teaser_instance_id);
@@ -840,13 +842,13 @@ class Admin_Controller extends Main_Admin_Controller {
 
             $crud->field_type('id', 'hidden');
             $crud->field_type('teaser_instanceId', 'hidden', $teaser_instance_id);
-            $crud->field_type('content_type', 'hidden', 'page');
-
+            
             try {
                 $this->add_grocery_to_data_array($crud->render(), $data);
             } catch(Exception $e) {
                 $data['output'] = $e->getMessage();
             }
+
         } else {
             $data['output'] = 'Not allowed';
         }

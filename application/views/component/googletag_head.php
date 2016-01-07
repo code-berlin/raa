@@ -16,6 +16,7 @@
             $ad_keywords = explode(',', $page->ad_keywords);
             $i = 0;
             if(isset($ad_keywords[0]) && !empty($ad_keywords[0])) {
+
     ?>
                 googletag.cmd.push(function() {
                     googletag.pubads().setTargeting("keyword",[<?php

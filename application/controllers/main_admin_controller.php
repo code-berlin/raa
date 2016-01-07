@@ -148,6 +148,10 @@ class Main_Admin_Controller extends CI_Controller {
             }
         }
 
+        if (empty($post['sitemap_prio'])) {
+            $post['sitemap_prio'] = '0.8';
+        }
+
         $post['date'] = $this->set_datetime();
 
         $this->type_m->save_slug('page', $post['slug'], $page_id);
