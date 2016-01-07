@@ -18,8 +18,7 @@ class Dispatcher extends Page {
     public function index($slug='', $subslug = '') {
 
         $this->load->model('url_m');
-        $this->load->model('page_m');        
-        $this->load->helper('ads');
+        $this->load->model('page_m');
         $this->lang->load('std');
 
         $page = '';
