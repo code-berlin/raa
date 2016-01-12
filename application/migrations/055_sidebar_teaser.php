@@ -16,6 +16,7 @@ class Migration_Sidebar_Teaser extends Basic_migration {
                             `image` VARCHAR(255) NOT NULL,
                             `url` VARCHAR(255) NOT NULL,
                             `published` tinyint(1) NOT NULL,
+                            `external` TINYINT(1) NOT NULL,
                             PRIMARY KEY (`id`))
                           ENGINE = InnoDB;');
 
@@ -27,7 +28,6 @@ class Migration_Sidebar_Teaser extends Basic_migration {
         $this->db->query("INSERT INTO `rolepermission` (`role_id`, `permission_id`) VALUES
                             (1, " . $id . ");");
 
-        $this->db->query('ALTER TABLE `sidebar_teaser` ADD  `external` TINYINT(1) NOT NULL;');
     }
 
     public function mig_down() {
