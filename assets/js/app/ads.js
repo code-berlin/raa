@@ -1,9 +1,10 @@
 var cisLoader = {
 
 	init: function() {
-		var dfpslots = $('.cis_container:visible'),
+		var dfpslots = $('.cis_container').filter(function() { return ($(this).parent().css('display') == 'none' ? false : true); }),
 		i=0,
-		slot = [];
+		slot = [];		
+
 		if (dfpslots.length) {
 			googletag.cmd.push(function() {
 				$(dfpslots).each(function(){

@@ -19,7 +19,7 @@ class Dispatcher extends Page {
 
         $this->load->model('url_m');
         $this->load->model('page_m');
-        $this->load->helper('ads');
+
         $this->lang->load('std');
 
         $page = '';

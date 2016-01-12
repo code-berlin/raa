@@ -76,7 +76,8 @@ $autoload['helper'] = array(
 	'form',
 	'content_types',
 	'menu',
-	'language'
+	'language',
+	'ads'
 );
 
 
