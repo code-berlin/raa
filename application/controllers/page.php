@@ -34,6 +34,7 @@ class Page extends CI_Controller {
         $this->load->helper('widgets_container');
         $this->load->helper('published');
         $this->load->helper('facebook');
+        $this->load->helper('content');
 
         // Libraries
         $this->load->library('facebook');
@@ -134,6 +135,7 @@ class Page extends CI_Controller {
         $data['social']['image'] = $page->image;
 
         $data['contentSiblings'] = $this->page_m->get_siblings($page_id);
+        $data['contentPagination'] = get_content_pagination($data['contentSiblings'], $page_id);
 
         return $data;
 
