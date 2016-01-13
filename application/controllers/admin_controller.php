@@ -51,10 +51,10 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->set_table('page');
 
             // Fields to show on the list
-            $crud->columns('menu_title', 'slug', 'menu_order', 'published');
+            $crud->columns('menu_title', 'slug', 'published');
 
             // Fields to show when editing
-            $crud->edit_fields('template_id', 'parent_id','main_category', 'menu_order', 'menu_title', 'teaser_text', 'text', 'date', 'image', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords');
+            $crud->edit_fields('template_id', 'parent_id','main_category', 'menu_title', 'teaser_text', 'text', 'date', 'image', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords');
 
             $crud->field_type('id', 'hidden');
             $crud->field_type('date', 'hidden');
