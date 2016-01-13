@@ -133,7 +133,7 @@ class Page extends CI_Controller {
         $data['social']['description'] = $page->teaser_text;
         $data['social']['image'] = $page->image;
 
-        $data['teaserContentItems'] = $this->page_m->get_siblings($page_id);
+        $data['contentSiblings'] = $this->page_m->get_siblings($page_id);
 
         return $data;
 
