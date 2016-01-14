@@ -62,22 +62,31 @@ class Page_dao extends CI_Model{
 	}
 
 	public function get_random_subpages($count) {
-        return R::getAll('SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.id, child.parent_id, parent.slug as parent_slug FROM '.$this->table.' as child LEFT JOIN '.$this->table.' as parent ON parent.id = child.parent_id WHERE (child.parent_id IS NOT NULL OR child.parent_id > 0) AND child.published = 1 AND parent.published = 1 ORDER BY RAND() LIMIT '.$count);
+        return R::getAll('SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.id, 
+        						 child.parent_id, parent.slug as parent_slug 
+        				  FROM '.$this->table.' as child 
+        				  LEFT JOIN '.$this->table.' as parent ON parent.id = child.parent_id 
+        				  WHERE (child.parent_id IS NOT NULL OR child.parent_id > 0) 
+        				  AND child.published = 1 
+        				  AND parent.published = 1 
+        				  ORDER BY RAND() 
+        				  LIMIT '.$count);
     }
 
     public function get_children($page_id) {
-        return R::getAll('  SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.id, child.parent_id, parent.slug as parent_slug, (
-                                SELECT position
-                                FROM menu_item
-                                WHERE id_menu = 1
-                                AND content_type = "page"
-                                AND contentId = child.id) as menu_position
+        return R::getAll('  SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.id, child.parent_id, 
+        						   parent.slug as parent_slug, (
+	                                SELECT position
+	                                FROM menu_item
+	                                WHERE id_menu = 1
+	                                AND content_type = "page"
+	                                AND contentId = child.id) as menu_position
                             FROM '.$this->table.' as child
                             LEFT JOIN '.$this->table.' as parent ON parent.id = child.parent_id
                             WHERE child.parent_id = '.$page_id.'
                             AND child.published = 1
                             AND parent.published = 1
-                            ORDER BY menu_position ASC');
+                            ORDER BY menu_position, child.id ASC');
     }
 
     public function get_parent($page_id) {
@@ -85,12 +94,13 @@ class Page_dao extends CI_Model{
     }
 
     public function get_siblings($page_id) {
-        return R::getAll('  SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.id, child.parent_id, parent.slug as parent_slug, (
-                                SELECT position
-                                FROM menu_item
-                                WHERE id_menu = 1
-                                AND content_type = "page"
-                                AND contentId = child.id) as menu_position
+        return R::getAll('  SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.id, child.parent_id, 
+        	                       parent.slug as parent_slug, (
+	                                SELECT position
+	                                FROM menu_item
+	                                WHERE id_menu = 1
+	                                AND content_type = "page"
+	                                AND contentId = child.id) as menu_position
                             FROM '.$this->table.' as child
                             LEFT JOIN '.$this->table.' as parent ON parent.id = child.parent_id
                             WHERE child.parent_id = (
@@ -100,6 +110,6 @@ class Page_dao extends CI_Model{
                             )
                             AND child.published = 1
                             AND parent.published = 1
-                            ORDER BY menu_position ASC');
+                            ORDER BY menu_position, child.id ASC');
     }
 }
