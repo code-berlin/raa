@@ -47,6 +47,7 @@ table th
 	padding-right:40px;
 }
 .flexigrid div.bDiv table {
+	margin-bottom:10px;
 	width: 100%;
 }
 .flexigrid div.bDiv table.autoht {
@@ -162,7 +163,6 @@ table th
 	border:1px solid #ccc;
 	border-top:0px;
 	overflow:hidden;
-	display:none;
 }
 .flexigrid div.sDiv2 {
 	float:left;
@@ -576,10 +576,16 @@ div.pGroup {
 	top:5px;
 	overflow:visible;
 }
-.flexigrid div.pDiv input {
+.flexigrid div.pDiv input, .flexigrid div.pDiv select {
 	vertical-align:text-top;
 	position:relative;
 	top:-5px;
+}
+.flexigrid div.pDiv input{
+	top:-5px;
+}
+.flexigrid div.pDiv select {
+	top:-3px;
 }
 .flexigrid div.pDiv div.pButton {
 	float:left;
