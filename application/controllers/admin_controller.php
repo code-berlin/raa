@@ -54,7 +54,7 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->columns('menu_title', 'slug', 'published');
 
             // Fields to show when editing
-            $crud->edit_fields('template_id', 'parent_id','main_category', 'menu_title', 'teaser_text', 'text', 'date', 'image', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords');
+            $crud->edit_fields('template_id', 'parent_id','main_category', 'menu_title', 'teaser_text', 'text', 'date', 'image', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id');
 
             $crud->field_type('id', 'hidden');
             $crud->field_type('date', 'hidden');
@@ -71,6 +71,9 @@ class Admin_Controller extends Main_Admin_Controller {
 
             $crud->set_relation('parent_id','page','slug');
             $crud->display_as('parent_id','Parent section');
+
+            $crud->set_relation('author_id','author','name');
+            $crud->display_as('author_id','Author');
 
             if ($auth->check_user_has_permission($role_id, 'EDIT_TEASER')) {
                 $crud->add_action('Teaser Verwaltung --- Icons made by Freepik from www.flaticon.com is licensed by CC BY 3.0', '/assets/images/screen114.png', site_url('admin/teaser_instance') . '/');
@@ -857,7 +860,7 @@ class Admin_Controller extends Main_Admin_Controller {
     }
 
     /**
-    *   Handles the page CRUD.
+    *   Handles the sidebar_teaser CRUD.
     */
     public function sidebar_teaser()
     {
@@ -883,6 +886,48 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->field_type('published','true_false', array('1' => 'Yes', '0' => 'No'));
 
             $crud->field_type('external','true_false', array('1' => 'Yes', '0' => 'No'));
+
+            $crud->set_field_upload('image', $this->config->item('upload_folder'));
+
+            try {
+                $this->add_grocery_to_data_array($crud->render(), $data);
+            } catch(Exception $e) {
+                $data['output'] = $e->getMessage();
+            }
+        } else {
+            $data['output'] = 'Not allowed';
+        }
+
+        $this->load->view('admin/admin', $data);
+    }
+
+    /**
+    *   Handles the sidebar_teaser CRUD.
+    */
+    public function author()
+    {
+        $this->control_sidebar_items_display($data);
+
+        $auth = $this->auth_l;
+        $role_id = $this->user->role_id;
+        $url = $_SERVER['REQUEST_URI'];
+
+        if ($auth->check_section_access_required_permissions($role_id, $url)) {
+            $crud = $this->grocery_crud;
+
+            // Page permissions
+            $this->check_section_permissions($crud);
+
+            $crud->set_table('author');
+
+            // Fields to show on the list
+            $crud->columns('id', 'name', 'position', 'image', 'text', 'published', 'gender');
+
+            $crud->field_type('id', 'hidden');
+
+            $crud->field_type('published','true_false', array('1' => 'Yes', '0' => 'No'));
+
+            $crud->field_type('gender','true_false', array('1' => 'Female', '0' => 'Male'));
 
             $crud->set_field_upload('image', $this->config->item('upload_folder'));
 
