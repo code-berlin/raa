@@ -134,8 +134,19 @@ class Page extends CI_Controller {
         $data['social']['description'] = $page->teaser_text;
         $data['social']['image'] = $page->image;
 
+
         $data['contentSiblings'] = $this->page_m->get_siblings($page_id);
-        $data['articlePagination'] = get_article_pagination($data['contentSiblings'], $page_id);
+
+        // get all related articles (parent and childs)
+        if (!$page['parent_id']) {
+            // actual page is parent
+            $data['articles'] = $this->page_m->get_articles_from_parent($page_id);
+        } else {
+            // actual page is child
+            $data['articles'] = $this->page_m->get_articles_from_child($page_id);
+        }
+
+        $data['articlePagination'] = get_article_pagination($data['articles'], $page_id);
 
         return $data;
 
