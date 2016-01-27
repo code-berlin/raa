@@ -15,8 +15,9 @@ var cisLoader = {
 				googletag.pubads().addEventListener('slotRenderEnded', function(event) {
 						console.log(event);
 						if (event.isEmpty === false) {
-	                    	$('[data-dfpname="'+event.slot.A+'"] .cis_head').show();
-	                    	$('[data-dfpname="'+event.slot.A+'"]').addClass('loaded');
+							var slot = (event.slot.A != 'null'?event.slot.A:event.slot.B);
+	                    	$('[data-dfpname="'+slot+'"] .cis_head').show();
+	                    	$('[data-dfpname="'+slot+'"]').addClass('loaded');
 	                    }
 	            });
 				googletag.enableServices();
