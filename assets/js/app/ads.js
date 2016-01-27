@@ -16,8 +16,8 @@ var cisLoader = {
 						console.log(event);
 						if (event.isEmpty === false) {
 							var slot = (event.slot.A != 'null'?event.slot.A:event.slot.B);
-	                    	$('[data-dfpname="'+slot+'"] .cis_head').show();
-	                    	$('[data-dfpname="'+slot+'"]').addClass('loaded');
+	                    	$('[data-dfpname="'+event.slot.B+'"] .cis_head').show();
+	                    	$('[data-dfpname="'+event.slot.B+'"]').addClass('loaded');
 	                    }
 	            });
 				googletag.enableServices();
