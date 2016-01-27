@@ -13,6 +13,7 @@ var cisLoader = {
 					i++;
 				});
 				googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+						console.log(event);
 						if (event.isEmpty === false) {
 	                    	$('[data-dfpname="'+event.slot.A+'"] .cis_head').show();
 	                    	$('[data-dfpname="'+event.slot.A+'"]').addClass('loaded');
