@@ -165,6 +165,11 @@ module.exports = function(grunt) {
                     ]
                 }
             }
+        },
+        comments: {
+            dist: {
+              src: [ 'assets/js/min/scripts.min.js']
+            },
         }
 	});
 
@@ -174,7 +179,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-stripcomments');
 	grunt.registerTask('default', ['compass:raa:dev', 'compass:theme:dev', 'jshint', 'concat:devJS', 'concat:devCSS', 'watch']);
-    grunt.registerTask('dist', ['compass:raa:dist','compass:theme:dist', 'jshint', 'concat:distJS', 'uglify:dist', 'concat:distCSS', 'cssmin']);
+    grunt.registerTask('dist', ['compass:raa:dist','compass:theme:dist', 'jshint', 'concat:distJS', 'uglify:dist', 'comments:dist', 'concat:distCSS', 'cssmin']);
 
 };
