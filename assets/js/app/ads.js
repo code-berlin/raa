@@ -13,11 +13,11 @@ var cisLoader = {
 					i++;
 				});
 				googletag.pubads().addEventListener('slotRenderEnded', function(event) {
-						console.log(event);
 						if (event.isEmpty === false) {
-							var slot = (event.slot.A != 'null'?event.slot.A:event.slot.B);
-	                    	$('[data-dfpname="'+event.slot.B+'"] .cis_head').show();
-	                    	$('[data-dfpname="'+event.slot.B+'"]').addClass('loaded');
+							var slotId = event.slot.getSlotElementId(),
+								parent = $('#' + slotId).closest('.js-cis_container');
+							parent.children('.js-cis_head').show();
+	                    	parent.addClass('loaded');
 	                    }
 	            });
 				googletag.enableServices();
