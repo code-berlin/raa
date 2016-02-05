@@ -17,6 +17,7 @@ class Image extends CI_Controller {
 	    	$thumb_FS_path = FCPATH . 'assets/uploads/thumbs/';
 
 			$thumb_FS = $thumb_FS_path . $sixe_x . '-' . $sixe_y . '-' . $image;
+			$pre_thumb_FS = $thumb_FS_path . $sixe_x . '-' . $sixe_y . '-' . '-pre-' . $image;
 	    	$img_FS = $media_FS_path . $image;
 	    	
 	    	if (!file_exists($thumb_FS) || $refresh == 'true') {
@@ -25,7 +26,7 @@ class Image extends CI_Controller {
 
 	    			$config['image_library'] = 'gd2';
 	    			$config['source_image']	= $img_FS;
-	    			$config['new_image'] = $thumb_FS;
+	    			$config['new_image'] = $pre_thumb_FS;
 	        		$config['width'] = $sixe_x;
 	        		$config['height'] = $sixe_y;
 	        		$config['create_thumb'] = FALSE;
@@ -38,11 +39,13 @@ class Image extends CI_Controller {
 					    exit;
 					}
 
+					ImageJPEG(ImageCreateFromString(file_get_contents($pre_thumb_FS)), $thumb_FS, 90);
+
 	    		}
 
 	    	}
 
-	    	if (file_exists($thumb_FS)) {	
+	    	if (file_exists($thumb_FS)) {
 
 	    		$imginfo = getimagesize($thumb_FS);
 				header("Content-type: " . $imginfo['mime']);

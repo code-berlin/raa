@@ -51,9 +51,18 @@
                 </li>
             <?php } ?>
 
+            <li class="nav-header">Menu</li>
             <?php if ($sidebar['VIEW_MENU']) { ?>
                 <li>
                     <a href='<?php echo site_url('admin/menu'); ?>'>Menus</a>
+                </li>
+            <?php } ?>
+
+
+            <li class="nav-header">Author</li>
+            <?php if ($sidebar['VIEW_PAGE']) { ?>
+                <li>
+                    <a href='<?php echo site_url('admin/author'); ?>'>Author</a>
                 </li>
             <?php } ?>
 

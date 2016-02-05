@@ -14,8 +14,10 @@ var cisLoader = {
 				});
 				googletag.pubads().addEventListener('slotRenderEnded', function(event) {
 						if (event.isEmpty === false) {
-	                    	$('[data-dfpname="'+event.slot.A+'"] .cis_head').show();
-	                    	$('[data-dfpname="'+event.slot.A+'"]').addClass('loaded');
+							var slotId = event.slot.getSlotElementId(),
+								parent = $('#' + slotId).closest('.js-cis_container');
+							parent.children('.js-cis_head').show();
+	                    	parent.addClass('loaded');
 	                    }
 	            });
 				googletag.enableServices();
