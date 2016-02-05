@@ -150,4 +150,19 @@ class Dispatcher extends Page {
         return $this->layout->view('page/'.$templates_folder.'/error_404', $this->data);
 
     }
+
+    public function theme_method($method) {
+        
+        $args = func_num_args();
+        $method_args = array();
+
+        for ($i = 0; $i < $args; $i++) {
+            if ($i == 0) continue;
+            $method_args[] = $args[$i];
+        }
+
+        $this->load->library('theme');
+        $this->theme->theme_method($method, $method_args);
+
+    }
 }

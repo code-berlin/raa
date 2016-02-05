@@ -921,7 +921,7 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->set_table('author');
 
             // Fields to show on the list
-            $crud->columns('id', 'name', 'position', 'image', 'text', 'published', 'gender');
+            $crud->columns('name', 'profession', 'position', 'gender', 'published');
 
             $crud->field_type('id', 'hidden');
 

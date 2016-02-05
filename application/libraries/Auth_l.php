@@ -148,6 +148,7 @@ class Auth_l {
         $ci =&get_instance();
 
         $ci->load->model('permission_m');
+        $ci->load->model('role_permission_m');
 
         $permission = $ci->permission_m->get_by_name($permission_required);
 
