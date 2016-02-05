@@ -114,64 +114,44 @@ class Page_dao extends CI_Model{
                             ORDER BY menu_position, child.id ASC');
     }
 
-    public function get_articles_from_parent($page_id) {
-
+    public function get_articles_by_page_id_and_menu_id($page_id, $menu_id) {
+        
         $query =   'SELECT page.menu_title, page.slug, page.teaser_text, page.image, page.id, page.slug, page.parent_id,
-                        menu_item.id as menu_item_id, menu_item.contentId as menu_item_contentId,
-                        menu_item.parent_id as menu_item_parent_id, menu_item.id_menu as menu_item_id_menu,
-                        menu_item.position as menu_item_position, (
-                            SELECT parent.slug
-                            FROM page as parent
-                            WHERE parent.id = page.parent_id
-                            LIMIT 1
-                        ) as parent_slug
-                    FROM page
-                    LEFT JOIN menu_item ON menu_item.contentId  = page.id
-                    WHERE (
-                        menu_item.contentId  = '.$page_id.'
+                         menu_item.id as menu_item_id, menu_item.contentId as menu_item_contentId,
+                         menu_item.parent_id as menu_item_parent_id, menu_item.id_menu as menu_item_id_menu,
+                         menu_item.position as menu_item_position, (
+                             SELECT parent.slug
+                             FROM page as parent
+                             WHERE parent.id = page.parent_id
+                             LIMIT 1
+                         ) as parent_slug
+                     FROM page
+                     LEFT JOIN menu_item ON menu_item.contentId  = page.id
+                     WHERE (
+                         menu_item.contentId  = ' . $page_id . ' 
                         OR
-                        menu_item.parent_id = (SELECT id FROM menu_item WHERE contentId = '.$page_id.' AND id_menu = 1)
-                    )
-                    AND menu_item.id_menu = 1
-                    AND page.published = 1
-                    ORDER BY menu_item.parent_id, menu_item.position, page.id ASC';
+                         menu_item.parent_id = (SELECT id FROM menu_item WHERE contentId = ' . $page_id . ' AND id_menu = ' . $menu_id . ')
+                        OR                       
+                         menu_item.parent_id = (
+                             SELECT parent_id FROM menu_item
+                             WHERE contentId = ' . $page_id . '
+                             AND id_menu = ' . $menu_id . '
+                             AND published = 1
+                         )
+                        OR
+                         page.id = (
+                             SELECT parent_id
+                             FROM page
+                             WHERE id = '.$page_id.'
+                             LIMIT 1
+                         )
+                     )
+                     AND menu_item.id_menu = ' . $menu_id . '
+                     AND page.published = 1
+                     ORDER BY menu_item.parent_id, menu_item.position, page.id ASC';
 
         return R::getAll($query);
-    }
 
-    public function get_articles_from_child($page_id) {
-
-        $query =   'SELECT page.menu_title, page.slug, page.teaser_text, page.image, page.id, page.slug, page.parent_id,
-                        menu_item.id as menu_item_id, menu_item.contentId as menu_item_contentId,
-                        menu_item.parent_id as menu_item_parent_id, menu_item.id_menu as menu_item_id_menu,
-                        menu_item.position as menu_item_position, (
-                            SELECT parent.slug
-                            FROM page as parent
-                            WHERE parent.id = page.parent_id
-                            LIMIT 1
-                        ) as parent_slug
-                    FROM page
-                    LEFT JOIN menu_item ON menu_item.contentId  = page.id
-                    WHERE (
-                        menu_item.parent_id = (
-                            SELECT parent_id FROM menu_item
-                            WHERE contentId = '.$page_id.'
-                            AND id_menu = 1
-                            AND published = 1
-                        )
-                        OR
-                        page.id = (
-                            SELECT parent_id
-                            FROM page
-                            WHERE id = '.$page_id.'
-                            LIMIT 1
-                        )
-                    )
-                    AND menu_item.id_menu = 1
-                    AND page.published = 1
-                    ORDER BY menu_item.parent_id, menu_item.position, page.id ASC';
-
-        return R::getAll($query);
     }
 
 }

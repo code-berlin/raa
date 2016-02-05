@@ -137,14 +137,7 @@ class Page extends CI_Controller {
 
         $data['contentSiblings'] = $this->page_m->get_siblings($page_id);
 
-        // get all related articles (parent and childs)
-        if (!$page['parent_id']) {
-            // actual page is parent
-            $data['articles'] = $this->page_m->get_articles_from_parent($page_id);
-        } else {
-            // actual page is child
-            $data['articles'] = $this->page_m->get_articles_from_child($page_id);
-        }
+        $data['articles'] = $this->page_m->get_articles_by_page_id_and_menu_id($page_id, 1);
 
         $data['articlePagination'] = get_article_pagination($data['articles'], $page_id);
 

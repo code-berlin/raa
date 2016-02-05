@@ -48,11 +48,8 @@ class Page_m extends CI_Model {
 		return $this->page_dao->get_siblings($page_id);
 	}
 
-	function get_articles_from_parent($page_id) {
-		return $this->page_dao->get_articles_from_parent($page_id);
+	function get_articles_by_page_id_and_menu_id($page_id, $menu_id) {
+		return $this->page_dao->get_articles($page_id, $menu_id);
     }
-
-    function get_articles_from_child($page_id) {
-        return $this->page_dao->get_articles_from_child($page_id);
-    }
+    
 }
