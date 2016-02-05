@@ -49,7 +49,7 @@ class Page_m extends CI_Model {
 	}
 
 	function get_articles_by_page_id_and_menu_id($page_id, $menu_id) {
-		return $this->page_dao->get_articles($page_id, $menu_id);
+		return $this->page_dao->get_articles_by_page_id_and_menu_id($page_id, $menu_id);
     }
     
 }
