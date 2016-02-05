@@ -134,8 +134,12 @@ class Page extends CI_Controller {
         $data['social']['description'] = $page->teaser_text;
         $data['social']['image'] = $page->image;
 
+
         $data['contentSiblings'] = $this->page_m->get_siblings($page_id);
-        $data['articlePagination'] = get_article_pagination($data['contentSiblings'], $page_id);
+
+        $data['articles'] = $this->page_m->get_articles_by_page_id_and_menu_id($page_id, 1);
+
+        $data['articlePagination'] = get_article_pagination($data['articles'], $page_id);
 
         return $data;
 
