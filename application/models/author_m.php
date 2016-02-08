@@ -8,8 +8,8 @@ class Author_m extends CI_Model {
 	}
 
 
-	function create($name, $position, $image, $text, $published, $gender) {
-		return $this->author_dao->create($name, $position, $image, $text, $published, $gender);
+	function create($name, $profession, $image, $text, $published, $gender) {
+		return $this->author_dao->create($name, $profession, $image, $text, $published, $gender);
 	}
 
 	function get_by_name($name) {

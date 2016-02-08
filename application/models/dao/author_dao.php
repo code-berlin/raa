@@ -12,16 +12,16 @@ class Author_dao extends CI_Model {
 		parent::__construct();
 
 		$this->load->library('rb');
-		
+
 		$this->table = 'author';
 
 	}
 
-	public function create($name, $position, $image, $text, $published, $gender) {
+	public function create($name, $profession, $image, $text, $published, $gender) {
 		$author = R::dispense($this->table);
 
 		$author->name = $name;
-		$author->position = $position;
+		$author->profession = $profession;
 		$author->image = $image;
 		$author->text = $text;
 		$author->published = $published;
