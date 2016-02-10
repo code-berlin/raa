@@ -7,14 +7,16 @@ class Author_m extends CI_Model {
 		$this->load->model('dao/author_dao');
 	}
 
+	function create() {
+		return $this->author_dao->create();
+	}
 
-	function create($name, $profession, $image, $text, $published, $gender) {
-		return $this->author_dao->create($name, $profession, $image, $text, $published, $gender);
+	function save($author) {
+		return $this->author_dao->save($author);
 	}
 
 	function get_by_name($name) {
 		return $this->author_dao->get_by_name($name);
 	}
-
 
 }

@@ -54,7 +54,7 @@ class Page_dao extends CI_Model{
 	}
 
 	public function save($page) {
-		return R::store($page);
+        return R::store($page);
 	}
 
 	public function delete($page) {
