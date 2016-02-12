@@ -169,6 +169,25 @@ class Page extends CI_Controller {
 
     }
 
+    function editorial($page_id) {
+
+        $data = array();
+
+        $this->load->model('page_m');
+        $this->load->model('author_m');
+
+        $page = $this->page_m->get_by_id($page_id);
+
+        $data['social']['title'] = $page->headline;
+        $data['social']['description'] = $page->teaser_text;
+        $data['social']['image'] = $page->image;
+
+        $data['authors'] = $this->author_m->get_all();
+
+        return $data;
+
+    }
+
     function error_404() {
 
         $data = array();
