@@ -43,6 +43,18 @@ class Page_dao extends CI_Model{
 		return $this->object;
 	}
 
+    public function get_by_slug_and_template_id($slug, $template_id) {
+
+        $qry = 'SELECT *, (SELECT `default_copyright_text` FROM `settings` LIMIT 1) as `default_copyright_text` FROM '.$this->table.' WHERE slug = :slug AND template_id = :template_id LIMIT 1;';
+
+        $res = R::getAll($qry, [ 'slug' => $slug , 'template_id' => $template_id]);
+        $this->object = R::convertToBeans($this->table,$res);
+
+        $this->preload_template();
+
+        return $this->object;
+    }
+
 	public function preload_template() {
 		if (!empty($this->object)) {
 			R::preload($this->object, array('template')); // Related types
