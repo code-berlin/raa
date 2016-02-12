@@ -1,9 +1,9 @@
 <?php
 /**
- * DAO for pages
+ * DAO for template
  *
  */
-class Author_dao extends CI_Model {
+class Template_dao extends CI_Model {
 
 	public function __construct() {
 
@@ -11,16 +11,8 @@ class Author_dao extends CI_Model {
 
 		$this->load->library('rb');
 
-		$this->table = 'author';
+		$this->table = 'template';
 
-	}
-
-	public function create() {
-		return R::dispense($this->table);
-	}
-
-	public function save($author) {
-		return R::store($author);
 	}
 
 	public function get_by_name($name) {

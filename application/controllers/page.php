@@ -130,7 +130,7 @@ class Page extends CI_Controller {
 
         $page = $this->page_m->get_by_id($page_id);
 
-        $data['social']['title'] = $page->menu_title;
+        $data['social']['title'] = $page->headline;
         $data['social']['description'] = $page->teaser_text;
         $data['social']['image'] = $page->image;
 
@@ -153,7 +153,7 @@ class Page extends CI_Controller {
 
         $page = $this->page_m->get_by_id($page_id);
 
-        $data['social']['title'] = $page->menu_title;
+        $data['social']['title'] = $page->headline;
         $data['social']['description'] = $page->teaser_text;
         $data['social']['image'] = $page->image;
 

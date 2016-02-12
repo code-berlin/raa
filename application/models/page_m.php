@@ -20,6 +20,10 @@ class Page_m extends CI_Model {
 		return $this->page_dao->get_by_slug($slug);
 	}
 
+	function get_by_slug_and_template_id($slug, $template_id) {
+		return $this->page_dao->get_by_slug_and_template_id($slug, $template_id);
+	}
+
 	function create() {
 		return $this->page_dao->create();
 	}
