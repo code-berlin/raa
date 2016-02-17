@@ -1,9 +1,9 @@
 <?php
 /**
- * DAO for author
+ * DAO for Mediathek
  *
  */
-class Author_dao extends CI_Model {
+class Mediathek_dao extends CI_Model {
 
 	public function __construct() {
 
@@ -11,20 +11,16 @@ class Author_dao extends CI_Model {
 
 		$this->load->library('rb');
 
-		$this->table = 'author';
+		$this->table = 'mediathek';
 
-	}
-
-	public function get_all() {
-		return R::find($this->table);
 	}
 
 	public function create() {
 		return R::dispense($this->table);
 	}
 
-	public function save($author) {
-		return R::store($author);
+	public function save($asset) {
+		return R::store($asset);
 	}
 
 	public function get_by_name($name) {
@@ -33,7 +29,8 @@ class Author_dao extends CI_Model {
 	}
 
 	public function get_by_id($id) {
-		return R::load($this->table, $id);
+		return R::findOne($this->table, 'id = :id',
+			array(':id' => $id));
 	}
 
 }

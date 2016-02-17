@@ -943,4 +943,25 @@ class Admin_Controller extends Main_Admin_Controller {
         $this->load->view('admin/admin', $data);
     }
 
+    /**
+    *   Handles the sidebar_teaser CRUD.
+    */
+    public function mediathek() {
+        $this->control_sidebar_items_display($data);
+
+        $auth = $this->auth_l;
+        $role_id = $this->user->role_id;
+        $url = $_SERVER['REQUEST_URI'];
+
+        if ($auth->check_section_access_required_permissions($role_id, $url)) {
+
+        } else {
+            $data['output'] = 'Not allowed';
+        }
+
+        $this->load->view('admin/admin', $data);
+
+
+    }
+
 }

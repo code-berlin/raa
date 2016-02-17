@@ -1,30 +1,29 @@
 <?php
 /**
- * DAO for author
+ * DAO for sidebar_teaser
  *
  */
-class Author_dao extends CI_Model {
+class Sidebar_teaser_dao extends CI_Model {
 
 	public function __construct() {
-
 		parent::__construct();
 
 		$this->load->library('rb');
 
-		$this->table = 'author';
+		$this->table = 'sidebar_teaser';
 
+	}
+
+	public function create() {
+		R::dispense($this->table);
+	}
+
+	public function save($sidebar_teaser) {
+		return R::store($sidebar_teaser);
 	}
 
 	public function get_all() {
 		return R::find($this->table);
-	}
-
-	public function create() {
-		return R::dispense($this->table);
-	}
-
-	public function save($author) {
-		return R::store($author);
 	}
 
 	public function get_by_name($name) {
