@@ -11,7 +11,7 @@ class Teaser_instance_dao extends CI_Model {
 
 		$this->load->library('rb');
 
-		$this->table = 'teaser_instance';
+		$this->table = 'teaserinstance';
 
 		$this->object = new stdClass();
 	}
@@ -28,7 +28,7 @@ class Teaser_instance_dao extends CI_Model {
 					`instance`.`id` AS id, `instance`.`position` AS position, `instance`.`title` AS title, `instance`.`text` AS text, `types`.`name` AS name 
 				FROM `' . $this->table . '` AS `instance` 
 				LEFT JOIN 
-					`teaser_types` AS `types` ON `types`.`id` = `instance`.`teaser_types_id` 
+					`teasertypes` AS `types` ON `types`.`id` = `instance`.`teaser_types_id` 
 				WHERE 
 					`instance`.`page_id` = :page_id AND 
 					`instance`.`published` = 1 

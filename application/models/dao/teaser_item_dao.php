@@ -11,7 +11,7 @@ class Teaser_item_dao extends CI_Model {
 
 		$this->load->library('rb');
 
-		$this->table = 'teaser_item';
+		$this->table = 'teaseritem';
 
 		$this->object = new stdClass();
 	}
@@ -22,7 +22,7 @@ class Teaser_item_dao extends CI_Model {
 					`item`.`title`, `item`.`text`, `page`.`id` AS `page_id`, `page`.`slug` AS `page_slug`, `page`.`image` AS `page_image`, 
 					`page`.`menu_title` AS `page_title`, `page`.`teaser_text` AS `page_text`, `parent`.`slug` AS `parent_slug`,
 					`item`.`content_type` as `content_type`, `item`.`external_link` as `external_link`, `item`.`external_image` as `external_image`
-				FROM `teaser_item` AS `item` 
+				FROM `teaseritem` AS `item` 
 				LEFT JOIN 
 					page ON `page`.`id` = `item`.`contentId` 
 				LEFT JOIN 
