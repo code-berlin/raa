@@ -144,7 +144,7 @@ class Admin_Controller extends Main_Admin_Controller {
 
             $this->check_section_permissions($crud);
 
-            $crud->set_table('menu_item');
+            $crud->set_table('menuitem');
             $crud->where('id_menu', $menu_id);
             $crud->where('content_type', 'page');
 
@@ -752,7 +752,7 @@ class Admin_Controller extends Main_Admin_Controller {
             // Page permissions
             $this->check_section_permissions($crud);
 
-            $crud->set_table('teaser_instance');
+            $crud->set_table('teaserinstance');
 
             $crud->where('page_id', $page_id);
 
@@ -810,7 +810,7 @@ class Admin_Controller extends Main_Admin_Controller {
             // Page permissions
             $this->check_section_permissions($crud);
 
-            $crud->set_table('teaser_item');
+            $crud->set_table('teaseritem');
 
             $crud->where('teaser_instanceId', $teaser_instance_id);
 
@@ -860,7 +860,7 @@ class Admin_Controller extends Main_Admin_Controller {
     }
 
     /**
-    *   Handles the sidebar_teaser CRUD.
+    *   Handles the sidebarteaser CRUD.
     */
     public function sidebar_teaser()
     {
@@ -876,7 +876,7 @@ class Admin_Controller extends Main_Admin_Controller {
             // Page permissions
             $this->check_section_permissions($crud);
 
-            $crud->set_table('sidebar_teaser');
+            $crud->set_table('sidebarteaser');
 
             // Fields to show on the list
             $crud->columns('id', 'text', 'image', 'url', 'published');

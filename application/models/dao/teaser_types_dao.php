@@ -11,7 +11,7 @@ class Teaser_types_dao extends CI_Model {
 
 		$this->load->library('rb');
 
-		$this->table = 'teaser_types';
+		$this->table = 'teasertypes';
 
 		$this->object = new stdClass();
 

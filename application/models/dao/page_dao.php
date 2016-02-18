@@ -89,7 +89,7 @@ class Page_dao extends CI_Model{
         return R::getAll('  SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.id, child.parent_id,
         						   parent.slug as parent_slug, (
 	                                SELECT position
-	                                FROM menu_item
+	                                FROM menuitem
 	                                WHERE id_menu = 1
 	                                AND content_type = "page"
 	                                AND contentId = child.id) as menu_position
@@ -109,7 +109,7 @@ class Page_dao extends CI_Model{
         return R::getAll('  SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.id, child.parent_id,
         	                       parent.slug as parent_slug, (
 	                                SELECT position
-	                                FROM menu_item
+	                                FROM menuitem
 	                                WHERE id_menu = 1
 	                                AND content_type = "page"
 	                                AND contentId = child.id
@@ -129,23 +129,23 @@ class Page_dao extends CI_Model{
     public function get_articles_by_page_id_and_menu_id($page_id, $menu_id) {
         
         $query =   'SELECT page.menu_title, page.slug, page.teaser_text, page.image, page.id, page.slug, page.parent_id,
-                         menu_item.id as menu_item_id, menu_item.contentId as menu_item_contentId,
-                         menu_item.parent_id as menu_item_parent_id, menu_item.id_menu as menu_item_id_menu,
-                         menu_item.position as menu_item_position, (
+                         menuitem.id as menu_item_id, menuitem.contentId as menu_item_contentId,
+                         menuitem.parent_id as menu_item_parent_id, menuitem.id_menu as menu_item_id_menu,
+                         menuitem.position as menu_item_position, (
                              SELECT parent.slug
                              FROM page as parent
                              WHERE parent.id = page.parent_id
                              LIMIT 1
                          ) as parent_slug
                      FROM page
-                     LEFT JOIN menu_item ON menu_item.contentId  = page.id
+                     LEFT JOIN menuitem ON menuitem.contentId  = page.id
                      WHERE (
-                         menu_item.contentId  = ' . $page_id . ' 
+                         menuitem.contentId  = ' . $page_id . ' 
                         OR
-                         menu_item.parent_id = (SELECT id FROM menu_item WHERE contentId = ' . $page_id . ' AND id_menu = ' . $menu_id . ')
+                         menuitem.parent_id = (SELECT id FROM menuitem WHERE contentId = ' . $page_id . ' AND id_menu = ' . $menu_id . ')
                         OR                       
-                         menu_item.parent_id = (
-                             SELECT parent_id FROM menu_item
+                         menuitem.parent_id = (
+                             SELECT parent_id FROM menuitem
                              WHERE contentId = ' . $page_id . '
                              AND id_menu = ' . $menu_id . '
                              AND published = 1
@@ -158,9 +158,9 @@ class Page_dao extends CI_Model{
                              LIMIT 1
                          )
                      )
-                     AND menu_item.id_menu = ' . $menu_id . '
+                     AND menuitem.id_menu = ' . $menu_id . '
                      AND page.published = 1
-                     ORDER BY menu_item.parent_id, menu_item.position, page.id ASC';
+                     ORDER BY menuitem.parent_id, menuitem.position, page.id ASC';
 
         return R::getAll($query);
 

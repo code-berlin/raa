@@ -24,7 +24,7 @@ class Menu_dao extends CI_Model{
 	}
 
 	public function get_by_id($id) {
-		/*$menu_items  = R::find('menu_item', 'id_menu = ?', array($id));
+		/*$menu_items  = R::find('menuitem', 'id_menu = ?', array($id));
 		return R::load($this->table, $id);*/
 	}
 
