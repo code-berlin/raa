@@ -58,13 +58,19 @@
                 </li>
             <?php } ?>
 
+            <li class="nav-header">Mediathek</li>
+            <?php if ($sidebar['EDIT_MEDIATHEK']) { ?>
+                <li>
+                    <a href='<?php echo site_url('admin/mediathek'); ?>'>Mediathek</a>
+                </li>
+            <?php } ?>
 
             <li class="nav-header">Author</li>
             <?php if ($sidebar['VIEW_PAGE']) { ?>
                 <li>
                     <a href='<?php echo site_url('admin/author'); ?>'>Author</a>
                 </li>
-            <?php } ?>
+            <?php } ?>            
 
             <?php if ($sidebar['VIEW_WIDGETS']) { ?>
                 <li class="nav-header">Widgets</li>

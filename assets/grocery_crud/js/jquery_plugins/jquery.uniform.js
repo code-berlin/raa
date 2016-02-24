@@ -499,19 +499,6 @@ Enjoy!
 								ev = document.createEvent("MouseEvents");
 								ev.initEvent("click", true, true);
 								res = $el[0].dispatchEvent(ev);
-
-								// What about Chrome and Opera?
-								// Should the browser check be removed?
-								if ((jQuery.browser.msie || jQuery.browser.mozilla) && $el.is('a') && res) {
-									target = attrOrProp($el, 'target');
-									href = attrOrProp($el, 'href');
-
-									if (!target || target === '_self') {
-										document.location.href = href;
-									} else {
-										window.open(href, target);
-									}
-								}
 							} else {
 								$el.click();
 							}
@@ -609,22 +596,11 @@ Enjoy!
 					filenameUpdate();
 
 					// IE7 doesn't fire onChange until blur or second fire.
-					if ($.browser.msie) {
-						// IE considers browser chrome blocking I/O, so it
-						// suspends tiemouts until after the file has
-						// been selected.
-						bindMany($el, options, {
-							click: function () {
-								$el.trigger("change");
-								setTimeout(filenameUpdate, 0);
-							}
-						});
-					} else {
-						// All other browsers behave properly
-						bindMany($el, options, {
-							change: filenameUpdate
-						});
-					}
+					// All other browsers behave properly
+					bindMany($el, options, {
+						change: filenameUpdate
+					});
+
 
 					noSelect($filename, options);
 					noSelect($button, options);
@@ -824,11 +800,6 @@ Enjoy!
 				}
 			}
 		];
-
-	// IE6 can't be styled - can't set opacity on select
-	if ($.browser.msie && $.browser.version < 7) {
-		allowStyling = false;
-	}
 
 	$.uniform = {
 		// Default options that can be overridden globally or when uniformed

@@ -13,6 +13,22 @@ class Menu_item_dao extends CI_Model{
 		$this->table = 'menuitem';
 	}
 
+	public function get_all() {
+		return R::find($this->table);
+	}
+
+	public function create() {
+		return R::dispense($this->table);
+	}
+
+	public function save($menu_item) {
+		return R::store($menu_item);
+	}
+
+	public function get_by_id($id) {
+		return R::load($this->table, $id);
+	}
+
 	public function get_by_menu_id($id) {
 		$menu_items  = R::find($this->table, 'id_menu = ? AND published = 1', array($id));
 

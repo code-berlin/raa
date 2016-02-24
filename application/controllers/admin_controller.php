@@ -54,7 +54,7 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->columns('menu_title', 'headline', 'slug', 'published');
 
             // Fields to show when editing
-            $crud->edit_fields('template_id', 'parent_id','main_category', 'menu_title', 'headline', 'teaser_text', 'text', 'date', 'image', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id');
+            $crud->edit_fields('template_id', 'parent_id','main_category', 'menu_title', 'headline', 'teaser_text', 'text', 'date', 'mediathek_id', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id');
 
             $crud->field_type('id', 'hidden');
             $crud->field_type('date', 'hidden');
@@ -64,8 +64,10 @@ class Admin_Controller extends Main_Admin_Controller {
 
             // Set relations using foreign keys
             $crud->set_relation('template_id','template','name');
-            $crud->set_field_upload('image', $this->config->item('upload_folder'));
-
+            $crud->set_relation('mediathek_id','mediathek', 'id');
+            $crud->callback_field('mediathek_id', array($this, '_callback_field_image_mediathek'));
+            $crud->display_as('mediathek_id','Mediathek');
+            
             $crud->display_as('template_id','Template');
             $crud->display_as('main_category','Is parent');
 
@@ -955,6 +957,36 @@ class Admin_Controller extends Main_Admin_Controller {
 
         if ($auth->check_section_access_required_permissions($role_id, $url)) {
 
+            $crud = $this->grocery_crud;
+
+            // Page permissions
+            $this->check_section_permissions($crud);
+
+            $crud->set_table('mediathek');
+
+            // Fields to show on the list
+            $crud->columns('name', 'alt_text', 'uploaded_at');
+
+            // Fields to show when editing
+            $crud->required_fields('filename', 'name');
+            $crud->fields('id', 'path', 'filename', 'name', 'licence', 'alt_text', 'MIME', 'uploaded_at', 'user_id');
+
+            $crud->field_type('id', 'hidden');
+            $crud->field_type('MIME', 'hidden');
+            $crud->field_type('uploaded_at', 'hidden');
+            $crud->field_type('user_id', 'hidden', $this->user->role_id);
+            $crud->field_type('path', 'hidden', $this->config->item('upload_folder'));
+            
+            $crud->set_field_upload('filename', $this->config->item('upload_folder'));
+            
+            $crud->callback_before_update(array($this,'mediathek_callback_before_update'));
+            
+            try {
+                $this->add_grocery_to_data_array($crud->render(), $data);
+            } catch(Exception $e) {
+                $data['output'] = $e->getMessage();
+            }
+
         } else {
             $data['output'] = 'Not allowed';
         }
@@ -962,6 +994,58 @@ class Admin_Controller extends Main_Admin_Controller {
         $this->load->view('admin/admin', $data);
 
 
+    }
+
+    function mediathek_callback_before_update($post_array, $primary_key) {
+
+        if (!empty($post_array['filename'])) {
+
+            $orig_file = $post_array['path'] . '/' . $post_array['filename'];
+
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $post_array['MIME'] = finfo_file($finfo, $orig_file);
+            finfo_close($finfo);
+
+            $post_array['uploaded_at'] = date('c', filectime($orig_file));
+
+            $ext = pathinfo($orig_file, PATHINFO_EXTENSION);
+
+            $name = basename($orig_file, ".".$ext);
+
+            $post_array['name'] = $name;
+
+        }
+
+        return $post_array;
+
+    }
+
+    function _callback_field_image_mediathek($value = '', $primary_key = null) {
+
+        $table = 'mediathek';
+
+        $result = $this->db->get_where($table, array('id' => $value), 1, 0)->result();
+        
+        $html = '';
+
+        $html .= '<input type="hidden" name="mediathek_id" id="field-mediathek_id" class="js-mediathek-hidden" value="' . (!empty($value) ? $value :'') .'" />';
+
+        if (!empty($result)) {
+            $html .= '<img src="/' . $result['path'].'/'.$result['filename'] . '" class="js-mediathek-image" />';
+        } else {
+            $html .= '<img src="" class="js-mediathek-image" />';
+        }       
+
+        $html .= '<a href="" class="js-mediathek-link">Bild auswählen</a>';
+
+        //$html .= '<select name="mediathek_id" id="field-mediathek_id" class="" data-placeholder="Select Mediathek id" style="width: 300px;>';
+        //$html .= '<option value=""></option>';
+        //foreach ($result->result_array() as $row) {
+        //    $html .= '<option ' . ($value == $row['id'] ? 'selected="selected"' : '') . 'value="'.$row['id'].'" data-img-src="/'.$row['path'].'/'.$row['filename'].'">'.$row['name'].'</option>';
+        //}
+        //$html .= '</select>';
+
+        return $html;
     }
 
 }

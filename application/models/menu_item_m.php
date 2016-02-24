@@ -8,6 +8,22 @@ class Menu_item_m extends CI_Model {
 		$this->load->model('dao/menu_item_dao');
 	}
 
+	function create() {
+		return $this->menu_item_dao->create();
+	}
+
+	function save($menu_item) {
+		return $this->menu_item_dao->save($menu_item);
+	}
+
+	function get_all() {
+		return $this->menu_item_dao->get_all();
+	}
+
+	function get_by_id($id) {
+		return $this->menu_item_dao->get_by_id($id);
+	}
+
 	public function get_by_menu_id($id) {
 		return $this->menu_item_dao->get_by_menu_id($id);
 	}

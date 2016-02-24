@@ -38,9 +38,6 @@
         <?php $this->load->view('admin/footer');?>
     </div>
 
-    <script src="<?php echo base_url('/assets/js/lib/jquery-1.11.0.min.js')?>"></script>
-    <script src="<?php echo base_url('/assets/bootstrap/js/bootstrap.min.js')?>"></script>
-
     <?php
         if(isset($js_files)){
             foreach($js_files as $file){
@@ -50,5 +47,10 @@
             }
         }
     ?>
+    <script type="text/javascript">
+        $(".js-mediathek-link").on("click", function(e) {
+            e.preventDefault();
+        });
+    </script>
 </body>
 </html>

@@ -10,12 +10,12 @@ class Sidebar_teaser_dao extends CI_Model {
 
 		$this->load->library('rb');
 
-		$this->table = 'sidebar_teaser';
+		$this->table = 'sidebarteaser';
 
 	}
 
 	public function create() {
-		R::dispense($this->table);
+		return R::dispense($this->table);
 	}
 
 	public function save($sidebar_teaser) {
