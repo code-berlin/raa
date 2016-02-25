@@ -101,6 +101,22 @@ class Page_dao extends CI_Model{
                             ORDER BY menu_position, child.id ASC');
     }
 
+    function get_children_ordered_by_menu_title($page_id) {
+        return R::getAll('  SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.id, child.parent_id,
+                                   parent.slug as parent_slug, (
+                                    SELECT position
+                                    FROM menuitem
+                                    WHERE id_menu = 1
+                                    AND content_type = "page"
+                                    AND contentId = child.id) as menu_position
+                            FROM '.$this->table.' as child
+                            LEFT JOIN '.$this->table.' as parent ON parent.id = child.parent_id
+                            WHERE child.parent_id = '.$page_id.'
+                            AND child.published = 1
+                            AND parent.published = 1
+                            ORDER BY child.menu_title ASC');
+    }
+
     public function get_parent($page_id) {
         return R::getCell('SELECT parent_id FROM '.$this->table.' WHERE id = '.$page_id.' AND published = 1');
     }
@@ -127,7 +143,7 @@ class Page_dao extends CI_Model{
     }
 
     public function get_articles_by_page_id_and_menu_id($page_id, $menu_id) {
-        
+
         $query =   'SELECT page.menu_title, page.slug, page.teaser_text, page.image, page.id, page.slug, page.parent_id,
                          menuitem.id as menu_item_id, menuitem.contentId as menu_item_contentId,
                          menuitem.parent_id as menu_item_parent_id, menuitem.id_menu as menu_item_id_menu,
@@ -140,10 +156,10 @@ class Page_dao extends CI_Model{
                      FROM page
                      LEFT JOIN menuitem ON menuitem.contentId  = page.id
                      WHERE (
-                         menuitem.contentId  = ' . $page_id . ' 
+                         menuitem.contentId  = ' . $page_id . '
                         OR
                          menuitem.parent_id = (SELECT id FROM menuitem WHERE contentId = ' . $page_id . ' AND id_menu = ' . $menu_id . ')
-                        OR                       
+                        OR
                          menuitem.parent_id = (
                              SELECT parent_id FROM menuitem
                              WHERE contentId = ' . $page_id . '

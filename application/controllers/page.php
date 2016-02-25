@@ -163,6 +163,8 @@ class Page extends CI_Controller {
 
         $data['teaserItems'] = $this->page_m->get_children($page_id);
 
+        $data['listItems'] = $this->page_m->get_children_ordered_by_menu_title($page_id);
+
         $data['teaserColumns'] = 3;
 
         return $data;
