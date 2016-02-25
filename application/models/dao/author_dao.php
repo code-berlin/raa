@@ -28,4 +28,8 @@ class Author_dao extends CI_Model {
 			array(':name' => $name));
 	}
 
+	public function get_all() {
+		return R::find($this->table, 'published = 1');
+	}
+
 }
