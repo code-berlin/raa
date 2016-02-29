@@ -136,10 +136,6 @@ class Page extends CI_Controller {
 
         $data['contentSiblings'] = $this->page_m->get_siblings($page_id);
 
-        $data['articles'] = $this->page_m->get_articles_by_page_id_and_menu_id($page_id, 1);
-
-        $data['articlePagination'] = get_article_pagination($data['articles'], $page_id);
-
         return $data;
 
     }
@@ -156,10 +152,6 @@ class Page extends CI_Controller {
         $data['social']['title'] = (!empty($page->seo_meta_title) ? $page->seo_meta_title : $page->headline);
         $data['social']['description'] = (!empty($page->seo_meta_description) ? $page->seo_meta_description : $page->teaser_text);
         $data['social']['image'] = $page->image;
-
-        // MAGNESIUM
-        $data['articles'] = $this->page_m->get_articles_by_page_id_and_menu_id($page_id, 1);
-        $data['articlePagination'] = get_article_pagination($data['articles'], $page_id);
 
         // TINNITUSMAG
         $data['teaserItems'] = $this->page_m->get_children($page_id);
@@ -178,8 +170,8 @@ class Page extends CI_Controller {
 
         $page = $this->page_m->get_by_id($page_id);
 
-        $data['social']['title'] = $page->headline;
-        $data['social']['description'] = $page->teaser_text;
+        $data['social']['title'] = (!empty($page->seo_meta_title) ? $page->seo_meta_title : $page->headline);
+        $data['social']['description'] = (!empty($page->seo_meta_description) ? $page->seo_meta_description : $page->teaser_text);
         $data['social']['image'] = $page->image;
 
         $data['authors'] = $this->author_m->get_all();
