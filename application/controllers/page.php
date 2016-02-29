@@ -157,14 +157,12 @@ class Page extends CI_Controller {
         $data['social']['description'] = $page->teaser_text;
         $data['social']['image'] = $page->image;
 
+        // MAGNESIUM
         $data['articles'] = $this->page_m->get_articles_by_page_id_and_menu_id($page_id, 1);
-
         $data['articlePagination'] = get_article_pagination($data['articles'], $page_id);
 
+        // TINNITUSMAG
         $data['teaserItems'] = $this->page_m->get_children($page_id);
-
-        $data['listItems'] = $this->page_m->get_children_ordered_by_menu_title($page_id);
-
         $data['teaserColumns'] = 3;
 
         return $data;

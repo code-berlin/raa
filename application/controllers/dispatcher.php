@@ -129,7 +129,10 @@ class Dispatcher extends Page {
 
                 $this->load->library('theme');
 
-                $this->data['lib_data'] = $this->theme->get_template_data();
+                $lib_data = array();
+                $lib_data['page_id'] = $this->data[$this->type]->id;
+                $lib_data['template_method'] = $template_method;
+                $this->data['lib_data'] = $this->theme->get_template_data($lib_data);
 
                 // Set the template name or throw error
                 if (!empty($this->data[$this->type]->template)) {
