@@ -19,4 +19,8 @@ class Author_m extends CI_Model {
 		return $this->author_dao->get_by_name($name);
 	}
 
+	function get_all() {
+		return $this->author_dao->get_all();
+	}
+
 }

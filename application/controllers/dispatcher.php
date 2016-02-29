@@ -71,7 +71,7 @@ class Dispatcher extends Page {
                 } else {
                     $bean_data = $this->$model_type->get_by_slug($slug);
                 }
-                $this->data[$this->type] = $bean_data[key($bean_data)];                
+                $this->data[$this->type] = $bean_data[key($bean_data)];
 
                 // setting the data type and the id for the layout
                 $this->data['type'] = $this->type;
@@ -80,7 +80,7 @@ class Dispatcher extends Page {
                 $this->data['section_name'] =  $this->data[$this->type]->slug;
 
                 $this->load->model('teaser_m');
-                
+
                 $teaser_instances = $this->teaser_m->get_teaser_instance_by_page_id($this->data[$this->type]->id);
 
                 $teaser = array();
@@ -152,7 +152,7 @@ class Dispatcher extends Page {
     }
 
     public function theme_method($method) {
-        
+
         $args = func_num_args();
         $method_args = array();
 

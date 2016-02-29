@@ -163,7 +163,28 @@ class Page extends CI_Controller {
 
         $data['teaserItems'] = $this->page_m->get_children($page_id);
 
+        $data['listItems'] = $this->page_m->get_children_ordered_by_menu_title($page_id);
+
         $data['teaserColumns'] = 3;
+
+        return $data;
+
+    }
+
+    function editorial($page_id) {
+
+        $data = array();
+
+        $this->load->model('page_m');
+        $this->load->model('author_m');
+
+        $page = $this->page_m->get_by_id($page_id);
+
+        $data['social']['title'] = $page->headline;
+        $data['social']['description'] = $page->teaser_text;
+        $data['social']['image'] = $page->image;
+
+        $data['authors'] = $this->author_m->get_all();
 
         return $data;
 

@@ -44,6 +44,10 @@ class Page_m extends CI_Model {
 		return $this->page_dao->get_children($page_id);
 	}
 
+	function get_children_ordered_by_menu_title($page_id) {
+		return $this->page_dao->get_children_ordered_by_menu_title($page_id);
+	}
+
 	function get_parent($page_id) {
 		return $this->page_dao->get_parent($page_id);
 	}
@@ -55,5 +59,5 @@ class Page_m extends CI_Model {
 	function get_articles_by_page_id_and_menu_id($page_id, $menu_id) {
 		return $this->page_dao->get_articles_by_page_id_and_menu_id($page_id, $menu_id);
     }
-    
+
 }
