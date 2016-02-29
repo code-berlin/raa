@@ -134,8 +134,6 @@ class Page extends CI_Controller {
         $data['social']['description'] = (!empty($page->seo_meta_description) ? $page->seo_meta_description : $page->teaser_text);
         $data['social']['image'] = $page->image;
 
-        $data['contentSiblings'] = $this->page_m->get_siblings($page_id);
-
         return $data;
 
     }
@@ -152,10 +150,6 @@ class Page extends CI_Controller {
         $data['social']['title'] = (!empty($page->seo_meta_title) ? $page->seo_meta_title : $page->headline);
         $data['social']['description'] = (!empty($page->seo_meta_description) ? $page->seo_meta_description : $page->teaser_text);
         $data['social']['image'] = $page->image;
-
-        // TINNITUSMAG
-        $data['teaserItems'] = $this->page_m->get_children($page_id);
-        $data['teaserColumns'] = 3;
 
         return $data;
 
