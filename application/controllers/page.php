@@ -130,8 +130,8 @@ class Page extends CI_Controller {
 
         $page = $this->page_m->get_by_id($page_id);
 
-        $data['social']['title'] = $page->headline;
-        $data['social']['description'] = $page->teaser_text;
+        $data['social']['title'] = (!empty($page->seo_meta_title) ? $page->seo_meta_title : $page->headline);
+        $data['social']['description'] = (!empty($page->seo_meta_description) ? $page->seo_meta_description : $page->teaser_text);
         $data['social']['image'] = $page->image;
 
         $data['contentSiblings'] = $this->page_m->get_siblings($page_id);
@@ -153,8 +153,8 @@ class Page extends CI_Controller {
 
         $page = $this->page_m->get_by_id($page_id);
 
-        $data['social']['title'] = $page->headline;
-        $data['social']['description'] = $page->teaser_text;
+        $data['social']['title'] = (!empty($page->seo_meta_title) ? $page->seo_meta_title : $page->headline);
+        $data['social']['description'] = (!empty($page->seo_meta_description) ? $page->seo_meta_description : $page->teaser_text);
         $data['social']['image'] = $page->image;
 
         $data['articles'] = $this->page_m->get_articles_by_page_id_and_menu_id($page_id, 1);
