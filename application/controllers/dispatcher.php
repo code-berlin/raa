@@ -79,6 +79,8 @@ class Dispatcher extends Page {
                 $this->data['id'] = $this->data[$this->type]->id;
                 $this->data['section_name'] =  $this->data[$this->type]->slug;
 
+                $this->data['theme'] = $this->config->item('theme');
+
                 $this->load->model('teaser_m');
 
                 $teaser_instances = $this->teaser_m->get_teaser_instance_by_page_id($this->data[$this->type]->id);
