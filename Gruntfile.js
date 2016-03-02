@@ -14,6 +14,7 @@ module.exports = function(grunt) {
         'assets/js/lib/slick.min.js',
         'assets/js/lib/jquery.cookiebar.js',
         'assets/js/lib/jquery.onAppear.min.js',
+        'assets/js/lib/jquery.flexslider-min.js',
         'assets/js/themes/' + theme + '/**/*.js'
     ];
 
@@ -64,6 +65,7 @@ module.exports = function(grunt) {
                     'assets/css/vendor/superfish.css',
                     'assets/css/vendor/slick.css',
                     'assets/css/vendor/jquery.cookiebar.css',
+                    'assets/css/vendor/flexslider.css',
                     'assets/css/raa/main.css',
                     'assets/css/theme/main.css'
                 ],
@@ -107,7 +109,7 @@ module.exports = function(grunt) {
                         sourcemap: false,
                         outputStyle: 'compressed'
                     }
-                } 
+                }
             },
             theme : {
                 options: {
