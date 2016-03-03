@@ -12,6 +12,11 @@
 			<?php
 			}
 
+			if (isset($value['text'])) { ?>
+				<h3 class="teaser-h3"><?php echo $value['text']; ?></h3>
+			<?php
+			}
+
 			$this->load->view('teaser/teaser_' . $value['teaser_type'], $value);
 
 		}

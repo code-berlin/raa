@@ -16,10 +16,20 @@ var menu = {
 			$('.sf-menu').toggleClass("xactive");
 		});
 
+		// CLOSE MENU ON MOBILE IF JUMPMARK LINK IS CLICKED
+		$('.js-jumpmark').click(function() {
+			if ($('#mobnav-btn').is(':visible')) {
+				$('.sf-menu').removeClass("xactive");
+			}
+		});
+
 		// TRIGGER DROP DOWN SUBS
 		$('.mobnav-subarrow').click(function() {
 			$(this).parent().toggleClass("xpopdrop");
 		});
+
+
+
 
 	}
 

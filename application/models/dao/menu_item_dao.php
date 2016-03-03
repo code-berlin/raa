@@ -38,14 +38,14 @@ class Menu_item_dao extends CI_Model{
 	}
 
 	public function get_menu_items_by_menu_id_and_parent_id($menu_id, $parent_id) {
-		
-		$qry = "SELECT `menuitem`.`id`, `menuitem`.`contentId`, `child`.`menu_title`, `child`.`slug`, `child`.`parent_id`, `parent`.`slug` as parent_slug FROM `menuitem` 
-				LEFT JOIN `page` as child ON `menuitem`.`contentId` = `child`.`id` 
+
+		$qry = "SELECT `menuitem`.`id`, `menuitem`.`contentId`, `menuitem`.`jumpmark`, `child`.`menu_title`, `child`.`slug`, `child`.`parent_id`, `parent`.`slug` as parent_slug FROM `menuitem`
+				LEFT JOIN `page` as child ON `menuitem`.`contentId` = `child`.`id`
 				LEFT JOIN `page` as parent ON `parent`.`id` = `child`.`parent_id`
 				WHERE `menuitem`.`content_type` = 'page'
 				AND `menuitem`.`id_menu` = :menu_id
-				AND `menuitem`.`parent_id` " . ($parent_id == "" ? " IS NULL" : " = :parent_id") . " 
-				AND `menuitem`.`published` = 1 
+				AND `menuitem`.`parent_id` " . ($parent_id == "" ? " IS NULL" : " = :parent_id") . "
+				AND `menuitem`.`published` = 1
 				AND `child`.`published` = 1
 				ORDER BY `menuitem`.`position` ASC";
 
