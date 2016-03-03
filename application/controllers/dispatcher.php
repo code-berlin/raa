@@ -29,6 +29,7 @@ class Dispatcher extends Page {
         $templates_folder = 'templates';
 
         $this->data['language'] = $this->language;
+        $this->data['theme'] = $this->config->item('theme');
 
         // Retrieve homepage in case it exists.
         if (empty($slug)) {
@@ -78,8 +79,6 @@ class Dispatcher extends Page {
 
                 $this->data['id'] = $this->data[$this->type]->id;
                 $this->data['section_name'] =  $this->data[$this->type]->slug;
-
-                $this->data['theme'] = $this->config->item('theme');
 
                 $this->load->model('teaser_m');
 
@@ -152,7 +151,7 @@ class Dispatcher extends Page {
         // show error page
         header('HTTP/1.0 404 Not Found');
         $this->data['template_method'] = 'error_404';
-        $this->data['template_data'] = $this->error_404();
+        $this->data['lib_data'] = $this->error_404();
         return $this->layout->view('page/'.$templates_folder.'/error_404', $this->data);
 
     }
