@@ -26,7 +26,7 @@ class Search extends CI_Controller {
 
         $lib_data = array();
         $lib_data['page_id'] = '';
-        $lib_data['template_method'] = '';
+        $lib_data['template_method'] = 'search';
 
         $subdata['lib_data'] = $this->theme->get_template_data($lib_data);
         $subdata['searchterm'] = $_REQUEST['gs'];
