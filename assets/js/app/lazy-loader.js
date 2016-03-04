@@ -67,6 +67,12 @@ var lazyLoader = {
             return;
         }
 
+        // stay with placeholder, if no image is set
+        if (img.data('src') === '') {
+            img.addClass('loaded');
+            return;
+        }
+
         img.load(function() {
             img.addClass('loaded');
         });
