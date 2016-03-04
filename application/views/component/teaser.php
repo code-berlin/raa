@@ -2,22 +2,30 @@
 	if (!empty($teaser)) {
 		foreach ($teaser as $key => $value) {
 
-			if (isset($value['jumpmark'])) { ?>
-				<span id="jumpmark_<?php echo $value['jumpmark']; ?>"></span>
-			<?php
-			}
+			if (is_file(APPPATH . 'views/themes/'. $theme . '/teaser/teaser_' . $value['teaser_type'] . EXT)) {
 
-			if (isset($value['title'])) { ?>
-				<h2 class="teaser-h2"><?php echo $value['title']; ?></h2>
-			<?php
-			}
+				if (isset($value['jumpmark'])) { ?>
+					<span id="jumpmark_<?php echo $value['jumpmark']; ?>"></span>
+				<?php
+				}
 
-			if (isset($value['text'])) { ?>
-				<h3 class="teaser-h3"><?php echo $value['text']; ?></h3>
-			<?php
-			}
+				if (isset($value['title'])) { ?>
+					<h2 class="teaser-h2"><?php echo $value['title']; ?></h2>
+				<?php
+				}
 
-			$this->load->view('teaser/teaser_' . $value['teaser_type'], $value);
+				if (isset($value['text'])) { ?>
+					<h3 class="teaser-h3"><?php echo $value['text']; ?></h3>
+				<?php
+				}
+
+				$this->load->view('teaser/teaser_' . $value['teaser_type'], $value);
+
+			} else {
+
+				echo "Teaser Type '" . $value['teaser_type'] . "' is not available for this theme. Please choose another in your admin.";
+
+			}
 
 		}
 	}
