@@ -14,6 +14,7 @@ var menu = {
 		// TRIGGER ACTIVE STATE
 		$('#mobnav-btn').click(function() {
 			$('.sf-menu').toggleClass("xactive");
+			$('.sf-menu li').removeClass("xpopdrop");
 		});
 
 		// CLOSE MENU ON MOBILE IF JUMPMARK LINK IS CLICKED
