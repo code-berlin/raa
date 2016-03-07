@@ -5,7 +5,7 @@
 			if (is_file(APPPATH . 'views/themes/'. $theme . '/teaser/teaser_' . $value['teaser_type'] . EXT)) {
 
 				if (isset($value['jumpmark'])) { ?>
-					<span id="jumpmark_<?php echo $value['jumpmark']; ?>"></span>
+					<a name="jumpmark_<?php echo $value['jumpmark']; ?>"></a>
 				<?php
 				}
 
