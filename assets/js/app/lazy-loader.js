@@ -7,12 +7,14 @@ var lazyLoader = {
     init: function() {
 
         var lazyImages = $('.js-lazy-img'),
-            appearTriggableImages = $('.js-appear-triggable');
+            appearTriggableImages = $('.js-appear-triggable'),
+            lazySlideshow = $('.js-lazy-slideshow');
 
         this.attachAppearEventListener(lazyImages);
         this.attachOrientationChangeListener(lazyImages);
         this.attachTriggeredAppearEventListener(appearTriggableImages);
         this.attachOrientationChangeListener(appearTriggableImages);
+        this.attachAppearEventListenerForSlideshow(lazySlideshow);
 
     },
 
@@ -60,6 +62,25 @@ var lazyLoader = {
         }.bind(this));
     },
 
+    /*
+     * special handling for images in slideshow
+     * @param object slideshow - jquery object of the slideshow
+     */
+    attachAppearEventListenerForSlideshow: function(slideshow) {
+
+        var me = this;
+        slideshow.on('appear', function() {
+            slideshow.find('img').each(function(){
+                var img = $(this);
+                src = '/image/preview/' + slideshow.width() +'/' + slideshow.height() + '/' + img.data('src');
+                img.attr('src', src);
+                img.addClass('loaded');
+            });
+        });
+
+        slideshow.initAppear({once:true});
+    },
+
     // handle appear
     onImageAppear: function(img) {
 
@@ -69,7 +90,6 @@ var lazyLoader = {
 
         // stay with placeholder, if no image is set
         if (img.data('src') === '') {
-            img.addClass('loaded');
             return;
         }
 
