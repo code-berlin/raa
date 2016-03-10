@@ -14,7 +14,10 @@ var lazyLoader = {
         this.attachOrientationChangeListener(lazyImages);
         this.attachTriggeredAppearEventListener(appearTriggableImages);
         this.attachOrientationChangeListener(appearTriggableImages);
-        this.attachAppearEventListenerForSlideshow(lazySlideshow);
+
+        if (lazySlideshow.length > 0) {
+            this.attachAppearEventListenerForSlideshow(lazySlideshow);
+        }
 
     },
 
@@ -69,13 +72,30 @@ var lazyLoader = {
     attachAppearEventListenerForSlideshow: function(slideshow) {
 
         var me = this;
+
         slideshow.on('appear', function() {
-            slideshow.find('img').each(function(){
-                var img = $(this);
-                src = '/image/preview/' + slideshow.width() +'/' + slideshow.height() + '/' + img.data('src');
+
+            var thumbnails = $('.flex-control-thumbs img'),
+                placeholder = $('.js-lazy-slideshow-placeholder');
+
+            slideshow.find('.js-slideshow-lazy-img').each(function(i){
+
+                var img = $(this),
+                    thumbnail = thumbnails[i] ? $(thumbnails[i]) : false;
+
+                src = '/image/preview/' + placeholder.width() +'/' + placeholder.height() + '/' + img.data('src');
                 img.attr('src', src);
                 img.addClass('loaded');
+
+                if (thumbnail) {
+                   thumbnail.attr('src', src);
+                   thumbnail.addClass('loaded');
+                }
+
             });
+
+            placeholder.remove();
+
         });
 
         slideshow.initAppear({once:true});
