@@ -90,6 +90,13 @@
                 </li>
             <?php } ?>
 
+            <?php if ($sidebar['TRANSLATE_CONTENT']) { ?>
+                <li class="nav-header">Language</li>
+                <li>
+                    <a href='<?php echo site_url('admin/language'); ?>'>CMS Languages</a>
+                </li>
+            <?php } ?>
+
         </ul>
     <?php } ?>
 </div>

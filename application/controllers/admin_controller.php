@@ -3,11 +3,14 @@
 require('main_admin_controller.php');
 
 class Admin_Controller extends Main_Admin_Controller {
+    
+    var $ci;
+
     function __construct()
     {
         parent::__construct();
-
         $this->load->library('grocery_CRUD');
+        $this->ci = &get_instance();
     }
 
     /****************************************************************
@@ -42,6 +45,8 @@ class Admin_Controller extends Main_Admin_Controller {
         $role_id = $this->user->role_id;
         $url = $_SERVER['REQUEST_URI'];
 
+        $this->ci->language->test();
+
         if ($auth->check_section_access_required_permissions($role_id, $url)) {
             $crud = $this->grocery_crud;
 
@@ -53,14 +58,20 @@ class Admin_Controller extends Main_Admin_Controller {
             // Fields to show on the list
             $crud->columns('menu_title', 'headline', 'slug', 'published');
 
+            $crud->where('page.language_id', '52');
+
+            $cms_lang_switcher = $this->_cms_lang_switcher($crud);
+
             // Fields to show when editing
-            $crud->edit_fields('template_id', 'parent_id','main_category', 'menu_title', 'headline', 'teaser_text', 'text', 'date', 'image', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id');
+            $crud->edit_fields('template_id', 'parent_id','main_category', 'menu_title', 'headline', 'teaser_text', 'text', 'date', 'image', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id', 'language_id');
 
             $crud->field_type('id', 'hidden');
             $crud->field_type('date', 'hidden');
 
             $crud->field_type('sitemap_prio','dropdown',
                 array('0.1' => '0.1', '0.3' => '0.3', '0.5' => '0.5', '0.8' => '0.8', '1' => '1'));
+
+            #$crud->field_type('language_id','dropdown');
 
             // Set relations using foreign keys
             $crud->set_relation('template_id','template','name');
@@ -74,6 +85,11 @@ class Admin_Controller extends Main_Admin_Controller {
 
             $crud->set_relation('author_id','author','name');
             $crud->display_as('author_id','Author');
+
+            $crud->set_relation('language_id', 'language', '{iso_639_1} - {native_name}', array('published' => '1'));
+            $crud->display_as('language_id','Page Language');
+
+            $crud->required_fields('language_id', 'template_id', 'sitemap_prio', 'slug');
 
             if ($auth->check_user_has_permission($role_id, 'EDIT_TEASER')) {
                 $crud->add_action('Teaser Verwaltung --- Icons made by Freepik from www.flaticon.com is licensed by CC BY 3.0', '/assets/images/screen114.png', site_url('admin/teaser_instance') . '/');
@@ -94,6 +110,8 @@ class Admin_Controller extends Main_Admin_Controller {
         } else {
             $data['output'] = 'Not allowed';
         }
+        
+        $data['output'] = $cms_lang_switcher . $data['output'];
 
         $this->load->view('admin/admin', $data);
     }
@@ -941,6 +959,65 @@ class Admin_Controller extends Main_Admin_Controller {
         }
 
         $this->load->view('admin/admin', $data);
+    }
+
+    /**
+    *   Handles the language CRUD.
+    */
+    public function language()
+    {
+        $this->control_sidebar_items_display($data);
+
+        $auth = $this->auth_l;
+        $role_id = $this->user->role_id;
+        $url = $_SERVER['REQUEST_URI'];
+
+        if ($auth->check_section_access_required_permissions($role_id, $url)) {
+            $crud = $this->grocery_crud;
+
+            // Page permissions
+            $this->check_section_permissions($crud);
+
+            $crud->set_table('language');
+
+            // Fields to show on the list
+            $crud->columns('language_name', 'native_name', 'iso_639_1', 'published');
+
+            $crud->field_type('id', 'hidden');
+            $crud->field_type('published','true_false', array('1' => 'Yes', '0' => 'No'));
+            $crud->order_by('published', 'desc');
+
+            try {
+                $this->add_grocery_to_data_array($crud->render(), $data);
+            } catch(Exception $e) {
+                $data['output'] = $e->getMessage();
+            }
+        } else {
+            $data['output'] = 'Not allowed';
+        }
+
+        $this->load->view('admin/admin', $data);
+    }
+
+    /**
+     * 
+     */
+    private function _cms_lang_switcher($crud) {
+        
+        $html = '';
+
+        if ($crud->getState() == "list") {
+            $table = 'language';
+            $result = $this->db->get_where($table, array('published' => 1))->result();
+            
+            if (!empty($result)) {
+                foreach ($result as $key => $value) {
+                    $html .= '<a href="#">' . $value->iso_639_1 . '</a>';
+                }                
+            }
+        }
+
+        return $html;
     }
 
 }

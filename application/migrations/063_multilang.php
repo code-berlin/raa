@@ -16,6 +16,7 @@ class Migration_Multilang extends Basic_migration {
                             `language_name` varchar(255) NOT NULL,
                             `native_name` varchar(512) DEFAULT NULL,
                             `iso_639_1` varchar(2) NOT NULL,
+                            `published` TINYINT(1) NULL DEFAULT NULL,
                             PRIMARY KEY (`id`),
                             UNIQUE KEY `iso_639_1` (`iso_639_1`)) ENGINE=InnoDB DEFAULT CHARSET=utf16;");
 
@@ -127,7 +128,6 @@ class Migration_Multilang extends Basic_migration {
                                     ("Marathi (Marāṭhī)","मराठी","mr"),
                                     ("Marshallese","Kajin M̧ajeļ","mh"),
                                     ("Mongolian","Монгол хэл","mn"),
-                                    ("Montenegrin","Crnogorski jezik",""),
                                     ("Nauruan","Dorerin Naoero","na"),
                                     ("Navajo","Diné bizaad","nv"),
                                     ("Northern Ndebele","isiNdebele","nd"),
@@ -176,7 +176,7 @@ class Migration_Multilang extends Basic_migration {
                                     ("Swedish","svenska","sv"),
                                     ("Tamil","தமிழ்","ta"),
                                     ("Telugu","తెలుగు","te"),
-                                    ("Tajik","тоҷикӣ, تاجیکی‎","tg"),
+                                    ("Tajik","тоҷикӣ","tg"),
                                     ("Thai","ไทย","th"),
                                     ("Tigrinya","ትግርኛ","ti"),
                                     ("Tibetan Standard","བོད་ཡིག","bo"),
@@ -189,7 +189,7 @@ class Migration_Multilang extends Basic_migration {
                                     ("Tatar","татар теле","tt"),
                                     ("Twi","Twi","tw"),
                                     ("Tahitian","Reo Tahiti","ty"),
-                                    ("Uyghur","ئۇيغۇرچە‎, Uyghurche","ug"),
+                                    ("Uyghur","ئۇيغۇرچە‎","ug"),
                                     ("Ukrainian","Українська","uk"),
                                     ("Urdu","اردو","ur"),
                                     ("Uzbek","Oʻzbek","uz"),
@@ -206,15 +206,41 @@ class Migration_Multilang extends Basic_migration {
                                     ("Zhuang","Saɯ cueŋƅ","za"),
                                     ("Zulu","isiZulu","zu");');
 
+        $this->db->query("INSERT INTO `permission` (`name`) VALUES
+                            ('TRANSLATE_CONTENT');");
 
-        #$this->db->query("");
+        $id = $this->db->insert_id();
 
+        $this->db->query("INSERT INTO `rolepermission` (`role_id`, `permission_id`) VALUES
+                            (1, " . $id . ");");
+
+        $this->db->query('ALTER TABLE `page` ADD `language_id` smallint(5) unsigned DEFAULT NULL;');
+
+        $this->db->query('ALTER TABLE `page`
+                            ADD CONSTRAINT `fk_page_language1` FOREIGN KEY (`language_id`) REFERENCES `language` (`id`);');        
+
+        
         #$this->db->query("ALTER TABLE `menuitem` ADD `jumpmark` varchar(255) NULL DEFAULT NULL;");
         #$this->db->query('ALTER TABLE `teaserinstance` ADD `jumpmark` varchar(255) NULL DEFAULT NULL;');
+
     }
 
     public function mig_down() {
+
+        $this->db->query("ALTER TABLE `page` DROP FOREIGN KEY `fk_page_language1`;");
+
+        $this->db->query("ALTER TABLE `page` DROP `language_id`;");
+        
         $this->db->query("DROP TABLE `language`;");
+
+        $sql = $this->db->query("SELECT id FROM permission WHERE `name` = 'TRANSLATE_CONTENT';");
+        
+        if (isset($sql->row()->id) && $sql->row()->id > 0) {
+            $this->db->query("DELETE FROM `rolepermission` WHERE `permission_id` = " . $sql->row()->id . ";");
+        }
+
+        $this->db->query("DELETE FROM `permission` WHERE `name` = 'TRANSLATE_CONTENT';");
+        
         #$this->db->query("ALTER TABLE `teaserinstance` DROP `jumpmark`;");
     }
 
