@@ -54,26 +54,30 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->columns('menu_title', 'headline', 'slug', 'published');
 
             // Fields to show when editing
-            $crud->edit_fields('template_id', 'parent_id','main_category', 'menu_title', 'headline', 'teaser_text', 'text', 'date', 'image', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id');
+            $crud->edit_fields('template_id', 'parent_id', 'main_category', 'menu_title', 'headline', 'teaser_text', 'text', 'date', 'image', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id');
 
             $crud->field_type('id', 'hidden');
             $crud->field_type('date', 'hidden');
 
-            $crud->field_type('sitemap_prio','dropdown',
+            if($crud->getState() == 'edit') {
+
+                $crud->field_type('sitemap_prio','dropdown',
                 array('0.1' => '0.1', '0.3' => '0.3', '0.5' => '0.5', '0.8' => '0.8', '1' => '1'));
 
-            // Set relations using foreign keys
-            $crud->set_relation('template_id','template','name');
-            $crud->set_field_upload('image', $this->config->item('upload_folder'));
+                // Set relations using foreign keys
+                $crud->set_relation('template_id','template','name');
+                $crud->set_field_upload('image', $this->config->item('upload_folder'));
 
-            $crud->display_as('template_id','Template');
-            $crud->display_as('main_category','Is parent');
+                $crud->display_as('template_id','Template');
+                $crud->display_as('main_category','Is parent');
 
-            $crud->set_relation('parent_id','page','slug');
-            $crud->display_as('parent_id','Parent section');
+                $crud->set_relation('parent_id','page','slug');
+                $crud->display_as('parent_id','Parent section');
 
-            $crud->set_relation('author_id','author','name');
-            $crud->display_as('author_id','Author');
+                $crud->set_relation('author_id','author','name');
+                $crud->display_as('author_id','Author');
+
+            }
 
             if ($auth->check_user_has_permission($role_id, 'EDIT_TEASER')) {
                 $crud->add_action('Teaser Verwaltung --- Icons made by Freepik from www.flaticon.com is licensed by CC BY 3.0', '/assets/images/screen114.png', site_url('admin/teaser_instance') . '/');
