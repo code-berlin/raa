@@ -59,7 +59,7 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->field_type('id', 'hidden');
             $crud->field_type('date', 'hidden');
 
-            if($crud->getState() == 'edit') {
+            if($crud->getState() == 'edit' || $crud->getState() == 'add') {
 
                 $crud->field_type('sitemap_prio','dropdown',
                 array('0.1' => '0.1', '0.3' => '0.3', '0.5' => '0.5', '0.8' => '0.8', '1' => '1'));
