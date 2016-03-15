@@ -59,14 +59,15 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->field_type('id', 'hidden');
             $crud->field_type('date', 'hidden');
 
+            $crud->set_field_upload('image', $this->config->item('upload_folder'));
+
             if($crud->getState() == 'edit' || $crud->getState() == 'add') {
 
                 $crud->field_type('sitemap_prio','dropdown',
                 array('0.1' => '0.1', '0.3' => '0.3', '0.5' => '0.5', '0.8' => '0.8', '1' => '1'));
 
                 // Set relations using foreign keys
-                $crud->set_relation('template_id','template','name');
-                $crud->set_field_upload('image', $this->config->item('upload_folder'));
+                $crud->set_relation('template_id','template','name');               
 
                 $crud->display_as('template_id','Template');
                 $crud->display_as('main_category','Is parent');
