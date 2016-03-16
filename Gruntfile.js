@@ -15,6 +15,7 @@ module.exports = function(grunt) {
         'assets/js/lib/jquery.cookiebar.js',
         'assets/js/lib/jquery.onAppear.min.js',
         'assets/js/lib/jquery.flexslider-min.js',
+        'assets/js/lib/jquery.idle.min.js',
         'assets/js/themes/' + theme + '/**/*.js'
     ];
 
