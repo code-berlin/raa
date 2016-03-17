@@ -182,4 +182,12 @@ class Page_dao extends CI_Model{
 
     }
 
+    function get_sidebar_teaser() {
+        return R::find('sidebarteaser', 'published = 1 AND alternative = 0');
+    }
+
+    function get_sidebar_teaser_alt() {
+        return R::findOne('sidebarteaser', 'published = 1 AND alternative = 1');
+    }
+
 }

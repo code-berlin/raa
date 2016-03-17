@@ -60,4 +60,12 @@ class Page_m extends CI_Model {
 		return $this->page_dao->get_articles_by_page_id_and_menu_id($page_id, $menu_id);
     }
 
+    function get_sidebar_teaser() {
+		return $this->page_dao->get_sidebar_teaser();
+    }
+
+    function get_sidebar_teaser_alt() {
+		return $this->page_dao->get_sidebar_teaser_alt();
+    }
+
 }

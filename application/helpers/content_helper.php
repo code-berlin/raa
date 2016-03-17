@@ -25,5 +25,29 @@ function get_article_pagination($contentSiblings, $pageId) {
 
 }
 
+function get_sidebar_teaser($sidebarTeaser, $alternativeTeaser, $pageSlug) {
+
+    $teaser = array();
+
+    if (isset($sidebarTeaser) && is_array($sidebarTeaser)) {
+
+        foreach ($sidebarTeaser as $key => $value) {
+
+            $slug = trim($value['url'], '/');
+
+            // add alternative teaser to array instead of teaser, if teaser points to actual page
+            if ($pageSlug !== $slug) {
+                array_push($teaser, $value);
+            } else if (isset($alternativeTeaser)) {
+                array_push($teaser, $alternativeTeaser);
+            }
+
+        }
+
+    }
+
+    return $teaser;
+
+}
 
 ?>
