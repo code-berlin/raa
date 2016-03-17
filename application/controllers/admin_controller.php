@@ -67,7 +67,7 @@ class Admin_Controller extends Main_Admin_Controller {
                 array('0.1' => '0.1', '0.3' => '0.3', '0.5' => '0.5', '0.8' => '0.8', '1' => '1'));
 
                 // Set relations using foreign keys
-                $crud->set_relation('template_id','template','name');               
+                $crud->set_relation('template_id','template','name');
 
                 $crud->display_as('template_id','Template');
                 $crud->display_as('main_category','Is parent');
@@ -884,13 +884,15 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->set_table('sidebarteaser');
 
             // Fields to show on the list
-            $crud->columns('id', 'text', 'image', 'url', 'published');
+            $crud->columns('id', 'title', 'text', 'image', 'url', 'published', 'external', 'alternative');
 
             $crud->field_type('id', 'hidden');
 
             $crud->field_type('published','true_false', array('1' => 'Yes', '0' => 'No'));
 
             $crud->field_type('external','true_false', array('1' => 'Yes', '0' => 'No'));
+
+            $crud->field_type('alternative','true_false', array('1' => 'Yes', '0' => 'No'));
 
             $crud->set_field_upload('image', $this->config->item('upload_folder'));
 
