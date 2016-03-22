@@ -29,8 +29,12 @@ var menu = {
 			$(this).parent().toggleClass("xpopdrop");
 		});
 
-
-
+		// if we have a submenu with images, trigger lazy load
+		$('.js-images-menu-item').hover(function(){
+			$(this).find('.js-appear-triggable').each(function(index, image){
+            	$(image).trigger('triggerAppear');
+        	});
+		});
 
 	}
 
