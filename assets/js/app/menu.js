@@ -11,10 +11,12 @@ var menu = {
 				speed : 1,
 				speedOut: 1,
 				onShow: function () {
+					var menuItem = $('.js-images-menu-item.sfHover');
 					// submenu with images, trigger lazy load
-					me.appearImages($('.js-images-menu-item.sfHover'));
+					me.appearImages(menuItem);
 					// delete style attr "display:block" from superfish to let css flex work
-					$('.js-images-menu-item.sfHover').find('ul').attr('style', '');
+					// TODO -> rebuild menu, that this is not neccessary (one <li>)
+					menuItem.find('ul').attr('style', '');
 				}
 			});
 		}
