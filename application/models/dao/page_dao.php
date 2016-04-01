@@ -121,12 +121,15 @@ class Page_dao extends CI_Model{
         return R::getCell('SELECT parent_id FROM '.$this->table.' WHERE id = '.$page_id.' AND published = 1');
     }
 
+    /*
+     * get all siblings of an article, ordered by index in sidebar menu
+     */
     public function get_siblings($page_id) {
         return R::getAll('  SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.id, child.parent_id,
         	                       parent.slug as parent_slug, (
 	                                SELECT position
 	                                FROM menuitem
-	                                WHERE id_menu = 1
+	                                WHERE id_menu = 3
 	                                AND content_type = "page"
 	                                AND contentId = child.id
                                     LIMIT 1) as menu_position
