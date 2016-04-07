@@ -8,4 +8,5 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
 	config.protectedSource.push(/<i[^>]*><\/i>/g);
+	config.protectedSource.push(/<video[^>]*><\/video>/g);
 };
