@@ -5,15 +5,15 @@ var videoTrack = {
 		var me = this;
 
 		$('.js-track-video').on('play', function (e) {
-		    this.trackEvent('play', e);
+		    me.trackEvent('play', e);
 		});
 
 		$('.js-track-video').on('pause', function (e) {
-		    this.trackEvent('pause', e);
+		    me.trackEvent('pause', e);
 		});
 
 		$('.js-track-video').on('error', function (e) {
-		    this.trackEvent('error', e);
+		    me.trackEvent('error', e);
 		});
 
 	},
