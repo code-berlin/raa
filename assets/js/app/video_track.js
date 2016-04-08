@@ -29,7 +29,7 @@ var videoTrack = {
 				eventValue: parseInt($(e).get(0).currentTime)
 			});
 		} catch(ex) {
-			console.log('ERROR: sending ga event');
+			console.log(ex);
 		}
 		
 	}
