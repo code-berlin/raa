@@ -25,7 +25,7 @@ var videoTrack = {
 				hitType: 'event',
 				eventCategory: 'video',
 				eventAction: action,
-				eventLabel: href.location,
+				eventLabel: window.href.location,
 				eventValue: parseInt($(e).get(0).currentTime)
 			});
 		} catch(ex) {
