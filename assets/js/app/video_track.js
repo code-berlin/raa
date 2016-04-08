@@ -19,9 +19,11 @@ var videoTrack = {
 	},
 
 	trackEvent: function(action, e) {
+
 		
 		try {
-			ga('send', {
+			var trackerName = ga.getAll()[0].get('name');
+			ga(trackerName + '.send', {
 				hitType: 'event',
 				eventCategory: 'video',
 				eventAction: action,
