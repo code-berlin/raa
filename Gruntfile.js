@@ -95,23 +95,6 @@ module.exports = function(grunt) {
         },
         // compile sass
         compass: {
-            raa: {
-               options: {
-                    sassDir: 'assets/css/sass/raa',
-                    cssDir: 'assets/css/raa'
-                },
-                dev: {
-                    options: {
-                        sourcemap: true
-                    }
-                },
-                dist: {
-                    options: {
-                        sourcemap: false,
-                        outputStyle: 'compressed'
-                    }
-                }
-            },
             theme : {
                 options: {
                     sassDir: 'assets/css/sass/themes/' + theme,
@@ -142,7 +125,6 @@ module.exports = function(grunt) {
             tasks: [
                 'jshint',
                 'concat:devJS',
-                'compass:raa:dev',
                 'compass:theme:dev',
                 'concat:devCSS'
             ]
@@ -183,7 +165,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-stripcomments');
-	grunt.registerTask('default', ['compass:raa:dev', 'compass:theme:dev', 'jshint', 'concat:devJS', 'concat:devCSS', 'watch']);
-    grunt.registerTask('dist', ['compass:raa:dist','compass:theme:dist', 'jshint', 'concat:distJS', 'uglify:dist', 'comments:dist', 'concat:distCSS', 'cssmin']);
+	grunt.registerTask('default', ['compass:theme:dev', 'jshint', 'concat:devJS', 'concat:devCSS', 'watch']);
+    grunt.registerTask('dist', ['compass:theme:dist', 'jshint', 'concat:distJS', 'uglify:dist', 'comments:dist', 'concat:distCSS', 'cssmin']);
 
 };
