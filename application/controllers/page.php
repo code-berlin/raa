@@ -185,4 +185,14 @@ class Page extends CI_Controller {
         return $data;
     }
 
+    function google_map($page_id) {
+
+        $data = array();
+
+        $data['api_key'] = $this->config->item('google_maps_api_key');
+
+        return $data;
+
+    }
+
 }
