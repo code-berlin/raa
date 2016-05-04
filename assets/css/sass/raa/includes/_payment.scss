@@ -1,0 +1,44 @@
+.payment-icons {
+    font-size: 0px;
+    line-height: 0px;
+}
+
+.payment-icon {
+
+    display: inline-block;
+    width: 48px;
+    height: 34px;
+    background-image: url(/assets/images/payment.png);
+    background-repeat: no-repeat;
+    background-size: 48px auto;
+    margin-right: 7px;
+
+    &:last-child {
+        margin-right: 0px;
+    }
+
+    &._sofort {
+        background-position: 0px -34px;
+    }
+
+    &._creditcard {
+        background-position: 0px -68px;
+    }
+
+    &._vorkasse {
+        background-position: 0px -102px;
+    }
+
+    &._rechnung {
+        background-position: 0px -136px;
+    }
+
+    &._nachnahme {
+        background-position: 0px -170px;
+    }
+
+    &._lastschrift {
+        background-position: 0px -204px;
+    }
+
+}
