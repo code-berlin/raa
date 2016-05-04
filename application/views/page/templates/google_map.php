@@ -19,8 +19,8 @@
 
             <div class="js-map-embed-key" data-key="<?php echo $template_data['api_key']; ?>"></div>
             <div class="js-map-embed-phrase" data-phrase="Apotheken near"></div>
-
-            <iframe frameborder="0" style="border:0" class="js-map-container" src="" allowfullscreen></iframe>
+            
+            <iframe frameborder="0" style="border:0" class="js-map-container gmap-iframe" src="" allowfullscreen></iframe>
 
         </div>
 

@@ -1,4 +1,4 @@
-iframe {
+.gmap-iframe {
     width: 100%;
     height: 500px;
 }
@@ -13,7 +13,7 @@ iframe {
 }
 
 @media only screen and (max-width: $special-teaser-break) {
-    iframe {
+    .gmap-iframe {
         width: 100%;
         height: 300px;
     }
