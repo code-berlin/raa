@@ -4,7 +4,7 @@
 	if (!empty($teaser)) {
 		foreach ($teaser as $key => $value) {
 
-			if (is_file(APPPATH . 'views/themes/'. $theme . '/teaser/teaser_' . $value['teaser_type'] . EXT)) { ?>
+			if (is_file(APPPATH . 'views/teaser/teaser_' . $value['teaser_type'] . EXT) || is_file(APPPATH . 'views/themes/'. $theme . '/teaser/teaser_' . $value['teaser_type'] . EXT)) { ?>
 
 				<div class="teaser-group">
 
