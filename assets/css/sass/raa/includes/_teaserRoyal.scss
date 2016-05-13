@@ -76,7 +76,7 @@
             h1 {
                 margin: 0px 0px 25px 0px;
                 font-size: 30px;
-                line-height: 38px;
+                line-height: 36px;
             }
         }
     }
@@ -97,12 +97,13 @@
 
         .__info {
 
-            left: 0px;
-            width: auto;
-            background: rgba(0,0,0,0.2);
+            width: 300px;
+            background: rgba(0,0,0,0.4);
 
             h1 {
-                text-shadow: 2px 2px 5px #555;
+                margin: 0px;
+                font-size: 26px;
+                line-height: 32px;
             }
 
         }
@@ -132,12 +133,17 @@
 
         .__info {
 
-            padding: 25px;
+            padding: 20px;
+            width: 240px;
 
             h1 {
-                margin: 0px 0px 25px 0px;
-                font-size: 30px;
-                line-height: 36px;
+                font-size: 22px;
+                line-height: 28px;
+            }
+
+            .__link-wrap {
+                right: 5px;
+                bottom: 5px;
             }
         }
 
