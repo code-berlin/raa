@@ -98,13 +98,15 @@
 
         .__info {
 
-            width: 300px;
-            background: rgba(0,0,0,0.4);
+            width: auto;
+            left: 0px;
+            background: rgba(0,0,0,0.3);
 
             h1 {
                 margin: 0px;
                 font-size: 26px;
                 line-height: 32px;
+                text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
             }
 
         }
@@ -121,6 +123,7 @@
         .__link {
             background: transparent;
             padding: 13px 15px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
         }
 
     }
@@ -134,7 +137,6 @@
         .__info {
 
             padding: 20px;
-            width: 240px;
 
             h1 {
                 font-size: 22px;

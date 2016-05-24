@@ -34,57 +34,45 @@
             $slug = base_url((isset($value['parent_slug']) && !empty($value['parent_slug']) ? $value['parent_slug'] . '/' : '') . $value['page_slug']);
         } ?>
 
-        <div class="__item flex <?php echo $i+1 == sizeof($items) ? '_last' : ''; ?>">
+        <?php
+        if (isset($slug)) { ?>
+            <a href="<?php echo $slug; ?>" target="<?php echo $target; ?>" class="__item flex <?php echo $i+1 == sizeof($items) ? '_last' : ''; ?>">
+        <?php
+        } else { ?>
+            <div class="__item flex <?php echo $i+1 == sizeof($items) ? '_last' : ''; ?>">
+        <?php
+        } ?>
 
-            <?php
-            if (isset($slug)) { ?>
-                <a href="<?php echo $slug; ?>" target="<?php echo $target; ?>" class="img _hover-mask">
-            <?php
-            } ?>
-
+            <div class="img <?php echo isset($slug) ? '_hover-mask' : '' ?>">
                 <img class="lazy-img js-lazy-img" src="/assets/images/themes/<?php echo $theme; ?>/ph.png" data-src="<?php echo isset($image) ? $image : ''; ?>" class="_teaser-img" />
+            </div>
 
-            <?php
-            if (isset($slug)) { ?>
-                </a>
-            <?php
-            } ?>
+            <span class="__info flex-container _column">
 
-            <span class="flex-container _column">
-
-                <?php
-                if (isset($slug)) { ?>
-                    <a href="<?php echo isset($slug) ? $slug: '#' ; ?>" target="<?php echo $target; ?>" class="__part __teaser-title">
-                <?php
-                } else { ?>
-                    <div class="__part __teaser-title">
-                <?php
-                }
-
-                    echo $value['title'];
-
-                if (isset($slug)) { ?>
-                    </a>
-                <?php
-                } else { ?>
-                    </div>
-                <?php
-                } ?>
+                <div class="__part __teaser-title">
+                    <?php echo $value['title']; ?>
+                </div>
 
                 <span class="__part __teaser-text flex"><?php echo $value['text']; ?></span>
 
                 <?php
                 if (isset($slug)) { ?>
-                    <a href="<?php echo isset($slug) ? $slug: '#' ; ?>" target="<?php echo $target; ?>" class="__part __teaser-more">
+                    <div class="__part __teaser-more">
                         Weiterlesen
-                    </a>
+                    </div>
                 <?php
                 } ?>
 
             </span>
-        </div>
 
-    <?php
+        <?php
+        if (isset($slug)) { ?>
+            </a>
+        <?php
+        } else { ?>
+            </div>
+        <?php
+        }
 
         $i++;
 

@@ -196,6 +196,19 @@ ul {
 
 }
 
+@media only screen and (max-width: $special-teaser-break) {
+
+    .teaser-h2 {
+        margin: 0px (-$main-offset-mobile) 15px (-$main-offset-mobile);
+        padding: 10px $main-offset-mobile;
+        font-size: 20px;
+        line-height: 28px;
+        background: $color-default-main;
+        color: $color-default-white;
+        border-bottom: none;
+    }
+
+}
 
 
 

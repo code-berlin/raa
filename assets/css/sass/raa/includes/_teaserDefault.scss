@@ -18,6 +18,10 @@
         padding-bottom: 20px;
         display: block;
 
+        &:hover, &:active {
+            text-decoration: none;
+        }
+
         .__part {
             display: block;
         }
@@ -63,11 +67,14 @@
         }
 
         .__teaser-title {
+
             color: $color-default-font;
             padding-top: 10px;
             padding-bottom: 10px;
             font-weight: 600;
+
         }
+
 
         .__teaser-text,
         .__teaser-text span {
@@ -113,12 +120,16 @@
 
         .__item {
 
+            @include display-flex();
+
             margin-right: 0px;
             border-bottom: 1px solid $color-default-grey;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
 
             &._last {
                 margin-bottom: 0px;
+                border-bottom: none;
             }
 
             &._dummy {
@@ -138,6 +149,40 @@
                     }
                 }
             }
+
+            .img {
+                width: 103px;
+                margin-right: 15px;
+            }
+
+            .__info {
+                @include flex(1);
+                position: relative;
+                padding-right: 20px;
+            }
+
+            .__teaser-title {
+                padding-top: 0px;
+            }
+
+            .__teaser-text {
+                display: none;
+            }
+
+            .__teaser-more {
+                font-size: 0px;
+                width: 0px;
+                height: 0px;
+                position: absolute;
+                top: 50%;
+                right: 0px;
+                transform: translate(0, -50%);
+                border-left: 5px solid $color-default-main;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+
+            }
+
         }
     }
 
