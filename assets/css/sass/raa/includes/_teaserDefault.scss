@@ -1,0 +1,144 @@
+.teaser-default {
+
+    .__teaser-row {
+
+        margin-bottom: 30px;
+        border-bottom: 1px solid $color-default-grey;
+
+        &:last-child {
+            margin-bottom: 0px;
+        }
+
+    }
+
+    .__item {
+
+        margin-right: 25px;
+        color: $color-default-font;
+        padding-bottom: 20px;
+        display: block;
+
+        .__part {
+            display: block;
+        }
+
+        .img {
+
+            display: block;
+            cursor: pointer;
+
+            &._hover-mask {
+
+                display: block;
+                position: relative;
+
+                &:after {
+                    content:'';
+                    display: block;
+                    position: absolute;
+                    top: 0px;
+                    right: 0px;
+                    bottom: 0px;
+                    left: 0px;
+                    background: $color-default-main;
+                    opacity: 0;
+                    @include transition(opacity .05s ease-in);
+                }
+
+            }
+
+            &:hover {
+                &._hover-mask {
+                    &:after {
+                        opacity: 0.3;
+                    }
+                }
+            }
+
+
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .__teaser-title {
+            color: $color-default-font;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .__teaser-text,
+        .__teaser-text span {
+            font-size: 13px;
+            line-height: 21px;
+        }
+
+        .__teaser-text p {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        .__teaser-text {
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .__teaser-more {
+            color: $color-default-main;
+            text-align: right;
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+        }
+
+        &:last-child {
+            margin-right: 0px;
+        }
+    }
+}
+
+
+@media only screen and (max-width: $special-teaser-break) {
+
+    .teaser-default {
+
+        .__teaser-row {
+            display: block;
+            border-bottom: none;
+        }
+
+        .__item {
+
+            margin-right: 0px;
+            border-bottom: 1px solid $color-default-grey;
+            margin-bottom: 30px;
+
+            &._last {
+                margin-bottom: 0px;
+            }
+
+            &._dummy {
+                display: none;
+            }
+
+            &:hover {
+
+                color: $color-default-font;
+                text-decoration: none;
+
+                .img {
+                    &._hover-mask {
+                        &:after {
+                            opacity: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
