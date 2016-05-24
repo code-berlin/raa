@@ -86,13 +86,12 @@
                 transform: translate(0, 100%);
             }
 
-            &:link {
-                &:hover {
-                    .__title {
-                        transform: translate(0, 0);
-                    }
+            &:hover {
+                .__title {
+                    transform: translate(0, 0);
                 }
             }
+
         }
 
         .__first {
