@@ -116,6 +116,7 @@
         .__teaser-row {
             display: block;
             border-bottom: none;
+            margin-bottom: 0px;
         }
 
         .__item {
@@ -189,6 +190,10 @@
             }
 
         }
+    }
+
+    .teaser-collapsible-btn {
+        margin: 15px 0px;
     }
 
 }

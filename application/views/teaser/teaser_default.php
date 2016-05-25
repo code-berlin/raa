@@ -98,10 +98,8 @@
 
     ?>
 
-        <div class="teaser-collapsible-box">
-
-            <a href="" class="teaser-collapsible-btn js-teaser-collapsible-btn" >Weitere Inhalte anzeigen</a>
-
+        <div class="ta-c">
+            <a href="" class="def-btn teaser-collapsible-btn js-teaser-collapsible-btn" >Weitere Inhalte anzeigen</a>
         </div>
 
     <?php
