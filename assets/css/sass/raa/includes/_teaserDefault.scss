@@ -120,7 +120,7 @@
 
         .__item {
 
-            @include display-flex();
+            position: relative;
             border-bottom: 1px solid $color-default-grey;
             margin: 0px;
             padding: $main-offset-mobile 0px;
@@ -148,20 +148,26 @@
                 }
             }
 
+            &:after {
+                display: block;
+                content: '';
+                clear: both;
+            }
+
             .img {
-                width: 103px;
-                margin-right: 10px;
+                width: 80px;
+                float: left;
             }
 
             .__info {
-                @include flex(1);
-                position: relative;
+                margin-left: 90px;
                 padding-right: 20px;
             }
 
             .__teaser-title {
                 padding: 0px;
                 font-size: 16px;
+                overflow: hidden;
             }
 
             .__teaser-text {

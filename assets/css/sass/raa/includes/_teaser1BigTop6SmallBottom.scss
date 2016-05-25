@@ -164,9 +164,7 @@
             .__info {
 
                 width: 490px;
-                -webkit-flex: none;
-                -ms-flex: none;
-                flex: none;
+                @include flex(none);
 
                 .list-page & {
                     width: 330px;
@@ -244,16 +242,24 @@
 
         .__main {
 
+            display: block;
+            position: relative;
             height: auto;
             padding: $main-offset-mobile 0px;
             border: none;
+            border-bottom: 1px solid $color-default-grey;
             margin: 0px;
+
+            &:after {
+                display: block;
+                content: '';
+                clear: both;
+            }
 
             .__img {
 
-                width: 103px;
-                margin-right: 10px;
-                @include flex(none);
+                width: 80px;
+                float: left;
 
                 img {
                     width: 100%;
@@ -266,14 +272,11 @@
 
             .__info {
 
-                @include flex(1);
                 width: auto;
-                padding: 0px;
+                margin-left: 90px;
+                padding: 0px 20px 0px 0px;
                 background: transparent;
 
-                .list-page & {
-                    // width: auto;
-                }
             }
 
             .__headline {
@@ -284,6 +287,7 @@
                 padding: 0px;
                 font-weight: 600;
                 border-bottom: none;
+                overflow: hidden;
 
             }
 
@@ -317,12 +321,18 @@
 
             .__mini-item {
 
+                width: auto;
                 height: auto;
-                @include display-flex();
                 border: none;
                 border-bottom: 1px solid $color-default-grey;
                 margin: 0px;
                 padding: $main-offset-mobile 0px;
+
+                &:after {
+                    display: block;
+                    content: '';
+                    clear: both;
+                }
 
                 &:hover, &:active {
                     text-decoration: none;
@@ -330,8 +340,8 @@
 
                 .__img {
 
-                    width: 103px;
-                    margin-right: 10px;
+                    width: 80px;
+                    float: left;
 
                     img {
                         width: 100%;
@@ -342,7 +352,7 @@
                 }
 
                 .__title {
-                    @include flex(1);
+                    margin-left: 90px;
                     position: static;
                     color: $color-default-font;
                     background: $color-default-white;
@@ -350,7 +360,9 @@
                     line-height: 24px;
                     text-align: left;
                     padding: 0px;
+                    margin-right: 20px;
                     transform: translate(0, 0);
+                    overflow: hidden;
                 }
 
                 .__readmore {
