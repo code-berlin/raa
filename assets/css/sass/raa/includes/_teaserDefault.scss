@@ -121,11 +121,9 @@
         .__item {
 
             @include display-flex();
-
-            margin-right: 0px;
             border-bottom: 1px solid $color-default-grey;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
+            margin: 0px;
+            padding: $main-offset-mobile 0px;
 
             &._last {
                 margin-bottom: 0px;
@@ -152,7 +150,7 @@
 
             .img {
                 width: 103px;
-                margin-right: 15px;
+                margin-right: 10px;
             }
 
             .__info {
@@ -162,7 +160,8 @@
             }
 
             .__teaser-title {
-                padding-top: 0px;
+                padding: 0px;
+                font-size: 16px;
             }
 
             .__teaser-text {

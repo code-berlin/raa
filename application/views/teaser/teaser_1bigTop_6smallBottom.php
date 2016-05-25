@@ -40,11 +40,11 @@
                     <img class="lazy-img js-lazy-img" src="/assets/images/themes/<?php echo $theme; ?>/ph.png" data-src="<?php echo isset($image) ? $image : ''; ?>">
                 </div>
 
-                <div class="flex __text">
+                <div class="flex __info">
 
                     <div class="__headline"><?php echo $value['title']; ?></div>
 
-                        <div>
+                        <div class="__text">
                             <?php echo $value['text']; ?>
                         </div>
 
@@ -91,9 +91,11 @@
                 <div class="__mini-item flex">
             <?php
             } ?>
-
-                    <img class="lazy-img js-lazy-img" src="/assets/images/themes/<?php echo $theme; ?>/ph.png" data-src="<?php echo isset($image) ? $image : ''; ?>">
+                    <div class="__img">
+                        <img class="lazy-img js-lazy-img" src="/assets/images/themes/<?php echo $theme; ?>/ph.png" data-src="<?php echo isset($image) ? $image : ''; ?>">
+                    </div>
                     <span class="__title"><?php echo $value['title']; ?></span>
+                    <div class="__readmore"></div>
 
             <?php
             if (isset($slug)) { ?>
