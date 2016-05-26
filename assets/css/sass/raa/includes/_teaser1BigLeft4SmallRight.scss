@@ -88,6 +88,7 @@
             }
 
             .__title {
+
                 display: block;
                 position: absolute;
                 bottom: 0px;
@@ -102,6 +103,10 @@
                 padding: 7px 5px;
                 @include transition(transform .2s ease-in-out);
                 transform: translate(0, 100%);
+
+                .mobile-device & {
+                    transform: translate(0, 0);
+                }
             }
 
             &:hover {
