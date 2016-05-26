@@ -3,7 +3,7 @@
     <?php
 
     $columns = 4;
-    $initial_shown = 7;
+    $initial_shown = 8;
     $show_collapsible_button = false;
     $i = 0;
 
@@ -11,7 +11,7 @@
 
         // open row
         if ($i%$columns == 0) { ?>
-            <div class="flex-container __teaser-row<?php echo ($i > $initial_shown ? ' dn js-teaser-collapsible-closed' : '');?>"><?php
+            <div class="flex-container __teaser-row<?php echo ($i >= $initial_shown ? ' dn js-teaser-collapsible-closed' : '');?>"><?php
         }
 
         $target = '_self';
