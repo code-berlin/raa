@@ -3,12 +3,14 @@
     <div class="flex-container _desktop">
 
         <div class="flex content-wrapper">
-            <h1><?php echo $page->headline; ?></h1>
-            <?php if (!empty($page->image)) { ?>
-                <div class="static-img-wrapper">
-                    <img src="<?php echo '/' . $this->config->item('upload_folder') . '/' . $page->image; ?>" />
-                </div>
-            <?php } ?>
+            <div class="content-header">
+                <h1><?php echo $page->headline; ?></h1>
+                <?php if (!empty($page->image)) { ?>
+                    <div class="static-img-wrapper">
+                        <img src="<?php echo '/' . $this->config->item('upload_folder') . '/' . $page->image; ?>" />
+                    </div>
+                <?php } ?>
+            </div>
             <div class="content-content _static _no-offsetbottom"><?php echo $page->text; ?></div>
 
             <div class="gm-searchlabel">Geben Sie hier Ihre Postleitzahl oder Ihren Ort an:</div>
@@ -19,7 +21,7 @@
 
             <div class="js-map-embed-key" data-key="<?php echo $template_data['api_key']; ?>"></div>
             <div class="js-map-embed-phrase" data-phrase="Apotheken near"></div>
-            
+
             <iframe frameborder="0" style="border:0" class="js-map-container gmap-iframe" src="" allowfullscreen></iframe>
 
         </div>
