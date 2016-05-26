@@ -2,7 +2,6 @@
 
     .__main {
 
-        border: 1px solid $color-default-grey;
         margin-bottom: 15px;
 
         &:hover, &:active {
@@ -57,7 +56,6 @@
 
             display: block;
             height: 138px;
-            border: 1px solid $color-default-grey;
             position: relative;
             overflow: hidden;
 
@@ -90,7 +88,7 @@
                 font-weight: 600;
                 line-height: 18px;
                 text-align: center;
-                padding: 7px 5px;
+                padding: 13px 5px;
                 @include transition(transform .2s ease-in-out);
                 transform: translate(0, 100%);
 
@@ -252,7 +250,6 @@
             position: relative;
             height: auto;
             padding: $main-offset-mobile 0px;
-            border: none;
             border-bottom: 1px solid $color-default-grey;
             margin: 0px;
 
@@ -330,7 +327,6 @@
 
                 width: auto;
                 height: auto;
-                border: none;
                 border-bottom: 1px solid $color-default-grey;
                 margin: 0px;
                 padding: $main-offset-mobile 0px;

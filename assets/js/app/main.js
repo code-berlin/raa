@@ -1,9 +1,7 @@
 $(document).ready(function() {
 
-
-    if (helper.isMobile) {
+    if (helper.isMobile()) {
         $('html').addClass('mobile-device');
     }
-
 
 });

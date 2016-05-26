@@ -2,7 +2,6 @@
 
     .__main {
 
-        border: 1px solid $color-default-grey;
         margin-right: 15px;
         height: 291px;
 
@@ -66,7 +65,6 @@
             display: block;
             width: 138px;
             height: 138px;
-            border: 1px solid $color-default-grey;
             position: relative;
             overflow: hidden;
 
@@ -258,7 +256,6 @@
             position: relative;
             height: auto;
             padding: $main-offset-mobile 0px;
-            border: none;
             border-bottom: 1px solid $color-default-grey;
             margin: 0px;
 
@@ -337,7 +334,6 @@
 
                     width: auto;
                     height: auto;
-                    border: none;
                     border-bottom: 1px solid $color-default-grey;
                     margin: 0px;
                     padding: $main-offset-mobile 0px;
