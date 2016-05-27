@@ -5,11 +5,6 @@
         <div class="flex content-wrapper">
             <div class="content-header">
                 <h1><?php echo $page->headline; ?></h1>
-                <?php if (!empty($page->image)) { ?>
-                    <div class="static-img-wrapper">
-                        <img src="<?php echo '/' . $this->config->item('upload_folder') . '/' . $page->image; ?>" />
-                    </div>
-                <?php } ?>
             </div>
             <div class="content-content _static _no-offsetbottom"><?php echo $page->text; ?></div>
 

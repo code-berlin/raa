@@ -44,7 +44,7 @@
         } ?>
 
             <div class="img <?php echo isset($slug) ? '_hover-mask' : '' ?>">
-                <img class="lazy-img js-lazy-img" src="/assets/images/themes/<?php echo $theme; ?>/ph.png" data-src="<?php echo isset($image) ? $image : ''; ?>" class="_teaser-img" />
+                <img class="lazy-img js-lazy-img" src="/assets/images/themes/<?php echo $theme; ?>/ph.png" data-src="<?php echo isset($image) ? $image : ''; ?>" alt="<?php echo $value['title']; ?>"/>
             </div>
 
             <span class="__info flex-container _column">
