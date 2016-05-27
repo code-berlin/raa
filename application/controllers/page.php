@@ -122,7 +122,7 @@ class Page extends CI_Controller {
     }
 
 
-    function with_sidebar($page_id) {
+    function article_page($page_id) {
 
         $data = array();
 
