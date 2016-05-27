@@ -55,22 +55,14 @@
         .__mini-item {
 
             display: block;
-            height: 138px;
             position: relative;
             overflow: hidden;
 
             .__img {
-
-                height: 100%;
-
                 img {
-                    width: auto;
-                    height: 100%;
-                    position: relative;
-                    left: 50%;
-                    @include transform(translate3d(-50%, 0, 0));
+                    width: 100%;
+                    height: auto;
                 }
-
             }
 
 
@@ -196,17 +188,6 @@
         .__minis {
 
             display: block;
-
-            .__mini-item {
-
-                .__img {
-                    img {
-                        width: 115%;
-                        height: auto;
-                    }
-                }
-
-            }
 
             .__first {
 
