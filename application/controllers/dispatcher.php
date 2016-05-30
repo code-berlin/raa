@@ -15,7 +15,7 @@ class Dispatcher extends Page {
         $this->language = $this->tools->get_language_value();
     }
 
-    public function index($slug='', $subslug = '') {
+    public function index($slug='', $subslug = '', $thirdslug = '') {
 
         $this->load->model('url_m');
         $this->load->model('page_m');
@@ -27,6 +27,7 @@ class Dispatcher extends Page {
         $published = false;
         $view = '';
         $templates_folder = 'templates';
+        $actual_slug = '';
 
         $this->data['language'] = $this->language;
         $this->data['theme'] = $this->config->item('theme');
@@ -46,14 +47,19 @@ class Dispatcher extends Page {
             $slug = $page->slug;
         }
 
-        // Retrieve object type related to this slug
-        if (!empty($subslug)) {
-            $result = $this->url_m->get_by_slug($subslug);
+        // get slug of actual page
+        if (!empty($thirdslug)) {
+            $actual_slug = $thirdslug;
+        } elseif (!empty($subslug)) {
+            $actual_slug = $subslug;
         } else {
-            $result = $this->url_m->get_by_slug($slug);
+            $actual_slug = $slug;
         }
 
-        $published = check_if_published($result, $slug, $subslug);
+        // Retrieve object type related to this slug
+        $result = $this->url_m->get_by_slug($actual_slug);
+
+        $published = check_if_published($result, $slug, $subslug, $thirdslug);
 
         $this->data['menu'] = load_menus();
 
@@ -67,11 +73,9 @@ class Dispatcher extends Page {
 
                 // It's important for each class to have this method
                 // page data comes now as multi id bean, which only has one entry where index = id
-                if (!empty($subslug)) {
-                    $bean_data = $this->$model_type->get_by_slug($subslug);
-                } else {
-                    $bean_data = $this->$model_type->get_by_slug($slug);
-                }
+
+                $bean_data = $this->$model_type->get_by_slug($actual_slug);
+
                 $this->data[$this->type] = $bean_data[key($bean_data)];
 
                 // setting the data type and the id for the layout
@@ -116,7 +120,7 @@ class Dispatcher extends Page {
 
                 // Get extra data for current page based on its template type
                 // If $slug_method exists, it can be found in page.php controller
-                $slug_method = $slug;
+                $slug_method = $actual_slug;
 
                 if (strpos($slug_method, '-') !== false) { // Is there a dash in the page's slug?
                     $slug_method = str_replace('-', '_', $slug_method);
@@ -137,6 +141,10 @@ class Dispatcher extends Page {
 
                 if (!empty($subslug)) {
                     $lib_data['slug'] = $lib_data['slug'] . '/' . $subslug;
+                }
+
+                if (!empty($thirdslug)) {
+                    $lib_data['slug'] = $lib_data['slug'] . '/' . $thirdslug;
                 }
 
                 $lib_data['page_id'] = $this->data[$this->type]->id;

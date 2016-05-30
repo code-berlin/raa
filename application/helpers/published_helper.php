@@ -1,38 +1,62 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-function check_if_published($result, $slug, $subslug = '') {
+function check_if_published($result, $slug, $subslug = '', $thirdslug = '') {
+
     if (!isset($result) || empty($result)){
             return false;
     }
     $type = R::load('type', $result->type_id);
-        
+
     $table_name = $type->name;
 
     // check for nested pages
-    if (!empty($subslug) && $result->type_id == '1') {
+    if (!empty($thirdslug) && !empty($subslug) && $result->type_id == '1') {
 
-        $qry = 'SELECT child.id, child.published, child.slug FROM page as child LEFT JOIN page as parent ON child.parent_id = parent.id WHERE child.slug = ? AND parent.slug = ? AND child.published = 1 AND parent.published = 1';
+        $qry = 'SELECT child.id, child.published, child.slug
+                FROM page as child
+                LEFT JOIN page as parent
+                ON child.parent_id = parent.id
+                LEFT JOIN page as grandparent
+                ON parent.parent_id = grandparent.id
+                WHERE child.slug = ?
+                AND parent.slug = ?
+                AND grandparent.slug = ?
+                AND child.published = 1
+                AND parent.published = 1
+                AND grandparent.published = 1';
 
-        $row = R::getRow($qry,
-                array($subslug, $slug)
-            );
+        $row = R::getRow($qry, array($thirdslug, $subslug, $slug));
 
         $item = new stdClass();
         $item->published = $row['published'];
- 
-    } elseif ($result->type_id == '1') {
 
+    } elseif (empty($thirdslug) && !empty($subslug) && $result->type_id == '1') {
+
+        $qry = 'SELECT child.id, child.published, child.slug
+                FROM page as child
+                LEFT JOIN page as parent
+                ON child.parent_id = parent.id
+                WHERE child.slug = ?
+                AND parent.slug = ?
+                AND child.published = 1
+                AND parent.published = 1';
+
+        $row = R::getRow($qry, array($subslug, $slug));
+
+        $item = new stdClass();
+        $item->published = $row['published'];
+
+    } elseif ($result->type_id == '1') {
         $item = R::findOne($table_name,
             'slug = :slug AND parent_id IS NULL',
             array(':slug' => $slug));
 
     } else {
-
         $item = R::findOne($table_name,
             'slug = :slug',
             array(':slug' => $slug));
 
-    }    
+    }
 
     if (isset($item) && !empty($item))
     {
@@ -58,7 +82,7 @@ function check_if_menu_item_published($url_id) {
 
         $type = R::load('type', $item_type);
 
-            
+
         $table_name = $type->name;
 
          $item_via_type = R::findOne($table_name,
@@ -75,7 +99,7 @@ function check_if_menu_item_published($url_id) {
         }
 
         return $published_state;
-    
+
     } else {
 
     // it's an external link: no reason to check it's publication status

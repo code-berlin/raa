@@ -17,15 +17,24 @@ class Sitemap extends CI_Controller {
     	$data['loc'] = base_url('/');
         $data['priority'] = '1';
     	$output .= $this->load->view('sitemap/url_entry',$data, TRUE);
- 	
+
     	$pages = $this->page_m->get_all();
 
     	foreach ($pages as $key => $value) {
-            
+
             if ($value['slug'] == 'home') continue;
 
             if (!empty($value['parent_id'])) {
-                $data['loc'] = base_url($value['parent_slug'] . '/' . $value['slug']);
+
+                $grandparent_slug = '';
+                foreach ($pages as $_key => $_value) {
+                    if ($_value['id'] == $value['parent_id'] && !empty($_value['parent_slug'])) {
+                        $grandparent_slug = $_value['parent_slug'] . '/';
+                    }
+                }
+
+                $data['loc'] = base_url($grandparent_slug . $value['parent_slug'] . '/' . $value['slug']);
+
             } else {
                 $data['loc'] = base_url($value['slug']);
             }
