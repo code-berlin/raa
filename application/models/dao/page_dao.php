@@ -193,4 +193,24 @@ class Page_dao extends CI_Model{
         return R::findOne('sidebarteaser', 'published = 1 AND alternative = 1');
     }
 
+    function get_grouped_articles($article_group_id, $page_id){
+
+        $query =   'SELECT menu_title, slug, teaser_text, image, id, slug, parent_id,
+                    (
+                        SELECT parent.slug
+                        FROM page as parent
+                        WHERE parent.id = page.parent_id
+                        LIMIT 1
+                    ) as parent_slug
+                    FROM page
+                    WHERE page.id != ' . $page_id . '
+                    AND page.article_group_id = ' . $article_group_id . '
+                    AND page.published = 1';
+
+        return R::getAll($query);
+
+
+
+    }
+
 }
