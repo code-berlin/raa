@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-function check_if_published($result, $slug, $subslug = '', $thirdslug = '') {
+function check_if_published($result, $slug, $subslug, $thirdslug) {
 
     if (!isset($result) || empty($result)){
             return false;
