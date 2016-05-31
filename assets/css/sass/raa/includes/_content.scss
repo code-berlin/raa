@@ -384,7 +384,6 @@
 
         h1, .h1 {
 
-            margin-bottom: 15px;
             padding: 12px 10px 13px 10px;
             font-size: 22px;
             line-height: 30px;
@@ -404,17 +403,29 @@
 
         }
 
+        h1 {
+            margin: 0px;
+        }
+
         .h1 {
             margin: 0px (-$main-offset-mobile) 15px (-$main-offset-mobile);
         }
 
         .content-header {
 
-            position: relative;
             margin: 0px (-$main-offset-mobile);
+
+            &._img {
+                @include display-flex();
+                @include flex-direction(column-reverse);
+            }
 
         }
 
+    }
+
+    .content-img-wrapper {
+        margin: 0px;
     }
 
     .content-content {
@@ -496,6 +507,19 @@
             font-size: 18px;
             line-height: 28px;
 
+        }
+
+    }
+
+    .content-img-wrapper {
+
+        height: 160px;
+        overflow: hidden;
+
+        img {
+            position: relative;
+            top: 50%;
+            transform: translate(0, -50%);
         }
 
     }
