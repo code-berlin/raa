@@ -178,6 +178,14 @@ ul {
     text-align: center;
 }
 
+.hidden {
+    display: none;
+}
+
+.dn {
+    display: none !important;
+}
+
 @media only screen and (max-width: $special-teaser-break-ipad-ls) {
 
     .main-container {
@@ -217,71 +225,4 @@ ul {
         line-height: 22px;
     }
 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.hidden {
-    display: none;
-}
-
-.dn {
-	display: none !important;
 }
