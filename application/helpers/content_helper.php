@@ -50,4 +50,8 @@ function get_sidebar_teaser($sidebarTeaser, $alternativeTeaser, $pageSlug) {
 
 }
 
+function get_breadcrumbs($page) {
+    return 'BREADCRUMBS';
+}
+
 ?>
