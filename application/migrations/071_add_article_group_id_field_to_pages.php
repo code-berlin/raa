@@ -2,8 +2,6 @@
 require_once(APPPATH . 'migrations/basic_migration.php');
 
 class Migration_Add_Article_Group_Id_Field_To_Pages extends Basic_migration {
-    private $field;
-    private $page;
 
     function __construct()
     {
