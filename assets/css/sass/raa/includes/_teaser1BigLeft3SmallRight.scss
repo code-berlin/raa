@@ -1,0 +1,207 @@
+.teaser-1-big-left-3-small-right {
+
+    .__main,
+    .__three {
+
+        .img {
+
+            cursor: pointer;
+
+            &._hover-mask {
+
+                position: relative;
+
+                &:after {
+                    content:'';
+                    display: block;
+                    position: absolute;
+                    top: 0px;
+                    right: 0px;
+                    bottom: 0px;
+                    left: 0px;
+                    background: $color-default-main;
+                    opacity: 0;
+                    @include transition(opacity .05s ease-in);
+                }
+
+            }
+
+            &:hover {
+                &._hover-mask {
+                    &:after {
+                        opacity: 0.3;
+                    }
+                }
+            }
+        }
+
+        .__commercial {
+            position: absolute;
+            font-size: 8px;
+            line-height: 10px;
+            padding: 1px 3px;
+            background: $color-default-white;
+            top: 1px;
+            right: 1px;
+            color: $color-default-font;
+        }
+
+    }
+
+    .__main {
+
+        width: 270px;
+        padding-right: 25px;
+        border-right: 1px dotted $color-default-grey;
+        margin-right: 25px;
+
+        a {
+
+            display: block;
+            color: $color-default-font;
+
+            &:hover, &:active {
+                text-decoration: none;
+            }
+
+        }
+
+        .__part {
+            display: block;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .__teaser-title {
+            color: $color-default-font;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .__teaser-text,
+        .__teaser-text span {
+            font-size: 13px;
+            line-height: 21px;
+        }
+
+        .__teaser-text p {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        .__teaser-text {
+            margin-bottom: 15px;
+        }
+
+        .__teaser-more {
+
+            font-weight: 600;
+            background: $color-default-main;
+            color: $color-default-white;
+            text-align: center;
+            padding: 6px 0px 7px 0px;
+
+            &:hover {
+                background: $color-default-main-hover;
+            }
+
+        }
+
+    }
+
+    .__three {
+
+        a {
+            color: $color-default-font;
+            &:hover {
+                color: $color-default-font;
+                text-decoration: none;
+            }
+        }
+
+        .__small {
+
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dotted $color-default-grey;
+
+            &:last-child {
+                margin-bottom: 0px;
+                padding-bottom: 0px;
+                border-bottom: none;
+            }
+        }
+
+        .__info {
+            padding: 0px 15px 0px 0px;
+        }
+
+        .__title {
+            padding-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .__text {
+            font-size: 13px;
+            line-height: 21px;
+        }
+
+        .__cta {
+
+            font-weight: 600;
+            background: $color-default-main;
+            color: $color-default-white;
+            text-align: center;
+            display: inline-block;
+            padding: 4px 20px;
+
+            margin-top: 30px;
+
+            &:hover {
+                background: $color-default-main-hover;
+            }
+
+        }
+
+        .__text p {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        img {
+            height: 70px;
+        }
+
+
+    }
+
+}
+
+
+
+
+@media only screen and (max-width: $special-teaser-break) {
+
+    .teaser-1-big-left-3-small-right {
+
+        display: block;
+
+        .__main {
+
+            width: auto;
+            margin-right: 0px;
+            margin-bottom: 20px;
+            padding-right: 0px;
+            padding-bottom: 20px;
+            border-right: none;
+            border-bottom: $color-default-grey;
+
+        }
+
+    }
+
+}
+
