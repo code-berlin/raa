@@ -194,6 +194,11 @@ ul {
     display: none;
 }
 
+.scrollup-btn {
+    width: 0px;
+    height: 0px;
+}
+
 @media only screen and (max-width: $special-teaser-break-ipad-ls) {
 
     .main-container {
@@ -229,6 +234,7 @@ ul {
 
     .scrollup-btn {
 
+        display: none;
         width: 48px;
         height: 48px;
         background: $color-default-main;

@@ -4,15 +4,4 @@ $(document).ready(function() {
         $('html').addClass('mobile-device');
     }
 
-    $('.js-scrollup-btn').on('click', function(){
-
-        var distance = $('body').scrollTop(),
-            speed = distance/3;
-
-        $('body, html').animate({
-            'scrollTop': 0
-        }, speed);
-
-    });
-
 });
