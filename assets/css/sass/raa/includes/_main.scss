@@ -209,7 +209,7 @@ ul {
     .floating-btn {
 
         position: fixed;
-        bottom: $main-offset-mobile;
+        bottom: 60px;
         z-index: 1000200; // #at-share-dock has 1000200
 
         &._left {
