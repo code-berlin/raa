@@ -1,6 +1,6 @@
 <style>
 	body {position: relative;}
-	.blcss {width: 100%;height: 100%;background: #ffffff;position: absolute;z-index: 1000;}
+	.blcss {width: 100%;height: 100%;background: #ffffff;position: absolute;z-index: 1000999;}
 </style>
 <noscript>
 	<link href="/assets/css/min/main.min.css?<?php echo filemtime(FCPATH . 'assets/css/min/main.min.css'); ?>" rel="stylesheet">
