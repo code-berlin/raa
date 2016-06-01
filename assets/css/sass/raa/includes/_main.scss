@@ -190,6 +190,10 @@ ul {
     margin-left: 0px;
 }
 
+.floating-btn {
+    display: none;
+}
+
 @media only screen and (max-width: $special-teaser-break-ipad-ls) {
 
     .main-container {
@@ -208,6 +212,7 @@ ul {
 
     .floating-btn {
 
+        display: block;
         position: fixed;
         bottom: 60px;
         z-index: 1000200; // #at-share-dock has 1000200
@@ -218,6 +223,23 @@ ul {
 
         &._right {
             right: $main-offset-mobile;
+        }
+
+    }
+
+    .scrollup-btn {
+
+        width: 48px;
+        height: 48px;
+        background: $color-default-main;
+        @include border-radius(50%);
+        @include box-shadow(0px 2px 4px rgba(0,0,0,0.3));
+
+        i {
+            color: $color-default-white;
+            font-size: 20px;
+            margin-left: 20px;
+            margin-top: 14px;
         }
 
     }

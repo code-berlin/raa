@@ -63,7 +63,7 @@ module.exports = function(grunt) {
                 src: [
                     'assets/css/vendor/normalize.css',
                     'assets/css/vendor/font-awesome.min.css',
-                    'assets/css/vendor/flaticon.css',
+                    'assets/css/vendor/flaticon.css', // http://www.flaticon.com/packs/basic-ui-set
                     'assets/css/vendor/superfish.css',
                     'assets/css/vendor/slick.css',
                     'assets/css/vendor/jquery.cookiebar.css',
@@ -83,7 +83,7 @@ module.exports = function(grunt) {
                 src: [
                     'assets/css/vendor/normalize.css',
                     'assets/css/vendor/font-awesome.min.css',
-                    'assets/css/vendor/flaticon.css',
+                    'assets/css/vendor/flaticon.css', // http://www.flaticon.com/packs/basic-ui-set
                     'assets/css/vendor/superfish.css',
                     'assets/css/vendor/slick.css',
                     'assets/css/vendor/jquery.cookiebar.css',
