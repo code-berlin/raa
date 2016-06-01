@@ -186,6 +186,10 @@ ul {
     display: none !important;
 }
 
+.flaticon:before {
+    margin-left: 0px;
+}
+
 @media only screen and (max-width: $special-teaser-break-ipad-ls) {
 
     .main-container {
@@ -200,6 +204,22 @@ ul {
         &._desktop {
             display: block;
         }
+    }
+
+    .floating-btn {
+
+        position: fixed;
+        bottom: $main-offset-mobile;
+        z-index: 1000200; // #at-share-dock has 1000200
+
+        &._left {
+            left: $main-offset-mobile;
+        }
+
+        &._right {
+            right: $main-offset-mobile;
+        }
+
     }
 
 }
