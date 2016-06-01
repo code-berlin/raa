@@ -195,7 +195,7 @@ class Page_dao extends CI_Model{
 
     function get_grouped_articles($article_group_id, $page_id){
 
-        $query =   'SELECT menu_title, slug, teaser_text, image, id, slug, parent_id,
+        $query =   'SELECT menu_title, slug, teaser_text, image, id, slug, parent_id, article_group_position,
                     (
                         SELECT parent.slug
                         FROM page as parent
@@ -205,7 +205,8 @@ class Page_dao extends CI_Model{
                     FROM page
                     WHERE page.id != ' . $page_id . '
                     AND page.article_group_id = ' . $article_group_id . '
-                    AND page.published = 1';
+                    AND page.published = 1
+                    ORDER BY ISNULL(article_group_position) ASC, article_group_position ASC';
 
         return R::getAll($query);
 
