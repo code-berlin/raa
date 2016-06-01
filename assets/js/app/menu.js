@@ -19,6 +19,13 @@ var menu = {
 					menuItem.find('ul').attr('style', '');
 				}
 			});
+
+			// dirty fix because menu top level anchors dont work without this
+			$('a.sf-with-ul').click(function(e){
+				e.preventDefault();
+				window.location = $(this).attr('href');
+			});
+
 		}
 
 		// TRIGGER ACTIVE STATE
