@@ -54,7 +54,7 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->columns('menu_title', 'headline', 'slug', 'published');
 
             // Fields to show when editing
-            $crud->edit_fields('template_id', 'parent_id', 'main_category', 'commercial', 'menu_title', 'headline', 'teaser_text', 'text', 'date', 'image', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id');
+            $crud->edit_fields('template_id', 'parent_id', 'article_group_id', 'main_category', 'commercial', 'menu_title', 'headline', 'teaser_text', 'text', 'date', 'image', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id');
 
             $crud->field_type('id', 'hidden');
             $crud->field_type('date', 'hidden');
@@ -77,6 +77,9 @@ class Admin_Controller extends Main_Admin_Controller {
 
                 $crud->set_relation('author_id','author','name');
                 $crud->display_as('author_id','Author');
+
+                $crud->set_relation('article_group_id','article_group','name');
+                $crud->display_as('article_group_id','Article Group');
 
                 $crud->field_type('commercial','true_false', array('1' => 'Yes', '0' => 'No'));
 
@@ -950,6 +953,42 @@ class Admin_Controller extends Main_Admin_Controller {
         }
 
         $this->load->view('admin/admin', $data);
+    }
+
+    public function article_group() {
+
+        $this->control_sidebar_items_display($data);
+
+        $auth = $this->auth_l;
+        $role_id = $this->user->role_id;
+        $url = $_SERVER['REQUEST_URI'];
+
+        if ($auth->check_section_access_required_permissions($role_id, $url)) {
+
+            $crud = $this->grocery_crud;
+
+            // Page permissions
+            $this->check_section_permissions($crud);
+
+            $crud->set_table('article_group');
+
+            // Fields to show on the list
+            $crud->columns('name');
+            $crud->fields('name');
+            $crud->required_fields('name');
+
+            try {
+                $this->add_grocery_to_data_array($crud->render(), $data);
+            } catch(Exception $e) {
+                $data['output'] = $e->getMessage();
+            }
+
+        } else {
+            $data['output'] = 'Not allowed';
+        }
+
+        $this->load->view('admin/admin', $data);
+
     }
 
 }
