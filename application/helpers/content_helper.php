@@ -51,7 +51,22 @@ function get_sidebar_teaser($sidebarTeaser, $alternativeTeaser, $pageSlug) {
 }
 
 function get_breadcrumbs($page) {
-    return 'BREADCRUMBS';
+
+    $breadcrumbs = array();
+
+    array_push($breadcrumbs, array('title' => 'Home', 'url'=> base_url('/')));
+
+    if (!empty($page['parent_id'])) {
+        $CI =& get_instance();
+        $CI->load->model('page_m');
+        $parent = $CI->page_m->get_by_id($page['parent_id']);
+        array_push($breadcrumbs, array('title' => $parent['menu_title'], 'url'=> base_url($parent['slug'])));
+    }
+
+    array_push($breadcrumbs, array('title' => $page['menu_title'], 'url'=> NULL));
+
+    return $breadcrumbs;
+
 }
 
 ?>
