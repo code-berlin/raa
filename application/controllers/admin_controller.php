@@ -993,4 +993,49 @@ class Admin_Controller extends Main_Admin_Controller {
 
     }
 
+    public function toparticles() {
+
+        $this->control_sidebar_items_display($data);
+
+        $auth = $this->auth_l;
+        $role_id = $this->user->role_id;
+        $url = $_SERVER['REQUEST_URI'];
+
+        if ($auth->check_section_access_required_permissions($role_id, $url)) {
+
+            $crud = $this->grocery_crud;
+
+            $this->check_section_permissions($crud);
+
+            $crud->set_table('toparticle');
+
+            $crud->columns('contentId','position');
+
+            $crud->required_fields('contentId');
+
+            // add page relation
+            $this->load->model('page_m');
+            $pages = $this->page_m->get_all();
+            $pages_array = array();
+            foreach ($pages as $key => $value) {
+                $pages_array[$value['id']] = $value['menu_title'];
+            }
+
+            $crud->field_type('contentId','dropdown',
+                $pages_array);
+
+            try {
+                $this->add_grocery_to_data_array($crud->render(), $data);
+            } catch(Exception $e) {
+                $data['output'] = $e->getMessage();
+            }
+
+        } else {
+            $data['output'] = 'Not allowed';
+        }
+
+        $this->load->view('admin/admin', $data);
+
+    }
+
 }

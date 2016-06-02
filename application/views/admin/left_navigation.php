@@ -49,6 +49,10 @@
                 <a href='<?php echo site_url('admin/article_group'); ?>'>Article Groups</a>
             </li>
 
+            <li>
+                <a href='<?php echo site_url('admin/toparticles'); ?>'>Top Articles</a>
+            </li>
+
             <?php if ($sidebar['VIEW_PRODUCT']) { ?>
                 <li>
                     <a href='<?php echo site_url('admin/product'); ?>'>Products</a>
