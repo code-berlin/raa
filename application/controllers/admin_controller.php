@@ -78,7 +78,7 @@ class Admin_Controller extends Main_Admin_Controller {
                 $crud->set_relation('author_id','author','name');
                 $crud->display_as('author_id','Author');
 
-                $crud->set_relation('article_group_id','article_group','name');
+                $crud->set_relation('article_group_id','articlegroup','name');
                 $crud->display_as('article_group_id','Article Group');
 
                 $crud->display_as('article_group_position','Article Group Position');
@@ -972,7 +972,7 @@ class Admin_Controller extends Main_Admin_Controller {
             // Page permissions
             $this->check_section_permissions($crud);
 
-            $crud->set_table('article_group');
+            $crud->set_table('articlegroup');
 
             // Fields to show on the list
             $crud->columns('name');
