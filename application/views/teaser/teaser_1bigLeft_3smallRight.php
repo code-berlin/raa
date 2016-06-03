@@ -66,6 +66,7 @@ foreach ($items as $key => $value) {
                                 <div class="__inner">
                                     <div class="__title"><?php echo $value['title']; ?></div>
                                     <div class="__text"><?php echo $value['text']; ?></div>
+                                    <div class="__cta"><?php echo $external ? 'Jetzt downloaden' : 'Mehr erfahren'; ?></div>
                                 </div>
                             </div>
 
@@ -79,9 +80,6 @@ foreach ($items as $key => $value) {
                                 </div>
                             </div>
 
-                        </div>
-                        <div class="ta-c">
-                            <div class="__cta"><?php echo $external ? 'Jetzt downloaden' : 'Mehr erfahren'; ?></div>
                         </div>
 
                     </a>

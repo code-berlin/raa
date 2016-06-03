@@ -54,6 +54,7 @@
         padding-right: 25px;
         border-right: 1px dotted $color-default-grey;
         margin-right: 25px;
+        position: relative;
 
         a {
 
@@ -102,6 +103,10 @@
             color: $color-default-white;
             text-align: center;
             padding: 6px 0px 7px 0px;
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 25px;
 
             &:hover {
                 background: $color-default-main-hover;
@@ -146,22 +151,23 @@
         .__text {
             font-size: 13px;
             line-height: 21px;
+            height: 20px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
 
         .__cta {
-
-            background: $color-default-main;
-            color: $color-default-white;
-            text-align: center;
+            color: $color-default-main;
             display: inline-block;
-            padding: 3px 20px;
+            margin-top: 10px;
+            font-weight: 600;
+        }
 
-            margin-top: 30px;
-
-            &:hover {
-                background: $color-default-main-hover;
+        .__small:hover {
+            .__cta {
+                text-decoration: underline;
             }
-
         }
 
         .__text p {
@@ -196,6 +202,10 @@
             padding-bottom: 20px;
             border-right: none;
             border-bottom: $color-default-grey;
+
+            .__teaser-more {
+                position: static;
+            }
 
         }
 
