@@ -197,20 +197,30 @@ class Page_dao extends CI_Model{
         return R::findOne('sidebarteaser', 'published = 1 AND alternative = 1');
     }
 
-    function get_grouped_articles($article_group_id, $page_id){
+    function get_grouped_articles($page_id){
 
-        $query =   'SELECT menu_title, slug, teaser_text, image, id, slug, parent_id, article_group_position,
-                    (
-                        SELECT parent.slug
-                        FROM page as parent
-                        WHERE parent.id = page.parent_id
-                        LIMIT 1
-                    ) as parent_slug
+        $query =   'SELECT
+                        page.id,
+                        page.parent_id,
+                        page.menu_title,
+                        page.slug,
+                        (
+                            SELECT parent.slug
+                            FROM page as parent
+                            WHERE parent.id = page.parent_id
+                            LIMIT 1
+                        ) as parent_slug,
+                        articlegroupitem.position as position,
+                        articlegroupitem.contentId as articlegroupitem_contentId,
+                        articlegroupitem.articlegroupId as articlegroupitem_articlegroupId
                     FROM page
-                    WHERE page.id != ' . $page_id . '
-                    AND page.article_group_id = ' . $article_group_id . '
-                    AND page.published = 1
-                    ORDER BY ISNULL(article_group_position) ASC, article_group_position ASC';
+                    LEFT JOIN articlegroupitem ON articlegroupitem.contentId  = page.id
+                    WHERE articlegroupitem.articlegroupId =
+                       (SELECT articlegroupId
+                        FROM articlegroupitem
+                        WHERE contentId = '. $page_id .')
+                    AND page.id != ' . $page_id . '
+                    ORDER BY ISNULL(position) ASC, position ASC';
 
         return R::getAll($query);
 
