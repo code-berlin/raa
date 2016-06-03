@@ -31,7 +31,13 @@ class Page_dao extends CI_Model{
 
 	public function get_by_slug($slug) {
 
-		$qry = 'SELECT `child`.*, (SELECT `slug` FROM `page` as `parent` WHERE `parent`.`id` = `child`.`parent_id`) as `parent_slug`, (SELECT `default_copyright_text` FROM `settings` LIMIT 1) as `default_copyright_text` FROM `page` as `child`  WHERE slug = :slug LIMIT 1;';
+		$qry = 'SELECT `child`.*,
+                (SELECT `slug` FROM `page` as `parent` WHERE `parent`.`id` = `child`.`parent_id`) as `parent_slug`,
+                (SELECT `menu_title` FROM `page` as `parent` WHERE `parent`.`id` = `child`.`parent_id`) as `parent_menu_title`,
+                (SELECT `default_copyright_text` FROM `settings` LIMIT 1) as `default_copyright_text`
+                FROM `page` as `child`
+                WHERE slug = :slug
+                LIMIT 1;';
 
 		$res = R::getAll($qry, [ 'slug' => $slug ]);
 		$this->object = R::convertToBeans($this->table,$res);

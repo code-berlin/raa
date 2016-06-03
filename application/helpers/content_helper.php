@@ -57,10 +57,7 @@ function get_breadcrumbs($page) {
     array_push($breadcrumbs, array('title' => 'Home', 'url'=> base_url('/')));
 
     if (!empty($page['parent_id'])) {
-        $CI =& get_instance();
-        $CI->load->model('page_m');
-        $parent = $CI->page_m->get_by_id($page['parent_id']);
-        array_push($breadcrumbs, array('title' => $parent['menu_title'], 'url'=> base_url($parent['slug'])));
+        array_push($breadcrumbs, array('title' => $page['parent_menu_title'], 'url'=> base_url($page['parent_slug'])));
     }
 
     array_push($breadcrumbs, array('title' => $page['menu_title'], 'url'=> NULL));
