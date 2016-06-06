@@ -6,13 +6,13 @@ var search = {
 
 		$('.js-search a').on('click', function(e) {
 			e.preventDefault();
-			that.submitSearchForm();
+			that.submitSearchForm($(this).parents('.js-search'));
 		});
 
 		$('.js-search input').on('keypress', function (e) {
 			if (e.which == 13) {
 				e.preventDefault();
-				that.submitSearchForm();
+				that.submitSearchForm($(this).parents('.js-search'));
 			}
 		});
 
@@ -21,9 +21,9 @@ var search = {
 		});
 	},
 
-	submitSearchForm: function() {
-		if ($('.js-search input').val() !== '') {
-			$('.js-search').submit();
+	submitSearchForm: function(jQsearch) {
+		if (jQsearch.find('input').val() !== '') {
+			jQsearch.submit();
 		}
 	}
 

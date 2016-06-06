@@ -31,9 +31,13 @@ class Page_dao extends CI_Model{
 
 	public function get_by_slug($slug) {
 
-		#var_dump($slug);
-
-		$qry = 'SELECT *, (SELECT `default_copyright_text` FROM `settings` LIMIT 1) as `default_copyright_text` FROM '.$this->table.' WHERE slug = :slug LIMIT 1;';
+		$qry = 'SELECT `child`.*,
+                (SELECT `slug` FROM `page` as `parent` WHERE `parent`.`id` = `child`.`parent_id`) as `parent_slug`,
+                (SELECT `menu_title` FROM `page` as `parent` WHERE `parent`.`id` = `child`.`parent_id`) as `parent_menu_title`,
+                (SELECT `default_copyright_text` FROM `settings` LIMIT 1) as `default_copyright_text`
+                FROM `page` as `child`
+                WHERE slug = :slug
+                LIMIT 1;';
 
 		$res = R::getAll($qry, [ 'slug' => $slug ]);
 		$this->object = R::convertToBeans($this->table,$res);
@@ -191,6 +195,37 @@ class Page_dao extends CI_Model{
 
     function get_sidebar_teaser_alt() {
         return R::findOne('sidebarteaser', 'published = 1 AND alternative = 1');
+    }
+
+    function get_grouped_articles($page_id){
+
+        $query =   'SELECT
+                        page.id,
+                        page.parent_id,
+                        page.menu_title,
+                        page.slug,
+                        (
+                            SELECT parent.slug
+                            FROM page as parent
+                            WHERE parent.id = page.parent_id
+                            LIMIT 1
+                        ) as parent_slug,
+                        articlegroupitem.position as position,
+                        articlegroupitem.contentId as articlegroupitem_contentId,
+                        articlegroupitem.articlegroupId as articlegroupitem_articlegroupId
+                    FROM page
+                    LEFT JOIN articlegroupitem ON articlegroupitem.contentId  = page.id
+                    WHERE articlegroupitem.articlegroupId =
+                       (SELECT articlegroupId
+                        FROM articlegroupitem
+                        WHERE contentId = '. $page_id .')
+                    AND page.id != ' . $page_id . '
+                    ORDER BY ISNULL(position) ASC, position ASC';
+
+        return R::getAll($query);
+
+
+
     }
 
 }

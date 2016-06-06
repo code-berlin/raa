@@ -19,6 +19,7 @@ class Dispatcher extends Page {
 
         $this->load->model('url_m');
         $this->load->model('page_m');
+        $this->load->helper('content');
 
         $this->lang->load('std');
 
@@ -139,7 +140,13 @@ class Dispatcher extends Page {
                     $lib_data['slug'] = $lib_data['slug'] . '/' . $subslug;
                 }
 
+                // Retrieve breadcrumbs if user isnt on homepage
+                if ($slug != 'home') {
+                    $this->data['breadcrumbs'] = get_breadcrumbs($this->data[$this->type]);
+                }
+
                 $lib_data['page_id'] = $this->data[$this->type]->id;
+                $lib_data['article_group_id'] = $this->data[$this->type]->article_group_id;
                 $lib_data['template_method'] = $template_method;
                 $this->data['lib_data'] = $this->theme->get_template_data($lib_data);
 

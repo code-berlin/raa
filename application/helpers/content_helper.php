@@ -50,4 +50,20 @@ function get_sidebar_teaser($sidebarTeaser, $alternativeTeaser, $pageSlug) {
 
 }
 
+function get_breadcrumbs($page) {
+
+    $breadcrumbs = array();
+
+    array_push($breadcrumbs, array('title' => 'Home', 'url'=> base_url('/')));
+
+    if (!empty($page['parent_id'])) {
+        array_push($breadcrumbs, array('title' => $page['parent_menu_title'], 'url'=> base_url($page['parent_slug'])));
+    }
+
+    array_push($breadcrumbs, array('title' => $page['menu_title'], 'url'=> NULL));
+
+    return $breadcrumbs;
+
+}
+
 ?>

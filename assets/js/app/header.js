@@ -8,7 +8,11 @@ var header = {
 
     init: function() {
 
-        if ($(window).width() > 768 || this.isInit) {
+        if (this.isInit) {
+            return;
+        }
+
+        if ($(window).width() > 768) {
             window.addEventListener("orientationchange", function() {
                 this.init();
             }.bind(this));

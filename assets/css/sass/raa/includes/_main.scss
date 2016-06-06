@@ -178,6 +178,27 @@ ul {
     text-align: center;
 }
 
+.hidden {
+    display: none;
+}
+
+.dn {
+    display: none !important;
+}
+
+.flaticon:before {
+    margin-left: 0px;
+}
+
+.floating-btn {
+    display: none;
+}
+
+.scrollup-btn {
+    width: 0px;
+    height: 0px;
+}
+
 @media only screen and (max-width: $special-teaser-break-ipad-ls) {
 
     .main-container {
@@ -192,6 +213,41 @@ ul {
         &._desktop {
             display: block;
         }
+    }
+
+    .floating-btn {
+
+        display: block;
+        position: fixed;
+        bottom: 60px;
+        z-index: 1000200; // #at-share-dock has 1000200
+
+        &._left {
+            left: $main-offset-mobile;
+        }
+
+        &._right {
+            right: $main-offset-mobile;
+        }
+
+    }
+
+    .scrollup-btn {
+
+        display: none;
+        width: 48px;
+        height: 48px;
+        background: $color-default-main;
+        @include border-radius(50%);
+        @include box-shadow(0px 2px 4px rgba(0,0,0,0.3));
+
+        i {
+            color: $color-default-white;
+            font-size: 20px;
+            margin-left: 20px;
+            margin-top: 14px;
+        }
+
     }
 
 }
@@ -217,71 +273,4 @@ ul {
         line-height: 22px;
     }
 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.hidden {
-    display: none;
-}
-
-.dn {
-	display: none !important;
 }
