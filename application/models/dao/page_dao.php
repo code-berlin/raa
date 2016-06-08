@@ -197,12 +197,19 @@ class Page_dao extends CI_Model{
         return R::findOne('sidebarteaser', 'published = 1 AND alternative = 1');
     }
 
-    function get_grouped_articles($page_id){
+    function get_grouped_articles($page_id, $order){
+
+        $mysql_order = 'ORDER BY ISNULL(position) ASC, position ASC';
+
+        if ($order == 'random') {
+            $mysql_order = 'ORDER BY RAND() LIMIT 8';
+        }
 
         $query =   'SELECT
                         page.id,
                         page.parent_id,
                         page.menu_title,
+                        page.image,
                         page.slug,
                         (
                             SELECT parent.slug
@@ -210,6 +217,12 @@ class Page_dao extends CI_Model{
                             WHERE parent.id = page.parent_id
                             LIMIT 1
                         ) as parent_slug,
+                        (
+                            SELECT parent.menu_title
+                            FROM page as parent
+                            WHERE parent.id = page.parent_id
+                            LIMIT 1
+                        ) as parent_menu_title,
                         articlegroupitem.position as position,
                         articlegroupitem.contentId as articlegroupitem_contentId,
                         articlegroupitem.articlegroupId as articlegroupitem_articlegroupId
@@ -219,12 +232,42 @@ class Page_dao extends CI_Model{
                        (SELECT articlegroupId
                         FROM articlegroupitem
                         WHERE contentId = '. $page_id .')
-                    AND page.id != ' . $page_id . '
-                    ORDER BY ISNULL(position) ASC, position ASC';
+                    AND page.id != ' . $page_id . ' '
+                    . $mysql_order;
 
         return R::getAll($query);
 
+    }
 
+    function get_top_articles($page_id){
+
+        $query =   'SELECT
+                        page.id,
+                        page.parent_id,
+                        page.menu_title,
+                        page.image,
+                        page.slug,
+                        (
+                            SELECT parent.slug
+                            FROM page as parent
+                            WHERE parent.id = page.parent_id
+                            LIMIT 1
+                        ) as parent_slug,
+                        (
+                            SELECT parent.menu_title
+                            FROM page as parent
+                            WHERE parent.id = page.parent_id
+                            LIMIT 1
+                        ) as parent_menu_title,
+                        toparticle.position as position,
+                        toparticle.contentId as toparticle_contentId
+                    FROM page
+                    LEFT JOIN toparticle ON toparticle.contentId  = page.id
+                    WHERE toparticle.contentId IS NOT NULL
+                    AND page.id != ' . $page_id . '
+                    ORDER BY RAND() LIMIT 8';
+
+        return R::getAll($query);
 
     }
 
