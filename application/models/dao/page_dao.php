@@ -197,12 +197,17 @@ class Page_dao extends CI_Model{
         return R::findOne('sidebarteaser', 'published = 1 AND alternative = 1');
     }
 
-    function get_grouped_articles($page_id, $order){
+    function get_grouped_articles($page_id, $actualpage, $order){
 
-        $mysql_order = 'ORDER BY ISNULL(position) ASC, position ASC';
+        $mysql_actualpage = ' AND page.id != ' . $page_id;
+        $mysql_order = ' ORDER BY ISNULL(position) ASC, position ASC';
+
+        if ($actualpage) {
+            $mysql_actualpage = ' ';
+        }
 
         if ($order == 'random') {
-            $mysql_order = 'ORDER BY RAND() LIMIT 8';
+            $mysql_order = ' ORDER BY RAND() LIMIT 8';
         }
 
         $query =   'SELECT
@@ -231,8 +236,8 @@ class Page_dao extends CI_Model{
                     WHERE articlegroupitem.articlegroupId =
                        (SELECT articlegroupId
                         FROM articlegroupitem
-                        WHERE contentId = '. $page_id .')
-                    AND page.id != ' . $page_id . ' '
+                        WHERE contentId = '. $page_id .')'
+                    . $mysql_actualpage
                     . $mysql_order;
 
         return R::getAll($query);
