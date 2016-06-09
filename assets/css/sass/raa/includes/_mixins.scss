@@ -1,4 +1,24 @@
 @mixin flex-center() {
-    @include align-items(center);
     @include justify-content(center);
+    @include align-items(center);
+}
+
+@mixin flex-left-center() {
+    @include justify-content(flex-start);
+    @include align-items(center);
+}
+
+@mixin flex-right-center() {
+    @include justify-content(flex-end);
+    @include align-items(center);
+}
+
+@mixin flex-left-top() {
+    @include justify-content(flex-start);
+    @include align-items(flex-start);
+}
+
+@mixin flex-right-top() {
+    @include justify-content(flex-end);
+    @include align-items(flex-start);
 }
