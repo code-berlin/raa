@@ -1,7 +1,5 @@
 <div class="breadcrumbs">
 
-    <div class="__inner">Sie sind hier:</div>
-
     <?php
     foreach ($breadcrumbs as $key => $value) {
 
