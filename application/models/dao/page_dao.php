@@ -214,6 +214,7 @@ class Page_dao extends CI_Model{
                         page.id,
                         page.parent_id,
                         page.menu_title,
+                        page.teaser_title,
                         page.image,
                         page.slug,
                         (
@@ -250,6 +251,7 @@ class Page_dao extends CI_Model{
                         page.id,
                         page.parent_id,
                         page.menu_title,
+                        page.teaser_title,
                         page.image,
                         page.slug,
                         (
