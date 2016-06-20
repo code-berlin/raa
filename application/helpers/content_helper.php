@@ -66,4 +66,24 @@ function get_breadcrumbs($page) {
 
 }
 
+/*
+* remove duplicated article items
+* @param (Array) $data -> the article array
+*/
+function remove_duplicates($data) {
+
+    $ids = array();
+    $filtered = array();
+
+    for ($i = 0; $i < count($data); $i++) {
+        $id = $data[$i]['id'];
+        if (!in_array($id, $ids)) {
+            array_push($ids, $id);
+            array_push($filtered, $data[$i]);
+        }
+    }
+
+    return $filtered;
+}
+
 ?>
