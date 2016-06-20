@@ -76,4 +76,8 @@ class Page_m extends CI_Model {
     	return $this->page_dao->get_top_articles($page_id);
     }
 
+    function get_ungrouped_articles() {
+        return $this->page_dao->get_ungrouped_articles();
+    }
+
 }

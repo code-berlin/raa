@@ -1006,16 +1006,20 @@ class Admin_Controller extends Main_Admin_Controller {
             $this->check_section_permissions($crud);
 
             $crud->set_table('articlegroupitem');
-
             $crud->where('articlegroupId', $articlegroupId);
-
             $crud->field_type('articlegroupId', 'hidden', $articlegroupId);
-
             $crud->columns('contentId','position');
+            $crud->display_as('contentId', 'Article');
 
             // add page relation
             $this->load->model('page_m');
-            $pages = $this->page_m->get_all();
+
+            if ($crud->getState() === 'add' || $crud->getState() === 'edit') {
+                $pages = $this->page_m->get_ungrouped_articles();
+            } else {
+                $pages = $this->page_m->get_all();
+            }
+
             $pages_array = array();
             foreach ($pages as $key => $value) {
                 $pages_array[$value['id']] = $value['menu_title'];

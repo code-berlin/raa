@@ -276,4 +276,17 @@ class Page_dao extends CI_Model{
 
     }
 
+    function get_ungrouped_articles() {
+
+        $query = '  SELECT *,
+                        page.id
+                    FROM page
+                    LEFT JOIN articlegroupitem ON articlegroupitem.contentId  = page.id
+                    WHERE articlegroupitem.articlegroupId IS NULL
+                    AND published = 1
+                    ORDER BY menu_title';
+
+        return R::getAll($query);
+    }
+
 }
