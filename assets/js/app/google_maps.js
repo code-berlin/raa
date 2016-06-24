@@ -44,6 +44,7 @@ var googleMapCustom = {
 	searchMap: function(searchString, e) {
 
 		try {
+			console.log($(e), e, $(e).get(0));
 			var trackerName = ga.getAll()[0].get('name');
 			ga(trackerName + '.send', {
 				hitType: 'event',
