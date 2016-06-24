@@ -28,7 +28,7 @@ var videoTrack = {
 				eventCategory: 'video',
 				eventAction: action,
 				eventLabel: window.location.href,
-				eventValue: parseInt($(e).get(0).currentTime)
+				eventValue: parseInt($(e).get(0).timeStamp)
 			});
 		} catch(ex) {
 			console.log(ex);
