@@ -43,6 +43,19 @@ var googleMapCustom = {
 
 	searchMap: function(searchString, e) {
 
+		try {
+			var trackerName = ga.getAll()[0].get('name');
+			ga(trackerName + '.send', {
+				hitType: 'event',
+				eventCategory: 'map_search',
+				eventAction: searchString,
+				eventLabel: window.location.href,
+				eventValue: parseInt($(e).get(0).currentTime)
+			});
+		} catch(ex) {
+			console.log(ex);
+		}
+
 		this.iframe.attr('src', 'https://www.google.com/maps/embed/v1/search?key=' + this.api_key + '&q=' + encodeURI(this.search_phrase + searchString));
 
 	}
