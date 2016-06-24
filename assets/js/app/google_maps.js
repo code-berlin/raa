@@ -49,8 +49,8 @@ var googleMapCustom = {
 			ga(trackerName + '.send', {
 				hitType: 'event',
 				eventCategory: 'map_search',
-				eventAction: searchString,
-				eventLabel: window.location.href,
+				eventAction: window.location.href,
+				eventLabel: searchString,
 				eventValue: parseInt($(e).get(0).timeStamp)
 			});
 		} catch(ex) {
