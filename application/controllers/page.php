@@ -190,9 +190,11 @@ class Page extends CI_Controller {
         $data = array();
 
         $data['api_key'] = $this->config->item('google_maps_api_key');
+        $data['gm_searchterm'] = (isset($_REQUEST['gms']) ? $_REQUEST['gms'] : '');
 
         return $data;
 
     }
+
 
 }

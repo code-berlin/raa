@@ -147,6 +147,26 @@ a {
 
 }
 
+a.link-btn {
+
+    display: block;
+    background: $color-default-main;
+    color: $color-default-white;
+    text-align: center;
+    width: auto;
+    height: 46px;
+    right: 0px;
+    top: 0px;
+    padding: 11px 15px 0px 15px;
+    font-weight: 600;
+
+    &:hover {
+        background: $color-default-main-hover;
+        color: $color-default-white;
+        text-decoration: none;
+    }
+}
+
 ul {
 
     -webkit-padding-start: 0px;

@@ -1,4 +1,4 @@
-var videoTrack = {	
+var videoTrack = {
 
 	init: function() {
 
@@ -19,21 +19,7 @@ var videoTrack = {
 	},
 
 	trackEvent: function(action, e) {
-
-		
-		try {
-			var trackerName = ga.getAll()[0].get('name');
-			ga(trackerName + '.send', {
-				hitType: 'event',
-				eventCategory: 'video',
-				eventAction: action,
-				eventLabel: window.location.href,
-				eventValue: parseInt($(e).get(0).timeStamp)
-			});
-		} catch(ex) {
-			console.log(ex);
-		}
-		
+		helper.gaTrack('video', action, window.location.href, e);
 	}
 
 };

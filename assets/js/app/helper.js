@@ -13,6 +13,21 @@ var helper = {
         } else {
             return false;
         }
+    },
+
+    gaTrack: function(eventCategory, eventAction, eventLabel, e) {
+        try {
+            var trackerName = ga.getAll()[0].get('name');
+            ga(trackerName + '.send', {
+                hitType: 'event',
+                eventCategory: eventCategory,
+                eventAction: eventAction,
+                eventLabel: eventLabel,
+                eventValue: parseInt($(e).get(0).timeStamp)
+            });
+        } catch(ex) {
+            console.log(ex);
+        }
     }
 
 

@@ -1,3 +1,14 @@
+<?php
+
+$iFrameSrc = '';
+$gmSearchterm = $template_data['gm_searchterm'];
+
+if ($gmSearchterm !== '') {
+    $iFrameSrc = 'https://www.google.com/maps/embed/v1/search?key='. $template_data['api_key'] . '&q=' . urlencode('Apotheken near' . $gmSearchterm);
+}
+
+?>
+
 <div class="content-container">
 
     <div class="flex-container _desktop">
@@ -10,14 +21,14 @@
 
             <div class="gm-searchlabel">Geben Sie hier Ihre Postleitzahl oder Ihren Ort an:</div>
             <div class="form-search mb30">
-                <input class="js-map-embed-search-input" type="text">
+                <input class="js-map-embed-search-input" type="text" value="<?php echo $gmSearchterm; ?>">
                 <a class="js-map-embed-search-btn" href="#"><i class="fa fa-search"></i></a>
             </div>
 
             <div class="js-map-embed-key" data-key="<?php echo $template_data['api_key']; ?>"></div>
             <div class="js-map-embed-phrase" data-phrase="Apotheken near"></div>
 
-            <iframe frameborder="0" style="border:0" class="js-map-container gmap-iframe" src="" allowfullscreen></iframe>
+            <iframe frameborder="0" style="border:0" class="js-map-container gmap-iframe" src="<?php echo $iFrameSrc; ?>" allowfullscreen></iframe>
 
         </div>
 

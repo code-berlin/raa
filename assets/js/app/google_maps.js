@@ -29,35 +29,28 @@ var googleMapCustom = {
 			}
 		});
 
-		// will only work on secure origins, see https://goo.gl/rStTGz
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(function(position) {
-		        me.lat = position.coords.latitude;
-		        me.lng = position.coords.longitude;
-		    });
-		}
+		if (this.iframe.attr('src') === '') {
 
-		this.iframe.attr('src', 'https://www.google.com/maps/embed/v1/view?key=' + this.api_key + '&zoom=9&center=' + this.lat + '%2C' + this.lng);
+			// will only work on secure origins, see https://goo.gl/rStTGz
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(function(position) {
+			        me.lat = position.coords.latitude;
+			        me.lng = position.coords.longitude;
+			    });
+			}
+
+			this.iframe.attr('src', 'https://www.google.com/maps/embed/v1/view?key=' + this.api_key + '&zoom=9&center=' + this.lat + '%2C' + this.lng);
+		}
 
 	},
 
 	searchMap: function(searchString, e) {
 
-		try {
-			console.log($(e), e, $(e).get(0));
-			var trackerName = ga.getAll()[0].get('name');
-			ga(trackerName + '.send', {
-				hitType: 'event',
-				eventCategory: 'map_search',
-				eventAction: window.location.href,
-				eventLabel: searchString,
-				eventValue: parseInt($(e).get(0).timeStamp)
-			});
-		} catch(ex) {
-			console.log(ex);
-		}
+		helper.gaTrack('map_search', window.location.href, searchString, e);
 
-		this.iframe.attr('src', 'https://www.google.com/maps/embed/v1/search?key=' + this.api_key + '&q=' + encodeURI(this.search_phrase + searchString));
+		var url = '';
+		url = 'http://' + window.location.hostname + window.location.pathname + '?gms=' + searchString;
+		window.location.href = url;
 
 	}
 
