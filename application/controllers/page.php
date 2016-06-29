@@ -190,7 +190,11 @@ class Page extends CI_Controller {
         $data = array();
 
         $data['api_key'] = $this->config->item('google_maps_api_key');
-        $data['gm_searchterm'] = (isset($_REQUEST['gms']) ? $_REQUEST['gms'] : '');
+
+        if (isset($_REQUEST['gms'])) {
+            $data['gm_searchterm'] = $_REQUEST['gms'];
+            $data['iframe_src'] = 'https://www.google.com/maps/embed/v1/search?key='. $data['api_key'] . '&q=' . urlencode('Apotheken near' . $data['gm_searchterm']);
+        }
 
         return $data;
 
