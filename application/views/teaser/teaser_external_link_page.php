@@ -14,9 +14,9 @@
 
             <a href="<?php echo $value['external_link']; ?>" class="flex flex-container __item" target="_blank">
                 <div class="flex flex-container __img">
-                    <img src="/assets/uploads/files/<?php echo $value['external_image']; ?>">
+                    <img src="/assets/uploads/files/<?php echo $value['external_image']; ?>" alt="<?php echo $value['title']; ?>">
                 </div>
-                <div class="flex flex-container __btn"><?php echo $value['title']; ?></div>
+                <div class="flex flex-container __btn"><?php echo $value['text']; ?></div>
             </a>
 
         <?php
