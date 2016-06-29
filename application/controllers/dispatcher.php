@@ -92,12 +92,18 @@ class Dispatcher extends Page {
                 if (!empty($teaser_instances)) {
 
                     foreach ($teaser_instances as $key => $value) {
+
                         $teaser[$value['id']]['title'] = $value['title'];
                         $teaser[$value['id']]['text'] = $value['text'];
                         $teaser[$value['id']]['teaser_type'] = $value['name'];
                         $teaser[$value['id']]['jumpmark'] = $value['jumpmark'];
-
                         $teaser[$value['id']]['items'] = $this->teaser_m->get_teaser_items_by_teaser_instance_id($value['id']);
+
+                        // if teasertype is external_link_page then shuffle order
+                        if ($value['name'] === 'external_link_page')  {
+                            shuffle($teaser[$value['id']]['items']);
+                        }
+
                     }
 
                 }
