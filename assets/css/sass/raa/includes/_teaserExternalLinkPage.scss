@@ -12,7 +12,6 @@
     .__item {
 
         height: 120px;
-        border: 1px solid $color-default-grey;
         margin-right: 25px;
 
         .__img,
@@ -21,9 +20,14 @@
         }
 
         .__img {
+
+            border: 1px solid $color-default-grey;
+            border-right: none;
+
             img {
                 width: 175px;
             }
+
         }
 
         .__btn {
@@ -32,6 +36,7 @@
             background: $color-default-main;
             font-size: 16px;
             font-weight: 600;
+            @include transition(background .05s ease-in);
 
             &:hover {
                 background: $color-default-main-hover;
