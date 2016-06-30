@@ -992,7 +992,7 @@ class Admin_Controller extends Main_Admin_Controller {
 
     }
 
-    public function article_group_item($articlegroupId) {
+    public function article_group_item($articlegroupId, $action = '', $articlegroupItemId = '') {
 
         $this->control_sidebar_items_display($data);
 
@@ -1009,14 +1009,17 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->set_table('articlegroupitem');
             $crud->where('articlegroupId', $articlegroupId);
             $crud->field_type('articlegroupId', 'hidden', $articlegroupId);
-            $crud->columns('contentId','position');
+            $crud->columns('contentId', 'position', 'addition');
             $crud->display_as('contentId', 'Article');
+            $crud->field_type('addition', 'true_false', array('1' => 'Yes', '0' => 'No'));
 
             // add page relation
             $this->load->model('page_m');
 
-            if ($crud->getState() === 'add' || $crud->getState() === 'edit') {
+            if ($action === 'add') {
                 $pages = $this->page_m->get_ungrouped_articles();
+            } elseif ($action === 'edit') {
+                $pages = $this->page_m->get_ungrouped_articles_and_selected_article($articlegroupItemId);
             } else {
                 $pages = $this->page_m->get_all();
             }
