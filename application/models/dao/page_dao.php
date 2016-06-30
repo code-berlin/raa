@@ -197,13 +197,13 @@ class Page_dao extends CI_Model{
         return R::findOne('sidebarteaser', 'published = 1 AND alternative = 1');
     }
 
-    function get_grouped_articles($page_id, $actualpage, $order){
+    function get_grouped_articles($page_id, $include_actualpage, $order){
 
-        $mysql_actualpage = ' AND page.id != ' . $page_id;
+        $mysql_include_actualpage = ' AND page.id != ' . $page_id;
         $mysql_order = ' ORDER BY ISNULL(position) ASC, position ASC';
 
-        if ($actualpage) {
-            $mysql_actualpage = ' ';
+        if ($include_actualpage) {
+            $mysql_include_actualpage = ' ';
         }
 
         if ($order == 'random') {
@@ -238,12 +238,14 @@ class Page_dao extends CI_Model{
                        (SELECT articlegroupId
                         FROM articlegroupitem
                         WHERE contentId = '. $page_id .')'
-                    . $mysql_actualpage
+                    . $mysql_include_actualpage
                     . $mysql_order;
 
         return R::getAll($query);
 
     }
+
+
 
     function get_top_articles($page_id){
 
@@ -287,6 +289,30 @@ class Page_dao extends CI_Model{
                     WHERE articlegroupitem.articlegroupId IS NULL
                     AND published = 1
                     ORDER BY menu_title';
+
+        return R::getAll($query);
+    }
+
+    function get_ungrouped_articles_and_selected_article($articlegroupitem_id) {
+        $query = '  SELECT *,
+                        page.id
+                    FROM page
+                    LEFT JOIN articlegroupitem ON articlegroupitem.contentId  = page.id
+                    WHERE (
+                        articlegroupitem.articlegroupId IS NULL
+                        OR
+                        articlegroupitem.id = '.$articlegroupitem_id.'
+                    )
+                    AND published = 1
+                    ORDER BY menu_title';
+
+        return R::getAll($query);
+    }
+
+    function get_articlegroupitem($page_id){
+        $query = '  SELECT *
+                    FROM articlegroupitem
+                    WHERE contentId = ' . $page_id;
 
         return R::getAll($query);
     }

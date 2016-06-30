@@ -68,8 +68,8 @@ class Page_m extends CI_Model {
 		return $this->page_dao->get_sidebar_teaser_alt();
     }
 
-    function get_grouped_articles($page_id, $actualpage = false, $order = 'default'){
-    	return $this->page_dao->get_grouped_articles($page_id, $actualpage, $order);
+    function get_grouped_articles($page_id, $include_actualpage = false, $order = 'default'){
+    	return $this->page_dao->get_grouped_articles($page_id, $include_actualpage, $order);
     }
 
     function get_top_articles($page_id){
@@ -79,5 +79,14 @@ class Page_m extends CI_Model {
     function get_ungrouped_articles() {
         return $this->page_dao->get_ungrouped_articles();
     }
+
+    function get_ungrouped_articles_and_selected_article($articlegroupitem_id) {
+        return $this->page_dao->get_ungrouped_articles_and_selected_article($articlegroupitem_id);
+    }
+
+    function get_articlegroupitem($page_id){
+        return $this->page_dao->get_articlegroupitem($page_id);
+    }
+
 
 }
