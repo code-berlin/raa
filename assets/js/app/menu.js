@@ -21,10 +21,10 @@ var menu = {
 			});
 
 			// dirty fix because menu top level anchors dont work without this
-			$('a.sf-with-ul').click(function(e){
-				e.preventDefault();
-				window.location = $(this).attr('href');
-			});
+			//$('a.sf-with-ul').click(function(e){
+				//e.preventDefault();
+				//me.handleMobileMenuTopLevelClick($(this));
+			//});
 
 		}
 
@@ -54,6 +54,23 @@ var menu = {
 		}
 
 	},
+
+	/*handleMobileMenuTopLevelClick: function(jQelement) {
+
+		console.log('handleMobileMenuTopLevelClick()');
+
+		// desktop mobile menu
+		if ($(window).width() > 800) {
+			if (jQelement.parents('li').hasClass('sfHover')) {
+				window.location = jQelement.attr('href');
+			}
+		// phone mobile menu
+		} else {
+			window.location = jQelement.attr('href');
+		}
+
+
+	},*/
 
 	appearImages: function(menuItem) {
 		menuItem.find('.js-appear-triggable').each(function(index, image){
