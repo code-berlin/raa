@@ -82,6 +82,9 @@
                 <li>
                     <a href='<?php echo site_url('admin/widget'); ?>'>Widget</a>
                 </li>
+                <li>
+                    <a href='<?php echo site_url('admin/image'); ?>'>Images</a>
+                </li>
             <?php } ?>
 
             <?php if ($sidebar['EDIT_SIDEBAR_TEASER']) { ?>
