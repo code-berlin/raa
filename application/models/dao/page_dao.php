@@ -281,12 +281,16 @@ class Page_dao extends CI_Model{
     }
 
     function get_ungrouped_articles() {
-
+        echo 'get_ungrouped_articles';
         $query = '  SELECT *,
                         page.id
                     FROM page
                     LEFT JOIN articlegroupitem ON articlegroupitem.contentId  = page.id
-                    WHERE articlegroupitem.articlegroupId IS NULL
+                    WHERE (
+                        articlegroupitem.articlegroupId IS NULL
+                        OR
+                        articlegroupitem.addition = 1
+                    )
                     AND published = 1
                     ORDER BY menu_title';
 
@@ -294,12 +298,15 @@ class Page_dao extends CI_Model{
     }
 
     function get_ungrouped_articles_and_selected_article($articlegroupitem_id) {
+        echo 'get_ungrouped_articles_and_selected_article';
         $query = '  SELECT *,
                         page.id
                     FROM page
                     LEFT JOIN articlegroupitem ON articlegroupitem.contentId  = page.id
                     WHERE (
                         articlegroupitem.articlegroupId IS NULL
+                        OR
+                        articlegroupitem.addition = 1
                         OR
                         articlegroupitem.id = '.$articlegroupitem_id.'
                     )
