@@ -125,7 +125,13 @@ var lazyLoader = {
         var width = img.width() * window.devicePixelRatio,
             height,
             src,
-            storedWidth = img.data('width');
+            storedWidth = img.data('width'),
+            dataSrc = img.data('src');
+
+            // via raa text editor inserted images cannot have data-src, the check for id
+            if (!dataSrc) {
+                dataSrc = img.attr('id');
+            }
 
         // if bigger img than needen is already loaded -> abort
         if (storedWidth && width <= storedWidth) {
@@ -133,7 +139,7 @@ var lazyLoader = {
         }
 
         height = img.height() * window.devicePixelRatio;
-        src = '/image/preview/' + width +'/' + height + '/' + img.data('src');
+        src = '/image/preview/' + width +'/' + height + '/' + dataSrc;
 
         // store image width to ensure that after next orientation change
         // we load new image only if higher resolution is needed

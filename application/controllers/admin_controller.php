@@ -1109,6 +1109,8 @@ class Admin_Controller extends Main_Admin_Controller {
             // Fields to show on the list
             $crud->columns('image');
 
+            $crud->callback_column('image', array($this,'_callback_image'));
+
             // Fields to show when editing and add
             $crud->edit_fields('image');
             $crud->add_fields('image');
@@ -1126,6 +1128,10 @@ class Admin_Controller extends Main_Admin_Controller {
 
         $this->load->view('admin/admin', $data);
 
+    }
+
+    function _callback_image($value, $row) {
+        return "<img style='display: block; width: 200px;' src='" . base_url() . $this->config->item('upload_folder') . '/' . $row->image . "'><div style='padding:5px 0px;'>" . $row->image . "</div>";
     }
 
 }
