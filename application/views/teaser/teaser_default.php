@@ -3,7 +3,12 @@
     <?php
 
     $columns = 4;
-    $initial_shown = 8;
+
+    if (!empty($lib_data['teaserDefaultColumns'])) {
+        $columns = $lib_data['teaserDefaultColumns'];
+    }
+
+    $initial_shown = $columns * 2;
     $show_collapsible_button = false;
     $i = 0;
 
