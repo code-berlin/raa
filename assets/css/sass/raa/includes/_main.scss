@@ -116,7 +116,10 @@ a {
     border-bottom: $color-default-grey;
 
     i {
-        margin-right: 10px;
+        font-size: 22px;
+        margin-right: 12px;
+        position: relative;
+        top: -1px;
     }
 
     .teaser-group:first-child & {
