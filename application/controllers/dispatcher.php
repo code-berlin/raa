@@ -31,6 +31,7 @@ class Dispatcher extends Page {
 
         $this->data['language'] = $this->language;
         $this->data['theme'] = $this->config->item('theme');
+        $this->data['canonical_url'] = base_url($slug . ($subslug !== '' ? '/' . $subslug : ''));
 
         // Retrieve homepage in case it exists.
         if (empty($slug)) {
