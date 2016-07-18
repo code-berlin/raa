@@ -107,7 +107,7 @@ a {
 
 .teaser-h2 {
 
-    margin: 30px 0px 25px 0px;
+    margin: 25px 0px;
     color: $color-default-font;
     font-weight: 400;
     font-size: 24px;
@@ -116,10 +116,13 @@ a {
     border-bottom: $color-default-grey;
 
     i {
+
         font-size: 22px;
         margin-right: 12px;
         position: relative;
         top: -1px;
+        color: $color-default-font;
+
     }
 
     .teaser-group:first-child & {
@@ -278,22 +281,19 @@ ul {
 @media only screen and (max-width: $special-teaser-break) {
 
     .teaser-h2 {
-        margin: 0px (-$main-offset-mobile);
+
+        margin: 0px (-$main-offset-mobile) 15px (-$main-offset-mobile);
         padding: 10px $main-offset-mobile;
-        font-size: 20px;
-        line-height: 28px;
+        font-size: 16px;
+        line-height: 22px;
         background: $color-default-main;
         color: $color-default-white;
         border-bottom: none;
-    }
 
-}
+        i {
+            font-size: 16px;
+        }
 
-@media only screen and (max-width: $page-break-phone) {
-
-    .teaser-h2 {
-        font-size: 16px;
-        line-height: 22px;
     }
 
 }

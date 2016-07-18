@@ -1,4 +1,4 @@
-<div class="teaser-1-big-left-3-small-right flex-container mt25">
+<div class="teaser-1-big-left-3-small-right flex-container">
 
 <?php
 
