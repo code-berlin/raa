@@ -265,7 +265,7 @@
 
     padding: 10px 15px 12px 15px;
     border: $color-default-grey;
-    margin-bottom: 15px;
+    margin-top: 40px;
     font-size: 12px;
     line-height: 22px;
 
@@ -287,34 +287,17 @@
 
 .sharing-box {
 
-
-    margin-top: 25px;
-    margin-bottom: 15px;
-
-    padding: 10px 15px;
-    background: $color-default-grey;
-
-    display: -webkit-flex;
-    display: -ms-flex;
-    display: flex;
-
     .__title {
-
+        text-align: right;
+        font-size: 12px;
         color: $color-default-font;
-        -webkit-flex: 1;
-        -ms-flex: 1;
-        flex: 1;
-        padding: 4px 15px 0px 0px;
+        padding: 0px 0px 5px 0px;
 
     }
 
     .addthis_sharing_toolbox {
         line-height: 0px;
-        display: -webkit-flex;
-        display: -ms-flex;
-        display: flex;
-        align-items: center;
-        -webkit-align-items: center;
+        text-align: right;
     }
 
     .at-share-tbx-element {
