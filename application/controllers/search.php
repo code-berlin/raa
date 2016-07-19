@@ -33,6 +33,8 @@ class Search extends CI_Controller {
         $subdata['searchterm'] = $_REQUEST['gs'];
         $subdata['theme'] = $this->config->item('theme');
 
+        $data['canonical_url'] = base_url('gsearch');
+
     	$data['template_content'] = $this->load->view('search/gsearch', $subdata, true);
 
     	$this->load->view('layouts/default', $data);
