@@ -286,12 +286,13 @@
 
 .sharing-box {
 
+    margin-bottom: -10px;
+
     .__title {
         text-align: right;
         font-size: 12px;
         color: $color-default-font;
         padding: 0px 0px 3px 0px;
-
     }
 
     .addthis_sharing_toolbox {
