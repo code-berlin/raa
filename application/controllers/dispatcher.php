@@ -155,7 +155,6 @@ class Dispatcher extends Page {
                 }
 
                 $lib_data['page_id'] = $this->data[$this->type]->id;
-                $lib_data['article_group_id'] = $this->data[$this->type]->article_group_id;
                 $lib_data['template_method'] = $template_method;
                 $this->data['lib_data'] = $this->theme->get_template_data($lib_data);
 

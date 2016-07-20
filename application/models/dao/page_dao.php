@@ -231,13 +231,15 @@ class Page_dao extends CI_Model{
                         ) as parent_menu_title,
                         articlegroupitem.position as position,
                         articlegroupitem.contentId as articlegroupitem_contentId,
-                        articlegroupitem.articlegroupId as articlegroupitem_articlegroupId
+                        articlegroupitem.articlegroupId as articlegroupitem_articlegroupId,
+                        articlegroupitem.addition as articlegroupitem_addition
                     FROM page
                     LEFT JOIN articlegroupitem ON articlegroupitem.contentId  = page.id
                     WHERE articlegroupitem.articlegroupId =
                        (SELECT articlegroupId
                         FROM articlegroupitem
-                        WHERE contentId = '. $page_id .')'
+                        WHERE contentId = '. $page_id .'
+                        AND addition = 0)'
                     . $mysql_include_actualpage
                     . $mysql_order;
 
@@ -319,7 +321,8 @@ class Page_dao extends CI_Model{
     function get_articlegroupitem($page_id){
         $query = '  SELECT *
                     FROM articlegroupitem
-                    WHERE contentId = ' . $page_id;
+                    WHERE contentId = '.$page_id.'
+                    AND addition = 0';
 
         return R::getAll($query);
     }
