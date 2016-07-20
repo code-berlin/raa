@@ -259,10 +259,6 @@
         margin-bottom: 0px;
     }
 
-    >*:first-child {
-        margin-top: 20px;
-    }
-
 }
 
 .content-disclaimer {
@@ -419,6 +415,10 @@
 
         &._404-page {
             margin-top: 15px;
+        }
+
+        >*:first-child {
+            margin-top: 20px;
         }
 
     }
