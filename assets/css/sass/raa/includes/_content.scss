@@ -413,12 +413,12 @@
 
     .content-content {
 
-        *:first-child {
-            margin-top: 20px;
-        }
-
         &._404-page {
             margin-top: 15px;
+        }
+
+        >*:first-child {
+            margin-top: 20px;
         }
 
     }
