@@ -1,0 +1,59 @@
+.content-toggler {
+
+    font-size: 16px;
+    position: relative;
+    cursor: pointer;
+
+    &:after,
+    &:before {
+        content: '';
+        position: absolute;
+        background: $color-default-font;
+        height: 2px;
+        width: 16px;
+        right: 0px;
+        top: 50%;
+    }
+
+    &:after {
+        @include transform(translate3d(0, -50%, 0));
+    }
+
+    &:before {
+        @include transition(transform .2s ease-in-out);
+        @include transform(translate3d(0, -50%, 0) rotate(-90deg));
+    }
+
+    &._open {
+        &:before {
+            @include transform(translate3d(0, -50%, 0));
+        }
+    }
+
+    &:hover {
+        p {
+            text-decoration: underline;
+        }
+    }
+
+    + * {
+
+        display: none;
+    }
+
+}
+
+@media only screen and (max-width: $special-teaser-break) {
+
+    .content-toggler {
+
+        font-size: 14px;
+
+        &:after,
+        &:before {
+            width: 12px;
+        }
+
+    }
+
+}
