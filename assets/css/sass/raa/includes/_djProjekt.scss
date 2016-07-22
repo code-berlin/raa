@@ -1,0 +1,51 @@
+.dj-projekt {
+
+    .__left {
+        font-size: 11px;
+        color: $color-default-font;
+        padding-right: 10px;
+        padding-top: 3px;
+    }
+
+    .__right {
+        border-left: 1px solid $color-default-font;
+        padding-left: 10px;
+    }
+
+    .__img {
+        width: 36px;
+        height: 30px;
+        background-image: url(/assets/images/dj_logo_small.png);
+        background-repeat: no-repeat;
+        background-size: 36px 30px;
+    }
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &._white {
+
+        opacity: 0.9;
+
+        .__left {
+            color: $color-default-white;
+        }
+
+        .__right {
+            border-left: 1px solid $color-default-white;
+        }
+
+        .__img {
+            background-image: url(/assets/images/dj_logo_small_white.png);
+        }
+
+    }
+
+}
+
+@media only screen and (max-width: $page-break-desktop) {
+    .dj-projekt {
+        display: none;
+    }
+}
