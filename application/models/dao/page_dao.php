@@ -283,7 +283,6 @@ class Page_dao extends CI_Model{
     }
 
     function get_ungrouped_articles() {
-        echo 'get_ungrouped_articles';
         $query = '  SELECT *,
                         page.id
                     FROM page
@@ -300,7 +299,6 @@ class Page_dao extends CI_Model{
     }
 
     function get_ungrouped_articles_and_selected_article($articlegroupitem_id) {
-        echo 'get_ungrouped_articles_and_selected_article';
         $query = '  SELECT *,
                         page.id
                     FROM page

@@ -1016,13 +1016,7 @@ class Admin_Controller extends Main_Admin_Controller {
             // add page relation
             $this->load->model('page_m');
 
-            if ($action === 'add') {
-                $pages = $this->page_m->get_ungrouped_articles();
-            } elseif ($action === 'edit') {
-                $pages = $this->page_m->get_ungrouped_articles_and_selected_article($articlegroupItemId);
-            } else {
-                $pages = $this->page_m->get_all();
-            }
+            $pages = $this->page_m->get_all();
 
             $pages_array = array();
             foreach ($pages as $key => $value) {
