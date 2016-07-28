@@ -4,19 +4,20 @@
  * method to replace second or first (in case of no second) h2 with h2 and mobile advertisement
  * @param $text the content
  * @param $ad_id id for choosing right ad
+ * @param $ad_place array for replacement
  * @return mixed the new content
  */
-function add_ad_tag_to_text($text, $ad_id) {
+function add_ad_tag_to_text($text, $ad_id, $ad_place = array(1,0)) {
 
 	$CI = & get_instance();
 
 	$regx = '/<h2.*?>(\s|\S)+?<\/h2>/i';
 	preg_match_all($regx, $text, $matches);
 	if (isset($matches[0])) {
-		if (isset($matches[0][1])) {
-			$text = str_replace($matches[0][1], '<div class="cis' . $ad_id . '">' . $CI->load->view('/component/ads', array('ad_id' => $ad_id, 'ad_tag'=> get_ad_tag($ad_id), 'ad_name' => get_ad_name($ad_id), 'ad_map' => get_ad_map($ad_id)), true) . '</div>' . $matches[0][1], $text);
-		} else if (isset($matches[0][0])) {
-			$text = str_replace($matches[0][0], '<div class="cis' . $ad_id . '">' . $CI->load->view('/component/ads', array('ad_id' => $ad_id, 'ad_tag'=> get_ad_tag($ad_id), 'ad_name' => get_ad_name($ad_id), 'ad_map' => get_ad_map($ad_id)), true) . '</div>' . $matches[0][0], $text);
+		if (isset($matches[0][$ad_place[0]])) {
+			$text = str_replace($matches[0][$ad_place[0]], '<div class="cis' . $ad_id . '">' . $CI->load->view('/component/ads', array('ad_id' => $ad_id, 'ad_tag'=> get_ad_tag($ad_id), 'ad_name' => get_ad_name($ad_id), 'ad_map' => get_ad_map($ad_id)), true) . '</div>' . $matches[0][1], $text);
+		} else if (isset($matches[0][$ad_place[1]])) {
+			$text = str_replace($matches[0][$ad_place[1]], '<div class="cis' . $ad_id . '">' . $CI->load->view('/component/ads', array('ad_id' => $ad_id, 'ad_tag'=> get_ad_tag($ad_id), 'ad_name' => get_ad_name($ad_id), 'ad_map' => get_ad_map($ad_id)), true) . '</div>' . $matches[0][0], $text);
 		}
 	}
 
