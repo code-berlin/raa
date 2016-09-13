@@ -10,8 +10,8 @@
 function add_ad_tag_to_text($text, $ad_id, $ad_place = array(1,0)) {
 
 	$CI = & get_instance();
-    echo "muh";
-	$regx = '/<h2.*?>(\s|\S)+?<\/h2>/i';
+
+    $regx = '/<h2.*?>(\s|\S)+?<\/h2>/i';
 	preg_match_all($regx, $text, $matches);
 
     if (isset($matches[0])) {
