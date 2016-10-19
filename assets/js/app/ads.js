@@ -31,9 +31,19 @@ var cisLoader = {
 
 	reviceAdMessage: function(event) {
 		var origin = event.origin,
-			messageData = event.data;
+			messageData = event.data.split('&');
 
-		//if ()
+		//if (origin !== "http://example.org:8080"))
+		console.log(origin);
+
+		if (messageData[0] !== 'reviceAdMessage')
+			return;
+
+		switch(messageData[1]) {
+			case 'resize':
+				$('#' + messageData[2] + ' .cis_content iframe').height(messageData[3]);
+				break;
+		}
 
 	}
 
