@@ -41,6 +41,8 @@ var cisLoader = {
 
 		switch(messageData[1]) {
 			case 'resize':
+				console.log('hier=?');
+				console.log('#' + messageData[2] + ' .cis_content iframe');
 				$('#' + messageData[2] + ' .cis_content iframe').height(messageData[3]);
 				break;
 		}
