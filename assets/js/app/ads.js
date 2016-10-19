@@ -33,7 +33,7 @@ var cisLoader = {
 		var origin = event.origin,
 			messageData = event.data.split('&');
 
-		if (messageData[0] !== 'reviceAdMessage' || origin !== "http://tpc.googlesyndication.com"))
+		if (messageData[0] !== 'reviceAdMessage' || origin !== "http://tpc.googlesyndication.com")
 			return;
 
 		switch(messageData[1]) {
