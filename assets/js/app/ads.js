@@ -27,7 +27,7 @@ var cisLoader = {
 				});
 			});
 		}
-	}
+	},
 
 	reviceAdMessage: function(event) {
 		console.log(event);
