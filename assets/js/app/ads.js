@@ -29,4 +29,10 @@ var cisLoader = {
 		}
 	}
 
+	reviceAdMessage: function(event) {
+		console.log(event);
+	}
+
 };
+
+window.addEventListener("message", cisLoader.reviceAdMessage, false);
