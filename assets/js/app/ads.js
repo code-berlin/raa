@@ -33,16 +33,11 @@ var cisLoader = {
 		var origin = event.origin,
 			messageData = event.data.split('&');
 
-		//if (origin !== "http://tpc.googlesyndication.com"))
-		console.log(origin, messageData);
-
-		if (messageData[0] !== 'reviceAdMessage')
+		if (messageData[0] !== 'reviceAdMessage' || origin !== "http://tpc.googlesyndication.com"))
 			return;
 
 		switch(messageData[1]) {
 			case 'resize':
-				console.log('hier=?');
-				console.log('#' + messageData[2] + ' .cis_content iframe');
 				$('#' + messageData[2] + ' .cis_content iframe').height(messageData[3]);
 				break;
 		}
