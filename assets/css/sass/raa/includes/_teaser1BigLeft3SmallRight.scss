@@ -184,6 +184,16 @@
 
 }
 
+@media only screen and (max-width: $special-teaser-break-ipad-ls) {
+
+    .teaser-1-big-left-3-small-right {
+        .__three {
+            .__text {
+                display: none;
+            }
+        }
+    }
+}
 
 
 
@@ -207,6 +217,14 @@
                 position: static;
             }
 
+        }
+
+        .__three {
+            .__text {
+                display: block;
+                height: auto;
+                white-space: normal;
+            }
         }
 
     }
