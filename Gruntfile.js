@@ -13,7 +13,7 @@ module.exports = function(grunt) {
         'assets/js/lib/superfish.min.js',
         'assets/js/lib/slick.min.js',
         'assets/js/lib/jquery.cookiebar.js',
-        'assets/js/lib/jquery.onAppear.min.js',
+        'assets/js/lib/jquery.onAppear.js',
         'assets/js/lib/jquery.flexslider-min.js',
         'assets/js/lib/jquery.idle.min.js',
         'assets/js/lib/jquery-scrolltofixed-min.js',
