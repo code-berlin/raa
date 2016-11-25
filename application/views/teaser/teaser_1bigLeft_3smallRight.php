@@ -33,7 +33,7 @@ foreach ($items as $key => $value) {
         <div class="__main">
             <a href="<?php echo isset($slug) ? $slug : '#' ; ?>" target="<?php echo $target; ?>">
                 <div class="img _hover-mask">
-                    <img class="lazy-img js-lazy-img" src="/assets/images/themes/<?php echo $theme; ?>/ph.png" data-src="<?php echo isset($image) ? $image : '' ; ?>" class="_teaser-img" alt="<?php echo $value['title']; ?>" />
+                    <img class="lazy-img js-lazy-img" src="<?php echo $img_placeholder; ?>" data-src="<?php echo isset($image) ? $image : '' ; ?>" class="_teaser-img" alt="<?php echo $value['title']; ?>" />
                     <?php
                     if ($value['page_commercial']) { ?>
                         <div class="__commercial">Anzeige</div> <?php
@@ -72,7 +72,7 @@ foreach ($items as $key => $value) {
 
                             <div>
                                 <div class="img _hover-mask">
-                                    <img src="/assets/images/themes/<?php echo $theme; ?>/ph.png" data-src="<?php echo isset($image) ? $image : '' ; ?>" class="lazy-img js-lazy-img _teaser-img" alt="<?php echo $value['title']; ?>">
+                                    <img src="<?php echo $img_placeholder; ?>" data-src="<?php echo isset($image) ? $image : '' ; ?>" class="lazy-img js-lazy-img _teaser-img" alt="<?php echo $value['title']; ?>">
                                     <?php
                                     if ($value['page_commercial']) { ?>
                                         <div class="__commercial">Anzeige</div> <?php
