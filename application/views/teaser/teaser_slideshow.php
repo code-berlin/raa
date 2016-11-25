@@ -3,7 +3,7 @@
     <?php
     // placeholder is important, because "jumpmark" functionality (link from other page) doesnt work without this
     ?>
-    <img class="ph js-lazy-slideshow-placeholder" src="/assets/images/themes/<?php echo $theme; ?>/ph-slideshow.png">
+    <img class="ph js-lazy-slideshow-placeholder" src="<?php echo $img_placeholder_slideshow; ?>">
 
     <div class="flexslider js-flexslider js-lazy-slideshow">
         <ul class="slides">
@@ -32,7 +32,7 @@
                 } ?>
 
                 <li
-                    data-thumb="/assets/images/themes/<?php echo $theme; ?>/ph-slideshow.png"
+                    data-thumb="<?php echo $img_placeholder_slideshow; ?>"
                     data-title="<?php echo isset($value['title']) ? $value['title'] : ''; ?>">
 
                 <?php
@@ -46,7 +46,10 @@
                     <?php
                     } ?>
 
-                        <img class="lazy-img js-slideshow-lazy-img" src="/assets/images/themes/<?php echo $theme; ?>/ph-slideshow.png" data-src="<?php echo isset($image) ? $image : ''; ?>" />
+                        <img
+                            class="lazy-img js-slideshow-lazy-img"
+                            src="<?php echo $img_placeholder_slideshow; ?>"
+                            data-src="<?php echo isset($image) ? $image : ''; ?>" />
 
                 <?php
                 if (isset($slug)) { ?>

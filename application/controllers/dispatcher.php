@@ -32,6 +32,9 @@ class Dispatcher extends Page {
         $this->data['language'] = $this->language;
         $this->data['theme'] = $this->config->item('theme');
         $this->data['canonical_url'] = base_url($slug . ($subslug !== '' ? '/' . $subslug : ''));
+        // get image placeholders (from theme if exists or raa)
+        $this->data['img_placeholder'] = get_image_placeholder($this->data['theme']);
+        $this->data['img_placeholder_slideshow'] = get_image_placeholder_for_slideshow($this->data['theme']);
 
         // Retrieve homepage in case it exists.
         if (empty($slug)) {
@@ -153,10 +156,6 @@ class Dispatcher extends Page {
                 if ($slug != 'home') {
                     $this->data['breadcrumbs'] = get_breadcrumbs($this->data[$this->type]);
                 }
-
-                // get image placeholders (from theme if exists or raa)
-                $data['img_placeholder'] = get_image_placeholder($this->data['theme']);
-                $data['img_placeholder_slideshow'] = get_image_placeholder_for_slideshow($this->data['theme']);
 
                 $lib_data['page_id'] = $this->data[$this->type]->id;
                 $lib_data['template_method'] = $template_method;
