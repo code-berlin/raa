@@ -86,4 +86,28 @@ function remove_duplicates($data) {
     return $filtered;
 }
 
+function get_image_placeholder($theme) {
+
+    $themeUrl = 'assets/images/themes/'.$theme.'/ph.png';
+
+    if (file_exists($themeUrl)) {
+        return $themeUrl;
+    }
+
+    return 'assets/images/ph.png';
+
+}
+
+function get_image_placeholder_for_slideshow($theme) {
+
+    $themeUrl = 'assets/images/themes/'.$theme.'/ph-slideshow.png';
+
+    if (file_exists($themeUrl)) {
+        return $themeUrl;
+    }
+
+    return 'assets/images/ph-slideshow.png';
+
+}
+
 ?>

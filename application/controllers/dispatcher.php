@@ -154,6 +154,10 @@ class Dispatcher extends Page {
                     $this->data['breadcrumbs'] = get_breadcrumbs($this->data[$this->type]);
                 }
 
+                // get image placeholders (from theme if exists or raa)
+                $data['img_placeholder'] = get_image_placeholder($this->data['theme']);
+                $data['img_placeholder_slideshow'] = get_image_placeholder_for_slideshow($this->data['theme']);
+
                 $lib_data['page_id'] = $this->data[$this->type]->id;
                 $lib_data['template_method'] = $template_method;
                 $this->data['lib_data'] = $this->theme->get_template_data($lib_data);
