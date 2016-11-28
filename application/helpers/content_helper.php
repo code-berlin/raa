@@ -88,10 +88,10 @@ function remove_duplicates($data) {
 
 function get_image_placeholder($theme) {
 
-    $themeUrl = '/assets/images/themes/'.$theme.'/ph.png';
+    $themeUrl = 'assets/images/themes/'.$theme.'/ph.png';
 
     if (file_exists($themeUrl)) {
-        return $themeUrl;
+        return '/'.$themeUrl;
     }
 
     return '/assets/images/ph.png';
@@ -100,10 +100,10 @@ function get_image_placeholder($theme) {
 
 function get_image_placeholder_for_slideshow($theme) {
 
-    $themeUrl = '/assets/images/themes/'.$theme.'/ph-slideshow.png';
+    $themeUrl = 'assets/images/themes/'.$theme.'/ph-slideshow.png';
 
     if (file_exists($themeUrl)) {
-        return $themeUrl;
+        return '/'.$themeUrl;
     }
 
     return '/assets/images/ph-slideshow.png';
