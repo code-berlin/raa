@@ -29,6 +29,8 @@ class Dispatcher extends Page {
         $view = '';
         $templates_folder = 'templates';
 
+        if ($slug == 'home') $slug = '';
+
         $this->data['language'] = $this->language;
         $this->data['theme'] = $this->config->item('theme');
         $this->data['canonical_url'] = base_url($slug . ($subslug !== '' ? '/' . $subslug : ''));
@@ -41,6 +43,8 @@ class Dispatcher extends Page {
             $this->load->model('settings_m');
 
             $page = $this->page_m->get_by_id($this->settings_m->get_homepage());
+
+            if ((stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] != $this->data['canonical_url']) redirect($this->data['canonical_url']);
 
             // If $page is false, it means there's no homepage set yet
             if (!$page) {
