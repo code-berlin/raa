@@ -88,6 +88,7 @@ module.exports = function(grunt) {
                     'assets/css/vendor/superfish.css',
                     'assets/css/vendor/slick.css',
                     'assets/css/vendor/jquery.cookiebar.css',
+                    'assets/css/vendor/flexslider.css',
                     'assets/css/raa/main.css',
                     'assets/css/theme/main.css'
                 ],
