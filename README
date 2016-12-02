@@ -1,0 +1,82 @@
+REQUIREMENTS ON YOUR SYSTEM:
+
+You have access rights / credentials to
+
+https://git.code-b.com
+https://github.com/code-berlin/raa
+<yourdev>.<projectname>.code-b-development.com (via browser)
+code-b-development.com (via SSH / SCP)
+username and password for database on code-b-development.com
+
+Compass is installed
+-> http://compass-style.org/install/
+
+For Compass you must have Ruby installed
+-> http://www.ruby-lang.org/en/downloads/
+
+Node is installed
+-> https://nodejs.org/en/
+
+SCP Client is installed
+-> e.g. https://winscp.net/eng/docs/lang:de (for windows)
+
+SSH Client is installed
+-> e.g. http://www.putty.org/
+
+Project Configs Repository is checked out
+-> https://git.code-b.com/code-b/project-configs
+
+
+PROJECT SETUP:
+
+1. Create Remote Dev Environment
+
+Login via SSH on code-b-development.com
+$ devcreate
+-> insert project name
+
+2. Checkout RAA Repository
+-> https://github.com/code-berlin/raa
+-> Folder name should be <projectname>-raa
+
+3. Checkout Project Repository
+-> e.g. https://git.code-b.com/docjones/raa-magnesium-ratgeber
+-> Folder name should be <projectname>
+
+4. Setup Config Files
+-> Goto your project-configs folder and copy <projectfolder>/development/* into <projectname>-raa
+-> update <projectname>-raa/application/config/config.php with your credentials
+-> update <projectname>-raa/application/config/database.php with your credentials
+
+5. Symlink <projectname> files into <projectname>-raa
+-> on windows you can run "symlink.bat" in <projectname>
+
+6. Get NPM packages
+-> run "npm install" in <projectname>-raa
+
+7. Push your Project on Remote Dev Server
+-> Use your SCP Client to synchronize <projectname>-raa and <projectname> with Project on Server
+
+8. Start Grunt to build Asset Files
+-> run "grunt" in <projectname>-raa
+
+9. Migrate Database
+
+Two possibilites ->
+
+A) Migrate very little dummy database 
+-> goto <yourdev>.<projectname>.code-b-development.com/admin (login)
+-> goto <yourdev>.<projectname>.code-b-development.com/migrate
+
+B) Get dump from live system and import
+
+
+
+
+
+
+
+
+
+
+
