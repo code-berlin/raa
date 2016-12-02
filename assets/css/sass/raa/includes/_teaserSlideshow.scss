@@ -1,7 +1,7 @@
 .teaser-slideshow {
 
     position: relative;
-    margin-bottom: 30px;
+    margin-bottom: 55px;
 
     .ph {
         width: 100%;
@@ -115,11 +115,15 @@
     }
 
     &._w-thumbs {
+
+        margin-bottom: 30px;
+
         .flex-direction-nav {
             a {
                 top: 40%;
             }
         }
+
     }
 
     .flex-control-thumbs {
@@ -242,7 +246,7 @@
 
     .teaser-slideshow {
 
-        margin-bottom: 15px;
+        margin-bottom: 35px;
 
         .slides {
 
@@ -274,6 +278,10 @@
                 line-height: 16px;
             }
 
+        }
+
+        &._w-thumbs {
+            margin-bottom: 15px;
         }
 
     }
@@ -329,6 +337,8 @@
 
         .teaser-slideshow {
 
+            margin-bottom: 0px;
+
             .slides {
 
                 .__readmore {
@@ -354,6 +364,10 @@
                     line-height: 12px;
                 }
 
+            }
+
+            .flex-control-nav {
+                display: none;
             }
 
         }
