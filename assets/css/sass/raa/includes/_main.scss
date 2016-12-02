@@ -105,6 +105,13 @@ a {
 
 }
 
+.teaser-group {
+    margin-bottom: 25px;
+    &:last-child {
+        margin-bottom: 0px;
+    }
+}
+
 .teaser-h2 {
 
     margin: 25px 0px;
@@ -279,6 +286,10 @@ ul {
 }
 
 @media only screen and (max-width: $special-teaser-break) {
+    
+    .teaser-group {
+        margin-bottom: 0px;
+    }
 
     .teaser-h2 {
 
