@@ -31,9 +31,17 @@ var cisLoader = {
 
 	reviceAdMessage: function(event) {
 		var origin = event.origin,
-			messageData = event.data;
+			messageData = event.data.split('&');
 
-		//if ()
+		if (messageData[0] !== 'reviceAdMessage' || origin !== "http://tpc.googlesyndication.com")
+			return;
+
+		switch(messageData[1]) {
+			case 'resize':
+				$('#' + messageData[2] + ' .cis_content iframe').height(messageData[3]);
+				helper.gaTrack('AdResize', 'expand', window.location.href, event);
+				break;
+		}
 
 	}
 
