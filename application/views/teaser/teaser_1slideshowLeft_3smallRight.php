@@ -15,7 +15,7 @@
                 $total_right = 3;
                 $total_slideshow = $total_items - $total_right;
 
-                if($total_slideshow < $total_items) {
+                if($total_slideshow <= 0) {
                   $total_slideshow = 1;
                 }
 
