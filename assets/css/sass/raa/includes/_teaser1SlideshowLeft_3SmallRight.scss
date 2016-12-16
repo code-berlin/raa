@@ -1,5 +1,4 @@
 .teaser-1-slideshow-left-3-small-right {
-
     position: relative;
     width: 100%;
     margin-bottom: 15px;
@@ -15,7 +14,6 @@
     }
 
     .flexslider {
-
         border: none;
         margin: 0px;
         height: 100%;
@@ -39,7 +37,6 @@
     }
 
     .slides {
-
         position: relative;
         overflow: hidden;
 
@@ -56,17 +53,8 @@
         }
 
         a {
-
             display: block;
             position: relative;
-
-            &:hover,
-            &:active {
-                .__title {
-                    // color: $main-color-10pct;
-                }
-            }
-
         }
 
     }
@@ -106,14 +94,12 @@
     }
 
     .__minis {
-
         width: 36%;
         padding-left: 1%;
         display: inline-block;;
         vertical-align: middle;
 
         .__mini-item {
-
             height: 132px;
             position: relative;
             overflow: hidden;
@@ -121,7 +107,6 @@
             border: 1px solid $color-default-grey;
 
             .__img {
-
                 height: 100%;
                 width: 40%;
                 display: inline-block;
@@ -132,6 +117,7 @@
                     width: 100%;
                     height: 100%;
                 }
+
             }
 
             .__text {
@@ -157,7 +143,7 @@
 
             &:hover {
                 text-decoration: none;
-                background-color: $color-default-main-hover;
+                border-color: $color-default-main-hover;
             }
 
         }
@@ -169,15 +155,32 @@
 @media only screen and (max-width: $special-teaser-break-ipad-ls) {
 
     .teaser-1-slideshow-left-3-small-right {
+
+        .slides {
+
+            .__title {
+                top: 45px;
+                left: 40px;
+                right: 45px;
+                font-size: 36px;
+                line-height: 40px;
+            }
+
+        }
+
         .__minis {
+
             .__mini-item {
                 height: 106px;
 
                 .__text {
                     line-height: 16px;
                 }
+
             }
+
         }
+
     }
 
 }
@@ -187,7 +190,21 @@
     .teaser-1-slideshow-left-3-small-right {
         margin-top: 15px;
 
+        .slides {
+
+            .__title {
+                top: 25px;
+                left: 25px;
+                right: 25px;
+                font-size: 24px;
+                line-height: 28px;
+            }
+
+        }
+
+
         .__minis {
+
             .__mini-item {
                 height: 80px;
                 margin-bottom: 10px;
@@ -199,20 +216,14 @@
                     .category {
                         font-size: 10px;
                     }
+
                 }
+
             }
+
         }
+
     }
-
-}
-
-@media only screen and (max-width: $page-break-desktop) {
-
-
-}
-
-@media only screen and (max-width: $page-break-tablet) {
-
 
 }
 
@@ -237,7 +248,9 @@
               height: 80px;
               margin-bottom: 10px;
           }
+
       }
+
   }
 
 }
@@ -254,6 +267,19 @@
           margin-bottom: 15px;
         }
 
+        .slides {
+
+            .__title {
+                font-size: 18px;
+                line-height: 22px;
+                position: static;
+                padding: 10px 10px 5px 10px;
+                text-shadow: none;
+                background: $color-default-grey;
+            }
+
+        }
+
         .__minis {
           display: block;
           padding: 0px;
@@ -263,7 +289,9 @@
                 height: 80px;
                 margin-bottom: 10px;
             }
+
         }
+
     }
 
 }
