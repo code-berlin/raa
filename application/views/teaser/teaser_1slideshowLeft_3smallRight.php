@@ -10,53 +10,69 @@
             <ul class="slides">
 
                 <?php
+                $i = 0;
+                $total_items = count($items);
+                $total_right = 3;
+                $total_slideshow = $total_items - $total_right;
+
+                if($total_slideshow < $total_items) {
+                  $total_slideshow = 1;
+                }
+
                 foreach ($items as $key => $value) {
 
-                    $target = '_self';
-                    $image = null;
-                    $slug = null;
+                    if($i < $total_slideshow) {
 
-                    if ($value['content_type'] == 'external') {
-                        $target = '_blank';
-                    }
+                        $target = '_self';
+                        $image = null;
+                        $slug = null;
 
-                    if (isset($value['external_image'])) {
-                        $image = $value['external_image'];
-                    } else {
-                        $image = $value['page_image'];
-                    }
+                        if ($value['content_type'] == 'external') {
+                            $target = '_blank';
+                        }
 
-                    if (isset($value['external_link'])) {
-                        $slug = $value['external_link'];
-                    } else if (isset($value['page_slug'])) {
-                        $slug = base_url((isset($value['parent_slug']) && !empty($value['parent_slug']) ? $value['parent_slug'] . '/' : '') . $value['page_slug']);
-                    } ?>
+                        if (isset($value['external_image'])) {
+                            $image = $value['external_image'];
+                        } else {
+                            $image = $value['page_image'];
+                        }
 
-                    <li
-                        data-thumb="<?php echo $img_placeholder_teaser_slideshow_left; ?>"
-                        data-title="<?php echo isset($value['title']) ? $value['title'] : ''; ?>"
-                    >
+                        if (isset($value['external_link'])) {
+                            $slug = $value['external_link'];
+                        } else if (isset($value['page_slug'])) {
+                            $slug = base_url((isset($value['parent_slug']) && !empty($value['parent_slug']) ? $value['parent_slug'] . '/' : '') . $value['page_slug']);
+                        } ?>
+
+                        <li
+                            data-thumb="<?php echo $img_placeholder_teaser_slideshow_left; ?>"
+                            data-title="<?php echo isset($value['title']) ? $value['title'] : ''; ?>"
+                        >
+
+                        <?php
+                        if (isset($slug)) { ?>
+                            <a href="<?php echo $slug; ?>" target="<?php echo $target; ?>">
+                        <?php
+                        }
+
+                        if (isset($value['title'])) { ?>
+                            <div class="__title"><?php echo $value['title']; ?></div>
+                        <?php
+                        } ?>
+
+                            <img
+                                class="lazy-img js-slideshow-lazy-img"
+                                src="<?php echo $img_placeholder_teaser_slideshow_left; ?>"
+                                data-src="<?php echo isset($image) ? $image : ''; ?>"
+                            />
+
+                        </li>
 
                     <?php
-                    if (isset($slug)) { ?>
-                        <a href="<?php echo $slug; ?>" target="<?php echo $target; ?>">
-                    <?php
+
+                        $i++;
+
                     }
 
-                    if (isset($value['title'])) { ?>
-                        <div class="__title"><?php echo $value['title']; ?></div>
-                    <?php
-                    } ?>
-
-                        <img
-                            class="lazy-img js-slideshow-lazy-img"
-                            src="<?php echo $img_placeholder_teaser_slideshow_left; ?>"
-                            data-src="<?php echo isset($image) ? $image : ''; ?>"
-                        />
-
-                    </li>
-
-                <?php
                 } ?>
 
             </ul>
@@ -66,60 +82,64 @@
     <div class="__minis">
 
         <?php
-        $i = 0;
+        $i = 1;
 
         foreach ($items as $key => $value) {
 
-            $target = '_self';
-            $image = null;
-            $slug = null;
+            if($i > $total_slideshow) {
 
-            if ($value['content_type'] == 'external') {
-                $target = '_blank';
-            }
+                $target = '_self';
+                $image = null;
+                $slug = null;
 
-            if (isset($value['external_image'])) {
-                $image = $value['external_image'];
-            } else {
-                $image = $value['page_image'];
-            }
+                if ($value['content_type'] == 'external') {
+                    $target = '_blank';
+                }
 
-            if (isset($value['external_link'])) {
-                $slug = $value['external_link'];
-            } else if (isset($value['page_slug'])) {
-                $slug = base_url((isset($value['parent_slug']) && !empty($value['parent_slug']) ? $value['parent_slug'] . '/' : '') . $value['page_slug']);
-            }
+                if (isset($value['external_image'])) {
+                    $image = $value['external_image'];
+                } else {
+                    $image = $value['page_image'];
+                }
 
-            ?>
-                <?php
-                if (isset($slug)) { ?>
-                    <a href="<?php echo $slug; ?>" class="__mini-item flex-container" target="<?php echo $target; ?>">
-                <?php
-                } else { ?>
-                    <div class="__mini-item flex-container">
-                <?php
-                } ?>
+                if (isset($value['external_link'])) {
+                    $slug = $value['external_link'];
+                } else if (isset($value['page_slug'])) {
+                    $slug = base_url((isset($value['parent_slug']) && !empty($value['parent_slug']) ? $value['parent_slug'] . '/' : '') . $value['page_slug']);
+                }
 
-                <div class="__img">
-                    <img class="lazy-img js-lazy-img" src="<?php echo $img_placeholder_teaser_smalls_right; ?>" data-src="<?php echo isset($image) ? $image : ''; ?>" alt="<?php echo $value['title']; ?>">
-                </div>
+                ?>
+                    <?php
+                    if (isset($slug)) { ?>
+                        <a href="<?php echo $slug; ?>" class="__mini-item flex-container" target="<?php echo $target; ?>">
+                    <?php
+                    } else { ?>
+                        <div class="__mini-item flex-container">
+                    <?php
+                    } ?>
 
-                <div class="__text">
-                  <span class="category">Category Name</span>
-
-                  <span class="title"><?php echo $value['title']; ?></span>
-                </div>
-
-                <?php
-                if (isset($slug)) { ?>
-                    </a>
-                <?php
-                } else { ?>
+                    <div class="__img">
+                        <img class="lazy-img js-lazy-img" src="<?php echo $img_placeholder_teaser_smalls_right; ?>" data-src="<?php echo isset($image) ? $image : ''; ?>" alt="<?php echo $value['title']; ?>">
                     </div>
-                <?php
-                } ?>
 
-            <?php
+                    <div class="__text">
+                      <span class="category"><?php echo $value['page_title']; ?></span>
+
+                      <span class="title"><?php echo $value['title']; ?></span>
+                    </div>
+
+                    <?php
+                    if (isset($slug)) { ?>
+                        </a>
+                    <?php
+                    } else { ?>
+                        </div>
+                    <?php
+                    } ?>
+
+                <?php
+            }
+
             $i++;
         } ?>
     </div>
