@@ -110,4 +110,28 @@ function get_image_placeholder_for_slideshow($theme) {
 
 }
 
+function get_image_placeholder_for_teaser_slideshow_left($theme) {
+
+    $themeUrl = 'assets/images/themes/'.$theme.'/ph_teaser_slideshow_left.png';
+
+    if (file_exists($themeUrl)) {
+        return '/'.$themeUrl;
+    }
+
+    return '/assets/images/ph_teaser_slideshow_left.png';
+
+}
+
+function get_image_placeholder_for_teaser_smalls_right($theme) {
+
+    $themeUrl = 'assets/images/themes/'.$theme.'/ph_teaser_small_right.png';
+
+    if (file_exists($themeUrl)) {
+        return '/'.$themeUrl;
+    }
+
+    return '/assets/images/ph_teaser_small_right.png';
+
+}
+
 ?>
