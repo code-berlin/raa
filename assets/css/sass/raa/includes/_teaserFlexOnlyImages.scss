@@ -36,6 +36,12 @@
 
             .mobile-device & {
                 transform: translate(0, 0);
+                position: static;
+                font-size: 10px;
+                width: 100%;
+                line-height: 24px;
+                padding: 5px;
+                overflow: hidden;
             }
 
         }
@@ -58,27 +64,6 @@
 
             .__title {
                 transform: translate(0, 0);
-            }
-
-        }
-
-    }
-
-}
-
-@media only screen and (max-width: $page-break-tablet) {
-
-    .teaser-flex-only-images {
-
-        .__item {
-
-            .__title {
-                position: static;
-                font-size: 10px;
-                width: 100%;
-                line-height: 24px;
-                padding: 5px;
-                overflow: hidden;
             }
 
         }
