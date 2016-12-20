@@ -123,9 +123,9 @@
                     </div>
 
                     <div class="__text">
-                      <span class="category"><?php echo $value['page_title']; ?></span>
+                      <span class="category"><?php echo $value['title']; ?></span>
 
-                      <span class="title"><?php echo $value['title']; ?></span>
+                      <span class="title"><?php echo $value['text']; ?></span>
                     </div>
 
                     <?php
