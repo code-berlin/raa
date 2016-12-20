@@ -1,0 +1,187 @@
+.teaser-3-medium-2-extra-rows {
+
+    .__minis {
+
+        margin-bottom: 15px;
+
+        .__mini-item {
+
+            display: block;
+            position: relative;
+            overflow: hidden;
+            margin-right: 15px;
+
+            .__img {
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+
+            .__content {
+                display: block;
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                right: 0px;
+                opacity: 0.8;
+                text-align: center;
+                padding: 13px 5px;
+
+                .__category {
+                    font-size: 12px;
+                    color: $color-default-grey;
+                    background-color: $color-default-black;
+                    line-height: 18px;
+                }
+
+                .__title {
+                    padding: 1px;
+                    font-size: 22px;
+                    font-weight: bold;
+                    line-height: 34px;
+                    background-color: $color-default-white;
+                    color: $color-default-font;
+                }
+
+            }
+
+            .__teaser-more {
+                display: none;
+            }
+
+        }
+
+        :last-child {
+            margin-right: 0;
+        }
+
+    }
+
+}
+
+@media only screen and (max-width: $page-break-tablet) {
+
+    .teaser-3-medium-2-extra-rows {
+
+        .__minis {
+
+            .__mini-item {
+
+                .__content {
+
+                    .__category {
+                        font-size: 12px;
+                        line-height: 18px;
+                    }
+
+                    .__title {
+                        padding: 1px;
+                        font-size: 15px;
+                        line-height: 22px;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+@media only screen and (max-width: $special-teaser-break) {
+
+    .teaser-3-medium-2-extra-rows {
+
+        .__minis {
+
+            display: block;
+            margin-bottom: 0px;
+
+            .__mini-item {
+
+                width: auto;
+                height: auto;
+                border-bottom: 1px solid $color-default-grey;
+                margin: 0px;
+                padding: $main-offset-mobile 0px;
+
+                &:after {
+                    display: block;
+                    content: '';
+                    clear: both;
+                }
+
+                &:hover, &:active {
+                    text-decoration: none;
+                }
+
+                .__img {
+
+                    width: 80px;
+                    float: left;
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                        position: static;
+                        @include transform(translate3d(0, 0, 0));
+                    }
+                }
+
+                .__content {
+                    margin-left: 90px;
+                    position: static;
+                    color: $color-default-font;
+                    font-size: 16px;
+                    line-height: 24px;
+                    text-align: left;
+                    opacity: 1;
+                    padding: 0px;
+                    margin-right: 20px;
+                    overflow: hidden;
+
+                    .__category {
+                        background: none;
+                        color: $color-default-font;
+                    }
+
+                    .__title {
+                        color: $color-default-font;
+                        font-size: 16px;
+                    }
+                }
+
+                .__teaser-more {
+                    display: block;
+                    font-size: 0px;
+                    width: 0px;
+                    height: 0px;
+                    position: absolute;
+                    top: 50%;
+                    right: 0px;
+                    transform: translate(0, -50%);
+                    color: $color-default-main;
+                    border-left: 5px solid $color-default-main;
+                    border-top: 8px solid transparent;
+                    border-bottom: 8px solid transparent;
+                }
+
+
+                &._last {
+                    margin-bottom: 0px;
+                    border-bottom: none;
+                }
+
+                &._dummy {
+                    display: none;
+                }
+
+            }
+
+        }
+    }
+
+}

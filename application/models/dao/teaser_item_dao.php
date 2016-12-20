@@ -20,7 +20,7 @@ class Teaser_item_dao extends CI_Model {
 
 		$qry = 'SELECT
 					`item`.`title`, `item`.`text`, `page`.`id` AS `page_id`, `page`.`slug` AS `page_slug`, `page`.`image` AS `page_image`,
-					`page`.`menu_title` AS `page_title`, `page`.`teaser_text` AS `page_text`, `page`.`commercial` AS `page_commercial`, `parent`.`slug` AS `parent_slug`,
+					`page`.`menu_title` AS `page_title`, `page`.`teaser_text` AS `page_text`, `page`.`commercial` AS `page_commercial`, `parent`.`slug` AS `parent_slug`, `parent`.`menu_title` AS `parent_menu_title`,
 					`item`.`content_type` as `content_type`, `item`.`external_link` as `external_link`, `item`.`external_image` as `external_image`
 				FROM `teaseritem` AS `item`
 				LEFT JOIN

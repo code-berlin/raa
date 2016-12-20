@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 $config['migration_enabled'] = TRUE;
-$config['migration_version'] = 81;
+$config['migration_version'] = 83;
 $config['migration_path'] = APPPATH . 'migrations/';
 $CI =& get_instance();
 $CI->load->config('migration_fork');
