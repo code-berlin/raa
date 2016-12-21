@@ -41,16 +41,26 @@
         position: relative;
         overflow: hidden;
 
-        .__title {
+        .__info {
             position: absolute;
-            top: 50px;
-            left: 45px;
-            right: 50px;
-            font-size: 40px;
-            line-height: 44px;
-            color: $color-default-white;
-            text-shadow: 1px 1px 2px #444;
-            font-weight: 600;
+            bottom: 1px;
+            left: 1px;
+            right: 1px;
+            padding: 10px 20px 20px;
+            background: $color-default-white;
+            opacity: 0.8;
+
+            .__title {
+                font-size: 14px;
+                line-height: 18px;
+            }
+
+            .__text {
+                font-size: 22px;
+                line-height: 28px;
+                font-weight: 600;
+            }
+
         }
 
         a {
@@ -129,6 +139,7 @@
                 font-size: 14px;
                 line-height: 16px;
                 vertical-align: middle;
+                overflow-x: hidden;
 
                 .category {
                     color: $color-default-font;
@@ -161,12 +172,18 @@
 
         .slides {
 
-            .__title {
-                top: 45px;
-                left: 40px;
-                right: 45px;
-                font-size: 36px;
-                line-height: 40px;
+            .__info {
+
+                .__title {
+                    font-size: 12px;
+                    line-height: 14px;
+                }
+
+                .__text {
+                    font-size: 20px;
+                    line-height: 26px;
+                }
+
             }
 
         }
@@ -196,12 +213,13 @@
 
         .slides {
 
-            .__title {
-                top: 25px;
-                left: 25px;
-                right: 25px;
-                font-size: 24px;
-                line-height: 28px;
+            .__info {
+
+                .__text {
+                    font-size: 18px;
+                    line-height: 20px;
+                }
+
             }
 
         }
@@ -272,13 +290,17 @@
 
         .slides {
 
-            .__title {
-                font-size: 18px;
-                line-height: 22px;
-                position: static;
-                padding: 10px 10px 5px 10px;
-                text-shadow: none;
-                background: $color-default-grey;
+            .__info {
+                padding: 10px;
+                left: 0px;
+                bottom: 0px;
+                right: 0px;
+
+                .__text {
+                    font-size: 16px;
+                    line-height: 18px;
+                }
+
             }
 
         }

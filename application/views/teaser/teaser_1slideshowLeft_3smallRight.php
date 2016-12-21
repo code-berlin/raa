@@ -55,7 +55,10 @@
                         }
 
                         if (isset($value['title'])) { ?>
-                            <div class="__title"><?php echo $value['title']; ?></div>
+                            <div class="__info">
+                              <span class="__title"><?php echo $value['title']; ?></span>
+                              <span class="__text"><?php echo $value['text']; ?></span>
+                            </div>
                         <?php
                         } ?>
 
