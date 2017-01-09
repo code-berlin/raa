@@ -333,7 +333,8 @@ class Page_dao extends CI_Model{
                                page.teaser_text, 
                                page.teaser_title, 
                                page.image,
-                               page.slug,                              
+                               page.slug,
+                               parent.menu_title,
                                parent.slug as parent_slug, (
                                 SELECT position
                                 FROM menuitem
