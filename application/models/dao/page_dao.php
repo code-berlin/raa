@@ -334,7 +334,7 @@ class Page_dao extends CI_Model{
                                page.teaser_title, 
                                page.image,
                                page.slug,
-                               parent.menu_title,
+                               parent.menu_title as parent_menu_title,
                                parent.slug as parent_slug, (
                                 SELECT position
                                 FROM menuitem
@@ -360,12 +360,12 @@ class Page_dao extends CI_Model{
                             page.teaser_title,
                             page.image,
                             page.slug,
-                            (
-                                SELECT parent.slug
+			    (
+                                SELECT parent.menu_title as parent_menu_title, parent.slug as parent_slug
                                 FROM page as parent
                                 WHERE parent.id = page.parent_id
                                 LIMIT 1
-                            ) as parent_slug
+                            )
                           FROM page
                           ORDER BY date DESC, page.id LIMIT ' . $limit . ';');
 
