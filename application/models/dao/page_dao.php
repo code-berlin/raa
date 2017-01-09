@@ -325,4 +325,50 @@ class Page_dao extends CI_Model{
         return R::getAll($query);
     }
 
+    public function get_latest_article_by_parent($page_id, $limit = 10) {
+        return R::getAll('  SELECT 
+                               page.id,
+                               page.parent_id,
+                               page.menu_title,
+                               page.teaser_text, 
+                               page.teaser_title, 
+                               page.image,
+                               page.slug,                              
+                               parent.slug as parent_slug, (
+                                SELECT position
+                                FROM menuitem
+                                WHERE id_menu = 1
+                                AND content_type = "page"
+                                AND contentId = page.id) as menu_position
+                            FROM '.$this->table.' as page
+                            LEFT JOIN '.$this->table.' as parent ON parent.id = page.parent_id
+                            WHERE page.parent_id = '.$page_id.'
+                            AND page.published = 1
+                            AND parent.published = 1
+                            ORDER BY page.date DESC, page.id LIMIT ' . $limit . ';');
+
+        return R::getAll($query);
+    }
+
+    public function get_latest_article($limit = 10) {
+        return R::getAll('SELECT
+                            page.id,
+                            page.parent_id,
+                            page.menu_title,
+                            page.teaser_text,
+                            page.teaser_title,
+                            page.image,
+                            page.slug,
+                            (
+                                SELECT parent.slug
+                                FROM page as parent
+                                WHERE parent.id = page.parent_id
+                                LIMIT 1
+                            ) as parent_slug
+                          FROM page
+                          ORDER BY date DESC, page.id LIMIT ' . $limit . ';');
+
+        return R::getAll($query);
+    }
+
 }

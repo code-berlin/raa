@@ -88,5 +88,13 @@ class Page_m extends CI_Model {
         return $this->page_dao->get_articlegroupitem($page_id);
     }
 
+    function get_latest_article_by_parent($page_id, $limit = 10) {
+        return $this->page_dao->get_latest_article_by_parent($page_id, $limit);
+    }
+
+    function get_latest_article($limit = 10) {
+        return $this->page_dao->get_latest_article($limit);
+    }
+
 
 }
