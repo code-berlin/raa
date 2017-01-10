@@ -360,14 +360,13 @@ class Page_dao extends CI_Model{
                             page.teaser_title,
                             page.image,
                             page.slug,
-			    (
-                                SELECT parent.menu_title as parent_menu_title, parent.slug as parent_slug
-                                FROM page as parent
-                                WHERE parent.id = page.parent_id
-                                LIMIT 1
-                            )
+                            parent.menu_title as parent_menu_title,
+                            parent.slug as parent_slug
                           FROM page
-                          ORDER BY date DESC, page.id LIMIT ' . $limit . ';');
+                          LEFT JOIN '.$this->table.' as parent ON parent.id = page.parent_id
+                          WHERE page.published = 1
+                          AND parent.published = 1
+                          ORDER BY page.date DESC, page.id LIMIT ' . $limit . ';');
 
         return R::getAll($query);
     }
