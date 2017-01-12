@@ -1,0 +1,38 @@
+dl.accordion {
+    margin-left: 0px;
+
+    dt, dd {
+        margin-left: 0px;
+        padding: 10px;
+        border: 1px solid $accordion-border-color;
+        border-bottom: 0;
+    }
+
+    dt {
+        background: $accordion-title-background-color;
+        cursor: pointer;
+        margin-top: 2px;
+        position: relative;
+
+        &:after {
+            content: '▼';
+            color: $accordion-arrow-color;
+            display: block;
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 16px;
+        }
+
+        &.active:after {
+            content: '▲';
+        }
+
+    }
+
+    dd {
+        border-top: 0;
+        border-bottom: 1px solid $accordion-border-color;
+        font-size: 12px;
+    }
+}
