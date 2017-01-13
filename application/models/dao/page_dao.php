@@ -78,7 +78,7 @@ class Page_dao extends CI_Model{
 	}
 
 	public function get_random_subpages($count) {
-        return R::getAll('SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.id,
+        return R::getAll('SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.image_alt, child.id,
         						 child.parent_id, parent.slug as parent_slug
         				  FROM '.$this->table.' as child
         				  LEFT JOIN '.$this->table.' as parent ON parent.id = child.parent_id
@@ -90,7 +90,7 @@ class Page_dao extends CI_Model{
     }
 
     public function get_children($page_id) {
-        return R::getAll('  SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.id, child.parent_id,
+        return R::getAll('  SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.image_alt, child.id, child.parent_id,
         						   parent.slug as parent_slug, (
 	                                SELECT position
 	                                FROM menuitem
@@ -106,7 +106,7 @@ class Page_dao extends CI_Model{
     }
 
     function get_children_ordered_by_menu_title($page_id) {
-        return R::getAll('  SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.id, child.parent_id,
+        return R::getAll('  SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.image_alt, child.id, child.parent_id,
                                    parent.slug as parent_slug, (
                                     SELECT position
                                     FROM menuitem
@@ -129,7 +129,7 @@ class Page_dao extends CI_Model{
      * get all siblings of an article, ordered by index in sidebar menu
      */
     public function get_siblings($page_id) {
-        return R::getAll('  SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.id, child.parent_id,
+        return R::getAll('  SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.image_alt, child.id, child.parent_id,
         	                       parent.slug as parent_slug, (
 	                                SELECT position
 	                                FROM menuitem
@@ -151,7 +151,7 @@ class Page_dao extends CI_Model{
 
     public function get_articles_by_page_id_and_menu_id($page_id, $menu_id) {
 
-        $query =   'SELECT page.menu_title, page.slug, page.teaser_text, page.image, page.id, page.slug, page.parent_id,
+        $query =   'SELECT page.menu_title, page.slug, page.teaser_text, page.image, page.image_alt, page.id, page.slug, page.parent_id,
                          menuitem.id as menu_item_id, menuitem.contentId as menu_item_contentId,
                          menuitem.parent_id as menu_item_parent_id, menuitem.id_menu as menu_item_id_menu,
                          menuitem.position as menu_item_position, (
@@ -216,6 +216,7 @@ class Page_dao extends CI_Model{
                         page.menu_title,
                         page.teaser_title,
                         page.image,
+                        page.image_alt,
                         page.slug,
                         (
                             SELECT parent.slug
@@ -257,6 +258,7 @@ class Page_dao extends CI_Model{
                         page.menu_title,
                         page.teaser_title,
                         page.image,
+                        page.image_alt,
                         page.slug,
                         (
                             SELECT parent.slug
@@ -326,13 +328,14 @@ class Page_dao extends CI_Model{
     }
 
     public function get_latest_article_by_parent($page_id, $limit = 10) {
-        return R::getAll('  SELECT 
+        return R::getAll('  SELECT
                                page.id,
                                page.parent_id,
                                page.menu_title,
-                               page.teaser_text, 
-                               page.teaser_title, 
+                               page.teaser_text,
+                               page.teaser_title,
                                page.image,
+                               page.image_alt,
                                page.slug,
                                parent.menu_title as parent_menu_title,
                                parent.slug as parent_slug, (
@@ -359,6 +362,7 @@ class Page_dao extends CI_Model{
                             page.teaser_text,
                             page.teaser_title,
                             page.image,
+                            page.image_alt,
                             page.slug,
                             parent.menu_title as parent_menu_title,
                             parent.slug as parent_slug
