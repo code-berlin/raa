@@ -17,7 +17,7 @@
 
             <div class="component-latest-articles flex-container <?php echo ($i >= $initial_shown ? ' dn js-teaser-collapsible-closed' : ''); ?>">
                 <div class="__img">
-                    <img class="lazy-img js-lazy-img" src="<?php echo $img_placeholder; ?>" data-src="<?php echo isset($image) ? $image : ''; ?>" alt="<?php echo $value['teaser_title']; ?>">
+                    <img class="lazy-img js-lazy-img" src="<?php echo $img_placeholder; ?>" data-src="<?php echo isset($image) ? $image : ''; ?>" alt="<?php echo $value['image_alt']; ?>">
 
                     <?php
                     if (isset($slug)) { ?>
