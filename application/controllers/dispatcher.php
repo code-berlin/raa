@@ -37,9 +37,7 @@ class Dispatcher extends Page {
         // get image placeholders (from theme if exists or raa)
         $this->data['img_placeholder'] = get_image_placeholder($this->data['theme']);
         $this->data['img_placeholder_slideshow'] = get_image_placeholder_for_slideshow($this->data['theme']);
-        $this->data['img_placeholder_teaser_slideshow_left'] = get_image_placeholder_for_teaser_slideshow_left($this->data['theme']);
-        $this->data['img_placeholder_teaser_smalls_right'] = get_image_placeholder_for_teaser_smalls_right($this->data['theme']);
-
+        
         // Retrieve homepage in case it exists.
         if (empty($slug)) {
             $this->load->model('settings_m');

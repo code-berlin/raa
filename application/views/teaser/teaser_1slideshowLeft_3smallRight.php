@@ -1,11 +1,12 @@
 <div class="teaser-1-slideshow-left-3-small-right">
 
-    <?php
-    // placeholder is important, because "jumpmark" functionality (link from other page) doesnt work without this
-    ?>
-    <img class="ph js-lazy-slideshow-placeholder" src="<?php echo $img_placeholder_teaser_slideshow_left; ?>">
-
     <div class="slideshow-container">
+        
+        <?php
+        // placeholder is important, because "jumpmark" functionality (link from other page) doesnt work without this
+        ?>
+        <img class="ph js-lazy-slideshow-placeholder" src="<?php echo $img_placeholder; ?>">
+
         <div class="flexslider js-flexslider js-lazy-slideshow">
             <ul class="slides">
 
@@ -44,7 +45,7 @@
                         } ?>
 
                         <li
-                            data-thumb="<?php echo $img_placeholder_teaser_slideshow_left; ?>"
+                            data-thumb="<?php echo $img_placeholder; ?>"
                             data-title="<?php echo isset($value['title']) ? $value['title'] : ''; ?>"
                         >
 
@@ -64,7 +65,7 @@
 
                             <img
                                 class="lazy-img js-slideshow-lazy-img"
-                                src="<?php echo $img_placeholder_teaser_slideshow_left; ?>"
+                                src="<?php echo $img_placeholder; ?>"
                                 data-src="<?php echo isset($image) ? $image : ''; ?>"
                             />
 
@@ -128,7 +129,7 @@
                     } ?>
 
                     <div class="__img">
-                        <img class="lazy-img js-lazy-img" src="<?php echo $img_placeholder_teaser_smalls_right; ?>" data-src="<?php echo isset($image) ? $image : ''; ?>" alt="<?php echo $value['title']; ?>">
+                        <img class="lazy-img js-lazy-img" src="<?php echo $img_placeholder; ?>" data-src="<?php echo isset($image) ? $image : ''; ?>" alt="<?php echo $value['title']; ?>">
                     </div>
 
                     <div class="__text">
