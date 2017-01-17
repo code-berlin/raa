@@ -68,6 +68,12 @@
                                 data-src="<?php echo isset($image) ? $image : ''; ?>"
                             />
 
+                        <?php
+                        if (isset($slug)) { ?>
+                            </a>
+                        <?php
+                        } ?>
+
                         </li>
 
                     <?php
