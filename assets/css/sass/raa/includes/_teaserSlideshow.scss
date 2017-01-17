@@ -358,16 +358,17 @@
 
             .flex-control-thumbs {
 
+                border-top: none;
+
+                .__mask,
                 .__title {
-                    padding: 3px 5px;
-                    font-size: 8px;
-                    line-height: 12px;
+                    display: none;
                 }
 
             }
 
-            .flex-control-nav {
-                display: none;
+            &._w-thumbs {
+                margin-bottom: 0px;
             }
 
         }

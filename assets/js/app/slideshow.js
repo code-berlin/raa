@@ -57,48 +57,48 @@ var slideshow = {
 
         slideshow.flexslider(options);
 
-        if (!options.thumbnailTitle) {
-            return;
+        if (options.thumbnailTitle) {
+            
+            // add title to thumbnails
+            slideshowLiEls = slideshow.find('.slides li');
+            thumbnailLiEls = slideshow.find('.flex-control-thumbs li');
+
+            slideshowLiEls.each(function(i){
+
+                var slideshowLiEl = $(this),
+                    thumbnailLiEl = $(thumbnailLiEls[i]),
+                    anchor = slideshowLiEl.find('a'),
+                    html = '';
+
+                if (anchor.length > 0) {
+                    html += '<div class="__mask"></div>';
+                    html += '<div class="__title _link js-slideshow-title js-slideshow-title-link" data-link="'+ anchor.attr('href') + '" data-target="' + anchor.attr('target') + '" >';
+                    html += slideshowLiEl.data('title');
+                    html += '</div>';
+                } else {
+                    html += '<div class="__mask"></div>';
+                    html += '<div class="__title js-slideshow-title">';
+                    html += slideshowLiEl.data('title');
+                    html += '</div>';
+                }
+
+                thumbnailLiEl.append(html);
+
+            });
+
+            // thumbnail user action handling
+            $('.js-slideshow-title').on('mouseover', function(){
+                me.onThumbnailHover($(this));
+            });
+
+            $('.js-slideshow-title-link').on('click', function(){
+                me.onThumbnailClick($(this));
+            });
+
         }
-
-        // add title to thumbnails
-        slideshowLiEls = slideshow.find('.slides li');
-        thumbnailLiEls = slideshow.find('.flex-control-thumbs li');
-
-        slideshowLiEls.each(function(i){
-
-            var slideshowLiEl = $(this),
-                thumbnailLiEl = $(thumbnailLiEls[i]),
-                anchor = slideshowLiEl.find('a'),
-                html = '';
-
-            if (anchor.length > 0) {
-                html += '<div class="__mask"></div>';
-                html += '<div class="__title _link js-slideshow-title js-slideshow-title-link" data-link="'+ anchor.attr('href') + '" data-target="' + anchor.attr('target') + '" >';
-                html += slideshowLiEl.data('title');
-                html += '</div>';
-            } else {
-                html += '<div class="__mask"></div>';
-                html += '<div class="__title js-slideshow-title">';
-                html += slideshowLiEl.data('title');
-                html += '</div>';
-            }
-
-            thumbnailLiEl.append(html);
-
-        });
 
         // add thumbs class to center arrows vertically in slideshow image
         $('.js-teaser-slideshow').addClass('_w-thumbs');
-
-        // thumbnail user action handling
-        $('.js-slideshow-title').on('mouseover', function(){
-            me.onThumbnailHover($(this));
-        });
-
-        $('.js-slideshow-title-link').on('click', function(){
-            me.onThumbnailClick($(this));
-        });
 
     },
 

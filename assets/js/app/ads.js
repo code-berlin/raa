@@ -30,6 +30,8 @@ var cisLoader = {
 	},
 
 	reviceAdMessage: function(event) {
+		if (!event || !event.data || typeof event.data !== 'string' ||  event.data.indexOf('&') == -1) return;
+
 		var origin = event.origin,
 			messageData = event.data.split('&');
 
