@@ -1,6 +1,6 @@
-<div class="teaser-1-slideshow-left-3-small-right">
+<div class="teaser-1-slideshow-left-3-small-right flex-container">
 
-    <div class="slideshow-container">
+    <div class="slideshow-container flex _2">
         
         <?php
         // placeholder is important, because "jumpmark" functionality (link from other page) doesnt work without this
@@ -89,7 +89,7 @@
         </div>
     </div>
 
-    <div class="__minis">
+    <div class="__minis flex">
 
         <?php
         $i = 1;
@@ -132,7 +132,7 @@
                         <img class="lazy-img js-lazy-img" src="<?php echo $img_placeholder; ?>" data-src="<?php echo isset($image) ? $image : ''; ?>" alt="<?php echo $value['title']; ?>">
                     </div>
 
-                    <div class="__text">
+                    <div class="__text flex">
                       <span class="category"><?php echo $value['title']; ?></span>
 
                       <span class="title"><?php echo $value['text']; ?></span>
