@@ -7,7 +7,6 @@
     
     .slideshow-container {
         width: 730px;
-        @include box-shadow(0px 1px 1px 0px $color-default-grey);
     }
 
     .ph {
@@ -149,25 +148,38 @@
         .__mini-item {
 
             margin-bottom: 15px;
-            background: $color-default-white;
-            @include box-shadow(0px 1px 1px 0px $color-default-grey);
 
             .__img {
 
                 height: 100%;
+                position: relative;
 
                 img {
                     height: 100%;
+                }
+
+                &:after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    bottom: 0px;
+                    left: 0px;
+                    right: 0px;
+                    top: 0px;
+                    background: $color-default-grey;
+                    opacity: 0;
+                    @include transition(opacity .2s ease-in-out);
                 }
 
             }
 
             .__info {
 
-                padding: 10px 15px;               
+                padding: 0px 15px;               
 
                 .__title {  
                     font-size: 13px;
+                    margin-top: -6px;
                     margin-bottom: -2px;
                 }
                 
@@ -184,8 +196,15 @@
             }
 
             &:hover {
+
                 text-decoration: none;
-                @include box-shadow(1px 2px 2px 0px $color-default-grey);
+
+                .__img {
+                    &:after {
+                        opacity: 0.3;
+                    }
+                }
+
             }
 
         }
@@ -208,7 +227,7 @@
             .__mini-item {
                 .__info {
 
-                    padding: 5px 10px;
+                    padding: 0px 10px;
 
                     .__title {  
                         font-size: 12px;
@@ -287,12 +306,14 @@
 
             .__mini-item {
                 
-                height: 150px;
+                height: 166px;
+                padding-bottom: 15px;
+                border-bottom: 1px solid $color-default-grey;
                 position: relative;
 
                 .__info {
 
-                    padding: 10px 15px;               
+                    padding: 0px 15px;               
 
                     .__title {  
                         font-size: 13px;
@@ -314,6 +335,12 @@
                     right: 15px;
                     font-size: 16px;
                     font-weight: 600;
+                }
+
+                &:last-child {
+                    height: 150px;
+                    padding-bottom: 0px;
+                    border-bottom: none;
                 }
 
             }
@@ -383,10 +410,14 @@
 
             .__mini-item {
 
-                height: 125px;
+                height: 141px;
 
                 &:after {
                     display: none;
+                }
+
+                &:last-child {
+                    height: 125px;
                 }
 
             }
@@ -428,17 +459,21 @@
         .__minis {
             .__mini-item {
 
-                height: 90px;
+                height: 106px;
 
                 .__info {
 
-                    padding: 5px 10px;
+                    padding: 0px 10px;
 
                     .__text {
                         font-size: 14px;
                         line-height: 23px;
                     }
 
+                }
+
+                &:last-child {
+                    height: 90px;
                 }
 
             }

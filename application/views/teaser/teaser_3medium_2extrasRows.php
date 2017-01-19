@@ -54,29 +54,27 @@
                 <img class="lazy-img js-lazy-img" src="<?php echo $img_placeholder; ?>" data-src="<?php echo isset($image) ? $image : ''; ?>" alt="<?php echo $value['title']; ?>">
             </div>
             <div class="__content">
-              <?php
-              if(isset($value['title'])) { ?>
-                  <span class="__category">
-                    <?php echo $value['parent_menu_title']; ?>
-                  </span><br />
-              <?php
-              }
 
-              if(isset($value['text'])) { ?>
-                  <span class="__title">
-                    <?php echo strip_tags($value['text']); ?>
-                  </span>
-              <?php
-              } ?>
-            </div>
+                <div class="__inner"> 
 
-            <?php
-            if (isset($slug)) { ?>
-                <div class="__part __teaser-more">
-                    Weiterlesen
+                    <?php
+                    if(isset($value['title'])) { ?>
+                        <div class="__category">
+                          <?php echo $value['parent_menu_title']; ?>
+                        </div>
+                    <?php
+                    }
+
+                    if(isset($value['text'])) { ?>
+                        <div class="__title">
+                            <?php echo strip_tags($value['text']); ?>
+                        </div>
+                    <?php
+                    } ?>
+                
                 </div>
-            <?php
-            } ?>
+
+            </div>
 
             <?php
         if (isset($slug)) { ?>
@@ -116,7 +114,7 @@
     if($show_collapsible_button == true) { ?>
 
         <div class="ta-c">
-            <a href="" class="def-btn teaser-collapsible-btn js-teaser-collapsible-btn" >Weitere Inhalte anzeigen</a>
+            <a href="" class="def-btn _action teaser-collapsible-btn js-teaser-collapsible-btn" >Weitere Inhalte anzeigen</a>
         </div>
 
 <?php
