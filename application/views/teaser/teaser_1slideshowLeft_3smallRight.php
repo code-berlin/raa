@@ -1,6 +1,6 @@
 <div class="teaser-1-slideshow-left-3-small-right flex-container">
 
-    <div class="slideshow-container flex _2">
+    <div class="slideshow-container">
         
         <?php
         // placeholder is important, because "jumpmark" functionality (link from other page) doesnt work without this
@@ -53,21 +53,24 @@
                         if (isset($slug)) { ?>
                             <a href="<?php echo $slug; ?>" target="<?php echo $target; ?>">
                         <?php
-                        }
-
-                        if (isset($value['title'])) { ?>
-                            <div class="__info">
-                              <span class="__title"><?php echo $value['title']; ?></span>
-                              <span class="__text"><?php echo $value['text']; ?></span>
-                            </div>
-                        <?php
                         } ?>
+                                
+                                <img
+                                    class="lazy-img js-slideshow-lazy-img"
+                                    src="<?php echo $img_placeholder; ?>"
+                                    data-src="<?php echo isset($image) ? $image : ''; ?>"
+                                />
 
-                            <img
-                                class="lazy-img js-slideshow-lazy-img"
-                                src="<?php echo $img_placeholder; ?>"
-                                data-src="<?php echo isset($image) ? $image : ''; ?>"
-                            />
+                            <?php
+                            if (isset($value['title'])) { ?>
+                                <div class="__info">
+                                    <div class="__inner">
+                                        <div class="__title"><?php echo $value['title']; ?></div>
+                                        <div class="__text"><?php echo $value['text']; ?></div>
+                                    </div>
+                                </div>
+                            <?php
+                            } ?>
 
                         <?php
                         if (isset($slug)) { ?>
@@ -89,7 +92,9 @@
         </div>
     </div>
 
-    <div class="__minis flex">
+    <div class="__minis flex flex-container _column">
+        
+        <div class="__headline">Top Themen</div>
 
         <?php
         $i = 1;
@@ -121,22 +126,19 @@
                 ?>
                     <?php
                     if (isset($slug)) { ?>
-                        <a href="<?php echo $slug; ?>" class="__mini-item flex-container" target="<?php echo $target; ?>">
+                        <a href="<?php echo $slug; ?>" class="__mini-item flex flex-container" target="<?php echo $target; ?>">
                     <?php
                     } else { ?>
-                        <div class="__mini-item flex-container">
+                        <div class="__mini-item flex flex-container">
                     <?php
                     } ?>
-
-                    <div class="__img">
-                        <img class="lazy-img js-lazy-img" src="<?php echo $img_placeholder; ?>" data-src="<?php echo isset($image) ? $image : ''; ?>" alt="<?php echo $value['title']; ?>">
-                    </div>
-
-                    <div class="__text flex">
-                      <span class="category"><?php echo $value['title']; ?></span>
-
-                      <span class="title"><?php echo $value['text']; ?></span>
-                    </div>
+                            <div class="__img">
+                                <img class="lazy-img js-lazy-img" src="<?php echo $img_placeholder; ?>" data-src="<?php echo isset($image) ? $image : ''; ?>" alt="<?php echo $value['title']; ?>">
+                             </div>                
+                            <div class="__info flex">
+                              <div class="__title"><?php echo $value['title']; ?></div>
+                              <div class="__text"><?php echo $value['text']; ?></div>
+                            </div>
 
                     <?php
                     if (isset($slug)) { ?>

@@ -43,6 +43,14 @@ body {
 
     }
 
+    &._3 {
+
+        -webkit-flex: 3;
+        -ms-flex: 3;
+        flex: 3;
+
+    }
+
 }
 
 .main-container {
@@ -112,7 +120,7 @@ a {
     font-weight: 400;
     font-size: 24px;
     line-height: 32px;
-    padding: 13px 15px;
+    padding: 13px 0px;
     border-bottom: $color-default-grey;
 
     i {
@@ -276,6 +284,12 @@ ul {
 
     }
 
+}
+
+@media only screen and (max-width: $page-break-desktop) {
+    .teaser-h2 {
+        margin: 10px 0px 20px 0px;
+    }
 }
 
 @media only screen and (max-width: $special-teaser-break) {
