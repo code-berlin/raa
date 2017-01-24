@@ -75,8 +75,9 @@ var lazyLoader = {
 
         slideshow.on('appear', function() {
 
-            var thumbnails = $('.flex-control-thumbs img'),
-                placeholder = $('.js-lazy-slideshow-placeholder');
+            var slideshow = $(this),
+                thumbnails = slideshow.find('.flex-control-thumbs img'),
+                placeholder = slideshow.siblings('.js-lazy-slideshow-placeholder');
 
             slideshow.find('.js-slideshow-lazy-img').each(function(i){
 

@@ -1,11 +1,12 @@
-<div class="teaser-1-slideshow-left-3-small-right">
-
-    <?php
-    // placeholder is important, because "jumpmark" functionality (link from other page) doesnt work without this
-    ?>
-    <img class="ph js-lazy-slideshow-placeholder" src="<?php echo $img_placeholder_teaser_slideshow_left; ?>">
+<div class="teaser-1-slideshow-left-3-small-right flex-container">
 
     <div class="slideshow-container">
+        
+        <?php
+        // placeholder is important, because "jumpmark" functionality (link from other page) doesnt work without this
+        ?>
+        <img class="ph js-lazy-slideshow-placeholder" src="<?php echo $img_placeholder; ?>">
+
         <div class="flexslider js-flexslider js-lazy-slideshow">
             <ul class="slides">
 
@@ -44,7 +45,7 @@
                         } ?>
 
                         <li
-                            data-thumb="<?php echo $img_placeholder_teaser_slideshow_left; ?>"
+                            data-thumb="<?php echo $img_placeholder; ?>"
                             data-title="<?php echo isset($value['title']) ? $value['title'] : ''; ?>"
                         >
 
@@ -52,21 +53,30 @@
                         if (isset($slug)) { ?>
                             <a href="<?php echo $slug; ?>" target="<?php echo $target; ?>">
                         <?php
-                        }
+                        } ?>
+                                
+                                <img
+                                    class="lazy-img js-slideshow-lazy-img"
+                                    src="<?php echo $img_placeholder; ?>"
+                                    data-src="<?php echo isset($image) ? $image : ''; ?>"
+                                />
 
-                        if (isset($value['title'])) { ?>
-                            <div class="__info">
-                              <span class="__title"><?php echo $value['title']; ?></span>
-                              <span class="__text"><?php echo $value['text']; ?></span>
-                            </div>
+                            <?php
+                            if (isset($value['title'])) { ?>
+                                <div class="__info">
+                                    <div class="__inner">
+                                        <div class="__title"><?php echo $value['title']; ?></div>
+                                        <div class="__text"><?php echo $value['text']; ?></div>
+                                    </div>
+                                </div>
+                            <?php
+                            } ?>
+
+                        <?php
+                        if (isset($slug)) { ?>
+                            </a>
                         <?php
                         } ?>
-
-                            <img
-                                class="lazy-img js-slideshow-lazy-img"
-                                src="<?php echo $img_placeholder_teaser_slideshow_left; ?>"
-                                data-src="<?php echo isset($image) ? $image : ''; ?>"
-                            />
 
                         </li>
 
@@ -82,7 +92,9 @@
         </div>
     </div>
 
-    <div class="__minis">
+    <div class="__minis flex flex-container _column">
+        
+        <div class="__headline">Top Themen</div>
 
         <?php
         $i = 1;
@@ -114,22 +126,19 @@
                 ?>
                     <?php
                     if (isset($slug)) { ?>
-                        <a href="<?php echo $slug; ?>" class="__mini-item flex-container" target="<?php echo $target; ?>">
+                        <a href="<?php echo $slug; ?>" class="__mini-item flex flex-container" target="<?php echo $target; ?>">
                     <?php
                     } else { ?>
-                        <div class="__mini-item flex-container">
+                        <div class="__mini-item flex flex-container">
                     <?php
                     } ?>
-
-                    <div class="__img">
-                        <img class="lazy-img js-lazy-img" src="<?php echo $img_placeholder_teaser_smalls_right; ?>" data-src="<?php echo isset($image) ? $image : ''; ?>" alt="<?php echo $value['title']; ?>">
-                    </div>
-
-                    <div class="__text">
-                      <span class="category"><?php echo $value['title']; ?></span>
-
-                      <span class="title"><?php echo $value['text']; ?></span>
-                    </div>
+                            <div class="__img">
+                                <img class="lazy-img js-lazy-img" src="<?php echo $img_placeholder; ?>" data-src="<?php echo isset($image) ? $image : ''; ?>" alt="<?php echo $value['title']; ?>">
+                             </div>                
+                            <div class="__info flex">
+                              <div class="__title"><?php echo $value['title']; ?></div>
+                              <div class="__text"><?php echo $value['text']; ?></div>
+                            </div>
 
                     <?php
                     if (isset($slug)) { ?>

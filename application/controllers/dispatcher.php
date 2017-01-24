@@ -37,16 +37,14 @@ class Dispatcher extends Page {
         // get image placeholders (from theme if exists or raa)
         $this->data['img_placeholder'] = get_image_placeholder($this->data['theme']);
         $this->data['img_placeholder_slideshow'] = get_image_placeholder_for_slideshow($this->data['theme']);
-        $this->data['img_placeholder_teaser_slideshow_left'] = get_image_placeholder_for_teaser_slideshow_left($this->data['theme']);
-        $this->data['img_placeholder_teaser_smalls_right'] = get_image_placeholder_for_teaser_smalls_right($this->data['theme']);
-
+        
         // Retrieve homepage in case it exists.
         if (empty($slug)) {
             $this->load->model('settings_m');
 
             $page = $this->page_m->get_by_id($this->settings_m->get_homepage());
 
-            if ((stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] != $this->data['canonical_url']) redirect($this->data['canonical_url']);
+            if ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] != $this->data['canonical_url']) redirect($this->data['canonical_url']);
 
             // If $page is false, it means there's no homepage set yet
             if (!$page) {

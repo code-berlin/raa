@@ -8,8 +8,8 @@
 
             display: block;
             position: relative;
-            overflow: hidden;
             margin-right: 15px;
+            overflow: hidden;
 
             .__img {
                 img {
@@ -19,29 +19,32 @@
             }
 
             .__content {
-                display: block;
+
                 position: absolute;
-                bottom: 0px;
+                bottom: -1px;
                 left: 0px;
                 right: 0px;
-                opacity: 0.8;
-                text-align: center;
-                padding: 13px 5px;
+                top: 33%;
+                @include background-image(linear-gradient(transparent, rgba(0,0,0,0.5)));
+                color: white;   
+                    
+                .__inner {
+                    position: absolute;
+                    bottom: 0px;
+                    left: 0px;
+                    right: 0px;
+                    padding: 15px 20px;
+                }
 
                 .__category {
                     font-size: 12px;
-                    color: $color-default-grey;
-                    background-color: $color-default-black;
-                    line-height: 18px;
+                    margin-bottom: -2px;
                 }
 
                 .__title {
-                    padding: 1px;
                     font-size: 22px;
-                    font-weight: bold;
-                    line-height: 34px;
-                    background-color: $color-default-white;
-                    color: $color-default-font;
+                    line-height: 36px;
+                    font-weight: 600;
                 }
 
             }
@@ -49,13 +52,23 @@
             .__teaser-more {
                 display: none;
             }
+        
+            &:last-child {
+                margin-right: 0;
+            }
+
+            &:hover {
+                .__content {
+                    top: 0px;
+                }
+            }
 
         }
 
-        :last-child {
-            margin-right: 0;
-        }
+    }
 
+    .teaser-collapsible-btn {
+        margin-top: 10px;
     }
 
 }
@@ -63,22 +76,18 @@
 @media only screen and (max-width: $page-break-tablet) {
 
     .teaser-3-medium-2-extra-rows {
-
         .__minis {
-
             .__mini-item {
-
                 .__content {
-
+                        
                     .__category {
-                        font-size: 12px;
-                        line-height: 18px;
+                        font-size: 11px;
+                        margin-bottom: -4px;
                     }
 
                     .__title {
-                        padding: 1px;
-                        font-size: 15px;
-                        line-height: 22px;
+                        font-size: 14px;
+                        line-height: 23px;
                     }
 
                 }
@@ -98,81 +107,25 @@
         .__minis {
 
             display: block;
-            margin-bottom: 0px;
+            margin: 0px (-$main-offset-mobile);
 
             .__mini-item {
-
-                width: auto;
-                height: auto;
-                border-bottom: 1px solid $color-default-grey;
-                margin: 0px;
-                padding: $main-offset-mobile 0px;
-
-                &:after {
-                    display: block;
-                    content: '';
-                    clear: both;
-                }
-
-                &:hover, &:active {
-                    text-decoration: none;
-                }
-
-                .__img {
-
-                    width: 80px;
-                    float: left;
-
-                    img {
-                        width: 100%;
-                        height: auto;
-                        position: static;
-                        @include transform(translate3d(0, 0, 0));
-                    }
-                }
+                
+                margin-right: 0px;
 
                 .__content {
-                    margin-left: 90px;
-                    position: static;
-                    color: $color-default-font;
-                    font-size: 16px;
-                    line-height: 24px;
-                    text-align: left;
-                    opacity: 1;
-                    padding: 0px;
-                    margin-right: 20px;
-                    overflow: hidden;
-
+                        
                     .__category {
-                        background: none;
-                        color: $color-default-font;
+                        font-size: 14px;
+                        line-height: 23px;
+                        margin-bottom: -5px;
                     }
 
                     .__title {
-                        color: $color-default-font;
-                        font-size: 16px;
+                        font-size: 26px;
+                        line-height: 42px;
                     }
-                }
 
-                .__teaser-more {
-                    display: block;
-                    font-size: 0px;
-                    width: 0px;
-                    height: 0px;
-                    position: absolute;
-                    top: 50%;
-                    right: 0px;
-                    transform: translate(0, -50%);
-                    color: $color-default-main;
-                    border-left: 5px solid $color-default-main;
-                    border-top: 8px solid transparent;
-                    border-bottom: 8px solid transparent;
-                }
-
-
-                &._last {
-                    margin-bottom: 0px;
-                    border-bottom: none;
                 }
 
                 &._dummy {
@@ -180,7 +133,37 @@
                 }
 
             }
+        }
 
+        .teaser-collapsible-btn {
+            display: block;
+            margin: 1px (-$main-offset-mobile) 1px (-$main-offset-mobile);
+        }
+
+    }
+
+}
+
+@media only screen and (max-width: $page-break-phone) {
+
+    .teaser-3-medium-2-extra-rows {
+        .__minis {
+            .__mini-item {
+                .__content {
+                        
+                    .__category {
+                        font-size: 13px;
+                        line-height: 21px;
+                        margin-bottom: -3px;
+                    }
+
+                    .__title {
+                        font-size: 22px;
+                        line-height: 36px;
+                    }
+
+                }
+            }
         }
     }
 
