@@ -159,6 +159,22 @@ class Main_Admin_Controller extends CI_Controller {
         return $post;
     }
 
+    /**
+     *   Checks page information before it's stored in the database.
+     *
+     *   It should be made for both update and insert actions.
+     *   This is GroceryCRUD specific. Maybe there's a cleanest way
+     *   to do it.
+     */
+    public function before_inserting_page($post) {
+
+        $post['date_created'] = $this->set_datetime();
+
+        $new_post = $this->before_saving_page($post);
+
+        return $new_post;
+    }
+
     public function before_deleting_page($id) {
         /*
         * Remove slug from list when deleting page

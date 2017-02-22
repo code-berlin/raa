@@ -349,7 +349,7 @@ class Page_dao extends CI_Model{
                             WHERE page.parent_id = '.$page_id.'
                             AND page.published = 1
                             AND parent.published = 1
-                            ORDER BY page.date DESC, page.id LIMIT ' . $limit . ';');
+                            ORDER BY page.date_created DESC, page.id LIMIT ' . $limit . ';');
 
         return R::getAll($query);
     }
@@ -370,7 +370,7 @@ class Page_dao extends CI_Model{
                           LEFT JOIN '.$this->table.' as parent ON parent.id = page.parent_id
                           WHERE page.published = 1
                           AND parent.published = 1
-                          ORDER BY page.date DESC, page.id LIMIT ' . $limit . ';');
+                          ORDER BY page.date_created DESC, page.id LIMIT ' . $limit . ';');
 
         return R::getAll($query);
     }

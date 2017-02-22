@@ -54,11 +54,12 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->columns('menu_title', 'headline', 'slug', 'published');
 
             // Fields to show when editing and add
-            $crud->edit_fields('template_id', 'parent_id', 'main_category', 'commercial', 'headline', 'introtext', 'menu_title', 'teaser_title', 'teaser_text', 'text', 'date', 'image', 'image_alt', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id');
-            $crud->add_fields('template_id', 'parent_id', 'main_category', 'commercial', 'headline', 'introtext', 'menu_title', 'teaser_title', 'teaser_text', 'text', 'date', 'image', 'image_alt', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id');
+            $crud->edit_fields('template_id', 'parent_id', 'main_category', 'commercial', 'headline', 'introtext', 'menu_title', 'teaser_title', 'teaser_text', 'text', 'date', 'date_created', 'image', 'image_alt', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id');
+            $crud->add_fields('template_id', 'parent_id', 'main_category', 'commercial', 'headline', 'introtext', 'menu_title', 'teaser_title', 'teaser_text', 'text', 'date', 'date_created', 'image', 'image_alt', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id');
 
             $crud->field_type('id', 'hidden');
             $crud->field_type('date', 'hidden');
+            $crud->field_type('date_created', 'hidden');
 
             $crud->set_field_upload('image', $this->config->item('upload_folder'));
 
@@ -86,6 +87,10 @@ class Admin_Controller extends Main_Admin_Controller {
 
                 $crud->field_type('commercial','true_false', array('1' => 'Yes', '0' => 'No'));
 
+                if ($crud->getState() == 'add') {
+
+                }
+
             }
 
             if ($auth->check_user_has_permission($role_id, 'EDIT_TEASER')) {
@@ -95,7 +100,7 @@ class Admin_Controller extends Main_Admin_Controller {
             // Fields sanitation
             $crud->callback_column('slug', array($this, 'link_page'));
 
-            $crud->callback_before_insert(array($this, 'before_saving_page'));
+            $crud->callback_before_insert(array($this, 'before_inserting_page'));
             $crud->callback_before_update(array($this, 'before_saving_page'));
             $crud->callback_before_delete(array($this, 'before_deleting_page'));
 
