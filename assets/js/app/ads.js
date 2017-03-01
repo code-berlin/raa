@@ -30,13 +30,12 @@ var cisLoader = {
 	},
 
 	reviceAdMessage: function(event) {
-		console.log(event);
 		if (!event || !event.data || typeof event.data !== 'string' ||  event.data.indexOf('&') == -1) return;
 
 		var origin = event.origin,
 			messageData = event.data.split('&');
 
-		if (messageData[0] !== 'reviceAdMessage' || origin !== "http://tpc.googlesyndication.com")
+		if (messageData[0] !== 'reviceAdMessage' || origin !== "https://tpc.googlesyndication.com")
 			return;
 
 		switch(messageData[1]) {
