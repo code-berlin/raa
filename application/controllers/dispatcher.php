@@ -44,7 +44,13 @@ class Dispatcher extends Page {
 
             $page = $this->page_m->get_by_id($this->settings_m->get_homepage());
 
-            if ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] != $this->data['canonical_url']) redirect($this->data['canonical_url']);
+            if ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] != $this->data['canonical_url']) {
+                if ($_GET['debug'] == 1) {
+                    var_dump((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] != $this->data['canonical_url']);
+                    exit;
+                }
+                redirect($this->data['canonical_url']);
+            }
 
             // If $page is false, it means there's no homepage set yet
             if (!$page) {
