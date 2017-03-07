@@ -77,10 +77,12 @@ class MY_Router extends CI_Router {
 
 			$excepted = '/' . $this->uri->uri_string . '/';
 
-	        $parsed_url = parse_url("http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+	        $protocoll = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 'https://' : 'http://');
+
+            $parsed_url = parse_url($protocoll . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
 	        
 	       	if($parsed_url["path"] != $excepted) {
-	        	$this->redirect("http://" . $_SERVER['HTTP_HOST'] . $excepted . (isset($parsed_url['query']) ? "?" . $parsed_url['query'] : ""),'location',301);
+	        	$this->redirect($protocoll . $_SERVER['HTTP_HOST'] . $excepted . (isset($parsed_url['query']) ? "?" . $parsed_url['query'] : ""),'location',301);
 	        }
 
 		}
