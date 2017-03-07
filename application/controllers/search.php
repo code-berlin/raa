@@ -30,7 +30,7 @@ class Search extends CI_Controller {
         $lib_data['slug'] = 'gsearch';
 
         $subdata['lib_data'] = $this->theme->get_template_data($lib_data);
-        $subdata['searchterm'] = $_REQUEST['gs'];
+        $subdata['searchterm'] = urldecode($_REQUEST['gs']);
         $subdata['theme'] = $this->config->item('theme');
 
         $data['canonical_url'] = base_url('gsearch');
