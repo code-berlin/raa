@@ -255,7 +255,7 @@
 
     }
 
-    &._no-offsetbottom :last-child {
+    &._no-offsetbottom > :last-child {
         margin-bottom: 0px;
     }
 

@@ -7,7 +7,7 @@ CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
-	config.extraAllowedContent = 'dl[class](accordion); dt dd';
+	config.extraAllowedContent = 'dl[class](accordion); dt dd; table[class](data-table); td[style];  th[style]';
 	config.protectedSource.push(/<i[^>]*><\/i>/g);
 	config.protectedSource.push(/<video[\s|\S]+?<\/video>/gm);
 };
