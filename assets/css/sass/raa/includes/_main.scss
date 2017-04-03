@@ -309,6 +309,10 @@ ul {
             color: $color-default-white;
         }
 
+        .article-page & {
+            margin: 10px (-$main-offset-mobile);
+        }
+
     }
 
 }
