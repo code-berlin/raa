@@ -6,10 +6,9 @@ module.exports = function(grunt) {
 
     var theme = config.theme;
 
-	var JS_FILES = [
+    var JS_FILES = [
         'assets/js/lib/jquery-1.11.0.min.js',
         'assets/js/lib/jquery.mobile.custom.min.js',
-        'assets/js/app/**/*.js',
         'assets/js/lib/superfish.min.js',
         'assets/js/lib/slick.min.js',
         'assets/js/lib/jquery.cookiebar.js',
@@ -17,8 +16,14 @@ module.exports = function(grunt) {
         'assets/js/lib/jquery.flexslider-min.js',
         'assets/js/lib/jquery.idle.min.js',
         'assets/js/lib/jquery-scrolltofixed-min.js',
+        'assets/js/app/**/*.js',
         'assets/js/themes/' + theme + '/**/*.js'
     ];
+
+    /** you can add specific js files in config.json (e.g. if you want to exclude a file from core) */
+    if (config.jsfiles) {
+        JS_FILES = JS_FILES.concat(config.jsfiles);
+    }
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
