@@ -54,8 +54,8 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->columns('menu_title', 'headline', 'slug', 'published');
 
             // Fields to show when editing and add
-            $crud->edit_fields('template_id', 'parent_id', 'main_category', 'commercial', 'headline', 'headline_id', 'introtext', 'menu_title', 'menu_title_mobile', 'teaser_title', 'teaser_text', 'text', 'date', 'date_created', 'image', 'image_alt', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id');
-            $crud->add_fields('template_id', 'parent_id', 'main_category', 'commercial', 'headline', 'headline_id', 'introtext', 'menu_title', 'menu_title_mobile', 'teaser_title', 'teaser_text', 'text', 'date', 'date_created', 'image', 'image_alt', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id');
+            $crud->edit_fields('template_id', 'parent_id', 'main_category', 'commercial', 'headline', 'introtext', 'menu_title', 'menu_title_mobile', 'teaser_title', 'teaser_text', 'text', 'date', 'date_created', 'image', 'image_alt', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id');
+            $crud->add_fields('template_id', 'parent_id', 'main_category', 'commercial', 'headline', 'introtext', 'menu_title', 'menu_title_mobile', 'teaser_title', 'teaser_text', 'text', 'date', 'date_created', 'image', 'image_alt', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id');
 
             $crud->field_type('id', 'hidden');
             $crud->field_type('date', 'hidden');
