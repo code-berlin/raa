@@ -16,6 +16,7 @@ module.exports = function(grunt) {
         'assets/js/lib/jquery.flexslider-min.js',
         'assets/js/lib/jquery.idle.min.js',
         'assets/js/lib/jquery-scrolltofixed-min.js',
+        'assets/js/lib/chosen.jquery.js',
         'assets/js/app/**/*.js',
         'assets/js/themes/' + theme + '/**/*.js'
     ];
@@ -74,6 +75,7 @@ module.exports = function(grunt) {
                     'assets/css/vendor/slick.css',
                     'assets/css/vendor/jquery.cookiebar.css',
                     'assets/css/vendor/flexslider.css',
+                    'assets/css/vendor/chosen.css',
                     'assets/css/raa/main.css',
                     'assets/css/theme/main.css'
                 ],
@@ -94,6 +96,7 @@ module.exports = function(grunt) {
                     'assets/css/vendor/slick.css',
                     'assets/css/vendor/jquery.cookiebar.css',
                     'assets/css/vendor/flexslider.css',
+                    'assets/css/vendor/chosen.css',
                     'assets/css/raa/main.css',
                     'assets/css/theme/main.css'
                 ],
