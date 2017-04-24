@@ -9,28 +9,7 @@
     $show_collapsible_button = false;
 
     foreach ($items as $key => $value) {
-
-        $target = '_self';
-        $image = null;
-        $slug = null;
-
-        if ($value['content_type'] == 'external') {
-            $target = '_blank';
-        }
-
-        if (isset($value['external_image'])) {
-            $image = $value['external_image'];
-        } else {
-            $image = $value['page_image'];
-        }
-
-        if (isset($value['external_link'])) {
-            $slug = $value['external_link'];
-        } else if (isset($value['page_slug'])) {
-            $slug = base_url((isset($value['parent_slug']) && !empty($value['parent_slug']) ? $value['parent_slug'] . '/' : '') . $value['page_slug']);
-        } ?>
-
-        <?php
+        
         if ($i % $columns == 0) { ?>
 
             <div class="__minis flex-container flex<?php echo ($i >= $initial_shown ? ' dn js-teaser-collapsible-closed' : ''); ?>">
@@ -38,9 +17,13 @@
         <?php
         }
 
-        if (isset($slug)) { ?>
+        if ($value['slug'] !== '') { ?>
 
-            <a href="<?php echo $slug; ?>" target="<?php echo $target; ?>" class="__mini-item flex <?php echo $i+1 == sizeof($items) ? '_last' : ''; ?>">
+            <a
+                href="<?php echo $value['slug']; ?>"
+                target="<?php echo $value['target']; ?>"
+                class="__mini-item flex <?php echo $i+1 == sizeof($items) ? '_last' : ''; ?>"
+            >
 
         <?php
         } else { ?>
@@ -51,7 +34,12 @@
         } ?>
 
             <div class="__img">
-                <img class="lazy-img js-lazy-img" src="<?php echo $img_placeholder; ?>" data-src="<?php echo isset($image) ? $image : ''; ?>" alt="<?php echo $value['title']; ?>">
+                <img
+                    class="lazy-img js-lazy-img"
+                    src="<?php echo $img_placeholder; ?>"
+                    data-src="<?php echo isset($value['image']) ? $value['image'] : ''; ?>"
+                    alt="<?php echo $value['title']; ?>"
+                />
             </div>
             <div class="__content">
 
@@ -77,7 +65,7 @@
             </div>
 
             <?php
-        if (isset($slug)) { ?>
+        if ($value['slug'] !== '') { ?>
             </a>
         <?php
         } else { ?>
