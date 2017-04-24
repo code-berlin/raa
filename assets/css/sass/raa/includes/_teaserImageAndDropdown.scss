@@ -1,0 +1,22 @@
+.teaser-image-and-dropdown {
+    
+    height: 100%;
+    padding-bottom: 60px;
+    position: relative;
+
+    .__teaser {
+        display: block;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+    }
+
+    .chosen-container {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+
+}

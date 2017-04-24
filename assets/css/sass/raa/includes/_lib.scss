@@ -1,28 +1,22 @@
+// PLEASE JUST OVERWRITE IMPORTANT LIB CSS here (e.g. image paths)
+
 // overwrite vendor/chosen.css
 $chosenImagePath: "/assets/images/lib/chosen_v1.7.0/";
-
 .chosen-container-single .chosen-single abbr {
   background: url($chosenImagePath + "chosen-sprite.png") -42px 1px no-repeat;
 }
-
 .chosen-container-single .chosen-single div b {
   background: url($chosenImagePath + "chosen-sprite.png") no-repeat 0px 2px;
 }
-
 .chosen-container-single .chosen-search input[type="text"] {
   background: url($chosenImagePath + "chosen-sprite.png") no-repeat 100% -20px;
 }
-
 .chosen-container-multi .chosen-choices li.search-choice .search-choice-close {
   background: url($chosenImagePath + "chosen-sprite.png") -42px 1px no-repeat;
 }
-
 .chosen-rtl .chosen-search input[type="text"] {
   background: url($chosenImagePath + "chosen-sprite.png") no-repeat -30px -20px;
 }
-
-/* @end */
-/* @group Retina compatibility */
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi), only screen and (min-resolution: 1.5dppx) {
   .chosen-rtl .chosen-search input[type="text"],
   .chosen-container-single .chosen-single abbr,
@@ -34,5 +28,3 @@ $chosenImagePath: "/assets/images/lib/chosen_v1.7.0/";
     background-image: url($chosenImagePath + "chosen-sprite@2x.png") !important;
   }
 }
-
-/* @end */
