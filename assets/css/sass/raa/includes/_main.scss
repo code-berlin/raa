@@ -340,9 +340,9 @@ ul {
     .teaser-h2 {
 
         margin: 0px (-$main-offset-mobile);
-        padding: 10px $main-offset-mobile;
-        font-size: 16px;
-        line-height: 22px;
+        padding: 15px;
+        font-size: 20px;
+        line-height: 26px;
         background: $color-default-main;
         color: $color-default-white;
         border-bottom: none;
@@ -356,6 +356,16 @@ ul {
             margin: 10px (-$main-offset-mobile);
         }
 
+    }
+
+}
+
+@media only screen and (max-width: $page-break-phone) {
+
+    .teaser-h2 {
+        padding: 10px $main-offset-mobile;
+        font-size: 16px;
+        line-height: 22px;
     }
 
 }
