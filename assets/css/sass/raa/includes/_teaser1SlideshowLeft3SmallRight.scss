@@ -1,5 +1,5 @@
 .teaser-1-slideshow-left-3-small-right {
-
+    
     position: relative;
     width: 100%;
     height: 430px;
@@ -67,13 +67,11 @@
             .__title {
                 font-size: 14px;
                 line-height: 23px;
-                margin-bottom: -5px;
             }
 
             .__text {
                 font-size: 34px;
-                line-height: 55px;
-                font-weight: 600;
+                line-height: 48px;
             }
 
         }
@@ -185,7 +183,6 @@
                 .__text {
                     font-size: 16px;
                     line-height: 26px;
-                    font-weight: 600;
                 }
 
             }
@@ -234,8 +231,8 @@
                     }
                     
                     .__text {
-                        font-size: 14px;
-                        line-height: 23px;
+                        font-size: 16px;
+                        line-height: 26px;
                     }
 
                 }
@@ -322,8 +319,8 @@
                     }
                     
                     .__text {
-                        font-size: 16px;
-                        line-height: 26px;
+                        font-size: 20px;
+                        line-height: 30px;
                     }
 
                 }
@@ -334,8 +331,7 @@
                     position: absolute;
                     bottom: 10px;
                     right: 15px;
-                    font-size: 16px;
-                    font-weight: 600;
+                    font-size: 20px;
                 }
 
                 &:last-child {
@@ -412,6 +408,13 @@
             .__mini-item {
 
                 height: 141px;
+                
+                .__info {
+                    .__text {
+                        font-size: 14px;
+                        line-height: 23px;
+                    }
+                }
 
                 &:after {
                     display: none;
@@ -463,14 +466,7 @@
                 height: 106px;
 
                 .__info {
-
                     padding: 0px 10px;
-
-                    .__text {
-                        font-size: 14px;
-                        line-height: 23px;
-                    }
-
                 }
 
                 &:last-child {
