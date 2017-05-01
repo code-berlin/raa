@@ -155,6 +155,33 @@ class Page extends CI_Controller {
 
     }
 
+    function price_comparison($page_id) {
+
+        $data = array();
+
+        $this->load->model('page_m');
+
+        $page = $this->page_m->get_by_id($page_id);
+
+        $pzn_str = $page->ad_keywords;
+
+        $pzns = array();
+
+        if (!empty($pzn_str)) $pzns = explode(',', $pzn_str);
+
+        if (count($pzns) > 0) {
+            $this->load->helper('price_comparison_api_helper');
+            foreach ($pzns as $key => $value) {
+                  $res = get_drug_info($value);
+                  if (!empty($res)) $data[$value][] = $res;
+            }
+        }
+
+
+        return $data;
+
+    }
+
     function editorial($page_id) {
 
         $data = array();

@@ -54,8 +54,8 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->columns('menu_title', 'headline', 'slug', 'published');
 
             // Fields to show when editing and add
-            $crud->edit_fields('template_id', 'parent_id', 'main_category', 'commercial', 'headline', 'introtext', 'menu_title', 'teaser_title', 'teaser_text', 'text', 'date', 'date_created', 'image', 'image_alt', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id');
-            $crud->add_fields('template_id', 'parent_id', 'main_category', 'commercial', 'headline', 'introtext', 'menu_title', 'teaser_title', 'teaser_text', 'text', 'date', 'date_created', 'image', 'image_alt', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id');
+            $crud->edit_fields('template_id', 'parent_id', 'main_category', 'commercial', 'headline', 'introtext', 'menu_title', 'teaser_title', 'teaser_text', 'text', 'date', 'date_created', 'image', 'image_alt', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id', 'productteaser_order');
+            $crud->add_fields('template_id', 'parent_id', 'main_category', 'commercial', 'headline', 'introtext', 'menu_title', 'teaser_title', 'teaser_text', 'text', 'date', 'date_created', 'image', 'image_alt', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id', 'productteaser_order');
 
             $crud->field_type('id', 'hidden');
             $crud->field_type('date', 'hidden');
@@ -73,6 +73,7 @@ class Admin_Controller extends Main_Admin_Controller {
 
                 $crud->display_as('template_id','Template');
                 $crud->display_as('main_category','Is parent');
+                $crud->display_as('productteaser_order','Product Teaser');
 
                 $crud->set_relation('parent_id','page','slug');
                 $crud->display_as('parent_id','Parent section');
@@ -1131,6 +1132,55 @@ class Admin_Controller extends Main_Admin_Controller {
 
     function _callback_image($value, $row) {
         return "<img style='display: block; width: 200px;' src='" . base_url() . $this->config->item('upload_folder') . '/' . $row->image . "'><div style='padding:5px 0px;'>" . $row->image . "</div>";
+    }
+
+
+    /**
+    *   Handles the page CRUD.
+    */
+    public function productteaser()
+    {
+        $this->control_sidebar_items_display($data);
+
+        $auth = $this->auth_l;
+        $role_id = $this->user->role_id;
+        $url = $_SERVER['REQUEST_URI'];
+
+        if ($auth->check_section_access_required_permissions($role_id, $url)) {
+            $crud = $this->grocery_crud;
+
+            // Page permissions
+            $this->check_section_permissions($crud);
+
+            $crud->set_table('productteaser');
+
+            $crud->set_field_upload('image', $this->config->item('upload_folder'));
+            $crud->field_type('published','true_false', array('1' => 'Yes', '0' => 'No'));
+
+            // Fields to show on the list
+            $crud->columns('id', 'name', 'link', 'published');
+
+            // Fields to show when editing and add
+            $crud->edit_fields('name', 'link', 'published', 'image', 'teaser_title', 'teaser_text');
+            $crud->add_fields('name', 'link', 'published', 'image', 'teaser_title', 'teaser_text');
+
+            $crud->field_type('id', 'hidden');
+
+            $crud->callback_before_insert(array($this, 'before_inserting_productteaser'));
+            $crud->callback_before_update(array($this, 'before_saving_productteaser'));
+            $crud->callback_before_delete(array($this, 'before_deleting_productteaser'));
+
+            try {
+                $this->add_grocery_to_data_array($crud->render(), $data);
+            } catch(Exception $e) {
+                $data['output'] = $e->getMessage();
+            }
+
+        } else {
+            $data['output'] = 'Not allowed';
+        }
+
+        $this->load->view('admin/admin', $data);
     }
 
 }

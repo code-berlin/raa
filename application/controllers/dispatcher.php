@@ -124,6 +124,18 @@ class Dispatcher extends Page {
 
                 $this->data['teaser'] = $teaser;
 
+                $this->data['productteaser'] = '';
+
+                if (!empty($this->data['page']['productteaser_order'])) {
+
+                    $this->load->model('product_teaser_m');
+
+                    $productteaser = $this->product_teaser_m->get_by_ids($this->data['page']['productteaser_order']);
+
+                    $this->data['page']['productteaser'] = $productteaser;
+
+                }                
+
                  // Get extra data for current page based on its slug
                 // If $template_method exists, it can be found in page.php controller
                 $template_method = $this->data[$this->type]->template->name;

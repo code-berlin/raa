@@ -94,6 +94,13 @@
                 </li>
             <?php } ?>
 
+            <?php if ($sidebar['EDIT_PRODUCT_TEASER']) { ?>
+                <li class="nav-header">Product Teaser</li>
+                <li>
+                    <a href='<?php echo site_url('admin/productteaser'); ?>'>Product Teaser</a>
+                </li>
+            <?php } ?>
+
             <?php if ($sidebar['VIEW_GENERAL_SETTINGS']) { ?>
                 <li class="nav-header">Settings</li>
                 <li>
