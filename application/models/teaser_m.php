@@ -22,7 +22,40 @@ class Teaser_m extends CI_Model {
     }
 
     function get_teaser_items_by_teaser_instance_id($teaser_instance_id) {
-    	return $this->teaser_item_dao->get_by_teaser_instance_id($teaser_instance_id);
+
+        $teaserItems = $this->teaser_item_dao->get_by_teaser_instance_id($teaser_instance_id);
+        $teaserItemsEnriched = array();
+
+        foreach ($teaserItems as $key => $value) {
+
+            $slug = '';
+
+            if ($value['content_type'] == 'external') {
+                $target = '_blank';
+            } else {
+                $target = '_self';
+            }
+
+            if (isset($value['external_image'])) {
+                $image = $value['external_image'];
+            } else {
+                $image = $value['page_image'];
+            }
+
+            if (isset($value['external_link'])) {
+                $slug = $value['external_link'];
+            } else if (isset($value['page_slug'])) {
+                $slug = base_url((isset($value['parent_slug']) && !empty($value['parent_slug']) ? $value['parent_slug'] . '/' : '') . $value['page_slug']);
+            }
+
+            $teaserItemsEnriched[$key] = $value;
+            $teaserItemsEnriched[$key]['target'] = $target;
+            $teaserItemsEnriched[$key]['image'] = $image;
+            $teaserItemsEnriched[$key]['slug'] = $slug;
+
+        }
+
+    	return $teaserItemsEnriched;
     }
 
     function count_teaser_items($teaser_instance_id) {

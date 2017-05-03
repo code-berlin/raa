@@ -54,8 +54,8 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->columns('menu_title', 'headline', 'slug', 'published');
 
             // Fields to show when editing and add
-            $crud->edit_fields('template_id', 'parent_id', 'main_category', 'commercial', 'headline', 'introtext', 'menu_title', 'teaser_title', 'teaser_text', 'text', 'date', 'date_created', 'image', 'image_alt', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id', 'productteaser_order');
-            $crud->add_fields('template_id', 'parent_id', 'main_category', 'commercial', 'headline', 'introtext', 'menu_title', 'teaser_title', 'teaser_text', 'text', 'date', 'date_created', 'image', 'image_alt', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id', 'productteaser_order');
+            $crud->edit_fields('template_id', 'parent_id', 'main_category', 'commercial', 'headline', 'introtext', 'menu_title', 'menu_title_mobile', 'teaser_title', 'teaser_text', 'text', 'date', 'date_created', 'image', 'image_alt', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id', 'productteaser_order');
+            $crud->add_fields('template_id', 'parent_id', 'main_category', 'commercial', 'headline', 'introtext', 'menu_title', 'menu_title_mobile', 'teaser_title', 'teaser_text', 'text', 'date', 'date_created', 'image', 'image_alt', 'slug', 'published', 'id', 'seo_meta_keywords', 'seo_meta_title', 'seo_meta_description', 'seo_footer_text', 'sitemap_prio', 'use_copyright_text', 'copyright_text', 'ad_keywords', 'author_id', 'productteaser_order');
 
             $crud->field_type('id', 'hidden');
             $crud->field_type('date', 'hidden');
@@ -776,12 +776,12 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->where('page_id', $page_id);
 
             // Fields to show on the list
-            $crud->columns('title', 'text', 'position', 'published', 'teaser_types_id', 'jumpmark');
+            $crud->columns('title', 'text', 'position', 'published', 'teaser_types_id', 'column', 'jumpmark');
 
             $crud->add_action('Teaser Item Verwaltung --- Icons made by Freepik from www.flaticon.com is licensed by CC BY 3.0', '/assets/images/tabs.png', site_url('admin/teaser_item') . '/');
 
-            $crud->add_fields('id', 'page_id', 'teaser_types_id', 'title', 'text', 'position', 'published', 'jumpmark');
-            $crud->edit_fields('id', 'page_id', 'teaser_types_id', 'title', 'text', 'position', 'published', 'jumpmark');
+            $crud->add_fields('id', 'page_id', 'teaser_types_id', 'title', 'text', 'position', 'published', 'column', 'jumpmark');
+            $crud->edit_fields('id', 'page_id', 'teaser_types_id', 'title', 'text', 'position', 'published', 'column', 'jumpmark');
 
             // add page relation
             $this->load->model('teaser_m');
@@ -795,6 +795,7 @@ class Admin_Controller extends Main_Admin_Controller {
                 $teaser_types_array);
 
             $crud->field_type('published','true_false', array('1' => 'Yes', '0' => 'No'));
+            $crud->field_type('column','true_false', array('1' => 'Yes', '0' => 'No'));
             $crud->field_type('page_id', 'hidden', $page_id);
             $crud->field_type('id', 'hidden');
 

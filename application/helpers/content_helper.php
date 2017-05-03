@@ -34,13 +34,21 @@ function get_sidebar_teaser($sidebarTeaser, $alternativeTeaser, $pageSlug) {
         foreach ($sidebarTeaser as $key => $value) {
 
             $slug = trim($value['url'], '/');
+            $teaserToPush = $value;
 
             // add alternative teaser to array instead of teaser, if teaser points to actual page
-            if ($pageSlug !== $slug) {
-                array_push($teaser, $value);
-            } else if (isset($alternativeTeaser)) {
-                array_push($teaser, $alternativeTeaser);
+            if ($pageSlug === $slug && isset($alternativeTeaser)) {
+                $teaserToPush = $alternativeTeaser;
             }
+
+            // set target field
+            if ($teaserToPush['external'] === '1') {
+                $teaserToPush['target'] = '_blank';
+            } else {
+                $teaserToPush['target'] = '_self';
+            }
+
+            array_push($teaser, $teaserToPush);
 
         }
 
