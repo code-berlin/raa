@@ -19,17 +19,19 @@ var header = {
             return;
         }
 
-        this.refScrollY = window.scrollY;
+        this.refScrollY = window.pageYOffset;
         this.header = $('header');
         this.tolerance = this.header.height() / 4;
 
         $(window).scroll(function() {
 
-            if (window.scrollY > this.refScrollY + this.tolerance && window.scrollY > 0) { // window.scrollY >= 0 -> ignore bouncing on ios
+            console.log(window.pageYOffset);
+
+            if (window.pageYOffset > this.refScrollY + this.tolerance && window.pageYOffset > 0) { // window.pageYOffset >= 0 -> ignore bouncing on ios
                 this.slideUp();
             }
 
-            if (window.scrollY < this.refScrollY - this.tolerance) {
+            if (window.pageYOffset < this.refScrollY - this.tolerance) {
                this.slideDown();
             }
 
@@ -45,7 +47,7 @@ var header = {
      */
     slideUp: function() {
         this.header.addClass('_slide-up');
-        this.refScrollY = window.scrollY;
+        this.refScrollY = window.pageYOffset;
     },
 
     /**
@@ -54,7 +56,7 @@ var header = {
      */
     slideDown: function() {
         this.header.removeClass('_slide-up');
-        this.refScrollY = window.scrollY;
+        this.refScrollY = window.pageYOffset;
     }
 
 };
