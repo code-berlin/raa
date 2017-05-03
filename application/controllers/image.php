@@ -16,9 +16,21 @@ class Image extends CI_Controller {
 	    	$media_FS_path = FCPATH . $this->config->item('upload_folder') . '/';
 	    	$thumb_FS_path = FCPATH . 'assets/uploads/thumbs/';
 
+	    	$img_FS = $media_FS_path . $image;
+
+	    	// if size is auto value, calculate image size based on original ratio
+	    	if (file_exists($img_FS) && ($sixe_x == 'auto' || $sixe_y == 'auto')) {
+	    		$ratio = $this->getRatio($img_FS);
+	    		if ($sixe_x == 'auto') {
+	    			$sixe_x = $sixe_y * $ratio;
+	    		}
+	    		if ( $sixe_y == 'auto') {
+	    			$sixe_y = $sixe_x / $ratio;
+	    		}
+	    	}
+
 			$thumb_FS = $thumb_FS_path . $sixe_x . '-' . $sixe_y . '-' . $image;
 			$pre_thumb_FS = $thumb_FS_path . $sixe_x . '-' . $sixe_y . '-' . '-pre-' . $image;
-	    	$img_FS = $media_FS_path . $image;
 	    	
 	    	if (!file_exists($thumb_FS) || $refresh == 'true') {
 
@@ -60,6 +72,11 @@ class Image extends CI_Controller {
     	header('Content-Type: image/png');
 		echo base64_decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=');
 
-    }    
+    }
+
+    private function getRatio($img_FS) {
+    	$size = getimagesize($img_FS);
+    	return $size[0]/$size[1];
+    }
 
 }
