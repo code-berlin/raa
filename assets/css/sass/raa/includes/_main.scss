@@ -144,6 +144,11 @@ a {
        margin-top: 0px;
     }
 
+    &._noborder {
+        margin: 0px;
+        border-bottom: none;
+    }
+
 }
 
 .def-btn,

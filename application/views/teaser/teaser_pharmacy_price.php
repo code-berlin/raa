@@ -1,7 +1,7 @@
 <div class="teaser-pharmacy-price">
     <?php //foreach ($items as $key => $value) { ?>
         <div class="flex-container __row">
-            <div class="flex flex-container __column">
+            <div class="flex flex-container __column __nameimage">
                 <div class="__title">
                     Pharmacy name
                 </div>

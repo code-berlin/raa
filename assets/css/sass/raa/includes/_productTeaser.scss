@@ -1,0 +1,117 @@
+$product-teaser-arrow-width: 50px;
+$product-teaser-arrow-height: $product-teaser-arrow-width/100*188.425;
+
+.product-teaser {
+
+	padding: 50px 100px;
+	border: 1px solid $color-default-grey;
+
+	.flexslider {
+
+        border: none;
+        margin: 0px;
+        padding: 0px 140px;
+		
+        .flex-direction-nav,
+        &:hover .flex-direction-nav {
+			
+			a {
+				width: $product-teaser-arrow-width;
+				height: $product-teaser-arrow-height;
+				margin: -($product-teaser-arrow-height/2) 0 0;
+
+				&:before {
+					content: '';
+					display: block;
+					width: $product-teaser-arrow-width*2;
+					height: $product-teaser-arrow-height;
+					background-image: url(/assets/images/chevrons_big.png);
+					background-repeat: no-repeat;
+					background-size: cover;
+				}
+			}
+
+			.flex-prev,
+			.flex-next {
+				opacity: 0.5;
+				&:hover {
+					opacity: 0.8;
+				}
+			}
+
+            .flex-prev {
+                left: 0px;
+            }
+
+            .flex-next {
+                right: 0px;
+                &:before {
+                	margin-left: -$product-teaser-arrow-width;
+                }
+            }
+
+        }
+
+        .flex-control-nav {
+        	display: none;
+        }
+
+
+    }
+
+	.__item {
+		a {
+			color: $color-default-font;
+			&:hover {
+				color: $color-default-font;
+				text-decoration: none;
+			}
+		}
+	}
+
+    .__info {
+
+    }
+
+    .__img {
+
+		width: 250px;
+		height: 250px;
+		position: relative;
+		margin-right: 60px;
+
+		img {
+			width: auto;
+			height: auto;
+			max-width: 100%;
+			max-height: 100%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			@include transform(translate3d(-50%, -50%, 0));
+		}
+    }
+
+	.__texts {
+	
+	}
+
+	.__title {
+		
+	}
+
+	.__text {
+		font-size: 31px;
+    	line-height: 44px;
+    	font-weight: 600;
+	}
+
+	.__cta {
+		text-align: center;
+		margin-top: 50px;
+		.def-btn {
+			padding: 13px 100px;
+		}
+	}
+
+}
