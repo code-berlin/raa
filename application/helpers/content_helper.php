@@ -119,7 +119,15 @@ function get_image_placeholder_for_slideshow($theme) {
 }
 
 function formatPrice($price) {
-    return implode(',', explode('.', $price)) . ' €';
+    $price = explode('.', $price);
+    // add '00' if necessary
+    if (!isset($price[1])) {
+        array_push($price, '00');
+    // add '0' if necessary
+    } else if (strlen($price[1]) === 1) {
+        $price[1] =$price[1] . '0';
+    }
+    return implode(',', $price) . ' €';
 }
 
 
