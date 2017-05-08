@@ -173,7 +173,7 @@ class Page extends CI_Controller {
             $this->load->helper('price_comparison_api_helper');
             foreach ($pzns as $key => $value) {
                   $res = get_drug_info($value);
-                  if (!empty($res)) $data[$value][] = $res;
+                  if (!empty($res)) $data[$value] = $res;
             }
         }
 

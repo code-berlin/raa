@@ -21,6 +21,7 @@ application/config/config.php
 application/config/ads.php
 application/config/database.php
 application/config/migration_fork.php
+application/config/price_comparison.php
 
 assets/css/admin.css
 assets/css/main.css

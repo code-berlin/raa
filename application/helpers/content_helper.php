@@ -118,5 +118,9 @@ function get_image_placeholder_for_slideshow($theme) {
 
 }
 
+function formatPrice($price) {
+    return implode(',', explode('.', $price)) . ' €';
+}
+
 
 ?>

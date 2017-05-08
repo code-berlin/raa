@@ -12,12 +12,7 @@
 			<li class="__item">
 				<a href="<?php echo $teaser['link']; ?>">
 					<div class="flex-container __info">
-						<?php /*
-						<div class="__img"><img src="/assets/uploads/files/<?php echo $teaser['image']; ?>"/></div>
-						*/ ?>
 						<div class="__img"><img src="/image/preview/auto/500/<?php echo $teaser['image']; ?>"/></div>
-
-
 						<div class="flex __texts">
 							<div class="__title"><?php echo $teaser['teaser_title']; ?></div>
 							<div class="__text"><?php echo $teaser['teaser_text']; ?></div>
