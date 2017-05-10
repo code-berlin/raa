@@ -130,5 +130,29 @@ function formatPrice($price) {
     return implode(',', $price) . ' €';
 }
 
+function teaser_items_ordered_list($items) {
+
+    $orderedItems = [];
+
+    foreach ($items as $key => $value) {
+    
+        $title = isset($value['title']) ? $value['title'] : $value['page_title'];
+        $first = strtoupper(mb_substr($title, 0, 1));
+        
+        if (!isset($orderedItems[$first])) {
+            $orderedItems[$first] = [];
+        }
+
+        array_push($orderedItems[$first], [
+            'title' => $title,
+            'slug' => $value['slug']
+        ]);
+    }
+
+    ksort($orderedItems);
+
+    return $orderedItems;
+}
+
 
 ?>

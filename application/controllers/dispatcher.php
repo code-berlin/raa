@@ -119,6 +119,11 @@ class Dispatcher extends Page {
                             shuffle($teaser[$value['id']]['items']);
                         }
 
+                        // if teasertype is external_link_page then shuffle order
+                        if ($value['name'] === 'ordered_list')  {
+                            $teaser[$value['id']]['items'] = teaser_items_ordered_list($teaser[$value['id']]['items']);
+                        }
+
                     }
 
                 }

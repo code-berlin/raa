@@ -1,0 +1,33 @@
+.teaser-ordered-list {
+    border: 1px solid $color-default-grey;
+    padding: 25px 28px 25px 28px;
+    .__inner {
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+        height: 200px;
+    }
+    .__firstchar,
+    .__title {
+        font-size: 16px;
+    }
+    .__title + .__firstchar {
+        margin-top: 5px;
+    }
+}
+
+@media only screen and (max-width: $special-teaser-break) {
+    .teaser-ordered-list {
+        margin-top: 10px;
+        padding: 15px;
+    }
+}
+
+@media only screen and (max-width: $page-break-phone) {
+    .teaser-ordered-list {
+        padding: 10px;
+        .__firstchar,
+        .__title {
+            font-size: 14px;
+        }
+    }
+}
