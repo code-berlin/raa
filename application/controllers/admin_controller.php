@@ -1162,8 +1162,8 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->columns('id', 'name', 'link', 'published');
 
             // Fields to show when editing and add
-            $crud->edit_fields('name', 'link', 'published', 'image', 'image_caption', 'teaser_title', 'teaser_text');
-            $crud->add_fields('name', 'link', 'published', 'image', 'image_caption', 'teaser_title', 'teaser_text');
+            $crud->edit_fields('name', 'link', 'published', 'image', 'image_caption', 'teaser_title', 'teaser_text', 'duty_text');
+            $crud->add_fields('name', 'link', 'published', 'image', 'image_caption', 'teaser_title', 'teaser_text', 'duty_text');
 
             $crud->field_type('id', 'hidden');
 

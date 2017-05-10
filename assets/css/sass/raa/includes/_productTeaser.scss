@@ -1,129 +1,162 @@
 $product-teaser-arrow-width: 50px;
 $product-teaser-arrow-height: $product-teaser-arrow-width/100*188.425;
-
 $product-teaser-arrow-width-medium: 25px;
 $product-teaser-arrow-height-medium: $product-teaser-arrow-width-medium/100*188.425;
-
 $product-teaser-arrow-width-small: 20px;
 $product-teaser-arrow-height-small: $product-teaser-arrow-width-small/100*188.425;
+@mixin product-teaser-column() {
+    .__info {
+        @include flex-direction(column);
+    }
+    .__img-wrapper {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .__img {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .__texts {
+        text-align: center;
+        margin-top: 15px;
+        padding-top: 30px;
+        border-top: 1px solid $color-default-grey-2;
+    }
+    .__cta {
+        .def-btn {
+            padding: 13px 30px;
+        }
+    }
+}
 
 .product-teaser {
-
-	padding: 50px 100px;
-	border: 1px solid $color-default-grey;
-
-	.__commercial {
-		display: none; // only visible on article pages
-	}
-
-	.flexslider {
-
+    padding: 50px 100px;
+    border: 1px solid $color-default-grey;
+    .__commercial {
+        display: none; // only visible on article pages
+    }
+    .flexslider {
         border: none;
         margin: 0px;
         padding: 0px 140px;
-		
         .flex-direction-nav,
         &:hover .flex-direction-nav {
-			
-			a {
-				width: $product-teaser-arrow-width;
-				height: $product-teaser-arrow-height;
-				margin: -($product-teaser-arrow-height/2) 0 0;
-
-				&:before {
-					content: '';
-					display: block;
-					width: $product-teaser-arrow-width*2;
-					height: $product-teaser-arrow-height;
-					background-image: url(/assets/images/chevrons_big.png);
-					background-repeat: no-repeat;
-					background-size: cover;
-				}
-			}
-
-			.flex-prev,
-			.flex-next {
-				opacity: 0.5;
-				&:hover {
-					opacity: 0.8;
-				}
-			}
-
+            a {
+                width: $product-teaser-arrow-width;
+                height: $product-teaser-arrow-height;
+                margin: -($product-teaser-arrow-height/2) 0 0;
+                &:before {
+                    content: '';
+                    display: block;
+                    width: $product-teaser-arrow-width*2;
+                    height: $product-teaser-arrow-height;
+                    background-image: url(/assets/images/chevrons_big.png);
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+            }
+            .flex-prev,
+            .flex-next {
+                opacity: 0.5;
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
             .flex-prev {
                 left: 0px;
             }
-
             .flex-next {
                 right: 0px;
                 &:before {
-                	margin-left: -$product-teaser-arrow-width;
+                    margin-left: -$product-teaser-arrow-width;
                 }
             }
-
         }
-
         .flex-control-nav {
-        	display: none;
+            display: none;
         }
-
-
     }
-
-	.__item {
-		a {
-			display: block;
-			color: $color-default-font;
-			&:hover {
-				color: $color-default-font;
-				text-decoration: none;
-			}
-		}
-	}
-
+    .__item {
+        a {
+            display: block;
+            color: $color-default-font;
+            &:hover {
+                color: $color-default-font;
+                text-decoration: none;
+            }
+        }
+    }
+    .__img-wrapper {
+        margin-right: 60px;
+        margin-bottom: 25px;
+        position: relative;
+    }
     .__img {
-
-		width: 250px;
-		height: 250px;
-		position: relative;
-		margin-right: 60px;
-		margin-bottom: 50px;
-
-		img {
-			width: auto;
-			height: auto;
-			max-width: 100%;
-			max-height: 100%;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			@include transform(translate3d(-50%, -50%, 0));
-		}
-
+        width: 250px;
+        height: 250px;
+        position: relative;
+        img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            @include transform(translate3d(-50%, -50%, 0));
+        }
     }
-
     .__caption {
-		position: absolute;
-		bottom: 0;
-		left: 0px;
-		right: 0px;
-		@include transform(translate3d(0, 100%, 0));
-	}
+        margin-top: 5px;
+    }
+    .duty-text-trigger {
+        margin-top: 5px;
+        text-align: center;
+        font-size: 12px;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    .duty-text-content {
 
-	.__text {
-		font-size: 31px;
-    	line-height: 44px;
-    	font-weight: 600;
-	}
+        display: none;
+        cursor: default;
+        position: absolute;
+        top: 0px;
+        left: 0;
+        z-index: 11;
+        width: 400px;
+        font-size: 12px;
+        padding: 10px 15px 10px 15px;
+        background: #f9f9f9;
+        @include box-shadow(1px 1px 5px rgba(0, 0, 0, 0.4));
 
-	.__cta {
-		text-align: center;
-		margin-top: 50px;
-		.def-btn {
-			padding: 13px 100px;
-		}
-	}
-
+        &._vis {
+            display: block;
+        }
+    }
+    .duty-text-close {
+        cursor: pointer;
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        top: 10px;
+        right: 10px;
+    }
+    .__text {
+        font-size: 31px;
+        line-height: 44px;
+        font-weight: 600;
+    }
+    .__cta {
+        text-align: center;
+        margin-top: 50px;
+        .def-btn {
+            padding: 13px 100px;
+        }
+    }
 }
+
 
 .article-page .product-teaser {
 	
@@ -170,10 +203,13 @@ $product-teaser-arrow-height-small: $product-teaser-arrow-width-small/100*188.42
 
     }
 
+    .__img-wrapper {
+		margin-right: 45px;
+	}
+
     .__img {
     	width: 200px;
 		height: 200px;
-		margin-right: 45px;
     }
 
     .__cta {
@@ -217,7 +253,7 @@ $product-teaser-arrow-height-small: $product-teaser-arrow-width-small/100*188.42
 
 	    }
 
-	    .__img {
+	    .__img-wrapper {
 			margin-right: 45px;
 	    }
 
@@ -228,21 +264,12 @@ $product-teaser-arrow-height-small: $product-teaser-arrow-width-small/100*188.42
 	}
 
 	.article-page .product-teaser {
-		.__info {
-			@include flex-direction(column);
-    	}
-    	.__img {
-			margin-left: auto;
-			margin-right: auto;
+		@include product-teaser-column();
+		.__img {
+	    	width: 250px;
+			height: 250px;
 	    }
-	    .__texts {
-	    	text-align: center;
-	    }
-	    .__cta {
-			.def-btn {
-				padding: 13px 50px;
-			}
-		}
+		
 	}
 
 }
@@ -252,6 +279,12 @@ $product-teaser-arrow-height-small: $product-teaser-arrow-width-small/100*188.42
 	    .__img {
 	    	width: 200px;
 			height: 200px;
+	    }
+	}
+	.article-page .product-teaser {
+		.__img {
+	    	width: 150px;
+			height: 150px;
 	    }
 	}
 }
@@ -271,16 +304,27 @@ $product-teaser-arrow-height-small: $product-teaser-arrow-width-small/100*188.42
 			@include flex-direction(row);
     	}
 
-	    .__img {
-	    	width: 150px;
-			height: 150px;
-			margin-left: 0;
+    	.__img-wrapper {
 			margin-right: 30px;
+    	}	
+
+	    .__img {
+	    	width: 175px;
+			height: 175px;
+			
 	    }
 
 	    .__texts {
 	    	text-align: left;
+	    	margin-top: 0;
+	    	padding-top: 0;
+	    	border-top: none;
 	    }
+
+        .duty-text-content {
+            width: auto;
+            right: 0;
+        }
 
 	    .__text {
 			font-size: 24px;
@@ -332,21 +376,16 @@ $product-teaser-arrow-height-small: $product-teaser-arrow-width-small/100*188.42
 
 	    }
 
-	    .__img {
-	    	width: 125px;
-			height: 125px;
-			margin-right: 30px;
-	    }
+	    @include product-teaser-column();
+
+		.__img {
+			width: 175px;
+			height: 175px;
+		}
 
 	    .__text {
 			font-size: 20px;
 	    	line-height: 28px;
-		}
-
-		.__cta {
-			.def-btn {
-				padding: 13px 50px;
-			}
 		}
 
 	}
@@ -365,27 +404,4 @@ $product-teaser-arrow-height-small: $product-teaser-arrow-width-small/100*188.42
 		}
 	}
 
-}
-
-@media only screen and (max-width: $page-break-phone) {
-	.article-page .product-teaser,
-	.product-teaser {
-		
-		.__info {
-			@include flex-direction(column);
-    	}
-
-    	.__img {
-	    	width: 150px;
-			height: 150px;
-			margin-left: auto;
-			margin-right: auto;
-	    }
-
-	    .__texts {
-	    	text-align: center;
-	    }
-
-
-	}
 }
