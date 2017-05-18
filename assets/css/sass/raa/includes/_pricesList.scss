@@ -90,7 +90,7 @@
         @include justify-content(center);
         @include align-items(center);
         img {
-            max-width: 75%;
+            width: 75%;
         }
     }
 }
