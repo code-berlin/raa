@@ -182,7 +182,7 @@ class Dispatcher extends Page {
 
                 // Retrieve breadcrumbs if user isnt on homepage
                 if ($slug != 'home') {
-                    $this->data['breadcrumbs'] = get_breadcrumbs($this->data[$this->type]);
+                    $this->data['breadcrumbs'] = get_breadcrumbs($this->data[$this->type], $this->config->item('name'));
                 }
 
                 $lib_data['page_id'] = $this->data[$this->type]->id;
