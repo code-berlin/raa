@@ -11,7 +11,7 @@
 			<?php
 			$teaser = $page->productteaser[$value]; ?>
 			<li class="__item">
-				<a href="<?php echo $teaser['link']; ?>">
+				<a href="<?php echo $teaser['link']; ?>" id="jsProductTeaserSlide-<?php echo $key; ?>">
 					<div class="flex-container __info">
 						<div class="__img-wrapper">
 							<div class="__img">
@@ -19,7 +19,7 @@
 							</div>
 							<?php
 							if (isset($teaser['image_caption'])) { ?>
-								<div class="__caption img-sub">
+								<div class="img-sub __caption">
 									<?php echo $teaser['image_caption']; ?>
 								</div>
 							<?php
@@ -34,13 +34,12 @@
 							<?php
 							} ?>
 						</div>
-						<div class="flex __texts">
-							<div class="__title"><?php echo $teaser['teaser_title']; ?></div>
-							<div class="__text"><?php echo $teaser['teaser_text']; ?></div>
+						<div class="flex-container _column __texts">
+							<div class="__minheight">
+								<div class="__title"><?php echo $teaser['teaser_title']; ?></div>
+								<div class="__text"><?php echo $teaser['teaser_text']; ?></div>
+							</div>
 						</div>
-					</div>
-					<div class="__cta">
-						<div class="def-btn _action">Zum Preisvergleich</div>
 					</div>
 				</a>
 			 </li>
@@ -49,4 +48,5 @@
 		
 		</ul>
 	</div>
+	<a href="" class="__cta def-btn _action js-productteaser-cta">Zum Preisvergleich</a>
 </div>

@@ -132,13 +132,11 @@ a {
     border-bottom: $color-default-grey;
 
     i {
-
-        font-size: 20px;
-        margin-right: 12px;
+        font-size: 33px;
+        margin-right: 14px;
         position: relative;
         top: -1px;
         color: $color-default-font;
-
     }
 
     .teaser-group:first-child & {
@@ -150,6 +148,11 @@ a {
         border-bottom: none;
     }
 
+}
+
+.article-pagination + .teaser-h2,
+.product-teaser + .teaser-h2 {
+    margin-top: 30px;
 }
 
 .def-btn,
@@ -345,12 +348,16 @@ ul {
         border-bottom: none;
 
         i {
-            font-size: 16px;
+            font-size: 18px;
             color: $color-default-white;
         }
 
         .article-page & {
             margin: 10px (-$main-offset-mobile);
+        }
+
+        .teaser-group & {
+            margin-top: 0px;
         }
 
     }
@@ -363,6 +370,9 @@ ul {
         padding: 10px $main-offset-mobile;
         font-size: 16px;
         line-height: 22px;
+        i {
+            margin-right: 12px;
+        }
     }
 
 }

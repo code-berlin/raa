@@ -7,7 +7,13 @@ var productteaser = {
         $('.js-productteaser').flexslider({
             animation: 'fade',
             animationSpeed: 750,
-            slideshow: false
+            slideshow: false,
+            start: function(slider) {
+                me.setCtaHref(slider);
+            },
+            after: function(slider) {
+                me.setCtaHref(slider);
+            }
         });
 
         $('.js-duty-text-trigger').on('click', function(e) {
@@ -39,6 +45,10 @@ var productteaser = {
 
     closeDutyText: function() {
         $('.js-duty-text-content').removeClass('_vis');
+    },
+
+    setCtaHref: function(slider) {
+        $(slider).siblings('.js-productteaser-cta').attr('href', $('#jsProductTeaserSlide-' + slider.currentSlide).attr('href'));
     }
 
 };
