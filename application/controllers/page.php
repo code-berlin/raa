@@ -164,19 +164,41 @@ class Page extends CI_Controller {
         $page = $this->page_m->get_by_id($page_id);
 
         $pzn_str = $page->ad_keywords;
+        $listprices_str = $page->additional_text;
 
         $pzns = array();
+        $listprices = array();
 
         if (!empty($pzn_str)) $pzns = explode(',', $pzn_str);
+        if (!empty($listprices_str)) $listprices = explode(',', $listprices_str);
 
         if (count($pzns) > 0) {
             $this->load->helper('price_comparison_api_helper');
+            $i = 0;
             foreach ($pzns as $key => $value) {
-                  $res = get_drug_info($value);
-                  if (!empty($res)) $data[$value] = $res;
+
+                $res = get_drug_info($value);
+
+                if (!empty($res)) {
+
+                    $res = json_decode($res);
+
+                    if (isset($res->product)) {
+                        if (isset($listprices[$i]) && $listprices[$i] !== 'null') {
+                            $res->product->listprice = $listprices[$i];
+                        } else {
+                            $res->product->listprice = null;
+                        }     
+                    }
+
+                    $data[$value] = json_encode($res);
+
+                }
+
+                $i++;
+
             }
         }
-
 
         return $data;
 
