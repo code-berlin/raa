@@ -1,3 +1,6 @@
+$prices-list-padding-horizontal: 8%;
+$prices-list-padding-horizontal-small: 10px;
+
 .prices-list {
 
     .__row {
@@ -14,7 +17,7 @@
 
     .__column {
 
-        padding: 0px 25px;
+        padding: 0px $prices-list-padding-horizontal;
         @include flex-direction(column);
 
         &:first-child {
@@ -33,7 +36,7 @@
 
         .__column {
             &:first-child {
-                padding-left: 25px;
+                padding-left: $prices-list-padding-horizontal;
             }
         }
     }
@@ -98,14 +101,14 @@
     .prices-list {
 
         .__column {
-            padding: 0px 10px;
+            padding: 0px $prices-list-padding-horizontal-small;
         }
 
         .__info {
             @include flex(2);
             .__column {
                 &:first-child {
-                    padding-left: 10px;
+                    padding-left: $prices-list-padding-horizontal-small;
                 }
             }
         }

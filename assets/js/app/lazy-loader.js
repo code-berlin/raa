@@ -123,7 +123,8 @@ var lazyLoader = {
 
     setImgSrc: function(img) {
 
-        var width = img.width() * window.devicePixelRatio,
+        var devicePixelRatio = typeof window.devicePixelRatio !== 'undefined' ? window.devicePixelRatio : 1,
+            width = img.width() * devicePixelRatio,
             height,
             src,
             storedWidth = img.data('width'),
@@ -139,7 +140,7 @@ var lazyLoader = {
             return;
         }
 
-        height = img.height() * window.devicePixelRatio;
+        height = img.height() * devicePixelRatio;
         src = '/image/preview/' + width +'/' + height + '/' + dataSrc;
 
         // store image width to ensure that after next orientation change

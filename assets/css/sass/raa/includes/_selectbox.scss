@@ -18,6 +18,18 @@
         }
 
     }
+
+    &._small {
+
+        font-size: 14px;
+
+        .chosen-results {
+            li {
+                padding: 11px 11px 12px 11px;
+            }
+        }
+
+    }
     
 }
 
@@ -64,6 +76,31 @@
     .chosen-drop {
         overflow: hidden;
     }
+
+    &._small {
+        .chosen-single {
+
+            height: 38px;
+            line-height: 36px;
+            padding: 0 0 0 11px;
+
+            span {
+                margin-right: 32px;
+            }
+
+            div {
+                width: 32px;
+                b {
+                    border-top: 5px solid $color-default-main;
+                    border-left: 4px solid transparent;
+                    border-right: 4px solid transparent;
+                    margin-top: -2.5px;
+                    margin-left: -4px;
+                }
+
+            }
+        }
+    }
 }
 
 .chosen-container-active {
@@ -79,6 +116,16 @@
                 b {
                     border-top: transparent;
                     border-bottom: 7px solid $color-default-main;
+                }
+            }
+        }
+        &._small {
+            .chosen-single {
+                div {
+                    b {
+                        border-top: transparent;
+                        border-bottom: 5px solid $color-default-main;
+                    }
                 }
             }
         }

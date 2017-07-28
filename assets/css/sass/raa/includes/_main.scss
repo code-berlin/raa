@@ -175,6 +175,11 @@ a {
         background: $color-default-main;
     }
 
+    &._big {
+        padding: 22px 40px;
+        font-size: 20px;
+    }
+
 }
 
 a.link-btn {
@@ -360,6 +365,15 @@ ul {
             margin-top: 0px;
         }
 
+    }
+
+    .def-btn,
+    .def-btn:link,
+    .def-btn:visited {
+        &._big {
+            padding: 19px 21px;
+            font-size: 18px;
+        }
     }
 
 }
