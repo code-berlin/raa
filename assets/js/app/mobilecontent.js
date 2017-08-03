@@ -9,18 +9,16 @@ var mobilecontent = {
 
     init: function() {
 
-        var me = this;
-
         this.jQContentInnerEls = $('#jsContent > *');
         this.jQMobileReadmoreHidden = $('.js-mobile-readmore-hidden');
 
         this.hideInitial();
 
         $('#jsMobileReadmoreBtn').on('click', function() {
-            me.jQContentInnerEls.removeClass('mobile-hidden');
-            me.jQMobileReadmoreHidden.removeClass('mobile-hidden');
-            $(this).remove();
-        });
+            this.jQContentInnerEls.removeClass('mobile-hidden');
+            this.jQMobileReadmoreHidden.removeClass('mobile-hidden');
+            $('.js-mobile-readmore').remove();
+        }.bind(this));
 
     },
 
