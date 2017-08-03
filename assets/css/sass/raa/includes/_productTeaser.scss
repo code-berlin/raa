@@ -324,6 +324,7 @@ $cta-height: 60px;
 		
 		margin: 0px (-$main-offset-mobile);
 		border: none;
+        padding-bottom: $cta-height + 10px;
 
 		.flexslider {
 
@@ -359,6 +360,12 @@ $cta-height: 60px;
 			font-size: 20px;
 	    	line-height: 28px;
 		}
+
+        .__cta {
+            bottom: 10px;
+            left: $main-offset-mobile;
+            right: $main-offset-mobile;
+        }
 
 	}
 

@@ -180,6 +180,10 @@ a {
         font-size: 20px;
     }
 
+    &._round {
+        @include border-radius(999px);
+    }
+
 }
 
 a.link-btn {
@@ -288,6 +292,10 @@ ul {
             }
 
         }
+    }
+
+    .mobile-hidden {
+        display: none !important;
     }
 
     .floating-btn {
