@@ -25,8 +25,6 @@ var header = {
 
         $(window).scroll(function() {
 
-            console.log(window.pageYOffset);
-
             if (window.pageYOffset > this.refScrollY + this.tolerance && window.pageYOffset > 0) { // window.pageYOffset >= 0 -> ignore bouncing on ios
                 this.slideUp();
             }
