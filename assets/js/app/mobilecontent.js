@@ -7,12 +7,15 @@ var mobilecontent = {
     jQContentInnerEls: null,
     jQMobileReadmoreHidden: null,
 
-    init: function() {
+    /** 
+     * @param  {number} visibleH2s (optional)
+     */
+    init: function(visibleH2s) {
 
         this.jQContentInnerEls = $('#jsContent > *');
         this.jQMobileReadmoreHidden = $('.js-mobile-readmore-hidden');
 
-        this.hideInitial();
+        this.hideInitial(visibleH2s);
 
         $('#jsMobileReadmoreBtn').on('click', function() {
             this.jQContentInnerEls.removeClass('mobile-hidden');
@@ -23,16 +26,21 @@ var mobilecontent = {
     },
 
     /**
-     * hide all content after (incl) 2nd h2 and other marked elements
+     * hide all content after (incl) first unvisible set h2 and other marked elements
+     * @param  {number} visibleH2s (optional) - how many h2s should be visible
      */
-    hideInitial: function() {
+    hideInitial: function(visibleH2s) {
+        
         var h2Count = 0;
+        
+        visibleH2s = typeof visibleH2s !== 'undefined' ? visibleH2s : 1;
+
         $.each(this.jQContentInnerEls, function(index, element){
             var jQElement = $(element);
             if (jQElement.prop('tagName') === 'H2') {
                 h2Count++;
             }
-            if (h2Count > 1 && !jQElement.hasClass('js-mobile-readmore')) {
+            if (h2Count > visibleH2s && !jQElement.hasClass('js-mobile-readmore')) {
                 this.hide(jQElement);
             }
         }.bind(this));
