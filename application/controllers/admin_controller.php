@@ -899,7 +899,7 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->set_table('sidebarteaser');
 
             // Fields to show on the list
-            $crud->columns('id', 'title', 'text', 'image', 'url', 'published', 'external', 'alternative');
+            $crud->columns('id', 'position', 'title', 'text', 'image', 'url', 'published', 'external', 'alternative');
 
             $crud->field_type('id', 'hidden');
 

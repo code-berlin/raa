@@ -190,7 +190,7 @@ class Page_dao extends CI_Model{
     }
 
     function get_sidebar_teaser() {
-        return R::find('sidebarteaser', 'published = 1 AND alternative = 0');
+        return R::find('sidebarteaser', 'published = 1 AND alternative = 0 ORDER BY ISNULL(position) ASC, position ASC');
     }
 
     function get_sidebar_teaser_alt() {
