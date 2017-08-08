@@ -84,35 +84,7 @@
         }
     }
 
-    .flex-direction-nav {
-
-        .flex-next,
-        .flex-prev {
-            font-size: 0px;
-            line-height: 0px;
-        }
-
-        a:before {
-            font-family: sans-serif;
-            display: block;
-            content: '';
-            border-top: 10px solid transparent;
-            border-bottom: 10px solid transparent;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            @include transform(translate3d(-50%, -50%, 0));
-        }
-
-        a.flex-prev:before {
-            border-right: 10px solid $color-default-white;
-        }
-
-        a.flex-next:before {
-            border-left: 10px solid $color-default-white;
-        }
-
-    }
+    @include slideshow-arrows();
 
     &._w-thumbs {
 

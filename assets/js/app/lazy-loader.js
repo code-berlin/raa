@@ -140,7 +140,7 @@ var lazyLoader = {
             return;
         }
 
-        height = img.height() * devicePixelRatio;
+        height = img.data('height') ? img.data('height') : img.height() * devicePixelRatio;
         src = '/image/preview/' + width +'/' + height + '/' + dataSrc;
 
         // store image width to ensure that after next orientation change

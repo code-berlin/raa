@@ -96,6 +96,10 @@ a {
          opacity: 1;
     }
 
+    &.transition-none {
+        @include transition(none);
+    }
+
 }
 
 .teaser-group {

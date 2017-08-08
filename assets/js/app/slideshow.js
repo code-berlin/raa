@@ -45,6 +45,10 @@ var slideshow = {
             thumbnailLiEls,
             me = this;
 
+        if (slideshow.length === 0) {
+            return;
+        }
+
         // default options
         if (!options) {
             options = {

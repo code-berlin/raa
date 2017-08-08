@@ -1,0 +1,111 @@
+.teaser-gallery {
+
+    .flexslider {
+        border: none;
+        margin: 0px;
+        @include slideshow-arrows();
+    }
+
+    .flexslider.images-unloaded .slides > li {
+        display: block;
+    }
+
+    .flex-control-nav {
+        display: none;
+    }
+
+    .gallery-title {
+        font-size: 18px;
+        line-height: 28px;
+        margin-top: 20px;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+
+    .gallery-text {
+        margin-top: 20px;
+    }
+
+    .gallery-title + .gallery-text {
+        margin-top: 0;
+    }
+
+    .gallery-nav {
+        margin: 20px 0 0 0;
+        padding-top: 15px;
+        border-top: 1px solid $color-default-grey;
+    }
+
+    .__back,
+    .__next {
+
+        cursor: pointer;
+
+        i {
+            font-size: 18px;
+            position: relative;
+            top: 4px;
+        }
+
+        &:hover {
+            span {
+                text-decoration: underline;
+            }
+        }
+
+    }
+
+    .__back {
+        float: left;
+        i {
+            margin-right: 3px;
+        }
+    }
+
+    .__next {
+        float: right;
+        i {
+            margin-left: 3px;
+        }
+    }
+
+}
+
+@media only screen and (max-width: $page-break-tablet) {
+    .teaser-gallery {
+        .__back,
+        .__next {
+            &:hover {
+                span {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: $special-teaser-break) {
+    .teaser-gallery {
+        .flexslider {
+            margin: 0px (-$main-offset-mobile);
+        }
+    }
+}
+
+@media only screen and (max-width: $page-break-phone) {
+    .teaser-gallery {
+        .gallery-title {
+            font-size: 16px;
+            line-height: 22px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        .gallery-text {
+            margin-top: 15px;
+        }
+        .gallery-nav {
+            margin: 15px 0 0 0;
+            padding-top: 10px;
+        }
+    }
+}
