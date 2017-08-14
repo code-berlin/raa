@@ -68,6 +68,10 @@ class Page_m extends CI_Model {
 		return $this->page_dao->get_sidebar_teaser_alt();
     }
 
+    function get_sidebar_teaser_types() {
+		return $this->page_dao->get_sidebar_teaser_types();
+    }
+
     function get_grouped_articles($page_id, $include_actualpage = false, $order = 'default'){
     	return $this->page_dao->get_grouped_articles($page_id, $include_actualpage, $order);
     }

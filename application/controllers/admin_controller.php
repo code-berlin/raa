@@ -899,7 +899,23 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->set_table('sidebarteaser');
 
             // Fields to show on the list
-            $crud->columns('id', 'position', 'title', 'text', 'image', 'url', 'published', 'external', 'alternative');
+            $crud->columns('sidebarteasertypes_id', 'position', 'title', 'text', 'image', 'html', 'url', 'published', 'external', 'alternative');
+
+            $crud->order_by('position','asc');
+
+            $crud->add_fields('sidebarteasertypes_id', 'position', 'title', 'text', 'image', 'html', 'url', 'published', 'external', 'alternative');
+            $crud->edit_fields('sidebarteasertypes_id', 'position', 'title', 'text', 'image', 'html', 'url', 'published', 'external', 'alternative');
+
+            // add page relation
+            $this->load->model('page_m');
+            $sidebarteasertypes = $this->page_m->get_sidebar_teaser_types();
+            $sidebarteasertypes_array = array();
+            foreach ($sidebarteasertypes as $key => $value) {
+                $sidebarteasertypes_array[$value['id']] = $value['name'];
+            }
+
+            $crud->field_type('sidebarteasertypes_id','dropdown',
+                $sidebarteasertypes_array);
 
             $crud->field_type('id', 'hidden');
 
@@ -910,6 +926,8 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->field_type('alternative','true_false', array('1' => 'Yes', '0' => 'No'));
 
             $crud->set_field_upload('image', $this->config->item('upload_folder'));
+
+            $crud->set_rules('sidebarteasertypes_id','Sidebarteaser Type','required');
 
             try {
                 $this->add_grocery_to_data_array($crud->render(), $data);

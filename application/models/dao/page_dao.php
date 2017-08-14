@@ -190,11 +190,49 @@ class Page_dao extends CI_Model{
     }
 
     function get_sidebar_teaser() {
-        return R::find('sidebarteaser', 'published = 1 AND alternative = 0 ORDER BY ISNULL(position) ASC, position ASC');
+        return R::getAll('  SELECT
+                                sidebarteaser.id,
+                                sidebarteaser.title,
+                                sidebarteaser.text,
+                                sidebarteaser.image,
+                                sidebarteaser.html,
+                                sidebarteaser.url,
+                                sidebarteaser.published,
+                                sidebarteaser.external,
+                                sidebarteaser.alternative,
+                                sidebarteaser.position,
+                                sidebarteaser.sidebarteasertypes_id,
+                                sidebarteasertypes.name as type
+                            FROM sidebarteaser
+                            LEFT JOIN sidebarteasertypes ON sidebarteasertypes.id  = sidebarteaser.sidebarteasertypes_id
+                            WHERE published = 1
+                            AND alternative = 0
+                            ORDER BY ISNULL(position) ASC, position ASC');
     }
 
     function get_sidebar_teaser_alt() {
-        return R::findOne('sidebarteaser', 'published = 1 AND alternative = 1');
+        return R::getAll('  SELECT
+                                sidebarteaser.id,
+                                sidebarteaser.title,
+                                sidebarteaser.text,
+                                sidebarteaser.image,
+                                sidebarteaser.html,
+                                sidebarteaser.url,
+                                sidebarteaser.published,
+                                sidebarteaser.external,
+                                sidebarteaser.alternative,
+                                sidebarteaser.position,
+                                sidebarteaser.sidebarteasertypes_id,
+                                sidebarteasertypes.name as type
+                            FROM sidebarteaser
+                            LEFT JOIN sidebarteasertypes ON sidebarteasertypes.id  = sidebarteaser.sidebarteasertypes_id
+                            WHERE published = 1
+                            AND alternative = 1');
+    }
+
+    function get_sidebar_teaser_types() {
+        $this->object = R::find('sidebarteasertypes');
+        return $this->object;
     }
 
     function get_grouped_articles($page_id, $include_actualpage, $order){

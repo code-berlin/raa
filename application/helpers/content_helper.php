@@ -36,9 +36,15 @@ function get_sidebar_teaser($sidebarTeaser, $alternativeTeaser, $pageSlug) {
             $slug = trim($value['url'], '/');
             $teaserToPush = $value;
 
-            // add alternative teaser to array instead of teaser, if teaser points to actual page
-            if ($pageSlug === $slug && isset($alternativeTeaser)) {
-                $teaserToPush = $alternativeTeaser;
+            // if teaser points to actual page
+            if ($pageSlug === $slug) {
+                // add alternative teaser to array instead of teaser
+                if (isset($alternativeTeaser[0])) {
+                    $teaserToPush = $alternativeTeaser[0];
+                // or add nothing
+                } else {
+                    continue;
+                }
             }
 
             // set target field
