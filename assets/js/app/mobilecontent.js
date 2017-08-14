@@ -18,9 +18,12 @@ var mobilecontent = {
         this.hideInitial(visibleH2s);
 
         $('#jsMobileReadmoreBtn').on('click', function() {
-            this.jQContentInnerEls.removeClass('mobile-hidden');
-            this.jQMobileReadmoreHidden.removeClass('mobile-hidden');
-            $('.js-mobile-readmore').remove();
+            this.readMore();
+        }.bind(this));
+
+        // some themes (eg doktordarm) can trigger this event
+        $('body').on('readmoreContent', function() {
+            this.readMore();
         }.bind(this));
 
     },
@@ -53,6 +56,15 @@ var mobilecontent = {
      */
     hide: function(jQElement) {
         jQElement.addClass('mobile-hidden');
+    },
+
+    readMore: function() {
+        if (!this.jQContentInnerEls.hasClass('mobile-hidden')){
+            return;
+        }
+        this.jQContentInnerEls.removeClass('mobile-hidden');
+        this.jQMobileReadmoreHidden.removeClass('mobile-hidden');
+        $('.js-mobile-readmore').remove();
     }
 
 };
