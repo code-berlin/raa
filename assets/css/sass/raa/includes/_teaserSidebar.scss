@@ -1,0 +1,154 @@
+a.teaser_sidebar_image_title_text_button,
+a.teaser_sidebar_image_title_text,
+a.teaser_sidebar_image_title_text_bright,
+a.teaser_sidebar_image,
+a.teaser_sidebar_image_title_text_optional,
+a.teaser_sidebar_html {
+
+    margin-top: 25px;
+    display: block;
+
+    img {
+        display: block;
+        width: 100%;
+    }
+
+    &:hover {
+        text-decoration: none;
+    }
+
+}
+
+a.teaser_sidebar_image_title_text_button,
+a.teaser_sidebar_image_title_text,
+a.teaser_sidebar_image_title_text_bright,
+a.teaser_sidebar_image_title_text_optional {
+    .__title {
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 32px;
+    }
+}
+
+a.teaser_sidebar_image_title_text_button {
+    
+    border: 1px solid $color-default-grey-2;
+    color: $color-default-font;
+
+    .__title { 
+        padding: 13px 20px 0px 20px;
+        margin-bottom: 15px;
+    }
+
+    .__text {
+        padding: 0 20px 16px 20px;
+        margin-top: 15px;
+    }
+
+    .__title + .__text {
+        margin-top: -12px;
+    }
+
+    .__bottom {
+
+        background: $color-default-main;
+        color: $color-default-white;
+        padding: 12px 10px;
+        text-align: center;
+        font-size: 16px;
+
+        &:hover {
+           background: $color-default-main-hover;
+        }
+
+    }
+
+}
+
+a.teaser_sidebar_image_title_text,
+a.teaser_sidebar_image_title_text_bright, {
+    
+    position: relative;
+
+    .__texts {
+
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        .__inner {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 13% 20px 15px 20px;
+        }
+
+    }
+
+    .__title + .__text {
+        margin-top: 3px;
+    }
+
+}
+
+a.teaser_sidebar_image_title_text {
+    .__texts {
+        .__inner {
+            color: $color-default-white;
+            @include background-image(linear-gradient(transparent, rgba(0,0,0,0.5)));
+        }
+
+    }
+
+    &:hover {
+        .__texts {
+            @include background-image(linear-gradient(transparent, rgba(0,0,0,0.5)));
+            .__inner {
+                @include background-image(none);
+            }
+        }
+    }
+}
+
+a.teaser_sidebar_image_title_text_bright {
+
+    border: 1px solid $color-default-grey-2;
+
+    .__texts {
+        .__inner {
+            color: $color-default-font;
+            @include background-image(linear-gradient(transparent, rgba(255,255,255,0.5)));
+        }
+
+    }
+
+    &:hover {
+        .__texts {
+            background: rgba(222,222,222,0.5);
+        }
+    }
+
+}
+
+a.teaser_sidebar_image_title_text_optional {
+
+    .__texts {
+        background: $color-default-main;
+        color: $color-default-white;
+        padding: 13px 20px 15px 20px;
+    }
+
+    .__title + .__text {
+        margin-top: 3px;
+    }
+
+    &:hover {
+        .__texts {
+            background: $color-default-main-hover;
+        }
+    }
+
+}

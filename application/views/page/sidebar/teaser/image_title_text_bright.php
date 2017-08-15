@@ -1,0 +1,1 @@
+<?php $this->load->view('page/sidebar/teaser/image_title_text'); ?>
