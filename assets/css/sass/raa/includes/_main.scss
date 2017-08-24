@@ -377,6 +377,10 @@ ul {
             margin-top: 0px;
         }
 
+        &._noborder {
+            margin: 0px (-$main-offset-mobile);
+        }
+
     }
 
     .def-btn,
