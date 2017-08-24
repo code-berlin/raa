@@ -34,6 +34,7 @@ var gallery = {
         jQGallery.removeClass('images-unloaded');
 
         jQGallery.flexslider({
+            slideshow: false,
             before: function(slider) {
                 var data = $(slider.slides[slider.animatingTo]).data();
                 jQGalleryTitle.html(data.title);
