@@ -7,7 +7,7 @@
         foreach ($items as $key => $value) { ?>
             <li
                 data-title="<?php echo $value['title']; ?>"
-                data-text="<?php echo $value['text']; ?>"
+                data-text="<?php echo htmlspecialchars($value['text']); ?>"
             >
                 <img
                     class="lazy-img transition-none js-appear-triggable"
