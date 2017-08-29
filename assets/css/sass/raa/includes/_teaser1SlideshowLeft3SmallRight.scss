@@ -7,6 +7,7 @@
     
     .slideshow-container {
         width: 730px;
+        border: 2px solid $color-default-grey-2;
     }
 
     .ph {
@@ -132,19 +133,21 @@
 
     .__minis {
 
-        margin-left: 20px;
+        border: 2px solid $color-default-grey-2;
+        border-left: none;
+        padding: 30px;
 
         .__headline {
+            height: 42px;
             font-size: 30px;
             line-height: 22px;
-            margin-bottom: 20px;
             border-bottom: 1px dotted $color-default-grey;
-            padding: 0px 0px 20px 0px;
         }
 
         .__mini-item {
-
-            margin-bottom: 15px;
+            
+            height: (430px - (2*30px) - (2*2px) - 42px - (3 * 15px))/3; // (height - paddings - borders - headline - margins)/3
+            margin-top: 15px;
 
             .__img {
 
@@ -172,7 +175,7 @@
 
             .__info {
 
-                padding: 0px 15px;               
+                padding: 0px 0px 0px 15px;
 
                 .__title {  
                     font-size: 13px;
@@ -181,14 +184,10 @@
                 }
                 
                 .__text {
-                    font-size: 20px;
-                    line-height: 30px;
+                    font-size: 18px;
+                    line-height: 26px;
                 }
 
-            }
-
-            &:last-child {
-              margin-bottom: 0px;
             }
 
             &:hover {
@@ -220,22 +219,9 @@
         }
 
         .__minis {
+            padding: 25px;
             .__mini-item {
-                .__info {
-
-                    padding: 0px 10px;
-
-                    .__title {  
-                        font-size: 12px;
-                        margin-bottom: -4px;
-                    }
-                    
-                    .__text {
-                        font-size: 16px;
-                        line-height: 26px;
-                    }
-
-                }
+                height: (409px - (2*25px) - (2*2px) - 42px - (3 * 15px))/3; // (height - paddings - borders - headline - margins)/3
             }
         }
 
@@ -275,6 +261,13 @@
 
         }
 
+        .__minis {
+            padding: 20px;
+            .__mini-item {
+                height: (366px - (2*20px) - (2*2px) - 42px - (3 * 15px))/3; // (height - paddings - borders - headline - margins)/3
+            }
+        }
+
     }
 
 }
@@ -293,13 +286,14 @@
 
         .__minis {
 
-            margin-left: 0px;
+            border-left: 2px solid $color-default-grey-2;
+            border-top: none;
             
             .__headline {
                 font-size: 36px;
                 line-height: 50px;
-                padding: 13px 0px;
-                margin: 10px 0px 20px 0px;
+                height: auto;
+                padding: 0px 0px 13px 0px;
             }
 
             .__mini-item {
@@ -358,20 +352,34 @@
 
 @media only screen and (max-width: $page-break-ipad) {
     .teaser-1-slideshow-left-3-small-right {
+
         .slideshow-container {
             width: auto;
             height: 350px;
             margin-left: -$main-offset-mobile;
             margin-right: -$main-offset-mobile;
+            border: none;
+            border-bottom: 2px solid $color-default-grey-2;
         }
+
+        .__minis {
+            margin-left: -$main-offset-mobile;
+            margin-right: -$main-offset-mobile;
+            border: none;
+            border-bottom: 2px solid $color-default-grey-2;
+        }
+    
     }
 }
 
 @media only screen and (max-width: $special-teaser-break) {
     .teaser-1-slideshow-left-3-small-right {
+    
+        margin-bottom: 0px;
 
         .slideshow-container {
             height: 270px;
+            border-bottom: none;
         }
 
         .slides {
@@ -395,8 +403,11 @@
 
         .__minis {
             
+            padding: 15px;
+            border-bottom: none;
+
             .__headline {
-                margin: 0px (-$main-offset-mobile) 15px (-$main-offset-mobile);
+                margin: -15px -15px 0 -15px;
                 padding: 10px $main-offset-mobile;
                 font-size: 16px;
                 line-height: 22px;

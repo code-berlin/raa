@@ -84,10 +84,10 @@
             if($i > $total_slideshow) {
 
                 if ($value['slug'] !== '') { ?>
-                    <a href="<?php echo $value['slug']; ?>" class="__mini-item flex flex-container" target="<?php echo $value['target']; ?>">
+                    <a href="<?php echo $value['slug']; ?>" class="__mini-item flex-container" target="<?php echo $value['target']; ?>">
                 <?php
                 } else { ?>
-                    <div class="__mini-item flex flex-container">
+                    <div class="__mini-item flex-container">
                 <?php
                 } ?>
                         <div class="__img">
