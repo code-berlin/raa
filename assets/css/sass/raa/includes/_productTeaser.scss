@@ -33,6 +33,14 @@ $cta-height: 60px;
     }
 }
 
+.product-teaser-iframe {
+    border: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden ;
+}
+
 .product-teaser {
 
     border: 1px solid $color-default-grey;

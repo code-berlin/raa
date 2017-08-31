@@ -32,6 +32,8 @@ $route['image/preview/(:num)/(:num)/(:any)/(:any)'] = 'image/preview/$1/$2/$3/$4
 
 $route['theme_method/(:any)'] = 'dispatcher/theme_method/$1';
 
+$route['productteaser/(:num)'] = 'iframe/product_teaser/$1';
+
 /*
 * FRONTEND SLUGS
 * IMPORTANT: don't move this item from this position! must be the last!

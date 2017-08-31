@@ -130,7 +130,7 @@ class Dispatcher extends Page {
 
                 $this->data['teaser'] = $teaser;
 
-                $this->data['productteaser'] = '';
+                $this->data['page']['productteaser'] = '';
 
                 if (!empty($this->data['page']['productteaser_order'])) {
 
