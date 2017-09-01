@@ -1,3 +1,4 @@
+<div class="teaser-h2 _noborder js-product-teaser-height js-product-teaser-h2"><i class="fa fa-thumbs-up"></i>Unsere Produktempfehlung</div>
 <div class="product-teaser js-product-teaser-height">
     <div class="__commercial js-product-teaser-commercial">Anzeige</div>
     <div class="flexslider js-productteaser">

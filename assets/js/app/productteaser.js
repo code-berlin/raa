@@ -23,6 +23,7 @@ var productteaser = {
         });
 
         if (template !== 'article_page') {
+            this.iframe.contents().find('.js-product-teaser-h2').remove();
             this.iframe.contents().find('.js-product-teaser-commercial').remove();
         }
 
