@@ -4,6 +4,6 @@
 
 <p><?php echo $page->text ?></p>
 
-<img src="<?php echo '/' . $this->config->item('upload_folder') . '/' . echo $page->image ?>" />
+<img src="<?php echo '/' . $this->config->item('upload_folder') . '/' . $page->image ?>" />
 
 <?php endif; ?>
