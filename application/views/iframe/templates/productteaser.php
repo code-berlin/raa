@@ -1,11 +1,9 @@
-<div class="teaser-h2 _noborder mt20 js-product-teaser-height"><i class="fa fa-thumbs-up"></i>Unsere Produktempfehlung</div>
 <div class="product-teaser js-product-teaser-height">
-    <div class="__commercial">Anzeige</div>
+    <div class="__commercial js-product-teaser-commercial">Anzeige</div>
     <div class="flexslider js-productteaser">
         <ul class="slides">
             <?php
             $order = explode(',', $page->productteaser_order);
-            //var_dump($page);
             foreach ($order as $key => $value) {
                 if (!isset($page->productteaser[$value])) continue;
                 $teaser = $page->productteaser[$value]; ?>

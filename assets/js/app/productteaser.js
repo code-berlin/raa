@@ -5,7 +5,9 @@ var productteaser = {
 
     init: function() {
 
-        var me = this;
+        var me = this,
+            template = $('body').data('template');
+
         this.iframe = $('#product-teaser-iframe');
 
         this.iframe.contents().find('.js-productteaser').flexslider({
@@ -19,6 +21,10 @@ var productteaser = {
                 me.setCtaHref(slider);
             }
         });
+
+        if (template !== 'article_page') {
+            this.iframe.contents().find('.js-product-teaser-commercial').remove();
+        }
 
         this.iframe.contents().find('.js-duty-text-trigger').on('click', function(e) {
             e.stopPropagation();

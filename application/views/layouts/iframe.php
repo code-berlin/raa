@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans%7CNunito+Sans" media="all">
     <link href="/assets/css/min/main.min.css?<?php echo filemtime(FCPATH . 'assets/css/min/main.min.css'); ?>" rel="stylesheet">
 </head>
-<body>
+<body class="iframe-body">
 <div>
     <?php
     echo $template_content; // A template specific for the current page (can be set in the backend's Page section)

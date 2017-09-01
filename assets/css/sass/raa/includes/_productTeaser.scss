@@ -48,7 +48,12 @@ $cta-height: 60px;
     position: relative;
 
     .__commercial {
-        display: none; // only visible on article pages
+        position: absolute;
+        font-size: 10px;
+        line-height: 12px;
+        padding: 1px 3px;
+        top: 1px;
+        right: 1px;
     }
 
     .flexslider {
@@ -60,14 +65,14 @@ $cta-height: 60px;
         .flex-direction-nav,
         &:hover .flex-direction-nav {
             a {
-                width: $product-teaser-arrow-width;
-                height: $product-teaser-arrow-height;
-                margin-top: -($product-teaser-arrow-height/2);
+                width: $product-teaser-arrow-width-medium;
+                height: $product-teaser-arrow-height-medium;
+                margin-top: -($product-teaser-arrow-height-medium/2);
                 &:before {
                     content: '';
                     display: block;
-                    width: $product-teaser-arrow-width*2;
-                    height: $product-teaser-arrow-height;
+                    width: $product-teaser-arrow-width-medium*2;
+                    height: $product-teaser-arrow-height-medium;
                     background-image: url(/assets/images/chevrons_big.png);
                     background-repeat: no-repeat;
                     background-size: cover;
@@ -86,7 +91,7 @@ $cta-height: 60px;
             .flex-next {
                 right: 4%;
                 &:before {
-                    margin-left: -$product-teaser-arrow-width;
+                    margin-left: -$product-teaser-arrow-width-medium;
                 }
             }
         }
@@ -209,111 +214,12 @@ $cta-height: 60px;
 
 }
 
-
-.article-page .product-teaser {
-
-	.__commercial {
-		display: block;
-		position: absolute;
-        font-size: 10px;
-        line-height: 12px;
-        padding: 1px 3px;
-        top: 1px;
-        right: 1px;
-	}
-
-	.flexslider {
-        .flex-direction-nav,
-        &:hover .flex-direction-nav {
-			
-			a {
-				width: $product-teaser-arrow-width-medium;
-				height: $product-teaser-arrow-height-medium;
-                margin-top: -($product-teaser-arrow-height-medium/2);
-				&:before {
-					width: $product-teaser-arrow-width-medium*2;
-					height: $product-teaser-arrow-height-medium;
-				}
-			}
-
-            .flex-next {
-                &:before {
-                	margin-left: -$product-teaser-arrow-width-medium;
-                }
-            }
-
-        }
-    }
-
-    .__item {
-        height: 400px;
-    }
-
-    .__img-wrapper {
-        margin-top: 100px;
-    }
-
-    .__img {
-        width: 200px;
-        height: 200px;
-    }
-
-}
-
-.article-page .teaser-h2 + .product-teaser {
-    margin-top: 0px;
-}
-
-
-@media only screen and (max-width: $page-break-page-width) {
-	.product-teaser {
-		.flexslider {
-	        .flex-direction-nav,
-	        &:hover .flex-direction-nav {
-				
-				a {
-					width: $product-teaser-arrow-width-medium;
-					height: $product-teaser-arrow-height-medium;
-                    margin-top: -($product-teaser-arrow-height-medium/2);
-					&:before {
-						width: $product-teaser-arrow-width-medium*2;
-						height: $product-teaser-arrow-height-medium;
-					}
-				}
-
-	            .flex-next {
-	                &:before {
-	                	margin-left: -$product-teaser-arrow-width-medium;
-	                }
-	            }
-
-	        }
-	    }
-	}
-    .article-page .product-teaser {
-        .__img-wrapper {
-            margin-top: 125px;
-        }
-        .__img {
-            width: 150px;
-            height: 150px;
-        }
-    }
-}
-
 @media only screen and (max-width: $special-teaser-break-ipad-ls) {
-	.product-teaser,
-    .article-page .product-teaser {
+	.product-teaser {
 	    .__img {
 	    	width: 200px;
 			height: 200px;
 	    }
-	}
-	.article-page .product-teaser {
-        @include product-teaser-column();
-        .duty-text-content {
-            left: -50%;
-        }
 	}
 }
 
@@ -327,10 +233,8 @@ $cta-height: 60px;
 }
 
 @media only screen and (max-width: $special-teaser-break) {
-	.article-page .product-teaser,
 	.product-teaser {
-		
-		margin: 0px (-$main-offset-mobile);
+
 		border: none;
         padding-bottom: $cta-height + 10px;
 
