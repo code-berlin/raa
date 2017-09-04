@@ -129,16 +129,15 @@ a {
 
 }
 
-.teaser-h2 {
+.teaser-h2,
+.product-teaser-h2 {
 
-    margin: 0px 0px 25px 0px;
     color: $color-default-font;
     font-weight: 400;
     font-size: 36px;
     line-height: 50px;
     padding: 13px 0px;
-    border-bottom: $color-default-grey;
-
+    
     i {
         font-size: 33px;
         margin-right: 14px;
@@ -151,15 +150,18 @@ a {
        margin-top: 0px;
     }
 
-    &._noborder {
-        margin: 0px;
-        border-bottom: none;
-    }
-
 }
 
-.article-pagination + .teaser-h2,
-.product-teaser + .teaser-h2 {
+.teaser-h2 {
+    border-bottom: $color-default-grey;
+    margin: 0px 0px 25px 0px;
+}
+
+.product-teaser-h2 {
+    margin: 0px;
+}
+
+.article-pagination + .teaser-h2 {
     margin-top: 30px;
 }
 
@@ -362,15 +364,14 @@ ul {
         }
     }
 
-    .teaser-h2 {
+    .teaser-h2,
+    .product-teaser-h2 {
 
-        margin: 0px (-$main-offset-mobile);
         padding: 15px;
         font-size: 20px;
         line-height: 26px;
         background: $color-default-main;
         color: $color-default-white;
-        border-bottom: none;
 
         i {
             font-size: 18px;
@@ -385,10 +386,15 @@ ul {
             margin-top: 0px;
         }
 
-        &._noborder {
-            margin: 0px (-$main-offset-mobile);
-        }
+    }
 
+    .teaser-h2,
+    .product-teaser-h2._outsideiframe {
+        margin: 0px (-$main-offset-mobile);
+    }
+
+    .teaser-h2 {
+        border-bottom: none;
     }
 
     .def-btn,

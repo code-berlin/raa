@@ -33,12 +33,19 @@ $cta-height: 60px;
     }
 }
 
+.product-teaser-iframe-wrapper {
+    margin: 20px 0 0 0;
+}
+
 .product-teaser-iframe {
     border: none;
-    width: 100%;
-    margin: 20px 0 0 0;
+    width: 100%; 
     padding: 0;
-    overflow: hidden ;
+    overflow: hidden;
+}
+
+.product-teaser-h2 + .product-teaser-iframe-wrapper {
+    margin: 0;
 }
 
 .product-teaser {
@@ -233,6 +240,12 @@ $cta-height: 60px;
 }
 
 @media only screen and (max-width: $special-teaser-break) {
+
+    .product-teaser-iframe-wrapper,
+    .product-teaser-h2 + .product-teaser-iframe-wrapper {
+        margin: 0px (-$main-offset-mobile);
+    }
+
 	.product-teaser {
 
 		border: none;

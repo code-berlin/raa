@@ -1,1 +1,1 @@
-<iframe id="product-teaser-iframe" class="product-teaser-iframe" src="/productteaser/<? echo $id; ?>"></iframe>
+<div class="product-teaser-iframe-wrapper"><iframe id="product-teaser-iframe" class="product-teaser-iframe" src="/productteaser/<? echo $id; ?>"></iframe></div>
