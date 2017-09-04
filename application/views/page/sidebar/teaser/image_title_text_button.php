@@ -1,7 +1,7 @@
-<a href="<?php echo $url; ?>" target="<?php echo $target; ?>" class="teaser_sidebar_<?php echo $type; ?>">
+<div class="teaser_sidebar_<?php echo $type; ?> <?php echo $hasUrl ? 'js-teaser-linked' : ''; ?>">
     
     <?php
-    if (isset($image) && !empty($image)) { ?>
+    if ($hasImage) { ?>
         <img
             class="lazy-img js-lazy-img"
             src="/assets/images/themes/<?php echo $theme; ?>/ph.png"
@@ -12,14 +12,39 @@
     } ?>
 
     <?php
-    if (isset($title) && !empty($title)) { ?>
-        <div class="__title"><?php echo $title; ?></div>
+    if ($hasTitle) { ?>
+        <div class="__title">
+            <?php
+            if ($hasUrl) { ?>
+                <a href="<?php echo $url; ?>" target="<?php echo $target; ?>">
+            <?php
+            } ?>
+                    <?php echo $title; ?>
+            <?php
+            if ($hasUrl) { ?>
+                </a>
+            <?php
+                $aRendered = true;
+            } ?>
+        </div>
     <?php
     } ?>
 
     <?php
-    if (isset($text) && !empty($text)) { ?>
-        <div class="__text"><?php echo $text; ?></div>
+    if ($hasText) { ?>
+        <div class="__text">
+            <?php
+            if ($hasUrl && !isset($aRendered)) { ?>
+                <a href="<?php echo $url; ?>" target="<?php echo $target; ?>">
+            <?php
+            } ?>
+                    <?php echo $text; ?>
+            <?php
+            if ($hasUrl && !isset($aRendered)) { ?>
+                </a>
+            <?php
+            } ?>
+        </div>
     <?php
     } ?>
 
@@ -27,4 +52,10 @@
         <?php echo $external == '1' ? 'Jetzt downloaden' : 'Mehr erfahren'; ?>
     </div>
 
-</a>
+    <?php
+    if ($hasUrl && !isset($aRendered)) { ?>
+        <a href="<?php echo $url; ?>" target="<?php echo $target; ?>" class="hidden"></a>
+    <?php
+    } ?>
+
+</div>

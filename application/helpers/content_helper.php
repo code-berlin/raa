@@ -53,6 +53,10 @@ function get_sidebar_teaser($sidebarTeaser, $alternativeTeaser, $pageSlug) {
             } else {
                 $teaserToPush['target'] = '_self';
             }
+            $teaserToPush['hasImage'] = isset($teaserToPush['image']) && !empty($teaserToPush['image']);
+            $teaserToPush['hasTitle'] = isset($teaserToPush['title']) && !empty($teaserToPush['title']);
+            $teaserToPush['hasText'] = isset($teaserToPush['text']) && !empty($teaserToPush['text']);
+            $teaserToPush['hasUrl'] = isset($teaserToPush['url']) && !empty($teaserToPush['url']);
 
             array_push($teaser, $teaserToPush);
 

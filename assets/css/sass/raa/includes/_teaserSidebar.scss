@@ -1,9 +1,9 @@
-a.teaser_sidebar_image_title_text_button,
-a.teaser_sidebar_image_title_text,
-a.teaser_sidebar_image_title_text_bright,
-a.teaser_sidebar_image,
-a.teaser_sidebar_image_title_text_optional,
-a.teaser_sidebar_html {
+.teaser_sidebar_image_title_text_button,
+.teaser_sidebar_image_title_text,
+.teaser_sidebar_image_title_text_bright,
+.teaser_sidebar_image,
+.teaser_sidebar_image_title_text_optional,
+.teaser_sidebar_html {
 
     margin-top: 25px;
     display: block;
@@ -12,17 +12,19 @@ a.teaser_sidebar_html {
         display: block;
         width: 100%;
     }
-
-    &:hover {
+    
+    a:link, a:visited, a:hover, a:active {
         text-decoration: none;
     }
 
+    cursor: pointer;
+
 }
 
-a.teaser_sidebar_image_title_text_button,
-a.teaser_sidebar_image_title_text,
-a.teaser_sidebar_image_title_text_bright,
-a.teaser_sidebar_image_title_text_optional {
+.teaser_sidebar_image_title_text_button,
+.teaser_sidebar_image_title_text,
+.teaser_sidebar_image_title_text_bright,
+.teaser_sidebar_image_title_text_optional {
     .__title {
         font-weight: bold;
         font-size: 22px;
@@ -30,7 +32,21 @@ a.teaser_sidebar_image_title_text_optional {
     }
 }
 
-a.teaser_sidebar_image_title_text_button {
+.teaser_sidebar_image_title_text_button,
+.teaser_sidebar_image_title_text_bright {
+    a:link, a:visited, a:hover, a:active {
+        color: $color-default-font;
+    }
+}
+
+.teaser_sidebar_image_title_text,
+.teaser_sidebar_image_title_text_optional {
+    a:link, a:visited, a:hover, a:active {
+        color: $color-default-white;
+    }    
+}
+
+.teaser_sidebar_image_title_text_button {
     
     border: 1px solid $color-default-grey-2;
     color: $color-default-font;
@@ -65,8 +81,8 @@ a.teaser_sidebar_image_title_text_button {
 
 }
 
-a.teaser_sidebar_image_title_text,
-a.teaser_sidebar_image_title_text_bright, {
+.teaser_sidebar_image_title_text,
+.teaser_sidebar_image_title_text_bright, {
     
     position: relative;
 
@@ -94,7 +110,7 @@ a.teaser_sidebar_image_title_text_bright, {
 
 }
 
-a.teaser_sidebar_image_title_text {
+.teaser_sidebar_image_title_text {
     .__texts {
         .__inner {
             color: $color-default-white;
@@ -113,7 +129,7 @@ a.teaser_sidebar_image_title_text {
     }
 }
 
-a.teaser_sidebar_image_title_text_bright {
+.teaser_sidebar_image_title_text_bright {
 
     border: 1px solid $color-default-grey-2;
 
@@ -133,7 +149,7 @@ a.teaser_sidebar_image_title_text_bright {
 
 }
 
-a.teaser_sidebar_image_title_text_optional {
+.teaser_sidebar_image_title_text_optional {
 
     .__texts {
         background: $color-default-main;
