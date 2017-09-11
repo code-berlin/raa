@@ -17,8 +17,10 @@
         color: $color-default-font;
         padding-bottom: 20px;
         display: block;
+        cursor: pointer;
 
-        &:hover, &:active {
+        a, a:link, a:hover, a:active  {
+            color: $color-default-font;
             text-decoration: none;
         }
 

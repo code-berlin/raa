@@ -17,52 +17,50 @@
         // open row
         if ($i%$columns == 0) { ?>
             <div class="flex-container __teaser-row<?php echo ($i >= $initial_shown ? ' dn js-teaser-collapsible-closed' : '');?>"><?php
-        }
-
-        if ($value['slug'] !== '') { ?>
-            <a href="<?php echo $value['slug']; ?>" target="<?php echo $value['target']; ?>" class="__item flex <?php echo $i+1 == sizeof($items) ? '_last' : ''; ?>">
-        <?php
-        } else { ?>
-            <div class="__item flex <?php echo $i+1 == sizeof($items) ? '_last' : ''; ?>">
-        <?php
         } ?>
 
-            <div class="img <?php echo $value['slug'] !== '' ? '_hover-mask' : '' ?>">
-                <img
-                    class="lazy-img js-lazy-img"
-                    src="<?php echo $img_placeholder; ?>"
-                    data-src="<?php echo isset($value['image']) ? $value['image'] : ''; ?>"
-                    alt="<?php echo $value['title']; ?>"
-                />
-            </div>
+            <div class="__item flex js-teaser-linked <?php echo $i+1 == sizeof($items) ? '_last' : ''; ?>">
 
-            <span class="__info flex-container _column">
-
-                <div class="__part __teaser-title">
-                    <?php echo $value['title']; ?>
+                <div class="img <?php echo $value['slug'] !== '' ? '_hover-mask' : '' ?>">
+                    <img
+                        class="lazy-img js-lazy-img"
+                        src="<?php echo $img_placeholder; ?>"
+                        data-src="<?php echo isset($value['image']) ? $value['image'] : ''; ?>"
+                        alt="<?php echo $value['title']; ?>"
+                    />
                 </div>
 
-                <span class="__part __teaser-text flex"><?php echo $value['text']; ?></span>
+                <span class="__info flex-container _column">
 
-                <?php
-                if ($value['slug'] !== '') { ?>
-                    <div class="__part __teaser-more">
-                        Weiterlesen
+                    <div class="__part __teaser-title">
+                        <?php
+                        if ($value['slug'] !== '') { ?>
+                            <a href="<?php echo $value['slug']; ?>" target="<?php echo $value['target']; ?>">
+                        <?php
+                        }
+                                echo $value['title'];
+
+                        if ($value['slug'] !== '') { ?>
+                            </a>
+                        <?php
+                        } ?>
                     </div>
-                <?php
-                } ?>
 
-            </span>
+                    <span class="__part __teaser-text flex">
+                        <?php echo $value['text']; ?>
+                    </span>
 
-        <?php
-        if ($value['slug'] !== '') { ?>
-            </a>
-        <?php
-        } else { ?>
+                    <?php
+                    if ($value['slug'] !== '') { ?>
+                        <div class="__part __teaser-more">Weiterlesen</div>
+                    <?php
+                    } ?>
+
+                </span>
+
             </div>
+        
         <?php
-        }
-
         $i++;
 
         // close row
