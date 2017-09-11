@@ -34,6 +34,11 @@
 
         position: relative;
 
+        a, a:link, a:hover, a:active  {
+            color: $color-default-white;
+            text-decoration: none;
+        }
+
         .__title {
             position: absolute;
             top: 50px;
@@ -68,19 +73,9 @@
             }
         }
 
-        a {
-
-            display: block;
+        .__inner {
             position: relative;
-
-            &:hover,
-            &:active {
-                .__title {
-                    // color: $main-color-10pct;
-                }
-            }
-
-
+            cursor: pointer;
         }
     }
 
