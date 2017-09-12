@@ -13,21 +13,21 @@
                 
                 <li
                     data-thumb="<?php echo $img_placeholder_slideshow; ?>"
-                    data-title="<?php echo isset($value['title']) ? $value['title'] : ''; ?>">
+                    data-title="<?php echo !empty($value['title']) ? $value['title'] : ''; ?>">
 
-                    <div class="__inner js-teaser-linked">
+                    <div class="__inner <?php echo !empty($value['slug']) ? 'js-teaser-linked' : ''; ?>">
                     
                     <?php
-                    if (isset($value['title'])) { ?>
+                    if (!empty($value['title'])) { ?>
                         <div class="__title">
                             <?php
-                            if ($value['slug'] !== '') { ?>
+                            if (!empty($value['slug'])) { ?>
                                 <a href="<?php echo $value['slug']; ?>" target="<?php echo $value['target']; ?>">
                             <?php
                             }
                                     echo $value['title'];
 
-                            if ($value['slug'] !== '') { ?>
+                            if (!empty($value['slug'])) { ?>
                                 </a>
                             <?php
                             } ?>
@@ -38,10 +38,10 @@
                         <img
                             class="lazy-img js-slideshow-lazy-img"
                             src="<?php echo $img_placeholder_slideshow; ?>"
-                            data-src="<?php echo isset($value['image']) ? $value['image'] : ''; ?>" />
+                            data-src="<?php echo !empty($value['image']) ? $value['image'] : ''; ?>" />
 
                     <?php
-                    if ($value['slug'] !== '') { ?>
+                    if (!empty($value['slug'])) { ?>
                         <span class="__readmore">
                             Zum Artikel
                             <i class="fa fa-chevron-right"></i>
