@@ -6,64 +6,70 @@
 
     foreach ($items as $key => $value) {
 
-        $target = '_self';
-        $image = null;
-        $slug = null;
+        $aRendered = false;
 
-        if ($value['content_type'] == 'external') {
-            $target = '_blank';
-        }
+        if ($i == 0) { ?>
 
-        if (isset($value['external_image'])) {
-            $image = $value['external_image'];
-        } else {
-            $image = $value['page_image'];
-        }
-
-        if (isset($value['external_link'])) {
-            $slug = $value['external_link'];
-        } else if (isset($value['page_slug'])) {
-            $slug = base_url((isset($value['parent_slug']) && !empty($value['parent_slug']) ? $value['parent_slug'] . '/' : '') . $value['page_slug']);
-        }
-
-        if ($i == 0) {
-
-            if (isset($slug)) { ?>
-                <a class="__main flex-container flex" href="<?php echo $slug; ?>">
-            <?php
-            } else { ?>
-                <div class="__main flex-container flex">
-            <?php
-            } ?>
+            <div class="__main flex-container flex <?php echo !empty($value['slug']) ? 'js-teaser-linked' : ''; ?>">
 
                 <div class="__img">
-                    <img class="lazy-img js-lazy-img" src="<?php echo $img_placeholder; ?>" data-src="<?php echo isset($image) ? $image : ''; ?>" alt="<?php echo $value['title']; ?>">
+                    <img
+                        class="lazy-img js-lazy-img"
+                        src="<?php echo $img_placeholder; ?>"
+                        data-src="<?php echo !empty($value['image']) ? $value['image'] : ''; ?>"
+                        alt="<?php echo $value['title']; ?>"
+                    >
                 </div>
 
                 <div class="flex __info">
 
-                    <div class="__headline"><?php echo $value['title']; ?></div>
+                    <div class="__headline">
+                        <?php
+                        if (!empty($value['slug'])) { ?>
+                            <a href="<?php echo $value['slug']; ?>" target="<?php echo $value['target']; ?>">
+                        <?php
+                        }
+                                echo $value['title'];
 
-                        <div class="__text">
-                            <?php echo $value['text']; ?>
-                        </div>
+                        if (!empty($value['slug'])) { ?>
+                            </a>
+                        <?php
+                            $aRendered = true;
+                        } ?>
+
+                    </div>
+
+                    <div class="__text">
+                        <?php
+                        if (!empty($value['slug']) && !$aRendered) { ?>
+                            <a href="<?php echo $value['slug']; ?>" target="<?php echo $value['target']; ?>">
+                        <?php
+                        }
+                                echo $value['text'];
+
+                        if (!empty($value['slug']) && !$aRendered) { ?>
+                            </a>
+                        <?php
+                        } ?>
+                    </div>
 
                     <?php
-                    if (isset($slug)) { ?>
+                    if (!empty($value['slug'])) { ?>
                         <div class="__readmore">Weiterlesen</div>
                     <?php
                     } ?>
 
+
+
                 </div>
 
-            <?php
-            if (isset($slug)) { ?>
-                </a>
-            <?php
-            } else { ?>
-                </div>
-            <?php
-            } ?>
+                <?php
+                if (!empty($value['slug']) && !$aRendered) { ?>
+                    <a href="<?php echo $value['slug']; ?>" target="<?php echo $value['target']; ?>" class="hidden"></a>
+                <?php
+                } ?>
+
+            </div>
 
             <div class="__minis flex-container">
 
@@ -84,26 +90,47 @@
             <?php
             }
 
-            if (isset($slug)) { ?>
-                <a href="<?php echo $slug; ?>" target="<?php echo $target; ?>" class="__mini-item flex">
+            if (!empty($value['slug']) && empty($value['title'])) { ?>
+                <a href="<?php echo $value['slug']; ?>" target="<?php echo $value['target']; ?>" class="__mini-item flex">
             <?php
             } else { ?>
-                <div class="__mini-item flex">
+                <div class="__mini-item flex <?php echo !empty($value['slug']) ? 'js-teaser-linked' : ''; ?>">
             <?php
             } ?>
 
                 <div class="__img">
-                    <img class="lazy-img js-lazy-img" src="<?php echo $img_placeholder; ?>" data-src="<?php echo isset($image) ? $image : ''; ?>" alt="<?php echo $value['title']; ?>">
+                    <img
+                        class="lazy-img js-lazy-img"
+                        src="<?php echo $img_placeholder; ?>"
+                        data-src="<?php echo !empty($value['image']) ? $value['image'] : ''; ?>"
+                        alt="<?php echo $value['title']; ?>"
+                    >
                 </div>
-                <span class="__title"><?php echo $value['title']; ?></span>
-
+                
                 <?php
-                if (isset($slug)) { ?>
+                if (!empty($value['title'])) { ?>
+                    <span class="__title">
+                        <?php
+                        if (!empty($value['slug'])) { ?>
+                            <a href="<?php echo $value['slug']; ?>" target="<?php echo $value['target']; ?>">
+                        <?php
+                        }
+                                echo $value['title'];
+
+                        if (!empty($value['slug'])) { ?>
+                            </a>
+                        <?php
+                        } ?>
+                    </span>
+                <?php
+                }
+
+                if (!empty($value['slug'])) { ?>
                     <div class="__readmore"></div>
                 <?php
                 }
 
-            if (isset($slug)) { ?>
+            if (!empty($value['slug']) && empty($value['title'])) { ?>
                 </a>
             <?php
             } else { ?>

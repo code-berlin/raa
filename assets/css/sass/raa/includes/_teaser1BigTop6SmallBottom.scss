@@ -3,8 +3,10 @@
     .__main {
 
         margin-bottom: 15px;
+        cursor: pointer;
 
-        &:hover, &:active {
+        a, a:link, a:hover, a:active  {
+            color: $color-default-white;
             text-decoration: none;
         }
 
@@ -17,31 +19,24 @@
         }
 
         .__info {
-
-            padding: 15px;
+            padding: 15px 20px;
             background: $color-default-main;
             color: $color-default-white;
             position: relative;
-
-            a {
-                color: $color-default-white;
-            }
-
         }
 
         .__headline {
             display: block;
-            font-size: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px dotted $color-default-white;
-            margin-bottom: 13px;
+            font-size: 24px;
+            line-height: 33px;
+            padding-bottom: 10px;
         }
 
         .__readmore {
 
             position: absolute;
             bottom: 15px;
-            right: 15px;
+            right: 20px;
 
             &:hover, &:active {
                 text-decoration: underline;
@@ -53,81 +48,92 @@
     .__minis {
 
         .__mini-item {
-
+            
             display: block;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
 
-            .__img {
-                img {
-                    width: 100%;
-                    height: auto;
-                }
+            a, a:link, a:hover, a:active  {
+                color: $color-default-white;
+                text-decoration: none;
             }
 
+            .__img {
 
+                padding-top: 100%;
+                position: relative;
 
-            .__title {
+                img {
+                    position: absolute;
+                    width: auto;
+                    height: 100%;
+                    top: 0;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                }
 
+            }
+
+            .__title {       
                 display: block;
                 position: absolute;
                 bottom: 0px;
                 left: 0px;
                 right: 0px;
-                color: $color-default-font;
-                background: $color-default-white;
-                font-size: 12px;
-                font-weight: 600;
-                line-height: 18px;
-                text-align: center;
-                padding: 13px 5px;
-                @include transition(transform .2s ease-in-out);
-                transform: translate(0, 100%);
-
-                .mobile-device & {
-                    transform: translate(0, 0);
-                }
-
+                color: $color-default-white;
+                @include background-image(linear-gradient(transparent, rgba(0,0,0,0.75)));
+                font-size: 16px;
+                line-height: 23px;
+                font-weight: 400;
+                padding: 26px 13px 12px 13px;
             }
 
             &:hover {
-                .__title {
-                    transform: translate(0, 0);
+                .__img {
+                    @include filter(blur(1px) brightness(115%));
                 }
             }
 
         }
 
         .__first {
-
             .__mini-item {
-
                 margin-right: 16px;
-
                 &:last-child {
                     margin-right: 8px;
                 }
-
             }
-
         }
 
         .__second {
-
             .__mini-item {
-
                 margin-left: 16px;
-
                 &:first-child {
                     margin-left: 8px;
                 }
-
             }
-
         }
 
     }
 
+    p {
+        margin: 0;
+    }
+
+}
+
+@media only screen and (max-width: $page-break-page-width) {
+    .teaser-1-big-top-6-small-bottom {
+        .__minis {
+            .__mini-item {
+                .__title {
+                    font-size: 14px;
+                    line-height: 20px;
+                }
+            }
+        }
+    }
 }
 
 @media only screen and (max-width: $page-break-desktop) {
@@ -136,7 +142,7 @@
 
         .__main {
 
-            height: 291px;
+            height: 300px;
 
             .__img {
 
@@ -158,14 +164,8 @@
             }
 
             .__info {
-
-                width: 490px;
+                width: 70%;
                 @include flex(none);
-
-                .list-page & {
-                    width: 330px;
-                }
-
             }
         }
     }
@@ -176,41 +176,63 @@
     .teaser-1-big-top-6-small-bottom {
 
         .__main {
-            .__info {
-                width: 335px;
-                .list-page & {
-                    width: 335px;
+
+            display: block;
+            height: auto;
+            margin-bottom: 10px;
+
+            .__img {
+
+                position: static;               
+
+                img {
+                    position: static;
+                    width: 100%;
+                    height: auto;
+                    @include transform(translate3d(0, 0, 0));
                 }
 
             }
+
+            .__info {
+                width: 100%;
+                padding-bottom: 45px;
+            }
+
         }
 
         .__minis {
 
             display: block;
 
-            .__first {
+            .__mini-item {
 
-                margin-bottom: 15px;
+                .__title {
+                    font-size: 16px;
+                    line-height: 23px;
+                }
 
-                .__mini-item {
-
-                    margin-right: 15px;
-
-                    &:last-child {
-                        margin-right: 0px;
+                &:hover {
+                    .__img {
+                        @include filter(none);
                     }
-
                 }
 
             }
 
-            .__second {
-
+            .__first {
+                margin-bottom: 10px;
                 .__mini-item {
+                    margin-right: 10px;
+                    &:last-child {
+                        margin-right: 0px;
+                    }
+                }
+            }
 
-                    margin-left: 15px;
-
+            .__second {
+                .__mini-item {
+                    margin-left: 10px;
                     &:first-child {
                         margin-left: 0px;
                     }
@@ -227,12 +249,11 @@
 
         .__main {
 
-            display: block;
             position: relative;
             height: auto;
             padding: $main-offset-mobile 0px;
             border-bottom: 1px solid $color-default-grey;
-            margin: 0px;
+            margin-bottom: 0;
 
             &:after {
                 display: block;
@@ -240,40 +261,33 @@
                 clear: both;
             }
 
+            a, a:link, a:hover, a:active  {
+                color: $color-default-font;
+            }
+
             .__img {
-
                 width: 80px;
+                height: auto;
                 float: left;
-
-                img {
-                    width: 100%;
-                    height: auto;
-                    position: static;
-                    @include transform(translate3d(0, 0, 0));
-                }
-
             }
 
             .__info {
-
                 width: auto;
                 margin-left: 90px;
                 padding: 0px 20px 0px 0px;
                 background: transparent;
                 position: static;
-
             }
 
             .__headline {
-
                 color: $color-default-font;
                 font-size: 16px;
+                line-height: 24px;
                 margin-bottom: 0px;
                 padding: 0px;
                 font-weight: 600;
                 border-bottom: none;
                 overflow: hidden;
-
             }
 
             .__text {
@@ -281,7 +295,6 @@
             }
 
             .__readmore {
-
                 font-size: 0px;
                 width: 0px;
                 height: 0px;
@@ -292,7 +305,6 @@
                 border-left: 5px solid $color-default-main;
                 border-top: 8px solid transparent;
                 border-bottom: 8px solid transparent;
-
             }
 
         }
@@ -318,14 +330,16 @@
                     clear: both;
                 }
 
-                &:hover, &:active {
-                    text-decoration: none;
+                a, a:link, a:hover, a:active  {
+                    color: $color-default-font;
                 }
 
                 .__img {
 
                     width: 80px;
                     float: left;
+                    padding-top: 0;
+                    position: static;
 
                     img {
                         width: 100%;
@@ -339,9 +353,10 @@
                     margin-left: 90px;
                     position: static;
                     color: $color-default-font;
-                    background: $color-default-white;
+                    background: transparent;
                     font-size: 16px;
                     line-height: 24px;
+                    font-weight: 600;
                     text-align: left;
                     padding: 0px;
                     margin-right: 20px;
@@ -364,35 +379,24 @@
             }
 
             .__first {
-
                 margin-bottom: 0px;
-
                 .__mini-item {
-
                     margin-right: 0px;
-
                     &:last-child {
                         margin-right: 0px;
                     }
-
                 }
-
             }
 
             .__second {
-
                 .__mini-item {
-
                     margin-left: 0px;
-
                     &:first-child {
                         margin-left: 0px;
                     }
-
                     &:last-child {
                         border-bottom: none;
                     }
-
                 }
             }
 
