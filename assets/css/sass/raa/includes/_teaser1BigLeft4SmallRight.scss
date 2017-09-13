@@ -3,14 +3,17 @@
     .__main {
 
         margin-right: 15px;
-        height: 291px;
+        height: 375px;
+        cursor: pointer;
 
-        &:hover,&:active {
+        a, a:link, a:hover, a:active  {
+            color: $color-default-white;
             text-decoration: none;
         }
 
         .__img {
-
+            
+            @include flex(1);
             position: relative;
             overflow: hidden;
 
@@ -24,32 +27,25 @@
         }
 
         .__info {
-
-            width: 500px;
-            padding: 15px;
+            width: 50%;
+            padding: 15px 20px;
             background: $color-default-main;
             color: $color-default-white;
             position: relative;
-
-            a {
-                color: $color-default-white;
-            }
-
         }
 
         .__headline {
             display: block;
-            font-size: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px dotted $color-default-white;
-            margin-bottom: 13px;
+            font-size: 24px;
+            line-height: 33px;
+            padding-bottom: 10px;
         }
 
         .__readmore {
 
             position: absolute;
             bottom: 15px;
-            right: 15px;
+            right: 20px;
 
             &:hover,&:active {
                 text-decoration: underline;
@@ -60,13 +56,21 @@
 
     .__minis {
 
+        width: 375px;
+
         .__mini-item {
 
             display: block;
-            width: 138px;
-            height: 138px;
+            width: 180px;
+            height: 180px;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
+
+            a, a:link, a:hover, a:active  {
+                color: $color-default-white;
+                text-decoration: none;
+            }
 
             &:first-child {
                 margin-right: 15px;
@@ -74,53 +78,44 @@
 
             .__img {
 
-                height: 100%;
+                padding-top: 100%;
+                position: relative;
 
                 img {
                     width: auto;
                     height: 100%;
-                    position: relative;
+                    position: absolute;
+                    top: 0;
                     left: 50%;
                     @include transform(translate3d(-50%, 0, 0));
                 }
             }
 
             .__title {
-
                 display: block;
                 position: absolute;
                 bottom: 0px;
                 left: 0px;
                 right: 0px;
-                color: $color-default-font;
-                background: $color-default-white;
-                font-size: 12px;
-                font-weight: 600;
-                line-height: 18px;
-                text-align: center;
-                padding: 7px 5px;
-                @include transition(transform .2s ease-in-out);
-                transform: translate(0, 100%);
-
-                .mobile-device & {
-                    transform: translate(0, 0);
-                }
+                @include background-image(linear-gradient(transparent, rgba(0,0,0,0.75)));
+                font-size: 16px;
+                line-height: 23px;
+                font-weight: 400;
+                padding: 26px 13px 12px 13px;
             }
 
             &:hover {
-                .__title {
-                    transform: translate(0, 0);
+                .__img {
+                    @include filter(blur(1px) brightness(115%));
                 }
             }
 
         }
 
         .__row {
-
             &:first-child {
                 margin-bottom: 15px;
             }
-
         }
 
     }
@@ -134,58 +129,40 @@
 @media only screen and (max-width: $special-teaser-break-ipad-ls) {
 
     .teaser-1-big-left-4-small-right {
-        .__main {
-            .__info {
-                width: 335px;
-            }
-        }
-    }
-}
-
-@media only screen and (max-width: $page-break-desktop) {
-
-
-    .teaser-1-big-left-4-small-right {
 
         display: block;
 
         .__main {
 
+            height: 300px;
             margin-right: 0px;
             margin-bottom: 15px;
 
+            .__img { 
+                @include flex(none);
+                width: 300px;
+            }
+
             .__info {
-                width: 490px;
+                width: auto;
+                @include flex(1);
             }
 
         }
 
         .__minis {
-
-            -webkit-flex-direction: row;
-            -ms-flex-direction: row;
-            flex-direction: row;
+            
+            width: 100%;
+            @include flex-direction(row);
 
             .__row {
 
-                -webkit-flex: 1;
-                -ms-flex: 1;
-                flex: 1;
+                @include flex(1);
 
                 .__mini-item {
-
-                    width: 1px;
-                    -webkit-flex: 1;
-                    -ms-flex: 1;
-                    flex: 1;
-
-                    .__img {
-                        img {
-                            width: 100%;
-                            height: auto;
-                        }
-                    }
-
+                    width: auto;
+                    height: auto;
+                    @include flex(1);
                 }
 
                 &:first-child {
@@ -218,36 +195,93 @@
                 }
             }
         }
+
     }
 }
 
 @media only screen and (max-width: $page-break-tablet) {
-
     .teaser-1-big-left-4-small-right {
 
         .__main {
-            .__info {
-                width: 335px;
-            }
+            margin-bottom: 10px;
         }
 
         .__minis {
-
             .__row {
 
                 .__mini-item {
-
-                    .__img {
-                        img {
-                            width: auto;
-                            height: 100%;
+                    &:hover {
+                        .__img {
+                            @include filter(none);
                         }
+                    }
+                }
+
+
+                &:first-child {
+                    .__mini-item {
+                        margin-right: 10px;
+                        &:last-child {
+                           margin-right: 5px;
+                        }
+                    }
+
+                }
+
+                &:last-child {
+                    .__mini-item {
+                        margin-left: 5px;
+                        &:last-child {
+                            margin-left: 10px;
+                        }
+                    }
+                }
+
+            }
+        }
+
+    }
+}
+
+@media only screen and (max-width: $page-break-ipad) {
+    .teaser-1-big-left-4-small-right {
+        .__main {
+
+            display: block;
+            height: auto;
+            
+            .__img {
+            
+                position: static;
+                width: 100%;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    position: static;
+                    @include transform(translate3d(0, 0, 0));
+                }
+
+            }
+
+            .__info {
+                width: 100%;
+                padding-bottom: 35px;
+            }
+
+        }
+
+        .__minis {
+            .__row {
+                .__mini-item {
+                    .__title {
+                        font-size: 14px;
+                        line-height: 20px;
                     }
                 }
             }
         }
     }
-
 }
 
 @media only screen and (max-width: $special-teaser-break) {
@@ -269,8 +303,13 @@
                 clear: both;
             }
 
-            .__img {
+            a, a:link, a:hover, a:active  {
+                color: $color-default-font;
+            }
 
+            .__img {
+                
+                @include flex(none);
                 width: 80px;
                 float: left;
 
@@ -284,25 +323,22 @@
             }
 
             .__info {
-
                 width: auto;
                 margin-left: 90px;
                 padding: 0px 20px 0px 0px;
                 background: transparent;
                 position: static;
-
             }
 
             .__headline {
-
                 color: $color-default-font;
                 font-size: 16px;
+                line-height: 24px;
                 margin-bottom: 0px;
                 padding: 0px;
                 font-weight: 600;
                 border-bottom: none;
                 overflow: hidden;
-
             }
 
             .__text {
@@ -310,7 +346,6 @@
             }
 
             .__readmore {
-
                 font-size: 0px;
                 width: 0px;
                 height: 0px;
@@ -321,7 +356,6 @@
                 border-left: 5px solid $color-default-main;
                 border-top: 8px solid transparent;
                 border-bottom: 8px solid transparent;
-
             }
 
         }
@@ -348,12 +382,18 @@
                         clear: both;
                     }
 
+                    a, a:link, a:hover, a:active  {
+                        color: $color-default-font;
+                    }
+
                     &:hover, &:active {
                         text-decoration: none;
                     }
 
                     .__img {
-
+                        
+                        padding-top: 0;
+                        position: static;
                         width: 80px;
                         float: left;
 
@@ -369,9 +409,10 @@
                         margin-left: 90px;
                         position: static;
                         color: $color-default-font;
-                        background: $color-default-white;
+                        background: transparent;
                         font-size: 16px;
                         line-height: 24px;
+                        font-weight: 600;
                         text-align: left;
                         padding: 0px;
                         margin-right: 20px;
@@ -394,17 +435,12 @@
                 }
 
                 &:first-child {
-
                     .__mini-item {
-
                         margin-right: 0px;
-
                         &:last-child {
                            margin-right: 0px;
                         }
-
                     }
-
                 }
 
                 &:last-child {
@@ -420,6 +456,7 @@
                             margin-left: 0px;
                             border-bottom: none;
                         }
+
                     }
                 }
             }

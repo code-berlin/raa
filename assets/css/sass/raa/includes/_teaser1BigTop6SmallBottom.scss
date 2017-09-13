@@ -1,7 +1,7 @@
 .teaser-1-big-top-6-small-bottom {
 
     .__main {
-
+        
         margin-bottom: 15px;
         cursor: pointer;
 
@@ -19,6 +19,7 @@
         }
 
         .__info {
+            @include flex(1);
             padding: 15px 20px;
             background: $color-default-main;
             color: $color-default-white;

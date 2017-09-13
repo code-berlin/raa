@@ -1,151 +1,39 @@
 <div class="teaser-1-big-top-6-small-bottom">
 
 <?php
+if (count($items) == 7) {
 
     $i = 0;
-
-    foreach ($items as $key => $value) {
-
-        $aRendered = false;
-
-        if ($i == 0) { ?>
-
-            <div class="__main flex-container flex <?php echo !empty($value['slug']) ? 'js-teaser-linked' : ''; ?>">
-
-                <div class="__img">
-                    <img
-                        class="lazy-img js-lazy-img"
-                        src="<?php echo $img_placeholder; ?>"
-                        data-src="<?php echo !empty($value['image']) ? $value['image'] : ''; ?>"
-                        alt="<?php echo $value['title']; ?>"
-                    >
-                </div>
-
-                <div class="flex __info">
-
-                    <div class="__headline">
-                        <?php
-                        if (!empty($value['slug'])) { ?>
-                            <a href="<?php echo $value['slug']; ?>" target="<?php echo $value['target']; ?>">
-                        <?php
-                        }
-                                echo $value['title'];
-
-                        if (!empty($value['slug'])) { ?>
-                            </a>
-                        <?php
-                            $aRendered = true;
-                        } ?>
-
-                    </div>
-
-                    <div class="__text">
-                        <?php
-                        if (!empty($value['slug']) && !$aRendered) { ?>
-                            <a href="<?php echo $value['slug']; ?>" target="<?php echo $value['target']; ?>">
-                        <?php
-                        }
-                                echo $value['text'];
-
-                        if (!empty($value['slug']) && !$aRendered) { ?>
-                            </a>
-                        <?php
-                        } ?>
-                    </div>
-
-                    <?php
-                    if (!empty($value['slug'])) { ?>
-                        <div class="__readmore">Weiterlesen</div>
-                    <?php
-                    } ?>
-
-
-
-                </div>
-
-                <?php
-                if (!empty($value['slug']) && !$aRendered) { ?>
-                    <a href="<?php echo $value['slug']; ?>" target="<?php echo $value['target']; ?>" class="hidden"></a>
-                <?php
-                } ?>
-
-            </div>
-
-            <div class="__minis flex-container">
-
-        <?php
+    foreach ($items as $key => $value) {    
+        if ($i == 0) {
+            // render main item
+            $this->load->view('teaser/components/teaser_big_and_small_main', array('value' => $value));
         } else {
-
+            // render mini items
             if ($i == 1) { ?>
-
-                <div class="flex-container __first flex">
-
-            <?php
-            } elseif ($i == 4) { ?>
-
-                </div>
-
-                <div class="flex-container __second flex">
-
-            <?php
+                <div class="__minis flex-container">
+                    <div class="flex-container __first flex"> <?php
             }
-
-            if (!empty($value['slug']) && empty($value['title'])) { ?>
-                <a href="<?php echo $value['slug']; ?>" target="<?php echo $value['target']; ?>" class="__mini-item flex">
-            <?php
-            } else { ?>
-                <div class="__mini-item flex <?php echo !empty($value['slug']) ? 'js-teaser-linked' : ''; ?>">
-            <?php
-            } ?>
-
-                <div class="__img">
-                    <img
-                        class="lazy-img js-lazy-img"
-                        src="<?php echo $img_placeholder; ?>"
-                        data-src="<?php echo !empty($value['image']) ? $value['image'] : ''; ?>"
-                        alt="<?php echo $value['title']; ?>"
-                    >
-                </div>
-                
-                <?php
-                if (!empty($value['title'])) { ?>
-                    <span class="__title">
-                        <?php
-                        if (!empty($value['slug'])) { ?>
-                            <a href="<?php echo $value['slug']; ?>" target="<?php echo $value['target']; ?>">
-                        <?php
-                        }
-                                echo $value['title'];
-
-                        if (!empty($value['slug'])) { ?>
-                            </a>
-                        <?php
-                        } ?>
-                    </span>
-                <?php
-                }
-
-                if (!empty($value['slug'])) { ?>
-                    <div class="__readmore"></div>
-                <?php
-                }
-
-            if (!empty($value['slug']) && empty($value['title'])) { ?>
-                </a>
-            <?php
-            } else { ?>
-                </div>
-            <?php
+            if ($i >= 1 && $i <= 3) {
+                        $this->load->view('teaser/components/teaser_big_and_small_mini_item', array('value' => $value));
             }
-
+            if ($i == 4) { ?>
+                    </div>
+                    <div class="flex-container __second flex"> <?php
+            }
+            if ($i >= 4 && $i <= 6) {
+                        $this->load->view('teaser/components/teaser_big_and_small_mini_item', array('value' => $value));
+            }
+            if ($i == 6) { ?>
+                    </div>
+                </div> <?php
+            }
         }
-
         $i++;
-
     }
-?>
-                </div>
 
-         </div>
+} else {
+    echo 'Please add exact 7 Items to this Teaser Type (teaser_1bigTop_6smallBottom)';
+}?>
 
 </div>

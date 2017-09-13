@@ -1,121 +1,39 @@
 <div class="teaser-1-big-left-4-small-right flex-container">
 
 <?php
+if (count($items) == 5) {
 
     $i = 0;
-
     foreach ($items as $key => $value) {
-
-        $target = '_self';
-        $image = null;
-        $slug = null;
-
-        if ($value['content_type'] == 'external') {
-            $target = '_blank';
-        }
-
-        if (isset($value['external_image'])) {
-            $image = $value['external_image'];
+        if ($i == 0) {
+            // render main item
+            $this->load->view('teaser/components/teaser_big_and_small_main', array('value' => $value));
         } else {
-            $image = $value['page_image'];
-        }
-
-        if (isset($value['external_link'])) {
-            $slug = $value['external_link'];
-        } else if (isset($value['page_slug'])) {
-            $slug = base_url((isset($value['parent_slug']) && !empty($value['parent_slug']) ? $value['parent_slug'] . '/' : '') . $value['page_slug']);
-        }
-
-        if ($i == 0) { ?>
-
-            <?php
-            if (isset($slug)) { ?>
-                <a class="__main flex-container flex" href="<?php echo $slug; ?>">
-            <?php
-            } else { ?>
-                <div class="__main flex-container flex">
-            <?php
-            } ?>
-
-                <div class="flex __img">
-                    <img class="lazy-img js-lazy-img" src="<?php echo $img_placeholder; ?>" data-src="<?php echo isset($image) ? $image : ''; ?>" alt="<?php echo $value['title']; ?>">
-                </div>
-                <div class="__info">
-
-                    <div class="__headline"><?php echo $value['title']; ?></div>
-
-                    <div class="__text">
-                        <?php echo $value['text']; ?>
-                    </div>
-
-                    <?php
-                    if (isset($slug)) { ?>
-                        <div class="__readmore" href="<?php echo $slug; ?>" target="<?php echo $target; ?>">Weiterlesen</div>
-                    <?php
-                    } ?>
-
-                </div>
-
-            <?php
-            if (isset($slug)) { ?>
-                </a>
-            <?php
-            } else { ?>
-                </div>
-            <?php
-            } ?>
-
-            <div class="__minis flex-container _column">
-
-            <?php
-            } else {
-
-                if ($i % 2 == 1) { ?>
-
-                    <div class="flex-container __row">
-
-                <?php
-                }
-
-                if (isset($slug)) { ?>
-                    <a href="<?php echo $slug; ?>" class="__mini-item" target="<?php echo $target; ?>">
-                <?php
-                } else { ?>
-                    <div class="__mini-item">
-                <?php
-                } ?>
-
-                    <div class="__img">
-                        <img class="lazy-img js-lazy-img" src="<?php echo $img_placeholder; ?>" data-src="<?php echo isset($image) ? $image : ''; ?>" alt="<?php echo $value['title']; ?>">
-                    </div>
-
-                    <span class="__title"><?php echo $value['title']; ?></span>
-
-                    <?php
-                    if (isset($slug)) { ?>
-                        <div class="__readmore"></div>
-                    <?php
-                    }
-
-                if (isset($slug)) { ?>
-                    </a>
-                <?php
-                } else { ?>
-                    </div>
-                <?php
-                }
-
-                if ($i % 2 == 0) { ?>
-                    </div>
-                <?php
-                }
-
+            // render mini items
+            if ($i == 1) { ?>
+                <div class="__minis flex-container _column"> <?php
             }
 
+            if ($i % 2 == 1) { ?>
+                    <div class="flex-container __row"> <?php
+            }
+                        $this->load->view('teaser/components/teaser_big_and_small_mini_item', array('value' => $value));
+            
+            if ($i % 2 == 0) { ?>
+                    </div> <?php
+            }
+
+            if ($i == 4) { ?>
+                </div> <?php
+            }
+
+        }
         $i++;
+    }
+    
+} else {
+    echo 'Please add exact 5 Items to this Teaser Type (teaser_1bigLeft_4smallRight)';
+} ?>
 
-    } ?>
-
-            </div>
 
 </div>
