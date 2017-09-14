@@ -1,3 +1,8 @@
+$component-latest-articles-img-height-1: 300px;
+$component-latest-articles-img-height-2: 275px;
+$component-latest-articles-img-height-3: 175px;
+
+
 .teaser-component-latest-articles {
     .teaser-collapsible-btn {
         margin-top: 10px;
@@ -7,19 +12,21 @@
 .component-latest-articles {
 
     margin-bottom: 25px;
-    background: $color-default-white;
-    border: 1px solid $color-default-grey;
+    padding-bottom: 25px;
+    border-bottom: 1px solid $color-default-grey;
 
+    @include linkreset($color-default-font);
+    cursor: pointer;
 
     .__headline {
 
         position: relative;
-        padding: 20px;
+        padding: 0 0 75px 25px;
 
         h3 {
             -webkit-margin-before: 0;
             -webkit-margin-after: 0;
-            padding: 10px 0 10px 0;
+            padding: 5px 0 10px 0;
             margin-bottom: 5px;
             font-size: 32px;
             line-height: 40px;
@@ -33,8 +40,9 @@
 
         .__read-more {
             position: absolute;
-            right: 20px;
-            bottom: 20px;
+            right: 0;
+            bottom: 0;
+            padding: 13px 60px;
         }
 
     }
@@ -44,7 +52,7 @@
         position: relative;
 
         img {
-            width: 450px;
+            height: $component-latest-articles-img-height-1;
         }
 
         .__addthis-wrap {
@@ -52,6 +60,12 @@
             left: 15px;
             top: 15px;
         }
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
     }
 }
 
@@ -61,7 +75,6 @@
 
         .__headline {
             h3 {
-
                 font-size: 24px;
                 line-height: 30px;
             }
@@ -69,47 +82,44 @@
 
         .__img {
             img {
-                width: 400px;
+                height: $component-latest-articles-img-height-2;
             }
         }
 
-    }
-}
-
-@media only screen and (max-width: $page-break-desktop) {
-
-    .component-latest-articles {
-
-        .__headline {
-            .__read-more,
-            .__read-more._action {
-
-                position: absolute;
-                right: 20px;
-                bottom: 20px;
-                background: transparent;
-                color: $color-default-main;
-                padding: 0px;
-
-                &:hover {
-                    background: transparent;
-                    color: $color-default-main-hover;
-                }
-
-            }
-        }
     }
 }
 
 @media only screen and (max-width: $page-break-tablet) {
+    .component-latest-articles {
+        .__img {
+            img {
+                height: $component-latest-articles-img-height-3;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: $special-teaser-break) {
+    
+    .teaser-component-latest-articles {
+        .teaser-h2 {
+            margin-bottom: 15px;
+        }
+        .teaser-collapsible-btn {
+            display: block;
+            margin: 0 0 15px 0;
+        }
+    }
 
     .component-latest-articles {
 
-        -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-        flex-direction: column;
+        @include flex-direction(column);
+        margin-bottom: 15px;
+        padding-bottom: 15px;
 
         .__headline {
+                
+            padding: 10px 0 0 0;
 
             .__read-more,
             .__read-more._action {
@@ -118,8 +128,6 @@
                 display: block;
                 width: 250px;
                 padding: 13px 30px;
-                background: $color-default-main;
-                color: $color-default-white;
             }
 
         }
@@ -127,37 +135,8 @@
         .__img {
             img {
                 width: 100%;
+                height: auto;
             }
-        }
-
-    }
-
-}
-
-@media only screen and (max-width: $special-teaser-break) {
-    
-    .teaser-component-latest-articles {
-        .teaser-collapsible-btn {
-            display: block;
-            margin: 1px (-$main-offset-mobile) 1px (-$main-offset-mobile);
-        }
-    }
-
-    .component-latest-articles {
-
-        border: none;
-        margin: 0px (-$main-offset-mobile);
-
-        .__headline {
-
-            padding: 15px 15px 20px 15px;
-
-            .__read-more,
-            .__read-more._action {
-                width: auto;
-                margin: 20px auto 0px;
-            }
-
         }
 
     }

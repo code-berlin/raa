@@ -2,7 +2,7 @@
 
     <div class="teaser-component-latest-articles">
 
-        <h2 class="teaser-h2">Aktuell auf DoktorDarm</h2>
+        <h2 class="teaser-h2">Aktuell auf <?php echo explode('.', $this->config->item('name'))[0]; ?></h2>
         <?php
             $articles_limit = 5;
             $initial_shown = 3;
@@ -13,17 +13,17 @@
 
             foreach ($latest_articles as $key => $value) {
 
-                $image = isset($value['image']) ? $value['image'] : null;
-                $slug = base_url((isset($value['parent_slug']) && !empty($value['parent_slug']) ? $value['parent_slug'] . '/' : '') . $value['slug']);
-                $category = isset($value['parent_menu_title']) ? $value['parent_menu_title'] : null;
+                $image = !empty($value['image']) ? $value['image'] : null;
+                $slug = base_url((!empty($value['parent_slug']) && !empty($value['parent_slug']) ? $value['parent_slug'] . '/' : '') . $value['slug']);
+                $category = !empty($value['parent_menu_title']) ? $value['parent_menu_title'] : null;
         ?>
 
-                <div class="component-latest-articles flex-container <?php echo ($i >= $initial_shown ? ' dn js-teaser-collapsible-closed' : ''); ?>">
+                <div class="component-latest-articles flex-container <?php echo !empty($slug) ? 'js-teaser-linked' : ''; ?> <?php echo ($i >= $initial_shown ? ' dn js-teaser-collapsible-closed' : ''); ?>">
                     <div class="__img">
-                        <img class="lazy-img js-lazy-img" src="<?php echo $img_placeholder; ?>" data-src="<?php echo isset($image) ? $image : ''; ?>" alt="<?php echo $value['teaser_title']; ?>">
+                        <img class="lazy-img js-lazy-img" src="<?php echo $img_placeholder; ?>" data-src="<?php echo !empty($image) ? $image : ''; ?>" alt="<?php echo $value['teaser_title']; ?>">
 
                         <?php
-                        if (isset($slug)) { ?>
+                        if (!empty($slug)) { ?>
                             <div class="__addthis-wrap">
                                 <a class="addthis_inline_share_toolbox" data-url="<?php echo $slug; ?>" data-title="<?php echo $value['teaser_title']; ?>"></a>
                             </div>
@@ -33,20 +33,25 @@
                     </div>
                     <div class="__headline flex">
                         <?php
-                        if (isset($category)) { ?>
+                        if (!empty($category)) { ?>
                             <div class="__category"><?php echo $category; ?></div>
                         <?php
                         } ?>
-                        <h3><?php echo $value['teaser_title']; ?></h3>
+                        <h3>
+                            <?php
+                            if (!empty($slug)) {
+                                $this->load->view('component/link',
+                                    array('href' => $slug, 'target' => '_self', 'text' => $value['teaser_title']));
+                            } else {
+                                echo $value['teaser_title'];
+                            } ?>
+                        </h3>
                         <div class="__sub">
                             <?php echo $value['teaser_text']; ?>
                         </div>
                         <?php
-                        if (isset($slug)) { ?>
-                            <a class="__read-more def-btn _action" href="<?php echo $slug; ?>" target="_self">
-                                Mehr erfahren
-                            </a>
-                        <?php
+                        if (!empty($slug)) { ?>
+                            <div class="__read-more def-btn _action">Mehr erfahren</div> <?php
                         } ?>
                     </div>
                 </div>
@@ -59,7 +64,7 @@
             if($show_collapsible_button == true) {
         ?>
                 <div class="ta-c">
-                    <a href="" class="def-btn _action teaser-collapsible-btn js-teaser-collapsible-btn" >Weitere Inhalte anzeigen</a>
+                    <div class="def-btn _action teaser-collapsible-btn js-teaser-collapsible-btn" >Weitere Inhalte anzeigen</div>
                 </div>
         <?php
             }

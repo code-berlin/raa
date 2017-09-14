@@ -11,7 +11,7 @@ var link = {
             if ($(e.target).attr('href')) {
                 return;
             }
-            var link = $(this).find('a');
+            var link = $(this).find('a[href]');
             window.open(link.attr('href'), link.attr('target'));
         });
 

@@ -55,10 +55,7 @@ $teaser-1-slideshow-left-3-small-right-mini-item-height-6: 106px;
             cursor: pointer;
         }
 
-        a, a:link, a:hover, a:active  {
-            color: $color-default-white;
-            text-decoration: none;
-        }
+        @include linkreset($color-default-white);
 
         .__info {
 
@@ -162,10 +159,7 @@ $teaser-1-slideshow-left-3-small-right-mini-item-height-6: 106px;
             margin-top: 15px;
             cursor: pointer;
 
-            a, a:link, a:hover, a:active  {
-                color: $color-default-font;
-                text-decoration: none;
-            }
+            @include linkreset($color-default-font);
 
             .__img {
 

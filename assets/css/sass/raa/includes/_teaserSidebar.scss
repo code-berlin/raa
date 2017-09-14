@@ -12,10 +12,6 @@
         display: block;
         width: 100%;
     }
-    
-    a:link, a:visited, a:hover, a:active {
-        text-decoration: none;
-    }
 
     cursor: pointer;
 
@@ -34,16 +30,12 @@
 
 .teaser_sidebar_image_title_text_button,
 .teaser_sidebar_image_title_text_bright {
-    a:link, a:visited, a:hover, a:active {
-        color: $color-default-font;
-    }
+    @include linkreset($color-default-font);
 }
 
 .teaser_sidebar_image_title_text,
 .teaser_sidebar_image_title_text_optional {
-    a:link, a:visited, a:hover, a:active {
-        color: $color-default-white;
-    }    
+    @include linkreset($color-default-white);   
 }
 
 .teaser_sidebar_image_title_text_button {

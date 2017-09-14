@@ -12,10 +12,7 @@
             overflow: hidden;
             cursor: pointer;
 
-            a, a:link, a:hover, a:active  {
-                color: $color-default-white;
-                text-decoration: none;
-            }
+            @include linkreset($color-default-white);
 
             .__img {
                 img {

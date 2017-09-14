@@ -19,10 +19,7 @@
         display: block;
         cursor: pointer;
 
-        a, a:link, a:hover, a:active  {
-            color: $color-default-font;
-            text-decoration: none;
-        }
+        @include linkreset($color-default-font);
 
         .__part {
             display: block;

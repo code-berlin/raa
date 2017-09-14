@@ -5,10 +5,7 @@
         margin-bottom: 15px;
         cursor: pointer;
 
-        a, a:link, a:hover, a:active  {
-            color: $color-default-white;
-            text-decoration: none;
-        }
+        @include linkreset($color-default-white);
 
         .__img {
 
@@ -55,10 +52,7 @@
             overflow: hidden;
             cursor: pointer;
 
-            a, a:link, a:hover, a:active  {
-                color: $color-default-white;
-                text-decoration: none;
-            }
+            @include linkreset($color-default-white);
 
             .__img {
 
@@ -262,9 +256,7 @@
                 clear: both;
             }
 
-            a, a:link, a:hover, a:active  {
-                color: $color-default-font;
-            }
+            @include linkreset($color-default-font);
 
             .__img {
                 width: 80px;
@@ -331,9 +323,7 @@
                     clear: both;
                 }
 
-                a, a:link, a:hover, a:active  {
-                    color: $color-default-font;
-                }
+                @include linkreset($color-default-font);
 
                 .__img {
 

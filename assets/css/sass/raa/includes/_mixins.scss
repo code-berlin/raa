@@ -57,3 +57,10 @@
         }
     }
 }
+
+@mixin linkreset($color) {
+    a, a:link, a:hover, a:active, a:visited  {
+        color: $color;
+        text-decoration: none;
+    }
+}
