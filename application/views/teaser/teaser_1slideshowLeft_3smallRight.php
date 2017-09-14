@@ -27,43 +27,39 @@
                         <li
                             data-thumb="<?php echo $img_placeholder; ?>"
                             data-title="<?php echo isset($value['title']) ? $value['title'] : ''; ?>"
+                            class="<?php echo !empty($value['slug']) ? 'js-teaser-linked' : ''; ?>"
                         >
-
-                        <?php
-                        if ($value['slug'] !== '') { ?>
-                            <a href="<?php echo $value['slug']; ?>" target="<?php echo $value['target']; ?>">
-                        <?php
-                        } ?>
                                 
-                                <img
-                                    class="lazy-img js-slideshow-lazy-img"
-                                    src="<?php echo $img_placeholder; ?>"
-                                    data-src="<?php echo isset($value['image']) ? $value['image'] : ''; ?>"
-                                />
+                            <img
+                                class="lazy-img js-slideshow-lazy-img"
+                                src="<?php echo $img_placeholder; ?>"
+                                data-src="<?php echo isset($value['image']) ? $value['image'] : ''; ?>"
+                            />
 
-                            <?php
-                            if (isset($value['title'])) { ?>
-                                <div class="__info">
-                                    <div class="__inner">
-                                        <div class="__title"><?php echo $value['title']; ?></div>
-                                        <div class="__text"><?php echo $value['text']; ?></div>
+                        <?php
+                        if (isset($value['title']) || isset($value['text'])) { ?>
+                            <div class="__info">
+                                <div class="__inner">
+                                    <div class="__title">
+                                        <?php echo $value['title']; ?>
+                                    </div>
+                                    <div class="__text">
+                                        <?php
+                                        if (!empty($value['slug'])) {
+                                            $this->load->view('component/link',
+                                                array('href' => $value['slug'], 'target' => $value['target'], 'text' => $value['text']));
+                                        } else {
+                                            echo $value['text'];
+                                        } ?>
                                     </div>
                                 </div>
-                            <?php
-                            } ?>
-
-                        <?php
-                        if ($value['slug'] !== '') { ?>
-                            </a>
+                            </div>
                         <?php
                         } ?>
 
                         </li>
-
                     <?php
-
                         $i++;
-
                     }
 
                 } ?>
@@ -81,36 +77,32 @@
 
         foreach ($items as $key => $value) {
 
-            if($i > $total_slideshow) {
+            if($i > $total_slideshow) { ?>
 
-                if ($value['slug'] !== '') { ?>
-                    <a href="<?php echo $value['slug']; ?>" class="__mini-item flex-container" target="<?php echo $value['target']; ?>">
-                <?php
-                } else { ?>
-                    <div class="__mini-item flex-container">
-                <?php
-                } ?>
-                        <div class="__img">
-                            <img
-                                class="lazy-img js-lazy-img"
-                                src="<?php echo $img_placeholder; ?>"
-                                data-src="<?php echo isset($value['image']) ? $value['image'] : ''; ?>"
-                                alt="<?php echo $value['title']; ?>"
-                            />
-                         </div>                
-                        <div class="__info flex">
-                          <div class="__title"><?php echo $value['title']; ?></div>
-                          <div class="__text"><?php echo $value['text']; ?></div>
+                <div class="__mini-item flex-container <?php echo !empty($value['slug']) ? 'js-teaser-linked' : ''; ?>">
+                    <div class="__img">
+                        <img
+                            class="lazy-img js-lazy-img"
+                            src="<?php echo $img_placeholder; ?>"
+                            data-src="<?php echo isset($value['image']) ? $value['image'] : ''; ?>"
+                            alt="<?php echo $value['title']; ?>"
+                        />
+                     </div>                
+                    <div class="__info flex">
+                        <div class="__title">
+                            <?php echo $value['title']; ?>
                         </div>
-
-                <?php
-                if ($value['slug'] !== '') { ?>
-                    </a>
-                <?php
-                } else { ?>
+                        <div class="__text">
+                            <?php
+                            if (!empty($value['slug'])) {
+                                $this->load->view('component/link',
+                                    array('href' => $value['slug'], 'target' => $value['target'], 'text' => $value['text']));
+                            } else {
+                                echo $value['text'];
+                            } ?>
+                        </div>
                     </div>
-                <?php
-                } ?>
+                </div>
 
                 <?php
             }
