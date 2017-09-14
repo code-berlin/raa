@@ -12,30 +12,23 @@
         
         <div class="__headline">
             <?php
-            if (!empty($value['slug'])) { ?>
-                <a href="<?php echo $value['slug']; ?>" target="<?php echo $value['target']; ?>">
-            <?php
-            }
-                    echo $value['title'];
-
-            if (!empty($value['slug'])) { ?>
-                </a>
-            <?php
+            if (!empty($value['slug'])) {
+                $this->load->view('component/link',
+                    array('href' => $value['slug'], 'target' => $value['target'], 'text' => $value['title']));
                 $aRendered = true;
+            } else {
+                echo $value['title'];
             } ?>
         </div>
 
         <div class="__text">
             <?php
-            if (!empty($value['slug']) && !$aRendered) { ?>
-                <a href="<?php echo $value['slug']; ?>" target="<?php echo $value['target']; ?>">
-            <?php
-            }
-                    echo $value['text'];
-
-            if (!empty($value['slug']) && !$aRendered) { ?>
-                </a>
-            <?php
+            if (!empty($value['slug']) && !$aRendered) {
+                $this->load->view('component/link',
+                    array('href' => $value['slug'], 'target' => $value['target'], 'text' => $value['text']));
+                $aRendered = true;
+            } else {
+                echo $value['text'];
             } ?>
         </div>
 

@@ -18,16 +18,11 @@
             if ($hasTitle) { ?>
                 <div class="__title">
                     <?php
-                    if ($hasUrl) { ?>
-                        <a href="<?php echo $url; ?>" target="<?php echo $target; ?>">
-                    <?php
-                    } ?>
-                            <?php echo $title; ?>
-                    <?php
-                    if ($hasUrl) { ?>
-                        </a>
-                    <?php
+                    if ($hasUrl) {
+                        $this->load->view('component/link', array('href' => $url, 'target' =>$target, 'text' => $title));
                         $aRendered = true;
+                    } else {
+                        echo $title;
                     } ?>
                 </div>
             <?php
@@ -36,15 +31,11 @@
             if ($hasText) { ?>
                 <div class="__text">
                     <?php
-                    if ($hasUrl && !isset($aRendered)) { ?>
-                        <a href="<?php echo $url; ?>" target="<?php echo $target; ?>">
-                    <?php
-                    } ?>
-                            <?php echo $text; ?>
-                    <?php
-                    if ($hasUrl && !isset($aRendered)) { ?>
-                        </a>
-                    <?php
+                    if ($hasUrl && !isset($aRendered)) {
+                        $this->load->view('component/link', array('href' => $url, 'target' =>$target, 'text' => $text));
+                        $aRendered = true;
+                    } else {
+                        echo $text;
                     } ?>
                 </div>
             <?php
