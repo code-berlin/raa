@@ -35,7 +35,8 @@
                     <div class="__part __teaser-title">
                         <?php
                         if (!empty($value['slug'])) {
-                            $this->load->view('component/link', array('href' => $value['slug'], 'target' => $value['target'], 'text' => $value['title']));
+                            $this->load->view('component/link',
+                                array('href' => $value['slug'], 'target' => $value['target'], 'text' => $value['title']));
                         } else {
                             echo $value['title'];
                         } ?>

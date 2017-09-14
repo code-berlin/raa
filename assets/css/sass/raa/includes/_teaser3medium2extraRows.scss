@@ -10,6 +10,12 @@
             position: relative;
             margin-right: 15px;
             overflow: hidden;
+            cursor: pointer;
+
+            a, a:link, a:hover, a:active  {
+                color: $color-default-white;
+                text-decoration: none;
+            }
 
             .__img {
                 img {
@@ -18,34 +24,24 @@
                 }
             }
 
-            .__content {
-
+            .__inner {
                 position: absolute;
-                bottom: -1px;
+                bottom: 0px;
                 left: 0px;
                 right: 0px;
-                top: 33%;
-                @include background-image(linear-gradient(transparent, rgba(0,0,0,0.5)));
-                color: white;   
-                    
-                .__inner {
-                    position: absolute;
-                    bottom: 0px;
-                    left: 0px;
-                    right: 0px;
-                    padding: 15px 20px;
-                }
+                padding: 25px 20px 15px 20px;
+                @include background-image(linear-gradient(transparent, rgba(0,0,0,0.9)));
+                color: $color-default-white;
+            }
 
-                .__category {
-                    font-size: 12px;
-                    margin-bottom: -2px;
-                }
+            .__category {
+                font-size: 12px;
+                margin-bottom: -2px;
+            }
 
-                .__title {
-                    font-size: 24px;
-                    line-height: 34px;
-                }
-
+            .__title {
+                font-size: 24px;
+                line-height: 34px;
             }
 
             .__teaser-more {
@@ -57,8 +53,9 @@
             }
 
             &:hover {
-                .__content {
-                    top: 0px;
+                .__category,
+                .__title {
+                    text-decoration: underline;
                 }
             }
 
@@ -81,24 +78,19 @@
     .teaser-3-medium-2-extra-rows {
         .__minis {
             .__mini-item {
-                .__content {
-                        
-                    .__category {
-                        font-size: 11px;
-                        margin-bottom: -4px;
-                    }
 
-                    .__title {
-                        font-size: 14px;
-                        line-height: 23px;
-                    }
+                .__category {
+                    font-size: 11px;
+                    margin-bottom: -4px;
+                }
 
+                .__title {
+                    font-size: 14px;
+                    line-height: 23px;
                 }
 
             }
-
         }
-
     }
 
 }
@@ -118,19 +110,15 @@
                 
                 margin-right: 0px;
 
-                .__content {
-                        
-                    .__category {
-                        font-size: 14px;
-                        line-height: 23px;
-                        margin-bottom: -5px;
-                    }
+                .__category {
+                    font-size: 14px;
+                    line-height: 23px;
+                    margin-bottom: -5px;
+                }
 
-                    .__title {
-                        font-size: 26px;
-                        line-height: 42px;
-                    }
-
+                .__title {
+                    font-size: 26px;
+                    line-height: 42px;
                 }
 
                 &._dummy {
@@ -154,20 +142,18 @@
     .teaser-3-medium-2-extra-rows {
         .__minis {
             .__mini-item {
-                .__content {
-                        
-                    .__category {
-                        font-size: 13px;
-                        line-height: 21px;
-                        margin-bottom: -3px;
-                    }
 
-                    .__title {
-                        font-size: 24px;
-                        line-height: 34px;
-                    }
-
+                .__category {
+                    font-size: 13px;
+                    line-height: 21px;
+                    margin-bottom: -3px;
                 }
+
+                .__title {
+                    font-size: 24px;
+                    line-height: 34px;
+                }
+
             }
         }
     }

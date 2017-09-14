@@ -26,18 +26,18 @@
 
                         <li
                             data-thumb="<?php echo $img_placeholder; ?>"
-                            data-title="<?php echo isset($value['title']) ? $value['title'] : ''; ?>"
+                            data-title="<?php echo !empty($value['title']) ? $value['title'] : ''; ?>"
                             class="<?php echo !empty($value['slug']) ? 'js-teaser-linked' : ''; ?>"
                         >
                                 
                             <img
                                 class="lazy-img js-slideshow-lazy-img"
                                 src="<?php echo $img_placeholder; ?>"
-                                data-src="<?php echo isset($value['image']) ? $value['image'] : ''; ?>"
+                                data-src="<?php echo !empty($value['image']) ? $value['image'] : ''; ?>"
                             />
 
                         <?php
-                        if (isset($value['title']) || isset($value['text'])) { ?>
+                        if (!empty($value['title']) || !empty($value['text'])) { ?>
                             <div class="__info">
                                 <div class="__inner">
                                     <div class="__title">
@@ -84,7 +84,7 @@
                         <img
                             class="lazy-img js-lazy-img"
                             src="<?php echo $img_placeholder; ?>"
-                            data-src="<?php echo isset($value['image']) ? $value['image'] : ''; ?>"
+                            data-src="<?php echo !empty($value['image']) ? $value['image'] : ''; ?>"
                             alt="<?php echo $value['title']; ?>"
                         />
                      </div>                
