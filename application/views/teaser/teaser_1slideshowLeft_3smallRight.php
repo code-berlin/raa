@@ -70,7 +70,7 @@
 
     <div class="__minis flex flex-container _column">
         
-        <div class="__headline">Top Themen</div>
+        <div class="__headline">Top-Themen</div>
 
         <?php
         $i = 1;
