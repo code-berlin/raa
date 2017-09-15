@@ -5,11 +5,16 @@
     position: relative;
 
     .__teaser {
+
         display: block;
         color: $color-default-font;
+        @include linkreset($color-default-font);
+        cursor: pointer;
+
         &:hover {
             text-decoration: none;
         }
+        
     }
 
     .__title {

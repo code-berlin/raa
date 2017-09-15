@@ -42,16 +42,18 @@ var teaserImageAndDropdown = {
 
 	switch: function(jQTeaserSwitch, data) {
 		var jQImage = jQTeaserSwitch.find('.js-image-and-dropdown-img'),
-			imageSrc = jQImage.attr('src');
+			imageSrc = jQImage.attr('src'),
+			jQAnchor = jQTeaserSwitch.find('a'),
+			jQText = jQTeaserSwitch.find('.js-image-and-dropdown-text');
 		imageSrc = imageSrc.split('/');
 		imageSrc[imageSrc.length-1] = data.image;
 		imageSrc = imageSrc.join('/');
 		jQImage.attr('src', imageSrc);
 		jQImage.attr('alt', data.title);
-		jQTeaserSwitch.attr('href', data.slug);
-		jQTeaserSwitch.attr('target', data.target);
-		jQTeaserSwitch.find('.js-image-and-dropdown-title').html(data.title);
-		jQTeaserSwitch.find('.js-image-and-dropdown-text').html(data.text);
+		jQAnchor.attr('href', data.slug);
+		jQAnchor.attr('target', data.target);
+		jQAnchor.html(data.title);
+		jQText.html(data.text);
 	}
 
 };

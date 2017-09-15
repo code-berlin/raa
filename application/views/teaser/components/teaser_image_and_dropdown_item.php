@@ -1,5 +1,13 @@
-<a class="__teaser <?php echo $css; ?>" href="<?php echo $value['slug']; ?>" target="<?php echo $value['target']; ?>">
-    <div class="js-image-and-dropdown-title __title"><?php echo $value['title']; ?></div>
+<div class="__teaser <?php echo !empty($value['slug']) ? 'js-teaser-linked' : ''; ?> <?php echo $css; ?>">
+    <div class="__title">
+        <?php
+        if (!empty($value['slug'])) {
+            $this->load->view('component/link',
+                array('href' => $value['slug'], 'target' => $value['target'], 'text' => $value['title']));
+        } else {
+            echo $value['title'];
+        } ?>
+    </div>
     <div class="__img">
         <img
             class="lazy-img js-lazy-img js-image-and-dropdown-img"
@@ -9,5 +17,5 @@
         />
     </div>
     <div class="js-image-and-dropdown-text"><?php echo $value['text']; ?></div>
-    <div class="__btn def-btn">Weiterlesen</div>
-</a>
+    <div class="__btn def-btn _action">Weiterlesen</div>
+</div>
