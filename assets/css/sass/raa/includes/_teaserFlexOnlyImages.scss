@@ -1,11 +1,9 @@
 .teaser-flex-only-images {
-    margin-bottom: 15px;
 
     .__item {
-
+        
+        margin-right: 25px;
         display: block;
-        position: relative;
-        overflow: hidden;
 
         .__img {
             img {
@@ -14,96 +12,22 @@
             }
         }
 
-        .__title {
-
-            display: block;
-            position: absolute;
-            bottom: 0px;
-            left: 0px;
-            right: 0px;
-            opacity: 0.9;
-            color: $color-default-font;
-            background: $color-default-white;
-            font-size: 12px;
-            font-weight: 600;
-            line-height: 18px;
-            text-align: center;
-            padding: 10px 5px;
-            @include transition(transform .2s ease-in-out);
-            transform: translate(0, 100%);
-
-            .mobile-device & {
-                transform: translate(0, 0);
-                position: static;
-                font-size: 10px;
-                width: 100%;
-                line-height: 24px;
-                padding: 5px;
-                overflow: hidden;
-            }
-
-            &:before {
-                content: '';
-                position: absolute;
-                width: 0px;
-                height: 0px;
-                left: 0px;
-                top: -5px;
-                border-bottom: 12px solid #fff;
-                border-left: 100px solid transparent;
-                border-right: 100px solid transparent;
-            }
-
-        }
-
-        &:after {
-            content: '';
-            width: 1px;
-            height: 80%;
-            position: absolute;
-            right: 0;
-            top: 10%;
-            background: $color-default-grey;
-        }
-
-        &:last-child:after {
-            display: none;
-        }
-
-        &:hover {
-
-            .__title {
-                transform: translate(0, 0);
-            }
-
+        &:last-child {
+            margin-right: 0;
         }
 
     }
 
 }
 
-@media only screen and (max-width: $page-break-phone) {
+@media only screen and (max-width: $special-teaser-break) {
 
     .teaser-flex-only-images {
+
         display: block;
-        font-size: 0;
-        text-align: center;
-        white-space: nowrap;
-        overflow-y: hidden;
 
         .__item {
-            display: inline-block;
-            width: 40%;
-
-            .__title {
-                position: static;
-                font-size: 10px;
-                width: 100%;
-                line-height: 24px;
-                padding: 5px;
-                overflow: hidden;
-            }
-
+            margin: 10px 0;
         }
 
     }

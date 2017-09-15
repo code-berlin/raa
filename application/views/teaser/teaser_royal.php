@@ -8,7 +8,7 @@ foreach ($items as $key => $value) {  ?>
             src="<?php echo $img_placeholder; ?>"
             data-src="<?php echo isset($value['image']) ? $value['image'] : ''; ?>"
             alt="<?php echo $value['title']; ?>"
-        >
+        />
         <div class="__info">
             <h1>
                 <?php
