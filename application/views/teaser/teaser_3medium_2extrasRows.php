@@ -17,12 +17,12 @@ foreach ($items as $key => $value) {
             <div class="__mini-item flex <?php echo !empty($value['slug']) ? 'js-teaser-linked' : ''; ?> <?php echo $i+1 == sizeof($items) ? '_last' : ''; ?>">
 
                 <div class="__img">
-                    <img
-                        class="lazy-img js-lazy-img"
-                        src="<?php echo $img_placeholder; ?>"
-                        data-src="<?php echo !empty($value['image']) ? $value['image'] : ''; ?>"
-                        alt="<?php echo $value['title']; ?>"
-                    />
+                    <?php
+                    $this->load->view('component/lazyimg', array(
+                        'src' => $img_placeholder,
+                        'datasrc' => !empty($value['image']) ? $value['image'] : '',
+                        'alt' => $value['title']
+                    )); ?>
                 </div>
                 <div class="__inner"> 
 

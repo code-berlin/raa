@@ -20,9 +20,14 @@
 
                 <div class="component-latest-articles flex-container <?php echo !empty($slug) ? 'js-teaser-linked' : ''; ?> <?php echo ($i >= $initial_shown ? ' dn js-teaser-collapsible-closed' : ''); ?>">
                     <div class="__img">
-                        <img class="lazy-img js-lazy-img" src="<?php echo $img_placeholder; ?>" data-src="<?php echo !empty($image) ? $image : ''; ?>" alt="<?php echo $value['teaser_title']; ?>">
 
                         <?php
+                        $this->load->view('component/lazyimg', array(
+                            'src' => $img_placeholder,
+                            'datasrc' => !empty($image) ? $image : '',
+                            'alt' => $value['teaser_title']
+                        ));
+
                         if (!empty($slug)) { ?>
                             <div class="__addthis-wrap">
                                 <a class="addthis_inline_share_toolbox" data-url="<?php echo $slug; ?>" data-title="<?php echo $value['teaser_title']; ?>"></a>

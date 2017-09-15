@@ -22,12 +22,12 @@
             <div class="__item flex <?php echo !empty($value['slug']) ? 'js-teaser-linked' : ''; ?> <?php echo $i+1 == sizeof($items) ? '_last' : ''; ?>">
 
                 <div class="img <?php echo !empty($value['slug']) ? '_hover-mask' : '' ?>">
-                    <img
-                        class="lazy-img js-lazy-img"
-                        src="<?php echo $img_placeholder; ?>"
-                        data-src="<?php echo !empty($value['image']) ? $value['image'] : ''; ?>"
-                        alt="<?php echo $value['title']; ?>"
-                    />
+                    <?php
+                    $this->load->view('component/lazyimg', array(
+                        'src' => $img_placeholder,
+                        'datasrc' => !empty($value['image']) ? $value['image'] : '',
+                        'alt' => $value['title']
+                    )); ?>
                 </div>
 
                 <span class="__info flex-container _column">

@@ -18,7 +18,12 @@
 
 		<a href="<?php echo $slug; ?>"  class="__item flex <?php echo $i+1 == sizeof($lib_data['teaserItems']) ? '_last' : ''; ?>">
 			<div class="img _hover-mask">
-				<img class="lazy-img js-lazy-img" src="/assets/images/themes/<?php echo $theme; ?>/ph.png" data-src="<?php echo $value['image']; ?>" alt="<?php echo $value['image_alt']; ?>"/>
+                <?php
+                $this->load->view('component/lazyimg', array(
+                    'src' => '/assets/images/themes/<?php echo $theme; ?>/ph.png',
+                    'datasrc' => $value['image'],
+                    'alt' => $value['image_alt']
+                )); ?>
 			</div>
 			<span class="__info flex-container _column">
 				<div class="__part __teaser-title"><?php echo $value['menu_title']; ?></div>

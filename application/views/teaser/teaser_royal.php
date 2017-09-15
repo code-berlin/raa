@@ -2,13 +2,14 @@
 foreach ($items as $key => $value) {  ?>
 
     <div class="teaser-royal <?php echo !empty($value['slug']) ? 'js-teaser-linked' : ''; ?>">
+        
+        <?php
+        $this->load->view('component/lazyimg', array(
+            'src' => $img_placeholder,
+            'datasrc' => !empty($value['image']) ? $value['image'] : '',
+            'alt' => $value['title']
+        )); ?>
 
-        <img
-            class="lazy-img js-lazy-img"
-            src="<?php echo $img_placeholder; ?>"
-            data-src="<?php echo isset($value['image']) ? $value['image'] : ''; ?>"
-            alt="<?php echo $value['title']; ?>"
-        />
         <div class="__info">
             <h1>
                 <?php

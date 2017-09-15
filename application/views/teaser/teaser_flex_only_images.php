@@ -16,14 +16,14 @@
         <?php
         } ?>
 
-            <div class="__img">
-                <img
-                    class="lazy-img js-lazy-img"
-                    src="<?php echo $img_placeholder; ?>"
-                    data-src="<?php echo isset($value['image']) ? $value['image'] : ''; ?>"
-                    alt="<?php echo $value['title']; ?>"
-                />
-            </div>
+                <div class="__img">
+                    <?php
+                    $this->load->view('component/lazyimg', array(
+                        'src' => $img_placeholder,
+                        'datasrc' => !empty($value['image']) ? $value['image'] : '',
+                        'alt' => ''
+                    )); ?>
+                </div>
 
         <?php
         if (isset($value['slug'])) { ?>
