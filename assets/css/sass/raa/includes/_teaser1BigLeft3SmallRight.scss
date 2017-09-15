@@ -3,6 +3,9 @@
     .__main,
     .__three {
 
+        cursor: pointer;
+        @include linkreset($color-default-font);
+
         .img {
 
             cursor: pointer;
@@ -48,6 +51,8 @@
 
     }
 
+
+
     .__main {
 
         width: 270px;
@@ -55,17 +60,6 @@
         border-right: 1px dotted $color-default-grey;
         margin-right: 25px;
         position: relative;
-
-        a {
-
-            display: block;
-            color: $color-default-font;
-
-            &:hover, &:active {
-                text-decoration: none;
-            }
-
-        }
 
         .__part {
             display: block;
@@ -114,17 +108,15 @@
 
         }
 
+        &:hover {
+            .__teaser-title {
+                text-decoration: underline;
+            }
+        }
+
     }
 
     .__three {
-
-        a {
-            color: $color-default-font;
-            &:hover {
-                color: $color-default-font;
-                text-decoration: none;
-            }
-        }
 
         .__small {
 
@@ -164,12 +156,6 @@
             font-weight: 600;
         }
 
-        .__small:hover {
-            .__cta {
-                text-decoration: underline;
-            }
-        }
-
         .__text p {
             margin-top: 0px;
             margin-bottom: 0px;
@@ -179,6 +165,12 @@
             height: 70px;
         }
 
+        .__small:hover {
+            .__title,
+            .__cta {
+                text-decoration: underline;
+            }
+        }
 
     }
 
