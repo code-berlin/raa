@@ -1,15 +1,18 @@
+$t1sl3sr-height-1: 438px;
+$t1sl3sr-height-2: 402px;
+$t1sl3sr-height-3: 400px;
 // (height - paddings - headline - margins)/3
-$teaser-1-slideshow-left-3-small-right-mini-item-height-1: (430px - (2*30px) - 45px - (3 * 15px))/3;
-$teaser-1-slideshow-left-3-small-right-mini-item-height-2: (400px - (2*30px) - 45px - (3 * 15px))/3;
-$teaser-1-slideshow-left-3-small-right-mini-item-height-3: 166px;
-$teaser-1-slideshow-left-3-small-right-mini-item-height-4: 141px;
-$teaser-1-slideshow-left-3-small-right-mini-item-height-5: 106px;
+$t1sl3sr-mini-item-height-1: ($t1sl3sr-height-1 - (2*30px) - 45px - (3 * 15px))/3;
+$t1sl3sr-mini-item-height-2: ($t1sl3sr-height-2 - (2*30px) - 45px - (3 * 15px))/3;
+$t1sl3sr-mini-item-height-3: 165px;
+$t1sl3sr-mini-item-height-4: 142px;
+$t1sl3sr-mini-item-height-5: 106px;
 
 .teaser-1-slideshow-left-3-small-right {
     
     position: relative;
     width: 100%;
-    height: 430px;
+    height: $t1sl3sr-height-1;
     margin-bottom: 15px;
     
     .slideshow-container {
@@ -102,7 +105,6 @@ $teaser-1-slideshow-left-3-small-right-mini-item-height-5: 106px;
         }
 
         &:hover {
-            .__title,
             .__text {
                 text-decoration: underline;
             }
@@ -159,7 +161,7 @@ $teaser-1-slideshow-left-3-small-right-mini-item-height-5: 106px;
 
         .__mini-item {
             
-            height: $teaser-1-slideshow-left-3-small-right-mini-item-height-1;
+            height: $t1sl3sr-mini-item-height-1;
             margin-top: 15px;
             cursor: pointer;
 
@@ -228,11 +230,34 @@ $teaser-1-slideshow-left-3-small-right-mini-item-height-5: 106px;
 
 }
 
+.mobile-device .teaser-1-slideshow-left-3-small-right {
+
+    .slides {
+        &:hover {
+            .__text {
+                text-decoration: none;
+            }
+        }
+
+    }
+
+    .__minis {       
+        .__mini-item {
+            .__img {
+                &:after {
+                    display: none;
+                }
+            }
+        }
+    } 
+
+}
+
 @media only screen and (max-width: $special-teaser-break-ipad-ls) {
 
     .teaser-1-slideshow-left-3-small-right {
         
-        height: 400px;
+        height: $t1sl3sr-height-2;
 
         .flexslider {
             
@@ -258,7 +283,7 @@ $teaser-1-slideshow-left-3-small-right-mini-item-height-5: 106px;
 
         .__minis {
             .__mini-item {
-                height: $teaser-1-slideshow-left-3-small-right-mini-item-height-2;
+                height: $t1sl3sr-mini-item-height-2;
             }
         }
 
@@ -275,7 +300,7 @@ $teaser-1-slideshow-left-3-small-right-mini-item-height-5: 106px;
 
         .slideshow-container {
             width: 100%;
-            height: 400px;
+            height: $t1sl3sr-height-3;
         }
 
         .__minis {
@@ -289,7 +314,7 @@ $teaser-1-slideshow-left-3-small-right-mini-item-height-5: 106px;
 
             .__mini-item {
                 
-                height: $teaser-1-slideshow-left-3-small-right-mini-item-height-3;
+                height: $t1sl3sr-mini-item-height-3;
                 padding-bottom: 15px;
                 position: relative;
 
@@ -319,7 +344,7 @@ $teaser-1-slideshow-left-3-small-right-mini-item-height-5: 106px;
                 }
 
                 &:last-child {
-                    height: $teaser-1-slideshow-left-3-small-right-mini-item-height-3 - 15px;
+                    height: $t1sl3sr-mini-item-height-3 - 15px;
                     padding-bottom: 0px;
                 }
 
@@ -335,7 +360,7 @@ $teaser-1-slideshow-left-3-small-right-mini-item-height-5: 106px;
             }
             img {
                 width: 100%;
-                height: height;
+                height: auto;
                 position: absolute;
                 top: 50%;
                 left: 0;
@@ -408,7 +433,7 @@ $teaser-1-slideshow-left-3-small-right-mini-item-height-5: 106px;
                 height: auto;
 
                 .__img {
-                    height: $teaser-1-slideshow-left-3-small-right-mini-item-height-4;
+                    height: $t1sl3sr-mini-item-height-4;
                 }
 
                 &:after {
@@ -469,7 +494,7 @@ $teaser-1-slideshow-left-3-small-right-mini-item-height-5: 106px;
                 }
 
                 .__img {
-                    height: $teaser-1-slideshow-left-3-small-right-mini-item-height-5;
+                    height: $t1sl3sr-mini-item-height-5;
                 }
 
             }
