@@ -1,6 +1,8 @@
 .teaser-main {
 
     border: 1px solid $color-default-grey;
+    @include linkreset($color-default-white);
+    cursor: pointer;
 
     .__headline {
 
