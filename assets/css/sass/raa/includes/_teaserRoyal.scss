@@ -4,6 +4,8 @@
     position: relative;
     overflow: hidden;
     height: 400px;
+    @include linkreset($color-default-white);
+    cursor: pointer;
 
     img {
         position: absolute;
@@ -56,6 +58,11 @@
 
     &:hover,
     &:focus {
+        .__info {
+            h1 {
+                text-decoration: underline;
+            }
+        }
         .__link {
             background: #666;
             text-decoration: none;
@@ -64,6 +71,17 @@
 
     p {
         margin: 0;
+    }
+}
+
+.mobile-device .teaser-royal {
+    &:hover,
+    &:focus {
+        .__info {
+            h1 {
+                text-decoration: none;
+            }
+        }
     }
 }
 
