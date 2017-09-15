@@ -59,11 +59,6 @@
             font-size: 24px;
             text-shadow: 1px 1px 2px #444;
 
-            &:hover,
-            &:active {
-                text-decoration: underline
-            }
-
             i {
                 margin-left: 5px;
                 font-size: 18px;
@@ -73,6 +68,14 @@
         .__inner {
             position: relative;
             cursor: pointer;
+
+            &:hover {
+                .__title,
+                .__readmore {
+                    text-decoration: underline
+                }
+            }
+
         }
     }
 
@@ -175,6 +178,19 @@
         margin: 0;
     }
 
+}
+
+.mobile-device .teaser-slideshow {
+    .slides {
+        .__inner {
+            &:hover {
+                .__title,
+                .__readmore {
+                    text-decoration: none;
+                }
+            }
+        }
+    }    
 }
 
 @media only screen and (max-width: $special-teaser-break-ipad-ls) {
