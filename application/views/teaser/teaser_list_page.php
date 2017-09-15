@@ -12,25 +12,28 @@
 			<div class="flex-container __teaser-row"><?php
 		}
 
-		 $slug = base_url((isset($value['parent_slug']) && !empty($value['parent_slug']) ? $value['parent_slug'] . '/' : '') . $value['slug']);
+		$slug = base_url((isset($value['parent_slug']) && !empty($value['parent_slug']) ? $value['parent_slug'] . '/' : '') . $value['slug']);
 
 		?>
 
-		<a href="<?php echo $slug; ?>"  class="__item flex <?php echo $i+1 == sizeof($lib_data['teaserItems']) ? '_last' : ''; ?>">
+		<div class="__item flex <?php echo $i+1 == sizeof($lib_data['teaserItems']) ? '_last' : ''; ?> js-teaser-linked">
 			<div class="img _hover-mask">
                 <?php
                 $this->load->view('component/lazyimg', array(
-                    'src' => '/assets/images/themes/<?php echo $theme; ?>/ph.png',
+                    'src' => $img_placeholder,
                     'datasrc' => $value['image'],
                     'alt' => $value['image_alt']
                 )); ?>
 			</div>
 			<span class="__info flex-container _column">
-				<div class="__part __teaser-title"><?php echo $value['menu_title']; ?></div>
+				<div class="__part __teaser-title">
+					<?php $this->load->view('component/link',
+                        array('href' =>  $slug, 'target' => '_self', 'text' => $value['menu_title'])); ?>
+				</div>
 				<span class="__part __teaser-text flex"><?php echo $value['teaser_text']; ?></span>
-				<div href="<?php echo $slug; ?>" class="__part __teaser-more">Weiterlesen</div>
+				<div class="__part __teaser-more">Weiterlesen</div>
 			</span>
-		</a>
+		</div>
 
 	<?php
 

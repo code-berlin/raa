@@ -50,15 +50,6 @@
 
             }
 
-            &:hover {
-                &._hover-mask {
-                    &:after {
-                        opacity: 0.3;
-                    }
-                }
-            }
-
-
         }
 
         img {
@@ -94,15 +85,44 @@
         .__teaser-more {
             color: $color-default-main;
             text-align: right;
-
-            &:hover {
-                text-decoration: underline;
-            }
-
         }
 
         &:last-child {
             margin-right: 0px;
+        }
+
+        &:hover {
+            
+            .img {
+                &._hover-mask {
+                    &:after {
+                        opacity: 0.3;
+                    }
+                }
+            }
+
+            .__teaser-title,
+            .__teaser-more {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.mobile-device .teaser-default {
+    .__item {
+        &:hover {
+            .img {
+                &._hover-mask {
+                    &:after {
+                        opacity: 0;
+                    }
+                }
+            }
+            .__teaser-title,
+            .__teaser-more {
+                text-decoration: none;
+            }
         }
     }
 }
@@ -132,20 +152,6 @@
 
             &._dummy {
                 display: none;
-            }
-
-            &:hover {
-
-                color: $color-default-font;
-                text-decoration: none;
-
-                .img {
-                    &._hover-mask {
-                        &:after {
-                            opacity: 0;
-                        }
-                    }
-                }
             }
 
             &:after {
