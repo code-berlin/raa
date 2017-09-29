@@ -91,3 +91,24 @@ function get_ad_map($ad_id) {
 	}
 
 }
+
+/**
+ * @param $ad_supplier - supplier of native add
+ * @param $element - place of native script element, could be right now head, footer, content; see add config
+ * @return string - native ad for element
+ */
+function add_native_ad_to_element($ad_supplier, $element) {
+
+    $CI = & get_instance();
+    $CI->config->load('ads');
+
+    $ad_config = $CI->config->item('native_ads');
+
+    if (isset($ad_config[$ad_supplier][$element])) {
+        return $ad_config[$ad_supplier][$element];
+    } else {
+        return '';
+    }
+
+}
+
