@@ -32,6 +32,8 @@ class Search extends CI_Controller {
         $subdata['lib_data'] = $this->theme->get_template_data($lib_data);
         $subdata['searchterm'] = urldecode($_REQUEST['gs']);
         $subdata['theme'] = $this->config->item('theme');
+		$subdata['img_placeholder'] = get_image_placeholder($subdata['theme']);
+        $subdata['img_placeholder_slideshow'] = get_image_placeholder_for_slideshow($subdata['theme']);
 
         $data['canonical_url'] = base_url('gsearch');
 
