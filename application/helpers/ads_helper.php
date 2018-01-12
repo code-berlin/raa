@@ -29,6 +29,7 @@ function add_ad_tag_to_text($text, $ad_id, $ad_place = array(1,0)) {
  */
 function get_cis_box_html($ad_id) {
 	$CI = & get_instance();
+    if (!isset($ad_config[$ad_id]['tag']) || !isset($ad_config[$ad_id]['name']) || !isset($ad_config[$ad_id]['map'])) return '';
 	return '<div class="cis' . $ad_id . '">' . $CI->load->view('/component/ads', array('ad_id' => $ad_id, 'ad_tag'=> get_ad_tag($ad_id), 'ad_name' => get_ad_name($ad_id), 'ad_map' => get_ad_map($ad_id)), true) . '</div>';
 }
 
@@ -75,7 +76,7 @@ function get_ad_name($ad_id) {
 /**
  * return ad map (the sizes) by ad id
  * @param int $ad_id - the id of the ad
- * @return string ad map - the ad map from config 
+ * @return string ad map - the ad map from config
  */
 function get_ad_map($ad_id) {
 
@@ -111,4 +112,3 @@ function add_native_ad_to_element($ad_supplier, $element) {
     }
 
 }
-
