@@ -6,7 +6,7 @@
         gads.async = true;
         gads.type = 'text/javascript';
         var useSSL = 'https:' == document.location.protocol;
-        gads.src = (useSSL ? 'https:' : 'http:') + 
+        gads.src = (useSSL ? 'https:' : 'http:') +
         '//www.googletagservices.com/tag/js/gpt.js';
         var node = document.getElementsByTagName('script')[0];
         node.parentNode.insertBefore(gads, node);
@@ -15,6 +15,9 @@
         if (isset($page)) {
             $ad_keywords = explode(',', $page->ad_keywords);
             $i = 0;
+    ?>
+    $(document).ready(function(){
+    <?php
             if(isset($ad_keywords[0]) && !empty($ad_keywords[0])) {
 
     ?>
@@ -37,4 +40,5 @@
             }
         }
     ?>
+    });
 </script>
