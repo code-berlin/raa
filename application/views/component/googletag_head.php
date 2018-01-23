@@ -16,7 +16,7 @@
             $ad_keywords = explode(',', $page->ad_keywords);
             $i = 0;
     ?>
-    $(document).ready(function(){
+    document.addEventListener("DOMContentLoaded", function() {
     <?php
             if(isset($ad_keywords[0]) && !empty($ad_keywords[0])) {
 
