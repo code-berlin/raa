@@ -82,7 +82,9 @@ function get_breadcrumbs($page, $homeTitle) {
         array_push($breadcrumbs, array('title' => $page['parent_menu_title'], 'url'=> base_url($page['parent_slug'])));
     }
 
-    array_push($breadcrumbs, array('title' => $page['menu_title'], 'url'=>  base_url($page['slug'])));
+
+
+    array_push($breadcrumbs, array('title' => $page['menu_title'], 'url'=>  base_url($page['parent_slug'] . '/' . $page['slug'])));
 
     return $breadcrumbs;
 
@@ -149,10 +151,10 @@ function teaser_items_ordered_list($items) {
     $orderedItems = [];
 
     foreach ($items as $key => $value) {
-    
+
         $title = isset($value['title']) ? $value['title'] : $value['page_title'];
         $first = strtoupper(mb_substr($title, 0, 1));
-        
+
         if (!isset($orderedItems[$first])) {
             $orderedItems[$first] = [];
         }
