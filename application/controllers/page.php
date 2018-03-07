@@ -130,6 +130,19 @@ class Page extends CI_Controller {
 
         $page = $this->page_m->get_by_id($page_id);
 
+        $regex = '/<div class="jumpmark" id="(.+?)">(.+?)<\/div>/mi';
+
+        preg_match_all($regex, $page->text, $matches, PREG_SET_ORDER);
+
+        $data['jumpmarks'] = [];
+
+        if (is_array($matches)) {
+            foreach ($matches as $key => $value) {
+                $data['jumpmarks'][$key]['mark'] = $value[1];
+                $data['jumpmarks'][$key]['title'] = $value[2];
+            }
+        }
+
         $data['social']['title'] = (!empty($page->seo_meta_title) ? $page->seo_meta_title : $page->headline);
         $data['social']['description'] = (!empty($page->seo_meta_description) ? $page->seo_meta_description : $page->teaser_text);
         $data['social']['image'] = $page->image;
@@ -188,7 +201,7 @@ class Page extends CI_Controller {
                             $res->product->listprice = $listprices[$i];
                         } else {
                             $res->product->listprice = null;
-                        }     
+                        }
                     }
 
                     $data[$value] = json_encode($res);
