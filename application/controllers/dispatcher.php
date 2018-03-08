@@ -102,10 +102,19 @@ class Dispatcher extends Page {
                 $teaser_instances = $this->teaser_m->get_teaser_instance_by_page_id($this->data[$this->type]->id);
 
                 $teaser = array();
+                $relatedArticles = array();
 
                 if (!empty($teaser_instances)) {
 
                     foreach ($teaser_instances as $key => $value) {
+
+                        // extract related articles in extra variable (special feature for article pages)
+                        if ($value['name'] === 'relatedArticles') {
+                            $relatedArticles['title'] = $value['title'];
+                            $relatedArticles['text'] = $value['text'];
+                            $relatedArticles['items'] = $this->teaser_m->get_teaser_items_by_teaser_instance_id($value['id']);
+                            continue;
+                        }
 
                         $teaser[$value['id']]['title'] = $value['title'];
                         $teaser[$value['id']]['text'] = $value['text'];
@@ -119,7 +128,6 @@ class Dispatcher extends Page {
                             shuffle($teaser[$value['id']]['items']);
                         }
 
-                        // if teasertype is external_link_page then shuffle order
                         if ($value['name'] === 'ordered_list')  {
                             $teaser[$value['id']]['items'] = teaser_items_ordered_list($teaser[$value['id']]['items']);
                         }
@@ -129,6 +137,7 @@ class Dispatcher extends Page {
                 }
 
                 $this->data['teaser'] = $teaser;
+                $this->data['relatedArticles'] = $relatedArticles;
 
                 $this->data['page']['productteaser'] = '';
 
