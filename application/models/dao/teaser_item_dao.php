@@ -27,6 +27,7 @@ class Teaser_item_dao extends CI_Model {
 					`page`.`menu_title` AS `page_title`,
 					`page`.`teaser_text` AS `page_text`,
 					`page`.`commercial` AS `page_commercial`,
+					`page`.`date` AS `page_date`,
 					`parent`.`slug` AS `parent_slug`,
 					`parent`.`menu_title` AS `parent_menu_title`,
 					`item`.`content_type` as `content_type`,

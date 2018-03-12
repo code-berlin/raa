@@ -48,10 +48,13 @@ class Teaser_m extends CI_Model {
                 $slug = base_url((isset($value['parent_slug']) && !empty($value['parent_slug']) ? $value['parent_slug'] . '/' : '') . $value['page_slug']);
             }
 
+            $dateString = date("d.m.Y H:i:s", strtotime($value['page_date']));
+
             $teaserItemsEnriched[$key] = $value;
             $teaserItemsEnriched[$key]['target'] = $target;
             $teaserItemsEnriched[$key]['image'] = $image;
             $teaserItemsEnriched[$key]['slug'] = $slug;
+            $teaserItemsEnriched[$key]['datestring'] = $dateString;
 
         }
 
