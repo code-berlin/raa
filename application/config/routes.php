@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 // DEFAULT ROUTES
 $route['default_controller'] = "dispatcher";
@@ -32,12 +32,12 @@ $route['image/preview/(:num)/(:num)/(:any)/(:any)'] = 'image/preview/$1/$2/$3/$4
 
 $route['theme_method/(:any)'] = 'dispatcher/theme_method/$1';
 
-$route['productteaser/(:num)'] = 'iframe/product_teaser/$1';
+$route['productteaser/(:any)'] = 'iframe/product_teaser/$1';
 
 /*
-* FRONTEND SLUGS
-* IMPORTANT: don't move this item from this position! must be the last!
-*/
+ * FRONTEND SLUGS
+ * IMPORTANT: don't move this item from this position! must be the last!
+ */
 $route['([a-z0-9-]*)/([a-z0-9-]*)'] = "dispatcher/index/$1/$2";
 $route['([a-z0-9-]*)'] = "dispatcher/index/$1";
 

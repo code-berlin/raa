@@ -21,6 +21,7 @@
                                         <?php echo $teaser['image_caption']; ?>
                                     </div>
                                     <?php
+
                                 }
                                 if (isset($teaser['duty_text'])) { ?>
                                     <div class="duty-text-trigger js-duty-text-trigger">Pflichttext</div>
@@ -30,6 +31,7 @@
                                         <?php echo $teaser['duty_text']; ?>
                                     </div>
                                     <?php
+
                                 } ?>
                             </div>
                             <div class="flex-container _column __texts">
@@ -42,6 +44,7 @@
                     </a>
                 </li>
                 <?php
+
             } ?>
         </ul>
     </div>
