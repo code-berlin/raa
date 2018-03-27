@@ -1,7 +1,7 @@
 <?php
 require_once(APPPATH . 'migrations/basic_migration.php');
 
-class Migration_Add_Article_Page_Nativendo extends Basic_migration
+class Migration_Remove_Article_Page_Nativendo extends Basic_migration
 {
 
     function __construct()
