@@ -90,7 +90,7 @@ class Page_dao extends CI_Model{
     }
 
     public function get_children($page_id) {
-        return R::getAll('  SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.image_alt, child.id, child.parent_id,
+        return R::getAll('  SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.image_alt, child.id, child.parent_id, child.commercial,
         						   parent.slug as parent_slug, (
 	                                SELECT position
 	                                FROM menuitem
@@ -106,7 +106,7 @@ class Page_dao extends CI_Model{
     }
 
     function get_children_ordered_by_menu_title($page_id) {
-        return R::getAll('  SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.image_alt, child.id, child.parent_id,
+        return R::getAll('  SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.image_alt, child.id, child.parent_id, child.commercial,
                                    parent.slug as parent_slug, (
                                     SELECT position
                                     FROM menuitem

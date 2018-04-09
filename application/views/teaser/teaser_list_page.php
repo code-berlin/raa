@@ -19,7 +19,7 @@
 		<div class="__item flex <?php echo $i+1 == sizeof($lib_data['teaserItems']) ? '_last' : ''; ?> js-teaser-linked">
 			<div class="img _hover-mask">
 				<?php
-				if ($value['commercial']) { ?>
+				if (isset($value['commercial']) && $value['commercial'] == true) { ?>
 					<div class="__commercial">Anzeige</div> 
 				<?php 
 					}
@@ -44,19 +44,20 @@
 		$i++;
 
 		// close row
-		if ($i > 1 && $i%$columns == 0) { ?>
-			</div> <?php
+		if ($i > 1 && $i%$columns == 0) { 
+	?>
+			</div> 
+	<?php
 		}
-
 	}
-
 	// build dummy items to fill line
 	while($i%$columns != 0) { 	
 	?>
 		<div class="__item _dummy flex"></div>
 	<?php
 		$i++;
-		if ($i%$columns == 0) { ?>
+		if ($i%$columns == 0) { 
+	?>
 			</div> 
 	<?php
 		}
