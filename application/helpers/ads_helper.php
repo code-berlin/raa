@@ -10,7 +10,7 @@
  */
 function add_ad_tag_to_text($text, $ad_id, $ad_place = array(1,0), $block = false) {
 	
-	if ($block === '1') return '';
+	if ($block === '1') return $text;
 	
 	$regx = '/<h2.*?>(\s|\S)+?<\/h2>/i';
 	preg_match_all($regx, $text, $matches);
