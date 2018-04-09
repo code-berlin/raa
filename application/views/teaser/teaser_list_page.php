@@ -18,7 +18,11 @@
 
 		<div class="__item flex <?php echo $i+1 == sizeof($lib_data['teaserItems']) ? '_last' : ''; ?> js-teaser-linked">
 			<div class="img _hover-mask">
-                <?php
+				<?php
+				if ($value['commercial']) { ?>
+					<div class="__commercial">Anzeige</div> 
+				<?php 
+					}
                 $this->load->view('component/lazyimg', array(
                     'src' => $img_placeholder,
                     'datasrc' => $value['image'],
@@ -47,11 +51,14 @@
 	}
 
 	// build dummy items to fill line
-	while($i%$columns != 0) { ?>
-		<div class="__item _dummy flex"></div><?php
+	while($i%$columns != 0) { 	
+	?>
+		<div class="__item _dummy flex"></div>
+	<?php
 		$i++;
 		if ($i%$columns == 0) { ?>
-			</div> <?php
+			</div> 
+	<?php
 		}
 	}
 
