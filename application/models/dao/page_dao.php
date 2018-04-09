@@ -129,7 +129,7 @@ class Page_dao extends CI_Model{
      * get all siblings of an article, ordered by index in sidebar menu
      */
     public function get_siblings($page_id) {
-        return R::getAll('  SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.image_alt, child.id, child.parent_id,
+        return R::getAll('  SELECT child.menu_title, child.slug, child.teaser_text, child.image, child.image_alt, child.id, child.parent_id, child.commercial,
         	                       parent.slug as parent_slug, (
 	                                SELECT position
 	                                FROM menuitem
