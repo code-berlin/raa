@@ -5,18 +5,21 @@
  * @param $text the content
  * @param $ad_id id for choosing right ad
  * @param $ad_place array for replacement
+ * @param $block - blocks ads
  * @return mixed the new content
  */
-function add_ad_tag_to_text($text, $ad_id, $ad_place = array(1,0)) {
-
-    $regx = '/<h2.*?>(\s|\S)+?<\/h2>/i';
+function add_ad_tag_to_text($text, $ad_id, $ad_place = array(1,0), $block = false) {
+	
+	if ($block === true) return '';
+	
+	$regx = '/<h2.*?>(\s|\S)+?<\/h2>/i';
 	preg_match_all($regx, $text, $matches);
 
     if (isset($matches[0])) {
 		if (isset($matches[0][$ad_place[0]])) {
-			$text = str_replace($matches[0][$ad_place[0]], get_cis_box_html($ad_id) . $matches[0][$ad_place[0]], $text);
+			$text = str_replace($matches[0][$ad_place[0]], get_cis_box_html($ad_i, $block) . $matches[0][$ad_place[0]], $text);
 		} else if (isset($matches[0][$ad_place[1]])) {
-			$text = str_replace($matches[0][$ad_place[1]], get_cis_box_html($ad_id) . $matches[0][$ad_place[1]], $text);
+			$text = str_replace($matches[0][$ad_place[1]], get_cis_box_html($ad_id, $block) . $matches[0][$ad_place[1]], $text);
 		}
 	}
 	return $text;
@@ -26,8 +29,12 @@ function add_ad_tag_to_text($text, $ad_id, $ad_place = array(1,0)) {
 /*
  * return html of cis promotion box
  * @param int $ad_id - the id of the ad
+ * @param $block - blocks ads
  */
-function get_cis_box_html($ad_id) {
+function get_cis_box_html($ad_id, $block = false) {
+	
+	if ($block === true) return '';
+	
 	$CI = & get_instance();
     $CI->config->load('ads');
 
@@ -100,9 +107,12 @@ function get_ad_map($ad_id) {
 /**
  * @param $ad_supplier - supplier of native add
  * @param $element - place of native script element, could be right now head, footer, content; see add config
+ * @param $block - blocks ads
  * @return string - native ad for element
  */
-function add_native_ad_to_element($ad_supplier, $element) {
+function add_native_ad_to_element($ad_supplier, $element, $block = false) {
+	
+	if ($block === true) return '';
 
     $CI = & get_instance();
     $CI->config->load('ads');
