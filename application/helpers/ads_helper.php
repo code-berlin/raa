@@ -17,7 +17,7 @@ function add_ad_tag_to_text($text, $ad_id, $ad_place = array(1,0), $block = fals
 
     if (isset($matches[0])) {
 		if (isset($matches[0][$ad_place[0]])) {
-			$text = str_replace($matches[0][$ad_place[0]], get_cis_box_html($ad_i, $block) . $matches[0][$ad_place[0]], $text);
+			$text = str_replace($matches[0][$ad_place[0]], get_cis_box_html($ad_id, $block) . $matches[0][$ad_place[0]], $text);
 		} else if (isset($matches[0][$ad_place[1]])) {
 			$text = str_replace($matches[0][$ad_place[1]], get_cis_box_html($ad_id, $block) . $matches[0][$ad_place[1]], $text);
 		}
