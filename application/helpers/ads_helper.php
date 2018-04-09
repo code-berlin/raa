@@ -10,7 +10,7 @@
  */
 function add_ad_tag_to_text($text, $ad_id, $ad_place = array(1,0), $block = false) {
 	
-	if ($block === true) return '';
+	if ($block === '1') return '';
 	
 	$regx = '/<h2.*?>(\s|\S)+?<\/h2>/i';
 	preg_match_all($regx, $text, $matches);
@@ -33,7 +33,7 @@ function add_ad_tag_to_text($text, $ad_id, $ad_place = array(1,0), $block = fals
  */
 function get_cis_box_html($ad_id, $block = false) {
 	
-	if ($block === true) return '';
+	if ($block === '1') return '';
 	
 	$CI = & get_instance();
     $CI->config->load('ads');
@@ -111,8 +111,8 @@ function get_ad_map($ad_id) {
  * @return string - native ad for element
  */
 function add_native_ad_to_element($ad_supplier, $element, $block = false) {
-	var_dump('muh', $block);
-	if ($block === true) return '';
+
+	if ($block === '1') return '';
 
     $CI = & get_instance();
     $CI->config->load('ads');
