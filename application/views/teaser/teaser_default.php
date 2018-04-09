@@ -27,7 +27,11 @@
                         'src' => $img_placeholder,
                         'datasrc' => !empty($value['image']) ? $value['image'] : '',
                         'alt' => $value['title']
-                    )); ?>
+                    ));                     
+                    if (isset($value['page_commercial']) && $value['page_commercial'] == true) { ?>
+                        <div class="__commercial">Anzeige</div> 
+                        <?php
+                    } ?>
                 </div>
 
                 <span class="__info flex-container _column">
@@ -61,7 +65,8 @@
 
         // close row
         if ($i > 1 && $i%$columns == 0) { ?>
-            </div> <?php
+            </div> 
+        <?php
         }
 
     }

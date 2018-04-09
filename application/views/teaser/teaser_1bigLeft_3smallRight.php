@@ -16,7 +16,7 @@ foreach ($items as $key => $value) {
                     'datasrc' => !empty($value['image']) ? $value['image'] : '',
                     'alt' => $value['title']
                 ));
-                if ($value['page_commercial']) { ?>
+                if (isset($value['page_commercial']) && $value['page_commercial'] == true) { ?>
                     <div class="__commercial">Anzeige</div> <?php
                 } ?>
             </div>
