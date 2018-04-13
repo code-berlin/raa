@@ -39,7 +39,7 @@ class Menu_item_dao extends CI_Model{
 
 	public function get_menu_items_by_menu_id_and_parent_id($menu_id, $parent_id) {
 
-		$qry = "SELECT `menuitem`.`id`, `menuitem`.`contentId`, `menuitem`.`jumpmark`, `child`.`menu_title`, `child`.`menu_title_mobile`, `child`.`slug`, `child`.`parent_id`, `child`.`image`, `parent`.`slug` as parent_slug FROM `menuitem`
+		$qry = "SELECT `menuitem`.`id`, `menuitem`.`contentId`, `menuitem`.`jumpmark`, `child`.`menu_title`, `child`.`menu_title_mobile`, `child`.`slug`, `child`.`parent_id`, `child`.`image`, `child`.`headline`, `parent`.`slug` as parent_slug FROM `menuitem`
 				LEFT JOIN `page` as child ON `menuitem`.`contentId` = `child`.`id`
 				LEFT JOIN `page` as parent ON `parent`.`id` = `child`.`parent_id`
 				WHERE `menuitem`.`content_type` = 'page'

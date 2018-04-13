@@ -22,9 +22,26 @@ module.exports = function(grunt) {
         'assets/js/themes/' + theme + '/**/*.js'
     ];
 
-    /** you can add specific js files in config.json (e.g. if you want to exclude a file from core) */
+    var CSS_FILES = [
+        'assets/css/vendor/normalize.css',
+        'assets/css/vendor/font-awesome.min.css',
+        'assets/css/vendor/flaticon.css', // http://www.flaticon.com/packs/basic-ui-set
+        'assets/css/vendor/superfish.css',
+        'assets/css/vendor/slick.css',
+        'assets/css/vendor/jquery.cookiebar.css',
+        'assets/css/vendor/flexslider.css',
+        'assets/css/vendor/chosen.css',
+        'assets/css/raa/main.css',
+        'assets/css/theme/main.css'
+    ];
+
+    /** you can add specific files in config.json (e.g. if you want to exclude a file from core) */
     if (config.jsfiles) {
         JS_FILES = JS_FILES.concat(config.jsfiles);
+    }
+
+    if (config.cssfiles) {
+        CSS_FILES = CSS_FILES.concat(config.cssfiles);
     }
 
 	grunt.initConfig({
@@ -68,18 +85,7 @@ module.exports = function(grunt) {
                     sourceMap: true
                 },
                 // the files to concatenate
-                src: [
-                    'assets/css/vendor/normalize.css',
-                    'assets/css/vendor/font-awesome.min.css',
-                    'assets/css/vendor/flaticon.css', // http://www.flaticon.com/packs/basic-ui-set
-                    'assets/css/vendor/superfish.css',
-                    'assets/css/vendor/slick.css',
-                    'assets/css/vendor/jquery.cookiebar.css',
-                    'assets/css/vendor/flexslider.css',
-                    'assets/css/vendor/chosen.css',
-                    'assets/css/raa/main.css',
-                    'assets/css/theme/main.css'
-                ],
+                src: CSS_FILES,
                 // the location of the resulting CSS file
                 dest: 'assets/css/min/main.min.css'
             },
@@ -89,18 +95,7 @@ module.exports = function(grunt) {
                     sourceMap: false
                 },
                 // the files to concatenate
-                src: [
-                    'assets/css/vendor/normalize.css',
-                    'assets/css/vendor/font-awesome.min.css',
-                    'assets/css/vendor/flaticon.css', // http://www.flaticon.com/packs/basic-ui-set
-                    'assets/css/vendor/superfish.css',
-                    'assets/css/vendor/slick.css',
-                    'assets/css/vendor/jquery.cookiebar.css',
-                    'assets/css/vendor/flexslider.css',
-                    'assets/css/vendor/chosen.css',
-                    'assets/css/raa/main.css',
-                    'assets/css/theme/main.css'
-                ],
+                src: CSS_FILES,
                 // the location of the resulting CSS file
                 dest: 'assets/css/min/main.tmp.css'
 
