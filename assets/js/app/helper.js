@@ -28,6 +28,10 @@ var helper = {
         } catch(ex) {
             console.log(ex);
         }
+    },
+
+    isIE: function() {
+        return navigator.msMaxTouchPoints === 0;
     }
 
 
