@@ -32,18 +32,12 @@ class Teaser_item_dao extends CI_Model {
 					`parent`.`menu_title` AS `parent_menu_title`,
 					`item`.`content_type` as `content_type`,
 					`item`.`external_link` as `external_link`,
-					`item`.`external_image` as `external_image`,
-					`articlegroup`.`id` as `article_group_id`,
-					`articlegroup`.`name` as `article_group_name`
+					`item`.`external_image` as `external_image`
 				FROM `teaseritem` AS `item`
 				LEFT JOIN
 					page ON `page`.`id` = `item`.`contentId`
 				LEFT JOIN
 					`page` AS `parent` ON `parent`.`id` = `page`.`parent_id`
-				LEFT JOIN
-					articlegroupitem ON `articlegroupitem`.`contentId` = `item`.`contentId`
-				LEFT JOIN
-					articlegroup ON `articlegroup`.`id` = `articlegroupitem`.`articlegroupId`
 				WHERE
 					`item`.`published` = 1 AND
 					`item`.`teaser_instanceId` = :teaser_instance_id AND
