@@ -214,6 +214,8 @@ class Dispatcher extends Page {
         header('HTTP/1.0 404 Not Found');
         $this->data['template_method'] = 'error_404';
         $this->data['lib_data'] = $this->error_404();
+        $this->data['page'] = new stdClass();
+        $this->data['page']->commercial = false;
         return $this->layout->view('page/'.$templates_folder.'/error_404', $this->data);
 
     }
