@@ -268,12 +268,18 @@ ul {
     height: 0px;
 }
 
-.iframe-page {
-
-}
-
 .mobile-visible {
     display: none;
+}
+
+// taboola css
+.trc_related_container,
+.trc_rbox_container {
+    margin: 30px 0;
+}
+
+.trc_related_container .trc_rbox_container {
+    margin: 0;
 }
 
 @media only screen and (max-width: $special-teaser-break-ipad-ls) {
@@ -320,7 +326,7 @@ ul {
 
         display: block;
         position: fixed;
-        bottom: 60px;
+        bottom: $main-offset-mobile;
         z-index: 1000200; // #at-share-dock has 1000200
 
         &._left {
