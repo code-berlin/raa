@@ -54,12 +54,6 @@ $component-latest-articles-img-height-3: 175px;
         img {
             height: $component-latest-articles-img-height-1;
         }
-
-        .__addthis-wrap {
-            position: absolute;
-            left: 15px;
-            top: 15px;
-        }
     }
 
     &:last-child {

@@ -27,13 +27,7 @@
                             'datasrc' => !empty($image) ? $image : '',
                             'alt' => $value['teaser_title']
                         ));
-
-                        if (!empty($slug)) { ?>
-                            <div class="__addthis-wrap">
-                                <a class="addthis_inline_share_toolbox" data-url="<?php echo $slug; ?>" data-title="<?php echo $value['teaser_title']; ?>"></a>
-                            </div>
-                        <?php
-                        } ?>
+                        ?>
 
                     </div>
                     <div class="__headline flex">
