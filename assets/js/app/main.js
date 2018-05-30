@@ -4,7 +4,6 @@ $(document).ready(function() {
         $('html').addClass('mobile-device');
     }
 
-    console.log("HUHU!");
     if (helper.isIE()) {
     	$('html').addClass('ie');
     }
