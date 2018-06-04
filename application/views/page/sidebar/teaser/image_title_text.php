@@ -1,3 +1,7 @@
+<?php
+if ($commercial) {
+    $this->load->view('page/sidebar/teaser/commercial');
+} ?>
 <div class="teaser_sidebar_<?php echo $type; ?> <?php echo $hasUrl ? 'js-teaser-linked' : ''; ?>">
     
     <?php

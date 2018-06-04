@@ -899,12 +899,12 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->set_table('sidebarteaser');
 
             // Fields to show on the list
-            $crud->columns('sidebarteasertypes_id', 'position', 'title', 'text', 'image', 'html', 'url', 'published', 'external', 'alternative');
+            $crud->columns('sidebarteasertypes_id', 'position', 'title', 'text', 'image', 'html', 'url', 'published', 'external', 'alternative', 'commercial');
 
             $crud->order_by('position','asc');
 
-            $crud->add_fields('sidebarteasertypes_id', 'position', 'title', 'text', 'image', 'html', 'url', 'published', 'external', 'alternative');
-            $crud->edit_fields('sidebarteasertypes_id', 'position', 'title', 'text', 'image', 'html', 'url', 'published', 'external', 'alternative');
+            $crud->add_fields('sidebarteasertypes_id', 'position', 'title', 'text', 'image', 'html', 'url', 'published', 'external', 'alternative', 'commercial');
+            $crud->edit_fields('sidebarteasertypes_id', 'position', 'title', 'text', 'image', 'html', 'url', 'published', 'external', 'alternative', 'commercial');
 
             // add page relation
             $this->load->model('page_m');
@@ -924,6 +924,8 @@ class Admin_Controller extends Main_Admin_Controller {
             $crud->field_type('external','true_false', array('1' => 'Yes', '0' => 'No'));
 
             $crud->field_type('alternative','true_false', array('1' => 'Yes', '0' => 'No'));
+
+            $crud->field_type('commercial','true_false', array('1' => 'Yes', '0' => 'No'));
 
             $crud->set_field_upload('image', $this->config->item('upload_folder'));
 

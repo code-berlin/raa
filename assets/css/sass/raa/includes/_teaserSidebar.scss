@@ -17,6 +17,23 @@
 
 }
 
+.teaser_sidebar_commercial {
+
+    margin-top: 25px;
+    font-size: 10px;
+    text-align: right;
+
+    + .teaser_sidebar_image_title_text_button,
+    + .teaser_sidebar_image_title_text,
+    + .teaser_sidebar_image_title_text_bright,
+    + .teaser_sidebar_image,
+    + .teaser_sidebar_image_title_text_optional,
+    + .teaser_sidebar_html {
+        margin-top: 0;
+    }
+
+}
+
 .teaser_sidebar_image_title_text_button,
 .teaser_sidebar_image_title_text,
 .teaser_sidebar_image_title_text_bright,

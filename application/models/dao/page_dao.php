@@ -200,6 +200,7 @@ class Page_dao extends CI_Model{
                                 sidebarteaser.published,
                                 sidebarteaser.external,
                                 sidebarteaser.alternative,
+                                sidebarteaser.commercial,
                                 sidebarteaser.position,
                                 sidebarteaser.sidebarteasertypes_id,
                                 sidebarteasertypes.name as type
@@ -221,6 +222,7 @@ class Page_dao extends CI_Model{
                                 sidebarteaser.published,
                                 sidebarteaser.external,
                                 sidebarteaser.alternative,
+                                sidebarteaser.commercial,
                                 sidebarteaser.position,
                                 sidebarteaser.sidebarteasertypes_id,
                                 sidebarteasertypes.name as type
