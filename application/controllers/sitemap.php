@@ -22,7 +22,7 @@ class Sitemap extends CI_Controller {
 
     	foreach ($pages as $key => $value) {
             
-            if ($value['slug'] == 'home') continue;
+            if ($value['slug'] == 'home' || $value['slug'] == 'datenschutz') continue;
 
             if (!empty($value['parent_id'])) {
                 $data['loc'] = base_url($value['parent_slug'] . '/' . $value['slug']);
