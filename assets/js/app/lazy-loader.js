@@ -123,7 +123,7 @@ var lazyLoader = {
 
     setImgSrc: function(img) {
 
-        var devicePixelRatio = typeof window.devicePixelRatio !== 'undefined' ? window.devicePixelRatio : 1,
+        var devicePixelRatio = typeof window.devicePixelRatio !== 'undefined' ? Math.ceil(window.devicePixelRatio) : 1,
             width = img.width() * devicePixelRatio,
             height,
             src,
