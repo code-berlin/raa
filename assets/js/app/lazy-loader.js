@@ -78,13 +78,16 @@ var lazyLoader = {
             var slideshow = $(this),
                 thumbnails = slideshow.find('.flex-control-thumbs img'),
                 placeholder = slideshow.siblings('.js-lazy-slideshow-placeholder');
+                devicePixelRatio = typeof window.devicePixelRatio !== 'undefined' ? Math.ceil(window.devicePixelRatio) : 1;
 
             slideshow.find('.js-slideshow-lazy-img').each(function(i){
 
                 var img = $(this),
-                    thumbnail = thumbnails[i] ? $(thumbnails[i]) : false;
+                    thumbnail = thumbnails[i] ? $(thumbnails[i]) : false,
+                    width = placeholder.width() * devicePixelRatio,
+                    height = placeholder.height() * devicePixelRatio;
 
-                src = '/image/preview/' + placeholder.width() +'/' + placeholder.height() + '/' + img.data('src');
+                src = '/image/preview/' + width + '/' + height + '/' + img.data('src');
                 img.attr('src', src);
                 img.addClass('loaded');
 
