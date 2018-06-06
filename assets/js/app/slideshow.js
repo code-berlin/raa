@@ -102,7 +102,9 @@ var slideshow = {
         }
 
         // add thumbs class to center arrows vertically in slideshow image
-        $('.js-teaser-slideshow').addClass('_w-thumbs');
+        if (options.controlNav === 'thumbnails') {
+            $('.js-teaser-slideshow').addClass('_w-thumbs');
+        }
 
     },
 
