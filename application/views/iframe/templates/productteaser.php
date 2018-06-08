@@ -34,7 +34,7 @@
 
                                 } ?>
                             </div>
-                            <div class="flex-container _column __texts">
+                            <div class="flex-container __texts">
                                 <div class="__minheight">
                                     <div class="__title"><?php echo $teaser['teaser_title']; ?></div>
                                     <div class="__text"><?php echo $teaser['teaser_text']; ?></div>

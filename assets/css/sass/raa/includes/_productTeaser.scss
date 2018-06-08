@@ -158,7 +158,7 @@ $cta-height: 60px;
     }
 
     .__texts {
-        @include flex-column-left-center();
+        @include flex-left-center();
         margin: 4% 12% 0 0;
         .__minheight {
             min-height: 75%;
