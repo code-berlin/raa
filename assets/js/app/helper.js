@@ -31,7 +31,7 @@ var helper = {
     },
 
     isIE: function() {
-        return navigator.msMaxTouchPoints === 0;
+        return typeof navigator.msMaxTouchPoints !== 'undefined';
     }
 
 
