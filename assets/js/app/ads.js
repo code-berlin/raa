@@ -41,7 +41,12 @@ var cisLoader = {
 		switch(messageData[1]) {
 			case 'resize':
 				$('#' + messageData[2] + ' .cis_content iframe').height(messageData[3]);
-				helper.gaTrack('AdResize', 'expand', window.location.href, event);
+				var action = 'expand';
+				try {
+					action = 'expand_' + messageData[4];
+				} catch (err) {				
+				}
+				helper.gaTrack('AdResize', action, window.location.href, event);
 				break;
 		}
 
