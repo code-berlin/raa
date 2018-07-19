@@ -170,5 +170,28 @@ function teaser_items_ordered_list($items) {
     return $orderedItems;
 }
 
+function addTocToPage ($jumpmarks, $text) {
+    
+    $CI = & get_instance();
+
+    $toc = '';
+    if (!empty($jumpmarks) && is_array($jumpmarks)) {
+        $subdata['with_schema'] = true;
+        $toc = $CI->load->view('component/toc', $subdata, true);
+    }
+
+    $regx = '/<p class="intro"*?>(\s|\S)+?<\/p>/i';
+	preg_match_all($regx, $text, $matches);
+
+    if (isset($matches[0][0]) && !empty($matches[0][0])) {
+        $text = str_replace($matches[0][0], $matches[0][0] . $toc, $text);
+    } else {
+        $text = $toc . $text;
+    }
+
+    return $text;
+}
+
+
 
 ?>
